@@ -14,6 +14,16 @@ namespace UI
         {
             InitializeComponent();
         }
+        // chuyển các button thành public để gọi từ form khác
+        public Guna.UI2.WinForms.Guna2Button BtnTrangChu => btnTrangChu;
+        public Guna.UI2.WinForms.Guna2Button BtnKhachHang => btnKhachHang;
+        public Guna.UI2.WinForms.Guna2Button BtnHopDong => btnHopDong;
+        public Guna.UI2.WinForms.Guna2Button BtnDonHang => btnDonHang;
+        public Guna.UI2.WinForms.Guna2Button BtnThongKeTienDo => btnThongKeTienDo;
+        public Guna.UI2.WinForms.Guna2Button BtnThongKeDonHang => btnThongKeDonHang;
+        public Guna.UI2.WinForms.Guna2Button BtnQuanLyUsers => btnQuanLyUsers;
+        public Guna.UI2.WinForms.Guna2Button BtnQuanLyUser => btnQuanLyUser;
+        public Guna.UI2.WinForms.Guna2Button BtnThongBao => btnThongbao;
 
         private void Form1_Load_1(object sender, EventArgs e)
         {

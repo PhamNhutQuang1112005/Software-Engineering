@@ -10,3 +10,16 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI\obj\Debug\UI.csproj.Up2Date
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI\obj\Debug\UI.exe
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI\obj\Debug\UI.pdb
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI\obj\Debug\UI.UI_main.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\bin\Debug\UI.exe.config
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\bin\Debug\UI.exe
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\bin\Debug\UI.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\bin\Debug\Guna.UI2.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.csproj.AssemblyReference.cache
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.exe.config
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.UI_main.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.Properties.Resources.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.csproj.GenerateResource.cache
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.csproj.CoreCompileInputs.cache
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.csproj.Up2Date
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.exe
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\UI\obj\Debug\UI.pdb

@@ -29,6 +29,7 @@
         private Guna.UI2.WinForms.Guna2Button btnQuanLyUsers;
         private Guna.UI2.WinForms.Guna2Button btnQuanLyUser;
 
+
         private void InitializeComponent()
         {
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
@@ -355,5 +356,7 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnThongbao;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
+
     }
+
 }
