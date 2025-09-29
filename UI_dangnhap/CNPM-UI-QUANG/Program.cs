@@ -16,7 +16,10 @@ namespace CNPM_UI_QUANG
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new dangnhap_login());
+            Application.Run(new dangnhap_sms());
+            Application.Run(new dangnhap_otp());
+            Application.Run(new dangnhap_matkhaumoi());
         }
     }
 }

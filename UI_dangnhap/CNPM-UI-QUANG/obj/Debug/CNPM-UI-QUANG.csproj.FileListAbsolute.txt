@@ -9,3 +9,19 @@ C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.csproj.CoreCo
 C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.exe
 C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.pdb
 C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.exe.config
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\bin\Debug\CNPM-UI-QUANG.exe.config
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\bin\Debug\CNPM-UI-QUANG.exe
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\bin\Debug\CNPM-UI-QUANG.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\bin\Debug\Guna.UI2.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.csproj.AssemblyReference.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.exe.config
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM_UI_QUANG.Properties.Resources.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.csproj.GenerateResource.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.csproj.CoreCompileInputs.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM-UI-.630FB946.Up2Date
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.exe
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM_UI_QUANG.dangnhap_sms.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM_UI_QUANG.dangnhap_otp.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM_UI_QUANG.dangnhap_login.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\obj\Debug\CNPM_UI_QUANG.dangnhap_matkhaumoi.resources
