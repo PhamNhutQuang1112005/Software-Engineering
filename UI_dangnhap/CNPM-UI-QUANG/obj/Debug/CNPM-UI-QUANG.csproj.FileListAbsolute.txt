@@ -1,0 +1,11 @@
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\bin\Debug\CNPM-UI-QUANG.exe.config
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\bin\Debug\CNPM-UI-QUANG.exe
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\bin\Debug\CNPM-UI-QUANG.pdb
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.csproj.AssemblyReference.cache
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM_UI_QUANG.Form1.resources
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM_UI_QUANG.Properties.Resources.resources
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.csproj.GenerateResource.cache
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.csproj.CoreCompileInputs.cache
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.exe
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.pdb
+C:\Projects\C#\CNPM-UI-QUANG\CNPM-UI-QUANG\obj\Debug\CNPM-UI-QUANG.exe.config
