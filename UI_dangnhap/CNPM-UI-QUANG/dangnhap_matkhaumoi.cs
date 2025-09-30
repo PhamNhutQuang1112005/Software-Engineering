@@ -16,5 +16,15 @@ namespace CNPM_UI_QUANG
         {
             InitializeComponent();
         }
+
+        private void dangnhap_matkhaumoi_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nhap_hoten_email_TextChanged(object sender, EventArgs e)
+        {
+            guna2PictureBox2.Parent = nhap_hoten_email;
+        }
     }
 }
