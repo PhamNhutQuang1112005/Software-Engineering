@@ -18,7 +18,8 @@ namespace UI
         // 📂 Biến lưu các UserControl để tái sử dụng (tránh tạo lại mỗi lần bấm)
         // ========================
         private TrangChu.Trangcur1 ucTrangChu;
-        
+        private QuanLyUSers.QuanLyUsers ucQuanLyUsers;
+
 
         // ========================
         // 🏗️ Hàm khởi tạo form chính
@@ -61,16 +62,24 @@ namespace UI
         // ========================
         private void ShowControl(UserControl control)
         {
-            // Đảm bảo UserControl chiếm toàn bộ panel nội dung
-            control.Dock = DockStyle.Fill;
+            // Ẩn (hoặc gỡ bỏ) toàn bộ UC cũ
+            foreach (Control c in contentPanel.Controls.OfType<UserControl>())
+            {
+                c.Visible = false;
+            }
 
-            // Nếu chưa có trong contentPanel thì thêm vào
+            // Nếu UC này chưa tồn tại thì thêm vào
             if (!contentPanel.Controls.Contains(control))
+            {
+                control.Dock = DockStyle.Fill;
                 contentPanel.Controls.Add(control);
+            }
 
-            // Đưa control cần hiển thị lên trên cùng
+            // Hiển thị UC mới
+            control.Visible = true;
             control.BringToFront();
         }
+
 
         // ========================
         // 🌑 Áp dụng giao diện Dark mode
@@ -201,7 +210,9 @@ namespace UI
         // 👉 Nút Quản Lý Users (nhiều user)
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
-            
+               if (ucQuanLyUsers == null)
+                   ucQuanLyUsers = new QuanLyUSers.QuanLyUsers();
+                ShowControl(ucQuanLyUsers);
         }
 
         // ========================

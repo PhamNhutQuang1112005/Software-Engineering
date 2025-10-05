@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="QuanLyUSers\QuanLyUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyUSers\QuanLyUsers.Designer.cs">
+      <DependentUpon>QuanLyUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="TrangChu\Trangcur1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +87,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="QuanLyUSers\QuanLyUsers.resx">
+      <DependentUpon>QuanLyUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TrangChu\Trangcur1.resx">
       <DependentUpon>Trangcur1.cs</DependentUpon>
     </EmbeddedResource>
