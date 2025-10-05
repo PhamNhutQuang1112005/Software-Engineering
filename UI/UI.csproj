@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TrangChu\Trangcur1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TrangChu\Trangcur1.Designer.cs">
+      <DependentUpon>Trangcur1.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI_main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="TrangChu\Trangcur1.resx">
+      <DependentUpon>Trangcur1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI_main.resx">
       <DependentUpon>UI_main.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +173,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\des icon v1\background [light].png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\UI_V1 - Copy\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\CNPM-UI-QUANG.csproj">
+      <Project>{cf6c496a-281a-42f3-a1e9-9edac641f0cb}</Project>
+      <Name>CNPM-UI-QUANG</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

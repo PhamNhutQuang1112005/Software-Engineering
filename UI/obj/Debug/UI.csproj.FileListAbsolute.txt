@@ -41,7 +41,6 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\b
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\bin\Debug\UI.pdb
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\bin\Debug\Guna.UI2.dll
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.csproj.AssemblyReference.cache
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.exe.config
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.UI_main.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.Properties.Resources.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.csproj.GenerateResource.cache
@@ -49,3 +48,9 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\o
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.csproj.Up2Date
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.exe
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\bin\Debug\CNPM-UI-QUANG.exe
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\bin\Debug\CNPM-UI-QUANG.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\bin\Debug\CNPM-UI-QUANG.exe.config
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.TrangChu.Trangcur1.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.exe.config
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.TrangChu.UC_QuanLyUsers.resources

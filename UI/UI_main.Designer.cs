@@ -1,4 +1,6 @@
-﻿namespace UI
+﻿using System;
+
+namespace UI
 {
     partial class UI_main
     {
@@ -33,14 +35,14 @@
         private void InitializeComponent()
         {
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.lblUser = new System.Windows.Forms.Label();
-            this.sidebar = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
+            this.sidebar = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.btnQuanLyUser = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuanLyUsers = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongKeDonHang = new Guna.UI2.WinForms.Guna2Button();
@@ -51,8 +53,8 @@
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
             this.mainPanel.SuspendLayout();
             this.header.SuspendLayout();
-            this.sidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            this.sidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
@@ -66,6 +68,19 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1280, 552);
             this.mainPanel.TabIndex = 0;
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.contentPanel.BackColor = System.Drawing.Color.Transparent;
+            this.contentPanel.BackgroundImage = global::UI.Properties.Resources.background__dark_;
+            this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentPanel.Location = new System.Drawing.Point(70, 50);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.Size = new System.Drawing.Size(1210, 502);
+            this.contentPanel.TabIndex = 0;
+            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
             // 
             // header
             // 
@@ -82,62 +97,6 @@
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(1210, 50);
             this.header.TabIndex = 1;
-            // 
-            // lblVersion
-            // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(6, 14);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(86, 23);
-            this.lblVersion.TabIndex = 0;
-            this.lblVersion.Text = "ver 1.1.0.2";
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(178, 14);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(139, 23);
-            this.lblUser.TabIndex = 1;
-            this.lblUser.Text = "xin chào, <user>";
-            this.lblUser.Click += new System.EventHandler(this.lblUser_Click);
-            // 
-            // sidebar
-            // 
-            this.sidebar.Controls.Add(this.btnQuanLyUser);
-            this.sidebar.Controls.Add(this.btnQuanLyUsers);
-            this.sidebar.Controls.Add(this.btnThongKeDonHang);
-            this.sidebar.Controls.Add(this.btnThongKeTienDo);
-            this.sidebar.Controls.Add(this.btnDonHang);
-            this.sidebar.Controls.Add(this.btnHopDong);
-            this.sidebar.Controls.Add(this.btnKhachHang);
-            this.sidebar.Controls.Add(this.btnTrangChu);
-            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.sidebar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(176)))), ((int)(((byte)(103)))));
-            this.sidebar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(82)))), ((int)(((byte)(73)))));
-            this.sidebar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
-            this.sidebar.Location = new System.Drawing.Point(0, 0);
-            this.sidebar.Name = "sidebar";
-            this.sidebar.Size = new System.Drawing.Size(70, 552);
-            this.sidebar.TabIndex = 2;
-            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
-            // 
-            // contentPanel
-            // 
-            this.contentPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.contentPanel.BackColor = System.Drawing.Color.Transparent;
-            this.contentPanel.BackgroundImage = global::UI.Properties.Resources.background__dark_;
-            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(70, 50);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Padding = new System.Windows.Forms.Padding(100);
-            this.contentPanel.Size = new System.Drawing.Size(1210, 502);
-            this.contentPanel.TabIndex = 0;
-            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
             // 
             // guna2CircleButton1
             // 
@@ -184,6 +143,49 @@
             this.guna2CirclePictureBox1.TabStop = false;
             this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click);
             // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(6, 14);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(86, 23);
+            this.lblVersion.TabIndex = 0;
+            this.lblVersion.Text = "ver 1.1.0.2";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(178, 14);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(139, 23);
+            this.lblUser.TabIndex = 1;
+            this.lblUser.Text = "xin chào, <user>";
+            this.lblUser.Click += new System.EventHandler(this.lblUser_Click);
+            // 
+            // sidebar
+            // 
+            this.sidebar.Controls.Add(this.btnQuanLyUser);
+            this.sidebar.Controls.Add(this.btnQuanLyUsers);
+            this.sidebar.Controls.Add(this.btnThongKeDonHang);
+            this.sidebar.Controls.Add(this.btnThongKeTienDo);
+            this.sidebar.Controls.Add(this.btnDonHang);
+            this.sidebar.Controls.Add(this.btnHopDong);
+            this.sidebar.Controls.Add(this.btnKhachHang);
+            this.sidebar.Controls.Add(this.btnTrangChu);
+            this.sidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.sidebar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(176)))), ((int)(((byte)(103)))));
+            this.sidebar.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(82)))), ((int)(((byte)(73)))));
+            this.sidebar.GradientMode = System.Drawing.Drawing2D.LinearGradientMode.Vertical;
+            this.sidebar.Location = new System.Drawing.Point(0, 0);
+            this.sidebar.Name = "sidebar";
+            this.sidebar.Size = new System.Drawing.Size(70, 552);
+            this.sidebar.TabIndex = 2;
+            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
+            // 
             // btnQuanLyUser
             // 
             this.btnQuanLyUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -222,6 +224,8 @@
             this.btnQuanLyUsers.PressedColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUsers.Size = new System.Drawing.Size(50, 50);
             this.btnQuanLyUsers.TabIndex = 6;
+        
+            this.btnQuanLyUsers.Click += new EventHandler(this.btnQuanLyUsers_Click);
             // 
             // btnThongKeDonHang
             // 
@@ -347,8 +351,8 @@
             this.mainPanel.ResumeLayout(false);
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
-            this.sidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            this.sidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
