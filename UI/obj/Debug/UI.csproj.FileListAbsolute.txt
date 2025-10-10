@@ -57,10 +57,13 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\o
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.csproj.Up2Date
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.exe
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.pdb
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.exe.config
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyDonHang.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.ThemDonHang.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyUSers.kobiet.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.UserControl4.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyHopDong.QuanLyHopDong.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyUSers.ThongBao.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyHopDong.NutThemHopDong.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyDonHang.Them.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyDonHang.QuanLyDonHang.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.exe.config
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyKhachHang.NutThem.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyKhachHang.QuanLyKhachHang.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.ChinhSuaThongTin.ChinhSuaUser.resources

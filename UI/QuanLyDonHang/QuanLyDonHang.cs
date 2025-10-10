@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UI
+namespace UI.QuanLyDonHang
 {
     public partial class QuanLyDonHang : UserControl
     {
@@ -20,6 +20,12 @@ namespace UI
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Them f = new Them();
+            f.ShowDialog();
         }
     }
 }

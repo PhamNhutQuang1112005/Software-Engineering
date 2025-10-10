@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UI.QuanLyUSers
+namespace UI.QuanLyKhachHang
 {
-    public partial class QuanLyUsers : UserControl
+    public partial class QuanLyKhachHang : UserControl
     {
-        public QuanLyUsers()
+        public QuanLyKhachHang()
         {
             InitializeComponent();
             ThemeManager.ThemeChanged += ApplyTheme;
@@ -71,9 +71,11 @@ namespace UI.QuanLyUSers
             }
         }
 
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
+        private void guna2Button1_Click(object sender, EventArgs e)
         {
-
+            NutThem nutThem = new NutThem();
+            nutThem.ShowDialog();
         }
     }
+
 }

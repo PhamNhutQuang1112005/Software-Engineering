@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UI.QuanLyUSers
+namespace UI.ChinhSuaThongTin
 {
-    public partial class kobiet : UserControl
+    public partial class ChinhSuaUser : UserControl
     {
-        public kobiet()
+        public ChinhSuaUser()
         {
             InitializeComponent();
         }

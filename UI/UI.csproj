@@ -71,6 +71,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChinhSuaThongTin\ChinhSuaUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChinhSuaThongTin\ChinhSuaUser.Designer.cs">
+      <DependentUpon>ChinhSuaUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyDonHang\Them.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyDonHang\Them.Designer.cs">
+      <DependentUpon>Them.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyHopDong\NutThemHopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyHopDong\NutThemHopDong.Designer.cs">
+      <DependentUpon>NutThemHopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKhachHang\NutThem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyKhachHang\NutThem.Designer.cs">
+      <DependentUpon>NutThem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyKhachHang\QuanLyKhachHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QuanLyKhachHang\QuanLyKhachHang.Designer.cs">
+      <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="ThemeManager.cs" />
     <Compile Include="QuanLyHopDong\QuanLyHopDong.cs">
       <SubType>UserControl</SubType>
@@ -84,29 +114,17 @@
     <Compile Include="QuanLyUSers\QuanLyUsers.Designer.cs">
       <DependentUpon>QuanLyUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyUSers\QuanLyDonHang.cs">
+    <Compile Include="QuanLyDonHang\QuanLyDonHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="QuanLyUSers\QuanLyDonHang.Designer.cs">
+    <Compile Include="QuanLyDonHang\QuanLyDonHang.Designer.cs">
       <DependentUpon>QuanLyDonHang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyUSers\ThemDonHang.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="QuanLyUSers\ThemDonHang.Designer.cs">
-      <DependentUpon>ThemDonHang.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyUSers\ThongBao.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="QuanLyUSers\ThongBao.Designer.cs">
       <DependentUpon>ThongBao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="QuanLyUSers\kobiet.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="QuanLyUSers\kobiet.Designer.cs">
-      <DependentUpon>kobiet.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyUSers\UserControl4.cs">
       <SubType>UserControl</SubType>
@@ -134,23 +152,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChinhSuaThongTin\ChinhSuaUser.resx">
+      <DependentUpon>ChinhSuaUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyDonHang\Them.resx">
+      <DependentUpon>Them.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyHopDong\NutThemHopDong.resx">
+      <DependentUpon>NutThemHopDong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuanLyHopDong\QuanLyHopDong.resx">
       <DependentUpon>QuanLyHopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKhachHang\NutThem.resx">
+      <DependentUpon>NutThem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyKhachHang\QuanLyKhachHang.resx">
+      <DependentUpon>QuanLyKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyUSers\QuanLyUsers.resx">
       <DependentUpon>QuanLyUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyUSers\QuanLyDonHang.resx">
+    <EmbeddedResource Include="QuanLyDonHang\QuanLyDonHang.resx">
       <DependentUpon>QuanLyDonHang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyUSers\ThemDonHang.resx">
-      <DependentUpon>ThemDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyUSers\ThongBao.resx">
       <DependentUpon>ThongBao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyUSers\kobiet.resx">
-      <DependentUpon>kobiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyUSers\UserControl4.resx">
       <DependentUpon>UserControl4.cs</DependentUpon>

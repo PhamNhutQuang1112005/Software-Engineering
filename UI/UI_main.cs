@@ -3,8 +3,6 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using UI.QuanLyUSers;
-using UI.TrangChu;
 
 namespace UI
 {
@@ -23,6 +21,9 @@ namespace UI
         private ThongKeTienDo.ThongKe ucThongKeTienDo;
         private QuanLyHopDong.QuanLyHopDong ucHopDong;
         public QuanLyUSers.ThongBao thongBaoUC;
+        private QuanLyDonHang.QuanLyDonHang ucDonHang;
+        private QuanLyKhachHang.QuanLyKhachHang ucKhachHang;
+        private ChinhSuaThongTin.ChinhSuaUser ucChinhSuaThongTinUser;
         // ========================
         // 🏗️ Hàm khởi tạo form chính
         // ========================
@@ -200,7 +201,9 @@ namespace UI
         // 👉 Nút Khách Hàng
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            // TODO: Khi có form Khách Hàng, tạo và hiển thị tại đây
+            if (ucKhachHang == null)
+                ucKhachHang = new QuanLyKhachHang.QuanLyKhachHang();
+            ShowControl(ucKhachHang);
         }
 
         // 👉 Nút Hợp Đồng
@@ -214,7 +217,9 @@ namespace UI
         // 👉 Nút Đơn Hàng
         private void btnDonHang_Click(object sender, EventArgs e)
         {
-            // TODO: Khi có form Đơn Hàng, tạo và hiển thị tại đây
+            if (ucDonHang == null)
+                ucDonHang = new QuanLyDonHang.QuanLyDonHang();
+            ShowControl(ucDonHang);
         }
 
         // 👉 Nút Thống Kê Tiến Độ
@@ -228,21 +233,17 @@ namespace UI
         // 👉 Nút Thống Kê Đơn Hàng
         private void btnThongKeDonHang_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        // 👉 Nút Quản Lý User (1 user)
-        private void btnQuanLyUser_Click(object sender, EventArgs e)
-        {
-            // TODO: Khi có form Quản Lý User, tạo và hiển thị tại đây
-        }
+     
 
         // 👉 Nút Quản Lý Users (nhiều user)
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
-               if (ucQuanLyUsers == null)
-                   ucQuanLyUsers = new QuanLyUSers.QuanLyUsers();
-                ShowControl(ucQuanLyUsers);
+            if (ucQuanLyUsers == null)
+                ucQuanLyUsers = new QuanLyUSers.QuanLyUsers();
+            ShowControl(ucQuanLyUsers);
         }
 
         // ========================
@@ -260,7 +261,7 @@ namespace UI
             {
                 thongBaoUC = new QuanLyUSers.ThongBao
                 {
-                    Width = 350,
+                    Width = 425,
                     Height = this.ClientSize.Height,
                     Top = 0,
                     Left = this.ClientSize.Width,
@@ -326,5 +327,12 @@ namespace UI
 
 
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e) { }
+
+        private void btnQuanLyUser_Click_1(object sender, EventArgs e)
+        {
+            if (ucChinhSuaThongTinUser == null)
+                ucChinhSuaThongTinUser = new ChinhSuaThongTin.ChinhSuaUser();
+            ShowControl(ucChinhSuaThongTinUser);
+        }
     }
 }

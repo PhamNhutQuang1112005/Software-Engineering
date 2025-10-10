@@ -70,8 +70,10 @@ namespace UI.QuanLyHopDong
             }
         }
 
-
-
-
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            NutThemHopDong nutThemHopDong = new NutThemHopDong();
+            nutThemHopDong.ShowDialog();
+        }
     }
 }

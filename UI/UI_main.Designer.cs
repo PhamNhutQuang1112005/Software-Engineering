@@ -204,6 +204,7 @@ namespace UI
             this.btnQuanLyUser.PressedColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUser.Size = new System.Drawing.Size(50, 50);
             this.btnQuanLyUser.TabIndex = 7;
+            this.btnQuanLyUser.Click += new System.EventHandler(this.btnQuanLyUser_Click_1);
             // 
             // btnQuanLyUsers
             // 
