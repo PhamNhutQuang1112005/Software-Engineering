@@ -69,6 +69,7 @@
             // 
             // guna2PictureBox1
             // 
+            guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
             guna2PictureBox1.Image = global::UI.Properties.Resources.khach_hang;
             guna2PictureBox1.ImageRotate = 0F;
             guna2PictureBox1.Location = new System.Drawing.Point(-11, 12);
@@ -77,6 +78,7 @@
             guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             guna2PictureBox1.TabIndex = 4;
             guna2PictureBox1.TabStop = false;
+            guna2PictureBox1.UseTransparentBackground = true;
             // 
             // guna2Panel4
             // 
@@ -96,6 +98,7 @@
             // 
             // guna2PictureBox4
             // 
+            this.guna2PictureBox4.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox4.Image = global::UI.Properties.Resources.khach_hang;
             this.guna2PictureBox4.ImageRotate = 0F;
             this.guna2PictureBox4.Location = new System.Drawing.Point(-11, 12);
@@ -104,6 +107,7 @@
             this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox4.TabIndex = 4;
             this.guna2PictureBox4.TabStop = false;
+            this.guna2PictureBox4.UseTransparentBackground = true;
             // 
             // label13
             // 
@@ -163,6 +167,7 @@
             // 
             // guna2PictureBox3
             // 
+            this.guna2PictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox3.Image = global::UI.Properties.Resources.khach_hang;
             this.guna2PictureBox3.ImageRotate = 0F;
             this.guna2PictureBox3.Location = new System.Drawing.Point(-11, 12);
@@ -171,6 +176,7 @@
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox3.TabIndex = 4;
             this.guna2PictureBox3.TabStop = false;
+            this.guna2PictureBox3.UseTransparentBackground = true;
             // 
             // label9
             // 
@@ -230,6 +236,7 @@
             // 
             // guna2PictureBox2
             // 
+            this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = global::UI.Properties.Resources.khach_hang;
             this.guna2PictureBox2.ImageRotate = 0F;
             this.guna2PictureBox2.Location = new System.Drawing.Point(-14, 12);
@@ -238,6 +245,7 @@
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2PictureBox2.TabIndex = 4;
             this.guna2PictureBox2.TabStop = false;
+            this.guna2PictureBox2.UseTransparentBackground = true;
             // 
             // label5
             // 
@@ -360,15 +368,16 @@
             // 
             // guna2Button3
             // 
+            this.guna2Button3.AutoRoundedCorners = true;
             this.guna2Button3.BorderColor = System.Drawing.Color.White;
-            this.guna2Button3.BorderRadius = 15;
+            this.guna2Button3.BorderRadius = 17;
             this.guna2Button3.BorderThickness = 2;
             this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button3.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Location = new System.Drawing.Point(580, 55);
             this.guna2Button3.Name = "guna2Button3";
@@ -378,15 +387,16 @@
             // 
             // guna2Button2
             // 
+            this.guna2Button2.AutoRoundedCorners = true;
             this.guna2Button2.BorderColor = System.Drawing.Color.White;
-            this.guna2Button2.BorderRadius = 15;
+            this.guna2Button2.BorderRadius = 17;
             this.guna2Button2.BorderThickness = 2;
             this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.Location = new System.Drawing.Point(331, 55);
             this.guna2Button2.Name = "guna2Button2";
@@ -396,15 +406,16 @@
             // 
             // guna2Button1
             // 
+            this.guna2Button1.AutoRoundedCorners = true;
             this.guna2Button1.BorderColor = System.Drawing.Color.White;
-            this.guna2Button1.BorderRadius = 15;
+            this.guna2Button1.BorderRadius = 17;
             this.guna2Button1.BorderThickness = 2;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Location = new System.Drawing.Point(92, 55);
             this.guna2Button1.Name = "guna2Button1";
@@ -416,6 +427,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2Panel4);
             this.Controls.Add(this.guna2Panel3);
             this.Controls.Add(this.guna2Panel2);

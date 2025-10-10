@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using UI.QuanLyUSers;
 using UI.TrangChu;
 
 namespace UI
@@ -19,14 +20,16 @@ namespace UI
         // ========================
         private TrangChu.Trangcur1 ucTrangChu;
         private QuanLyUSers.QuanLyUsers ucQuanLyUsers;
-
-
+        private ThongKeTienDo.ThongKe ucThongKeTienDo;
+        private QuanLyHopDong.QuanLyHopDong ucHopDong;
+        public QuanLyUSers.ThongBao thongBaoUC;
         // ========================
         // 🏗️ Hàm khởi tạo form chính
         // ========================
         public UI_main()
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.None;
         }
 
         // ========================
@@ -47,6 +50,28 @@ namespace UI
         // ========================
         private void Form1_Load_1(object sender, EventArgs e)
         {
+            foreach (var btn in this.sidebar.Controls.OfType<Guna.UI2.WinForms.Guna2Button>())
+            {
+                btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+
+                // 🌈 Màu mặc định
+                btn.FillColor = System.Drawing.Color.DarkSeaGreen;
+                btn.ForeColor = System.Drawing.Color.Black;
+
+                // 🌟 Khi hover
+                btn.HoverState.FillColor = System.Drawing.Color.WhiteSmoke;
+                btn.HoverState.ForeColor = System.Drawing.Color.ForestGreen;
+
+                // ✅ Khi được chọn
+                btn.CheckedState.FillColor = System.Drawing.Color.White;
+                btn.CheckedState.ForeColor = System.Drawing.Color.ForestGreen;
+
+                // ✨ Hiệu ứng bóng sáng khi chọn
+                btn.ShadowDecoration.Enabled = true;
+                btn.ShadowDecoration.Color = System.Drawing.Color.ForestGreen;
+                btn.ShadowDecoration.Depth = 5;
+                btn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            }
             // Khi khởi động, bật Dark mode mặc định
             ApplyDarkTheme();
 
@@ -146,6 +171,7 @@ namespace UI
         // ========================
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            ThemeManager.ToggleTheme();
             if (isDark)
             {
                 ApplyLightTheme();
@@ -180,7 +206,9 @@ namespace UI
         // 👉 Nút Hợp Đồng
         private void btnHopDong_Click(object sender, EventArgs e)
         {
-            // TODO: Khi có form Hợp Đồng, tạo và hiển thị tại đây
+            if (ucHopDong == null)
+                ucHopDong = new QuanLyHopDong.QuanLyHopDong();
+            ShowControl(ucHopDong);
         }
 
         // 👉 Nút Đơn Hàng
@@ -192,13 +220,15 @@ namespace UI
         // 👉 Nút Thống Kê Tiến Độ
         private void btnThongKeTienDo_Click(object sender, EventArgs e)
         {
-            // TODO: Khi có form Thống Kê Tiến Độ, tạo và hiển thị tại đây
+            if (ucThongKeTienDo == null)
+                ucThongKeTienDo = new ThongKeTienDo.ThongKe();
+            ShowControl(ucThongKeTienDo);
         }
 
         // 👉 Nút Thống Kê Đơn Hàng
         private void btnThongKeDonHang_Click(object sender, EventArgs e)
         {
-            // TODO: Khi có form Thống Kê Đơn Hàng, tạo và hiển thị tại đây
+            
         }
 
         // 👉 Nút Quản Lý User (1 user)
@@ -221,7 +251,80 @@ namespace UI
         private void sidebar_Paint(object sender, PaintEventArgs e) { }
         private void contentPanel_Paint(object sender, PaintEventArgs e) { }
         private void lblUser_Click(object sender, EventArgs e) { }
-        private void guna2Button1_Click(object sender, EventArgs e) { }
+        private Timer thongBaoTimer = new Timer();
+        private bool isThongBaoVisible = false;
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            if (thongBaoUC == null)
+            {
+                thongBaoUC = new QuanLyUSers.ThongBao
+                {
+                    Width = 350,
+                    Height = this.ClientSize.Height,
+                    Top = 0,
+                    Left = this.ClientSize.Width,
+                    Anchor = AnchorStyles.Top | AnchorStyles.Right
+                };
+                this.Controls.Add(thongBaoUC);
+                thongBaoUC.BringToFront();
+
+                thongBaoTimer.Interval = 10;
+                thongBaoTimer.Tick += (s, ev) =>
+                {
+                    int speed = 25;
+                    int visibleX = this.ClientSize.Width - thongBaoUC.Width;
+                    int hiddenX = this.ClientSize.Width;
+
+                    if (isThongBaoVisible)
+                    {
+                        if (thongBaoUC.Left > visibleX)
+                            thongBaoUC.Left -= speed;
+                        else
+                        {
+                            thongBaoUC.Left = visibleX;
+                            thongBaoTimer.Stop();
+                        }
+                    }
+                    else
+                    {
+                        if (thongBaoUC.Left < hiddenX)
+                            thongBaoUC.Left += speed;
+                        else
+                        {
+                            thongBaoUC.Left = hiddenX;
+                            thongBaoTimer.Stop();
+                            thongBaoUC.Visible = false;
+                        }
+                    }
+                };
+            }
+
+            if (!isThongBaoVisible)
+            {
+                thongBaoUC.Visible = true;
+                thongBaoUC.BringToFront();
+            }
+
+            isThongBaoVisible = !isThongBaoVisible;
+            thongBaoTimer.Start();
+        }
+
+        // 🧩 Khi form thay đổi kích thước (phóng to / thu nhỏ)
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            if (thongBaoUC == null) return;
+
+            int visibleX = this.ClientSize.Width - thongBaoUC.Width;
+            int hiddenX = this.ClientSize.Width;
+
+            thongBaoUC.Height = this.ClientSize.Height;
+            thongBaoUC.Left = isThongBaoVisible ? visibleX : hiddenX;
+        }
+
+
+
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e) { }
     }
 }

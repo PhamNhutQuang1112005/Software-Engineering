@@ -143,6 +143,16 @@ namespace UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap khach_hang1 {
+            get {
+                object obj = ResourceManager.GetObject("khach hang1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap light_mode {
             get {
                 object obj = ResourceManager.GetObject("light mode", resourceCulture);

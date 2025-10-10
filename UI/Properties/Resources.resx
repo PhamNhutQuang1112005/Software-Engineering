@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="trang chu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\des icon v1\trang chu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="light mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\des icon v1\light mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,14 +130,17 @@
   <data name="khach hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\des icon v1\khach hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dark mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\des icon v1\dark mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="quan ly user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\des icon v1\quan ly user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="light mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\des icon v1\light mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="trang chu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\des icon v1\trang chu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="quan ly users" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\des icon v1\quan ly users.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background [dark]" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\des icon v1\background [dark].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\des icon v1\logo bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,8 +148,11 @@
   <data name="thong ke don hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\des icon v1\thong ke don hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dark mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\des icon v1\dark mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background [light]" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\des icon v1\background [light].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quan ly users" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\des icon v1\quan ly users.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="thong ke tien do" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\des icon v1\thong ke tien do.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,10 +166,10 @@
   <data name="don hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Debug\des icon v1\don hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="background [dark]" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\des icon v1\background [dark].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="light mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\des icon v1\light mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="background [light]" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\bin\Debug\des icon v1\background [light].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="khach hang1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\des icon v1\khach hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -72,7 +72,6 @@ namespace UI
             // 
             // contentPanel
             // 
-            this.contentPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.contentPanel.BackColor = System.Drawing.Color.Transparent;
             this.contentPanel.BackgroundImage = global::UI.Properties.Resources.background__dark_;
             this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -118,13 +117,12 @@ namespace UI
             // 
             // btnThongbao
             // 
-            this.btnThongbao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnThongbao.FillColor = System.Drawing.Color.Transparent;
             this.btnThongbao.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnThongbao.ForeColor = System.Drawing.Color.White;
             this.btnThongbao.Image = global::UI.Properties.Resources.thong_bao;
             this.btnThongbao.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnThongbao.Location = new System.Drawing.Point(1157, 0);
+            this.btnThongbao.Location = new System.Drawing.Point(371, 0);
             this.btnThongbao.Name = "btnThongbao";
             this.btnThongbao.Size = new System.Drawing.Size(50, 50);
             this.btnThongbao.TabIndex = 2;
@@ -225,8 +223,7 @@ namespace UI
             this.btnQuanLyUsers.PressedColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUsers.Size = new System.Drawing.Size(50, 50);
             this.btnQuanLyUsers.TabIndex = 6;
-        
-            this.btnQuanLyUsers.Click += new EventHandler(this.btnQuanLyUsers_Click);
+            this.btnQuanLyUsers.Click += new System.EventHandler(this.btnQuanLyUsers_Click);
             // 
             // btnThongKeDonHang
             // 
@@ -286,7 +283,7 @@ namespace UI
             this.btnDonHang.PressedColor = System.Drawing.Color.Transparent;
             this.btnDonHang.Size = new System.Drawing.Size(50, 50);
             this.btnDonHang.TabIndex = 3;
-           this.btnDonHang.Click += new System.EventHandler(this.btnDonHang_Click);
+            this.btnDonHang.Click += new System.EventHandler(this.btnDonHang_Click);
             // 
             // btnHopDong
             // 
@@ -330,53 +327,37 @@ namespace UI
             // 
             // btnTrangChu
             // 
-            // btnTrangChu
             this.btnTrangChu.BackColor = System.Drawing.Color.Transparent;
             this.btnTrangChu.BorderColor = System.Drawing.Color.Transparent;
             this.btnTrangChu.BorderRadius = 25;
-
-            // 👉 Bật chế độ RadioButton để chỉ có 1 nút được chọn cùng lúc
             this.btnTrangChu.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-
-            // ⚙️ Màu mặc định (khi chưa chọn)
-            this.btnTrangChu.FillColor = System.Drawing.Color.DarkSeaGreen;
-            this.btnTrangChu.ForeColor = System.Drawing.Color.Black;
-            this.btnTrangChu.ImageSize = new System.Drawing.Size(24, 24);
-
-            // 🌈 Khi rê chuột
-            this.btnTrangChu.HoverState.FillColor = System.Drawing.Color.WhiteSmoke;
-            this.btnTrangChu.HoverState.ForeColor = System.Drawing.Color.ForestGreen;
-
-            // 🌟 Khi được chọn (CheckedState = active)
             this.btnTrangChu.CheckedState.FillColor = System.Drawing.Color.White;
             this.btnTrangChu.CheckedState.ForeColor = System.Drawing.Color.ForestGreen;
-            
-
-            // ✨ Tuỳ chọn – thêm hiệu ứng bóng sáng cho nút được chọn
-            this.btnTrangChu.ShadowDecoration.Enabled = true;
-            this.btnTrangChu.ShadowDecoration.Color = System.Drawing.Color.LimeGreen;
-            this.btnTrangChu.ShadowDecoration.Depth = 5;
-            this.btnTrangChu.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-
-            // 🖼️ Ảnh và vị trí
+            this.btnTrangChu.FillColor = System.Drawing.Color.DarkSeaGreen;
+            this.btnTrangChu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnTrangChu.ForeColor = System.Drawing.Color.Black;
+            this.btnTrangChu.HoverState.FillColor = System.Drawing.Color.WhiteSmoke;
+            this.btnTrangChu.HoverState.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnTrangChu.Image = global::UI.Properties.Resources.trang_chu;
             this.btnTrangChu.ImageSize = new System.Drawing.Size(24, 24);
             this.btnTrangChu.Location = new System.Drawing.Point(10, 20);
             this.btnTrangChu.Name = "btnTrangChu";
             this.btnTrangChu.PressedColor = System.Drawing.Color.Transparent;
+            this.btnTrangChu.ShadowDecoration.Color = System.Drawing.Color.LimeGreen;
+            this.btnTrangChu.ShadowDecoration.Depth = 5;
+            this.btnTrangChu.ShadowDecoration.Enabled = true;
+            this.btnTrangChu.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnTrangChu.Size = new System.Drawing.Size(50, 50);
             this.btnTrangChu.TabIndex = 0;
-
-            // 🎯 Gán sự kiện click
             this.btnTrangChu.Click += new System.EventHandler(this.btnTrangChu_Click);
-
-
             // 
             // UI_main
             // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1280, 552);
             this.Controls.Add(this.mainPanel);
             this.Name = "UI_main";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "GreenSol";
             this.Load += new System.EventHandler(this.Form1_Load_1);
             this.mainPanel.ResumeLayout(false);
@@ -385,28 +366,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.sidebar.ResumeLayout(false);
             this.ResumeLayout(false);
-            foreach (var btn in this.sidebar.Controls.OfType<Guna.UI2.WinForms.Guna2Button>())
-            {
-                btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-
-                // 🌈 Màu mặc định
-                btn.FillColor = System.Drawing.Color.DarkSeaGreen;
-                btn.ForeColor = System.Drawing.Color.Black;
-
-                // 🌟 Khi hover
-                btn.HoverState.FillColor = System.Drawing.Color.WhiteSmoke;
-                btn.HoverState.ForeColor = System.Drawing.Color.ForestGreen;
-
-                // ✅ Khi được chọn
-                btn.CheckedState.FillColor = System.Drawing.Color.White;
-                btn.CheckedState.ForeColor = System.Drawing.Color.ForestGreen;
-
-                // ✨ Hiệu ứng bóng sáng khi chọn
-                btn.ShadowDecoration.Enabled = true;
-                btn.ShadowDecoration.Color = System.Drawing.Color.ForestGreen;
-                btn.ShadowDecoration.Depth = 5;
-                btn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            }
 
         }
 
