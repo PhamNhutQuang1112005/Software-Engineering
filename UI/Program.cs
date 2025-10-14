@@ -17,11 +17,12 @@ namespace UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new UI_main());
             Application.Run(new dangnhap_login());
             Application.Run(new dangnhap_matkhaumoi());
             Application.Run(new dangnhap_otp());
             Application.Run(new dangnhap_sms());
-            Application.Run(new UI_main());
+            
         }
     }
 }

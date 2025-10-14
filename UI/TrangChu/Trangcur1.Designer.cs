@@ -49,17 +49,18 @@
             this.gradient_box_message.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.gradient_box_message.FillColor3 = System.Drawing.Color.Transparent;
             this.gradient_box_message.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.gradient_box_message.Location = new System.Drawing.Point(171, 287);
+            this.gradient_box_message.Location = new System.Drawing.Point(152, 318);
             this.gradient_box_message.Name = "gradient_box_message";
             this.gradient_box_message.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.gradient_box_message.Size = new System.Drawing.Size(960, 423);
+            this.gradient_box_message.Size = new System.Drawing.Size(978, 431);
             this.gradient_box_message.TabIndex = 14;
             // 
             // guna2HtmlLabel1
             // 
+            this.guna2HtmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(66, 31);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(67, 31);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(853, 18);
             this.guna2HtmlLabel1.TabIndex = 0;
@@ -72,9 +73,9 @@
             this.slogan4.BackColor = System.Drawing.Color.Transparent;
             this.slogan4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slogan4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(220)))), ((int)(((byte)(89)))));
-            this.slogan4.Location = new System.Drawing.Point(822, 127);
+            this.slogan4.Location = new System.Drawing.Point(803, 158);
             this.slogan4.Name = "slogan4";
-            this.slogan4.Size = new System.Drawing.Size(224, 40);
+            this.slogan4.Size = new System.Drawing.Size(242, 48);
             this.slogan4.TabIndex = 13;
             this.slogan4.Text = "thông minh!";
             // 
@@ -84,9 +85,9 @@
             this.slogan3.BackColor = System.Drawing.Color.Transparent;
             this.slogan3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.slogan3.ForeColor = System.Drawing.Color.White;
-            this.slogan3.Location = new System.Drawing.Point(568, 127);
+            this.slogan3.Location = new System.Drawing.Point(549, 158);
             this.slogan3.Name = "slogan3";
-            this.slogan3.Size = new System.Drawing.Size(181, 40);
+            this.slogan3.Size = new System.Drawing.Size(199, 48);
             this.slogan3.TabIndex = 12;
             this.slogan3.Text = "...Giải pháp";
             // 
@@ -96,9 +97,9 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(109)))), ((int)(((byte)(77)))));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(598, 73);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(579, 104);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(193, 40);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(211, 48);
             this.guna2HtmlLabel2.TabIndex = 11;
             this.guna2HtmlLabel2.Text = "vững vàng...";
             // 
@@ -108,9 +109,9 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(426, 73);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(407, 104);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(140, 40);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(158, 48);
             this.guna2HtmlLabel3.TabIndex = 10;
             this.guna2HtmlLabel3.Text = "Gốc rễ";
             // 
@@ -118,20 +119,18 @@
             // 
             this.logo.Image = global::UI.Properties.Resources.Green_Sol;
             this.logo.ImageRotate = 0F;
-            this.logo.Location = new System.Drawing.Point(171, 7);
+            this.logo.Location = new System.Drawing.Point(152, 38);
             this.logo.Name = "logo";
             this.logo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.logo.Size = new System.Drawing.Size(165, 160);
+            this.logo.Size = new System.Drawing.Size(183, 168);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 9;
             this.logo.TabStop = false;
             // 
             // Trangcur1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.gradient_box_message);
             this.Controls.Add(this.slogan4);
@@ -140,7 +139,7 @@
             this.Controls.Add(this.guna2HtmlLabel3);
             this.Controls.Add(this.logo);
             this.Name = "Trangcur1";
-            this.Size = new System.Drawing.Size(1396, 616);
+            this.Size = new System.Drawing.Size(1282, 782);
             this.Load += new System.EventHandler(this.UserControl1_Load);
             this.gradient_box_message.ResumeLayout(false);
             this.gradient_box_message.PerformLayout();

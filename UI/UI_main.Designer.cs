@@ -76,9 +76,9 @@ namespace UI
             this.contentPanel.BackgroundImage = global::UI.Properties.Resources.background__dark_;
             this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(70, 50);
+            this.contentPanel.Location = new System.Drawing.Point(70, 56);
             this.contentPanel.Name = "contentPanel";
-            this.contentPanel.Size = new System.Drawing.Size(1210, 502);
+            this.contentPanel.Size = new System.Drawing.Size(1210, 496);
             this.contentPanel.TabIndex = 0;
             this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
             // 
@@ -95,7 +95,7 @@ namespace UI
             this.header.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(82)))), ((int)(((byte)(73)))));
             this.header.Location = new System.Drawing.Point(70, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(1210, 50);
+            this.header.Size = new System.Drawing.Size(1210, 56);
             this.header.TabIndex = 1;
             // 
             // guna2CircleButton1
@@ -219,7 +219,7 @@ namespace UI
             this.btnQuanLyUsers.HoverState.FillColor = System.Drawing.Color.White;
             this.btnQuanLyUsers.Image = global::UI.Properties.Resources.quan_ly_users;
             this.btnQuanLyUsers.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnQuanLyUsers.Location = new System.Drawing.Point(10, 380);
+            this.btnQuanLyUsers.Location = new System.Drawing.Point(10, 374);
             this.btnQuanLyUsers.Name = "btnQuanLyUsers";
             this.btnQuanLyUsers.PressedColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUsers.Size = new System.Drawing.Size(50, 50);
@@ -239,7 +239,7 @@ namespace UI
             this.btnThongKeDonHang.HoverState.FillColor = System.Drawing.Color.White;
             this.btnThongKeDonHang.Image = global::UI.Properties.Resources.thong_ke_don_hang;
             this.btnThongKeDonHang.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnThongKeDonHang.Location = new System.Drawing.Point(10, 320);
+            this.btnThongKeDonHang.Location = new System.Drawing.Point(10, 314);
             this.btnThongKeDonHang.Name = "btnThongKeDonHang";
             this.btnThongKeDonHang.PressedColor = System.Drawing.Color.Transparent;
             this.btnThongKeDonHang.Size = new System.Drawing.Size(50, 50);
@@ -259,7 +259,7 @@ namespace UI
             this.btnThongKeTienDo.HoverState.FillColor = System.Drawing.Color.White;
             this.btnThongKeTienDo.Image = global::UI.Properties.Resources.thong_ke_tien_do;
             this.btnThongKeTienDo.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnThongKeTienDo.Location = new System.Drawing.Point(10, 260);
+            this.btnThongKeTienDo.Location = new System.Drawing.Point(10, 254);
             this.btnThongKeTienDo.Name = "btnThongKeTienDo";
             this.btnThongKeTienDo.PressedColor = System.Drawing.Color.Transparent;
             this.btnThongKeTienDo.Size = new System.Drawing.Size(50, 50);
@@ -279,7 +279,7 @@ namespace UI
             this.btnDonHang.HoverState.FillColor = System.Drawing.Color.White;
             this.btnDonHang.Image = global::UI.Properties.Resources.don_hang;
             this.btnDonHang.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnDonHang.Location = new System.Drawing.Point(10, 200);
+            this.btnDonHang.Location = new System.Drawing.Point(10, 194);
             this.btnDonHang.Name = "btnDonHang";
             this.btnDonHang.PressedColor = System.Drawing.Color.Transparent;
             this.btnDonHang.Size = new System.Drawing.Size(50, 50);
@@ -299,7 +299,7 @@ namespace UI
             this.btnHopDong.HoverState.FillColor = System.Drawing.Color.White;
             this.btnHopDong.Image = global::UI.Properties.Resources.hop_dong;
             this.btnHopDong.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnHopDong.Location = new System.Drawing.Point(10, 140);
+            this.btnHopDong.Location = new System.Drawing.Point(10, 134);
             this.btnHopDong.Name = "btnHopDong";
             this.btnHopDong.PressedColor = System.Drawing.Color.Transparent;
             this.btnHopDong.Size = new System.Drawing.Size(50, 50);
@@ -319,7 +319,7 @@ namespace UI
             this.btnKhachHang.HoverState.FillColor = System.Drawing.Color.White;
             this.btnKhachHang.Image = global::UI.Properties.Resources.khach_hang;
             this.btnKhachHang.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnKhachHang.Location = new System.Drawing.Point(10, 80);
+            this.btnKhachHang.Location = new System.Drawing.Point(10, 74);
             this.btnKhachHang.Name = "btnKhachHang";
             this.btnKhachHang.PressedColor = System.Drawing.Color.Transparent;
             this.btnKhachHang.Size = new System.Drawing.Size(50, 50);
@@ -341,7 +341,7 @@ namespace UI
             this.btnTrangChu.HoverState.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnTrangChu.Image = global::UI.Properties.Resources.trang_chu;
             this.btnTrangChu.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnTrangChu.Location = new System.Drawing.Point(10, 20);
+            this.btnTrangChu.Location = new System.Drawing.Point(10, 14);
             this.btnTrangChu.Name = "btnTrangChu";
             this.btnTrangChu.PressedColor = System.Drawing.Color.Transparent;
             this.btnTrangChu.ShadowDecoration.Color = System.Drawing.Color.LimeGreen;

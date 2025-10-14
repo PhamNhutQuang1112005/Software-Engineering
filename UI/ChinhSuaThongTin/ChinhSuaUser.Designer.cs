@@ -370,7 +370,7 @@
             this.Controls.Add(this.guna2Shapes1);
             this.Controls.Add(this.guna2CirclePictureBox2);
             this.Name = "ChinhSuaUser";
-            this.Size = new System.Drawing.Size(1328, 521);
+            this.Size = new System.Drawing.Size(1272, 746);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
