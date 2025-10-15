@@ -76,6 +76,11 @@ namespace UI.QuanLyKhachHang
             NutThem nutThem = new NutThem();
             nutThem.ShowDialog();
         }
+
+        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

@@ -67,3 +67,18 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\o
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyKhachHang.NutThem.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.QuanLyKhachHang.QuanLyKhachHang.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI\obj\Debug\UI.ChinhSuaThongTin.ChinhSuaUser.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.ChinhSuaThongTin.ChinhSuaUser.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyDonHang.Them.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyHopDong.NutThemHopDong.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyHopDong.QuanLyHopDong.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyKhachHang.NutThem.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyKhachHang.QuanLyKhachHang.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyUSers.QuanLyUsers.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyDonHang.QuanLyDonHang.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.QuanLyUSers.ThongBao.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.UserControl4.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.ThongKeTienDo.ThongKe.resources
+C:\CNPM\Software-Engineering\UI\obj\Debug\UI.TrangChu.Trangcur1.resources
+C:\CNPM\Software-Engineering\UI\bin\Debug\LiveCharts.dll
+C:\CNPM\Software-Engineering\UI\bin\Debug\LiveCharts.pdb
+C:\CNPM\Software-Engineering\UI\bin\Debug\LiveCharts.xml

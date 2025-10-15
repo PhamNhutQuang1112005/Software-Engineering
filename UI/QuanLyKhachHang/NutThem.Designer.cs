@@ -238,7 +238,7 @@
             // 
             this.guna2Button2.AutoRoundedCorners = true;
             this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.BorderColor = System.Drawing.Color.Khaki;
+            this.guna2Button2.BorderColor = System.Drawing.Color.White;
             this.guna2Button2.BorderRadius = 21;
             this.guna2Button2.BorderThickness = 2;
             this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -258,7 +258,7 @@
             // 
             this.guna2Button1.AutoRoundedCorners = true;
             this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderColor = System.Drawing.Color.Khaki;
+            this.guna2Button1.BorderColor = System.Drawing.Color.White;
             this.guna2Button1.BorderRadius = 21;
             this.guna2Button1.BorderThickness = 2;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;

@@ -564,18 +564,20 @@
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(749, 24);
+            this.guna2TextBox1.Location = new System.Drawing.Point(710, 24);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.PlaceholderText = "Thanh tìm kiếm...";
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(327, 36);
             this.guna2TextBox1.TabIndex = 45;
             this.guna2TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // guna2Button3
             // 
-            this.guna2Button3.BorderColor = System.Drawing.Color.Gold;
+            this.guna2Button3.BorderColor = System.Drawing.Color.White;
             this.guna2Button3.BorderRadius = 15;
             this.guna2Button3.BorderThickness = 2;
             this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -585,7 +587,7 @@
             this.guna2Button3.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(445, 24);
+            this.guna2Button3.Location = new System.Drawing.Point(451, 24);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(95, 36);
             this.guna2Button3.TabIndex = 44;
@@ -593,7 +595,7 @@
             // 
             // guna2Button2
             // 
-            this.guna2Button2.BorderColor = System.Drawing.Color.Gold;
+            this.guna2Button2.BorderColor = System.Drawing.Color.White;
             this.guna2Button2.BorderRadius = 15;
             this.guna2Button2.BorderThickness = 2;
             this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -603,7 +605,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(299, 24);
+            this.guna2Button2.Location = new System.Drawing.Point(292, 24);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(95, 36);
             this.guna2Button2.TabIndex = 43;
@@ -611,7 +613,8 @@
             // 
             // guna2Button1
             // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.Gold;
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderColor = System.Drawing.Color.White;
             this.guna2Button1.BorderRadius = 15;
             this.guna2Button1.BorderThickness = 2;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -621,7 +624,7 @@
             this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(160, 24);
+            this.guna2Button1.Location = new System.Drawing.Point(135, 24);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(95, 36);
             this.guna2Button1.TabIndex = 42;

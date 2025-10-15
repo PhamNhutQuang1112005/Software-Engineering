@@ -278,11 +278,5 @@
   <ItemGroup>
     <None Include="bin\Debug\des icon v1\background [light].png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\UI_V1 - Copy\Software-Engineering\UI_dangnhap\CNPM-UI-QUANG\CNPM-UI-QUANG.csproj">
-      <Project>{cf6c496a-281a-42f3-a1e9-9edac641f0cb}</Project>
-      <Name>CNPM-UI-QUANG</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

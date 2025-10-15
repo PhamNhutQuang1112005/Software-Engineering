@@ -74,7 +74,7 @@
             // guna2Button6
             // 
             this.guna2Button6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button6.BorderColor = System.Drawing.Color.Khaki;
+            this.guna2Button6.BorderColor = System.Drawing.Color.White;
             this.guna2Button6.BorderRadius = 15;
             this.guna2Button6.BorderThickness = 2;
             this.guna2Button6.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -82,10 +82,10 @@
             this.guna2Button6.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button6.FillColor = System.Drawing.Color.SeaGreen;
+            this.guna2Button6.FillColor = System.Drawing.Color.Green;
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(421, 395);
+            this.guna2Button6.Location = new System.Drawing.Point(498, 395);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(95, 36);
             this.guna2Button6.TabIndex = 47;
@@ -94,17 +94,17 @@
             // guna2Button5
             // 
             this.guna2Button5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button5.BorderColor = System.Drawing.Color.Khaki;
+            this.guna2Button5.BorderColor = System.Drawing.Color.White;
             this.guna2Button5.BorderRadius = 15;
             this.guna2Button5.BorderThickness = 2;
             this.guna2Button5.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button5.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button5.FillColor = System.Drawing.Color.SeaGreen;
+            this.guna2Button5.FillColor = System.Drawing.Color.Green;
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(235, 395);
+            this.guna2Button5.Location = new System.Drawing.Point(244, 395);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(95, 36);
             this.guna2Button5.TabIndex = 46;
@@ -268,7 +268,7 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Tên đơn hàng:";
             // 
-            // Form1
+            // Them
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -288,7 +288,7 @@
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Name = "Form1";
+            this.Name = "Them";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -83,6 +83,7 @@
             this.guna2TextBox1.Location = new System.Drawing.Point(808, 76);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.PlaceholderText = "Thanh tìm kiếm...";
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(364, 36);
