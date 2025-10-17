@@ -53,6 +53,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI_Form_DangNhap_SMS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Form_DangNhap_SMS.Designer.cs">
+      <DependentUpon>GUI_Form_DangNhap_SMS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_Form_DangNhap_OTP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Form_DangNhap_OTP.Designer.cs">
+      <DependentUpon>GUI_Form_DangNhap_OTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_Form_DangNhap_Moi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Form_DangNhap_Moi.Designer.cs">
+      <DependentUpon>GUI_Form_DangNhap_Moi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_Form_DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Form_DangNhap.Designer.cs">
+      <DependentUpon>GUI_Form_DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_Form_Them_HopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_Form_Them_HopDong.Designer.cs">
+      <DependentUpon>GUI_Form_Them_HopDong.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +139,27 @@
     <Compile Include="UC_ChinhSuaThongTin.Designer.cs">
       <DependentUpon>UC_ChinhSuaThongTin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_TrangChu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_TrangChu.Designer.cs">
+      <DependentUpon>UC_TrangChu.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI_Form_DangNhap_SMS.resx">
+      <DependentUpon>GUI_Form_DangNhap_SMS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Form_DangNhap_OTP.resx">
+      <DependentUpon>GUI_Form_DangNhap_OTP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Form_DangNhap_Moi.resx">
+      <DependentUpon>GUI_Form_DangNhap_Moi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Form_DangNhap.resx">
+      <DependentUpon>GUI_Form_DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_Form_Them_HopDong.resx">
+      <DependentUpon>GUI_Form_Them_HopDong.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_main.resx">
       <DependentUpon>GUI_main.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +197,9 @@
     <EmbeddedResource Include="UC_ChinhSuaThongTin.resx">
       <DependentUpon>UC_ChinhSuaThongTin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_TrangChu.resx">
+      <DependentUpon>UC_TrangChu.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -160,7 +214,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="icon\Green-Sol.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="icon\background [dark].png" />
   </ItemGroup>
@@ -172,6 +228,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\light mode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\Untitled image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cog-wheel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

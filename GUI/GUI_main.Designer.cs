@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_main));
-            this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
-            this.lblVersion = new System.Windows.Forms.Label();
-            this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.lblUser = new System.Windows.Forms.Label();
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.lblVersion = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.sidebar = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.btnQuanLyUser = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuanLyUsers = new Guna.UI2.WinForms.Guna2Button();
@@ -46,35 +46,35 @@
             this.btnHopDong = new Guna.UI2.WinForms.Guna2Button();
             this.btnKhachHang = new Guna.UI2.WinForms.Guna2Button();
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
+            this.mainPanel.SuspendLayout();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            this.mainPanel.SuspendLayout();
             this.sidebar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnThongbao
+            // mainPanel
             // 
-            this.btnThongbao.FillColor = System.Drawing.Color.Transparent;
-            this.btnThongbao.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnThongbao.ForeColor = System.Drawing.Color.White;
-            this.btnThongbao.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnThongbao.Location = new System.Drawing.Point(371, 0);
-            this.btnThongbao.Name = "btnThongbao";
-            this.btnThongbao.Size = new System.Drawing.Size(50, 50);
-            this.btnThongbao.TabIndex = 2;
-            this.btnThongbao.Click += new System.EventHandler(this.btnThongbao_Click);
+            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(30)))));
+            this.mainPanel.BackgroundImage = global::GUI.Properties.Resources.background__dark_;
+            this.mainPanel.Controls.Add(this.contentPanel);
+            this.mainPanel.Controls.Add(this.header);
+            this.mainPanel.Controls.Add(this.sidebar);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1062, 553);
+            this.mainPanel.TabIndex = 1;
             // 
-            // lblVersion
+            // contentPanel
             // 
-            this.lblVersion.AutoSize = true;
-            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(6, 14);
-            this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(86, 23);
-            this.lblVersion.TabIndex = 0;
-            this.lblVersion.Text = "ver 1.1.0.2";
-            this.lblVersion.Click += new System.EventHandler(this.lblVersion_Click);
+            this.contentPanel.BackColor = System.Drawing.Color.Transparent;
+            this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.contentPanel.Location = new System.Drawing.Point(70, 56);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.contentPanel.Size = new System.Drawing.Size(992, 497);
+            this.contentPanel.TabIndex = 0;
             // 
             // header
             // 
@@ -91,7 +91,6 @@
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(992, 56);
             this.header.TabIndex = 1;
-            this.header.Paint += new System.Windows.Forms.PaintEventHandler(this.header_Paint);
             // 
             // guna2CircleButton1
             // 
@@ -111,6 +110,17 @@
             this.guna2CircleButton1.TabIndex = 3;
             this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
             // 
+            // btnThongbao
+            // 
+            this.btnThongbao.FillColor = System.Drawing.Color.Transparent;
+            this.btnThongbao.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnThongbao.ForeColor = System.Drawing.Color.White;
+            this.btnThongbao.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnThongbao.Location = new System.Drawing.Point(371, 0);
+            this.btnThongbao.Name = "btnThongbao";
+            this.btnThongbao.Size = new System.Drawing.Size(50, 50);
+            this.btnThongbao.TabIndex = 2;
+            // 
             // guna2CirclePictureBox1
             // 
             this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
@@ -123,7 +133,17 @@
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.guna2CirclePictureBox1.TabIndex = 0;
             this.guna2CirclePictureBox1.TabStop = false;
-            this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click);
+            // 
+            // lblVersion
+            // 
+            this.lblVersion.AutoSize = true;
+            this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblVersion.ForeColor = System.Drawing.Color.White;
+            this.lblVersion.Location = new System.Drawing.Point(6, 14);
+            this.lblVersion.Name = "lblVersion";
+            this.lblVersion.Size = new System.Drawing.Size(86, 23);
+            this.lblVersion.TabIndex = 0;
+            this.lblVersion.Text = "ver 1.1.0.2";
             // 
             // lblUser
             // 
@@ -135,33 +155,6 @@
             this.lblUser.Size = new System.Drawing.Size(139, 23);
             this.lblUser.TabIndex = 1;
             this.lblUser.Text = "xin chào, <user>";
-            this.lblUser.Click += new System.EventHandler(this.lblUser_Click);
-            // 
-            // mainPanel
-            // 
-            this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(30)))));
-            this.mainPanel.BackgroundImage = global::GUI.Properties.Resources.background__dark_;
-            this.mainPanel.Controls.Add(this.contentPanel);
-            this.mainPanel.Controls.Add(this.header);
-            this.mainPanel.Controls.Add(this.sidebar);
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 0);
-            this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1062, 553);
-            this.mainPanel.TabIndex = 1;
-            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
-            // 
-            // contentPanel
-            // 
-            this.contentPanel.BackColor = System.Drawing.Color.Transparent;
-            this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(70, 56);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.contentPanel.Size = new System.Drawing.Size(992, 497);
-            this.contentPanel.TabIndex = 0;
-            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
             // 
             // sidebar
             // 
@@ -181,7 +174,6 @@
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(70, 553);
             this.sidebar.TabIndex = 2;
-            this.sidebar.Paint += new System.Windows.Forms.PaintEventHandler(this.sidebar_Paint);
             // 
             // btnQuanLyUser
             // 
@@ -242,7 +234,6 @@
             this.btnThongKeDonHang.PressedColor = System.Drawing.Color.Transparent;
             this.btnThongKeDonHang.Size = new System.Drawing.Size(50, 50);
             this.btnThongKeDonHang.TabIndex = 5;
-            this.btnThongKeDonHang.Click += new System.EventHandler(this.btnThongKeDonHang_Click);
             // 
             // btnThongKeTienDo
             // 
@@ -356,12 +347,13 @@
             this.ClientSize = new System.Drawing.Size(1062, 553);
             this.Controls.Add(this.mainPanel);
             this.Name = "GUI_main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.GUI_main_Load);
+            this.mainPanel.ResumeLayout(false);
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
-            this.mainPanel.ResumeLayout(false);
             this.sidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 

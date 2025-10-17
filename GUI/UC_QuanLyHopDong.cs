@@ -15,6 +15,13 @@ namespace GUI
         public UC_QuanLyHopDong()
         {
             InitializeComponent();
+
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            GUI_Form_Them_HopDong gUI_Form_Them_HopDong = new GUI_Form_Them_HopDong();
+            gUI_Form_Them_HopDong.ShowDialog();
         }
     }
 }

@@ -17,3 +17,11 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_ThongKe.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyDonHang.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemDonHang.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyHopDong.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_ChinhSuaThongTin.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Them_HopDong.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_TrangChu.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_SMS.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_OTP.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_Moi.resources

@@ -15,6 +15,12 @@ namespace GUI
         public UC_ChinhSuaThongTin()
         {
             InitializeComponent();
+
+        }
+
+        private void UC_ChinhSuaThongTin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

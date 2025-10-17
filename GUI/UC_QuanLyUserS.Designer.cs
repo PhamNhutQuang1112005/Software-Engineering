@@ -497,7 +497,7 @@
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(597, 18);
+            this.guna2TextBox1.Location = new System.Drawing.Point(597, 74);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -520,7 +520,7 @@
             this.guna2Button3.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(369, 18);
+            this.guna2Button3.Location = new System.Drawing.Point(369, 74);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(95, 36);
             this.guna2Button3.TabIndex = 67;
@@ -539,7 +539,7 @@
             this.guna2Button2.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(218, 18);
+            this.guna2Button2.Location = new System.Drawing.Point(218, 74);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(95, 36);
             this.guna2Button2.TabIndex = 66;
@@ -559,7 +559,7 @@
             this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(53, 18);
+            this.guna2Button1.Location = new System.Drawing.Point(53, 74);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(95, 36);
             this.guna2Button1.TabIndex = 65;
@@ -567,7 +567,7 @@
             // 
             // UC_QuanLyUserS
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2TextBox1);
@@ -580,7 +580,7 @@
             this.Controls.Add(this.guna2GradientPanel2);
             this.DoubleBuffered = true;
             this.Name = "UC_QuanLyUserS";
-            this.Size = new System.Drawing.Size(977, 490);
+            this.Size = new System.Drawing.Size(977, 603);
             this.Load += new System.EventHandler(this.UC_QuanLyUserS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.guna2GradientPanel2.ResumeLayout(false);

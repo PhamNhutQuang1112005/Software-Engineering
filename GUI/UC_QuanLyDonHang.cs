@@ -7,6 +7,7 @@ namespace GUI
         public UC_QuanLyDonHang()
         {
             InitializeComponent();
+
         }
 
         private void UC_QuanLyDonHang_Load(object sender, System.EventArgs e)

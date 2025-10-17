@@ -15,9 +15,9 @@ namespace GUI
         public UC_QuanLyUserS()
         {
             InitializeComponent();
-            // Tắt auto scale và bật double buffering
-            this.AutoScaleMode = AutoScaleMode.None;
+            
             this.DoubleBuffered = true;
+
         }
 
         private void UC_QuanLyUserS_Load(object sender, EventArgs e)

@@ -1,13 +1,10 @@
-﻿using Guna.UI2.WinForms;
+﻿﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace GUI
@@ -20,6 +17,7 @@ namespace GUI
 
             // Bật double buffering cho Form
             this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
 
             // Bật double buffering cho các panel quan trọng
             SetDoubleBuffered(mainPanel);
@@ -45,50 +43,51 @@ namespace GUI
         private UC_QuanLyKhachHang ucQuanLyKhachHang;
         private UC_ThongKe ucThongKeDonHang;
         private UC_QuanLyDonHang ucDonHang;
-        private UC_ChinhSuaThongTin 
-            ucChinhSuaThongTin;
-
-        // Cache danh sách nút trong sidebar để tránh lặp tìm control mỗi lần
+        private UC_ChinhSuaThongTin ucChinhSuaThongTin;
+        private UC_QuanLyHopDong ucQuanLyHopDong;
+        private UC_TrangChu ucTrangChu;
         private List<Guna2Button> sidebarButtons = new List<Guna2Button>();
+        private UserControl currentUC;
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED - double buffer toàn form
+                return cp;
+            }
+        }
 
         private void GUI_main_Load(object sender, EventArgs e)
         {
-            // Thiết lập mặc định: đặt hình nền ở mainPanel (không đặt ở contentPanel)
-            // để tránh phải render lại background khi đổi UC.
             ApplyDarkTheme();
         }
 
-        #region Theme (Dark / Light) - tối ưu để không vẽ nặng
+        #region Theme (Dark / Light)
         private void ApplyDarkTheme()
         {
-            // Đặt background cho mainPanel (kiểm soát việc vẽ 1 lần)
             mainPanel.BackgroundImage = Properties.Resources.background__dark_;
             mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
 
-            // contentPanel để trong suốt, UC sẽ hiển thị trên đó
             contentPanel.BackgroundImage = null;
             contentPanel.BackColor = Color.Transparent;
 
-            // Header
             header.FillColor = Color.FromArgb(151, 176, 103);
             header.FillColor2 = Color.FromArgb(47, 82, 73);
             lblUser.ForeColor = Color.White;
             lblVersion.ForeColor = Color.White;
 
-            // Sidebar
             sidebar.FillColor = Color.FromArgb(151, 176, 103);
             sidebar.FillColor2 = Color.FromArgb(47, 82, 73);
 
-            // Buttons (dùng cache list)
             foreach (var btn in sidebarButtons)
             {
                 btn.FillColor = Color.DarkSeaGreen;
                 btn.ForeColor = Color.Black;
-                // Tắt animation nặng nếu có
                 btn.Animated = false;
             }
 
-            // Icon
             guna2CircleButton1.Image = Properties.Resources.light_mode;
         }
 
@@ -119,23 +118,21 @@ namespace GUI
         }
         #endregion
 
-        #region Utility helpers
+        #region Utility Helpers
         private void SetDoubleBuffered(Control c)
         {
-            // Sử dụng reflection để bật thuộc tính non-public DoubleBuffered
             try
             {
-                System.Reflection.PropertyInfo pi = c.GetType().GetProperty("DoubleBuffered",
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                PropertyInfo pi = c.GetType().GetProperty("DoubleBuffered",
+                    BindingFlags.Instance | BindingFlags.NonPublic);
                 if (pi != null)
                     pi.SetValue(c, true, null);
             }
-            catch { /* không bắt lỗi, tiếp tục */ }
+            catch { }
         }
 
         private void TryDisableShadow(Control c)
         {
-            // Nếu là Guna2Panel / Guna2Control có ShadowDecoration, tắt nó để giảm render cost.
             try
             {
                 var prop = c.GetType().GetProperty("ShadowDecoration");
@@ -147,52 +144,61 @@ namespace GUI
                         enabledProp.SetValue(shadow, false);
                 }
             }
-            catch { /* ignore */ }
+            catch { }
         }
 
         private void CacheSidebarButtons()
         {
-            // Lấy tất cả Guna2Button trong sidebar một lần (Designer có thể chứa nhiều tầng control)
             sidebarButtons = sidebar.Controls.OfType<Guna2Button>().ToList();
         }
         #endregion
 
-        #region ShowControl tối ưu (không Clear/Add liên tục)
-        private void ShowControl(UserControl control)
+        #region ShowControl + CenterLayout
+        private void ShowControl(UserControl uc)
         {
-            if (control == null) return;
+            if (uc == null) return;
 
-            // Ẩn tất cả UC hiện có (chỉ ẩn, không dispose)
-            foreach (Control c in contentPanel.Controls.OfType<UserControl>())
+            if (!contentPanel.Controls.Contains(uc))
             {
-                c.Visible = false;
+                uc.AutoScaleMode = AutoScaleMode.None;
+                uc.Anchor = AnchorStyles.None;
+                uc.BackColor = Color.Transparent;
+
+                CenterControl(uc);
+                contentPanel.Controls.Add(uc);
             }
 
-            // Nếu UC chưa tồn tại trong contentPanel thì thêm vào 1 lần
-            if (!contentPanel.Controls.Contains(control))
+            if (currentUC != null && currentUC != uc)
+                currentUC.Visible = false;
+
+            uc.Visible = true;
+            uc.BringToFront();
+            CenterControl(uc);
+            currentUC = uc;
+        }
+
+        private void CenterControl(Control ctrl)
+        {
+            if (ctrl == null || contentPanel == null) return;
+
+            int x = (contentPanel.ClientSize.Width - ctrl.Width) / 2;
+            int y = (contentPanel.ClientSize.Height - ctrl.Height) / 2;
+
+            if (ctrl.Width > contentPanel.ClientSize.Width || ctrl.Height > contentPanel.ClientSize.Height)
             {
-                control.Dock = DockStyle.Fill;       // RẤT QUAN TRỌNG: set Dock cho UC
-                control.Margin = new Padding(0);
-                control.Padding = new Padding(0);
-                control.BackColor = Color.Transparent; // để thấy nền mainPanel
-                contentPanel.Controls.Add(control);
+                ctrl.Dock = DockStyle.Fill;
             }
             else
             {
-                // Đảm bảo Dock = Fill nếu bị ghi đè
-                control.Dock = DockStyle.Fill;
+                ctrl.Dock = DockStyle.None;
+                ctrl.Location = new Point(Math.Max(0, x), Math.Max(0, y));
             }
-
-            // Hiển thị và đưa lên trước (không remove các UC khác)
-            control.Visible = true;
-            control.BringToFront();
         }
         #endregion
 
-        #region Event handlers đơn giản
+        #region Events
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
-            // Chuyển theme nhẹ nhàng (chỉ đổi màu/ảnh background ở mainPanel)
             if (isDark)
             {
                 ApplyLightTheme();
@@ -205,36 +211,17 @@ namespace GUI
             }
         }
 
-        private void contentPanel_Resize(object sender, EventArgs e){
-            foreach (Control ctrl in contentPanel.Controls.OfType<UserControl>()){
-                ctrl.SuspendLayout();
-                ctrl.Dock = DockStyle.Fill;
-                ctrl.Margin = Padding.Empty;
-                ctrl.Padding = Padding.Empty;
-
-        // Ép vừa chính xác phần client (loại bỏ border)
-                ctrl.Width = contentPanel.ClientSize.Width;
-                ctrl.Height = contentPanel.ClientSize.Height;
-                ctrl.ResumeLayout();
+        private void contentPanel_Resize(object sender, EventArgs e)
+        {
+            foreach (Control ctrl in contentPanel.Controls.OfType<UserControl>())
+            {
+                if (ctrl.Visible)
+                    CenterControl(ctrl);
             }
-            foreach (Control ctrl in contentPanel.Controls)
-    {
-        Debug.WriteLine($"content: {contentPanel.ClientSize}, ctrl: {ctrl.Size}, dock: {ctrl.Dock}, autosize: {ctrl.AutoSize}");
-    }
-}
-
-        // Các event không dùng thì để trống hoặc xóa nếu muốn
-        private void header_Paint(object sender, PaintEventArgs e) { }
-        private void contentPanel_Paint(object sender, PaintEventArgs e) { }
-        private void mainPanel_Paint(object sender, PaintEventArgs e) { }
-        private void sidebar_Paint(object sender, PaintEventArgs e) { }
-        private void guna2CirclePictureBox1_Click(object sender, EventArgs e) { }
-        private void btnThongbao_Click(object sender, EventArgs e) { }
-        private void lblVersion_Click(object sender, EventArgs e) { }
-        private void lblUser_Click(object sender, EventArgs e) { }
+        }
         #endregion
 
-        #region Buttons -> show UC
+        #region Buttons -> Show UC
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
             if (ucQuanLyUsers == null)
@@ -249,24 +236,40 @@ namespace GUI
             ShowControl(ucQuanLyKhachHang);
         }
 
-        private void btnThongKeDonHang_Click(object sender, EventArgs e) { }
-        private void btnThongKeTienDo_Click(object sender, EventArgs e) {
+        private void btnThongKeTienDo_Click(object sender, EventArgs e)
+        {
             if (ucThongKeDonHang == null)
                 ucThongKeDonHang = new UC_ThongKe();
             ShowControl(ucThongKeDonHang);
         }
-        private void btnDonHang_Click(object sender, EventArgs e) {
+
+        private void btnDonHang_Click(object sender, EventArgs e)
+        {
             if (ucDonHang == null)
                 ucDonHang = new UC_QuanLyDonHang();
             ShowControl(ucDonHang);
         }
-        private void btnHopDong_Click(object sender, EventArgs e) { }
-        private void btnTrangChu_Click(object sender, EventArgs e) { }
-        private void btnQuanLyUser_Click(object sender, EventArgs e) {
-        if (ucChinhSuaThongTin == null)
+
+        private void btnHopDong_Click(object sender, EventArgs e)
+        {
+            if (ucQuanLyHopDong == null)
+                ucQuanLyHopDong = new UC_QuanLyHopDong();
+            ShowControl(ucQuanLyHopDong);
+        }
+
+        private void btnQuanLyUser_Click(object sender, EventArgs e)
+        {
+            if (ucChinhSuaThongTin == null)
                 ucChinhSuaThongTin = new UC_ChinhSuaThongTin();
             ShowControl(ucChinhSuaThongTin);
         }
         #endregion
+
+        private void btnTrangChu_Click(object sender, EventArgs e)
+        {
+            if (ucTrangChu == null)
+                ucTrangChu = new UC_TrangChu();
+            ShowControl(ucTrangChu);
+        }
     }
 }

@@ -16,6 +16,10 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new GUI_Form_DangNhap());
+            Application.Run(new GUI_Form_DangNhap_Moi());
+            Application.Run(new GUI_Form_DangNhap_OTP());
+            Application.Run(new GUI_Form_DangNhap_SMS());
             Application.Run(new GUI_main());
         }
     }

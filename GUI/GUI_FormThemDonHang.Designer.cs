@@ -268,7 +268,7 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Tên đơn hàng:";
             // 
-            // Them
+            // GUI_FormThemDonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -288,7 +288,8 @@
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Name = "Them";
+            this.Name = "GUI_FormThemDonHang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
