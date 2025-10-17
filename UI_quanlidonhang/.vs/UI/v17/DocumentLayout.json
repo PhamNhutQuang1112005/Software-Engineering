@@ -1,17 +1,17 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\",
+  "WorkspaceRootPath": "C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|d:\\h\u1ECDc k\u1EF3 5\\c\u00F4ng ngh\u1EC7 ph\u1EA7n m\u1EC1m\\cuoiky\\ui_v1\\software-engineering\\ui_quanlidonhang\\ui_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|c:\\users\\tai khoan admin\\documents\\cnpm2025\\software-engineering\\ui_quanlidonhang\\ui_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|solutionrelative:ui_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\ui_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\ui_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|solutionrelative:ui_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\ui_main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\ui_main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0CFC88C8-3C31-4CEC-A062-97C711E9A82C}|UI.csproj|solutionrelative:ui_main.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -22,23 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UI_main.cs [Design]",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs",
+              "DocumentMoniker": "C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs",
               "RelativeDocumentMoniker": "UI_main.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs [Design]",
+              "ToolTip": "C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs [Design]",
               "RelativeToolTip": "UI_main.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-29T11:52:38.763Z",
@@ -48,9 +44,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "UI_main.cs",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs",
+              "DocumentMoniker": "C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs",
               "RelativeDocumentMoniker": "UI_main.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs",
+              "ToolTip": "C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\UI_main.cs",
               "RelativeToolTip": "UI_main.cs",
               "ViewState": "AgIAAK0AAAAAAAAAAADwv7EAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -60,9 +56,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "UI_main.Designer.cs",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\UI_main.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\UI_main.Designer.cs",
               "RelativeDocumentMoniker": "UI_main.Designer.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\UI_quanlidonhang\\UI_main.Designer.cs",
+              "ToolTip": "C:\\Users\\Tai Khoan Admin\\Documents\\CNPM2025\\Software-Engineering\\UI_quanlidonhang\\UI_main.Designer.cs",
               "RelativeToolTip": "UI_main.Designer.cs",
               "ViewState": "AgIAAJMBAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

@@ -25,3 +25,32 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_SMS.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_OTP.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_Moi.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\GUI.exe.config
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\GUI.exe
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\GUI.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\Guna.UI2.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.csproj.AssemblyReference.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.exe.config
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_SMS.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_OTP.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_Moi.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Them_HopDong.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_main.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemKhach.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemDonHang.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyHopDong.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyUserS.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyKhachHang.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_ThongKe.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyDonHang.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_ChinhSuaThongTin.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_TrangChu.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.csproj.Up2Date
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.exe
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSo.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSoV2.resources

@@ -53,6 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI_FormThemThongSo - v2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_FormThemThongSo - v2.Designer.cs">
+      <DependentUpon>GUI_FormThemThongSo - v2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI_FormThemThongSo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_FormThemThongSo.Designer.cs">
+      <DependentUpon>GUI_FormThemThongSo.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Form_DangNhap_SMS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +115,12 @@
     <Compile Include="GUI_FormThemDonHang.Designer.cs">
       <DependentUpon>GUI_FormThemDonHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_QuanLyThongSoDonHang.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_QuanLyThongSoDonHang.Designer.cs">
+      <DependentUpon>UC_QuanLyThongSoDonHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_QuanLyHopDong.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +163,12 @@
     <Compile Include="UC_TrangChu.Designer.cs">
       <DependentUpon>UC_TrangChu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI_FormThemThongSo - v2.resx">
+      <DependentUpon>GUI_FormThemThongSo - v2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_FormThemThongSo.resx">
+      <DependentUpon>GUI_FormThemThongSo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_Form_DangNhap_SMS.resx">
       <DependentUpon>GUI_Form_DangNhap_SMS.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +202,9 @@
     </Compile>
     <EmbeddedResource Include="GUI_FormThemDonHang.resx">
       <DependentUpon>GUI_FormThemDonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_QuanLyThongSoDonHang.resx">
+      <DependentUpon>UC_QuanLyThongSoDonHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_QuanLyHopDong.resx">
       <DependentUpon>UC_QuanLyHopDong.cs</DependentUpon>
