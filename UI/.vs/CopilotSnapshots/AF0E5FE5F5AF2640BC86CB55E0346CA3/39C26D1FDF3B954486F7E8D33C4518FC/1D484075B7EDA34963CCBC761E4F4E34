@@ -1,26 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UI.QuanLyKhachHang
+namespace UI.QuanLyHopDong
 {
-    public partial class QuanLyKhachHang : UserControl
+    public partial class QuanLyHopDong : UserControl
     {
-        public QuanLyKhachHang()
+        public QuanLyHopDong()
         {
             InitializeComponent();
-            // Enable double buffering to reduce flicker
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.UpdateStyles();
+            ApplyTheme(); // Áp dụng theme ban đầu
 
+            // 🔔 Lắng nghe khi theme đổi
             ThemeManager.ThemeChanged += ApplyTheme;
         }
+
         private void ApplyTheme()
         {
             if (InvokeRequired)
@@ -77,9 +72,8 @@ namespace UI.QuanLyKhachHang
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            NutThem nutThem = new NutThem();
-            nutThem.ShowDialog();
+            NutThemHopDong nutThemHopDong = new NutThemHopDong();
+            nutThemHopDong.ShowDialog();
         }
     }
-
 }

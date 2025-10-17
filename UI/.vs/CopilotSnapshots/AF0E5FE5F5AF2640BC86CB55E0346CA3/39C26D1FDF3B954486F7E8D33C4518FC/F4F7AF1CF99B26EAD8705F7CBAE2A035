@@ -15,9 +15,6 @@ namespace UI.ThongKeTienDo
         public ThongKe()
         {
             InitializeComponent();
-            // Enable double buffering to reduce flicker
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.UpdateStyles();
             this.Dock = System.Windows.Forms.DockStyle.Fill;
 
         }

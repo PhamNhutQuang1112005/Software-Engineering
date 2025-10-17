@@ -357,6 +357,7 @@ namespace UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1280, 552);
             this.Controls.Add(this.mainPanel);
+            this.DoubleBuffered = true;
             this.Name = "UI_main";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "GreenSol";

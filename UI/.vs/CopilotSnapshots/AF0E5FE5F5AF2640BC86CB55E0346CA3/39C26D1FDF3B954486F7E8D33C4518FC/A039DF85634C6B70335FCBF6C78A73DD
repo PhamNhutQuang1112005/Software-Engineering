@@ -15,9 +15,6 @@ namespace UI.QuanLyDonHang
         public QuanLyDonHang()
         {
             InitializeComponent();
-            // Enable double buffering to reduce flicker
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.UpdateStyles();
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)

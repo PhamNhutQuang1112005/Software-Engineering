@@ -15,10 +15,6 @@ namespace UI.QuanLyKhachHang
         public QuanLyKhachHang()
         {
             InitializeComponent();
-            // Enable double buffering to reduce flicker
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.UpdateStyles();
-
             ThemeManager.ThemeChanged += ApplyTheme;
         }
         private void ApplyTheme()

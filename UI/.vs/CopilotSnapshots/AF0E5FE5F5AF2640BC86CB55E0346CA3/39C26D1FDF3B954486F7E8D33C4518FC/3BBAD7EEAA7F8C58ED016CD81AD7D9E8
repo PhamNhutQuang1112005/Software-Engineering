@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using Guna.UI2.WinForms;
 
@@ -14,9 +13,6 @@ namespace UI
         public UI_main()
         {
             InitializeComponent();
-            // Enable double buffering for contentPanel to reduce flicker
-            typeof(Panel).GetProperty("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance)
-                .SetValue(contentPanel, true, null);
         }
         // chuyển các button thành public để gọi từ form khác
         public Guna.UI2.WinForms.Guna2Button BtnTrangChu => btnTrangChu;

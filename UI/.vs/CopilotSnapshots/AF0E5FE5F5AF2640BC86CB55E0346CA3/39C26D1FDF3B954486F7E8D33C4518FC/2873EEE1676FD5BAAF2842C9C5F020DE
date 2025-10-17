@@ -15,9 +15,6 @@ namespace UI.ChinhSuaThongTin
         public ChinhSuaUser()
         {
             InitializeComponent();
-            // Enable double buffering to reduce flicker
-            this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.UpdateStyles();
         }
     }
 }
