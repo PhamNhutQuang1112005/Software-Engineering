@@ -153,6 +153,26 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Sườn_UI__dark_ {
+            get {
+                object obj = ResourceManager.GetObject("Sườn UI (dark)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sườn_UI__light_ {
+            get {
+                object obj = ResourceManager.GetObject("Sườn UI (light)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Untitled_image {
             get {
                 object obj = ResourceManager.GetObject("Untitled image", resourceCulture);

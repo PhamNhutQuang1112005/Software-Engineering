@@ -138,6 +138,7 @@ namespace GUI
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(900, 146);
             this.guna2Panel1.TabIndex = 47;
+            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint_1);
             this.guna2Panel1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.guna2Panel1_MouseDoubleClick);
             // 
             // ngaydonhang

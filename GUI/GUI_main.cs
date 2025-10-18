@@ -355,5 +355,10 @@ if (logoCenter != null)
             frm.Deactivate += (s, ev) => frm.Close();
             frm.Show();
         }
+
+        private void contentPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

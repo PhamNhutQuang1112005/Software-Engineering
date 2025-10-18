@@ -283,5 +283,11 @@
   <ItemGroup>
     <None Include="icon\logo_bg-removebg-preview.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\Sườn UI %28dark%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\Sườn UI %28light%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

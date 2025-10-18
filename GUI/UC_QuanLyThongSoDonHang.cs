@@ -231,5 +231,10 @@ namespace GUI
             GUI_FormThemDonHang gUI_FormThemDonHang = new GUI_FormThemDonHang();
             gUI_FormThemDonHang.ShowDialog();
         }
+
+        private void guna2Panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

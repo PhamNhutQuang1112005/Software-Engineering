@@ -23,5 +23,10 @@ namespace GUI
             GUI_Form_Them_HopDong gUI_Form_Them_HopDong = new GUI_Form_Them_HopDong();
             gUI_Form_Them_HopDong.ShowDialog();
         }
+
+        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

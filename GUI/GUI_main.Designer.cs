@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_main));
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
-            this.hinhGiua = new System.Windows.Forms.PictureBox();
             this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
@@ -47,8 +46,6 @@
             this.btnKhachHang = new Guna.UI2.WinForms.Guna2Button();
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
             this.mainPanel.SuspendLayout();
-            this.contentPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.hinhGiua)).BeginInit();
             this.header.SuspendLayout();
             this.sidebar.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +53,6 @@
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(30)))));
-            this.mainPanel.BackgroundImage = global::GUI.Properties.Resources.background__dark_;
             this.mainPanel.Controls.Add(this.contentPanel);
             this.mainPanel.Controls.Add(this.header);
             this.mainPanel.Controls.Add(this.sidebar);
@@ -69,24 +65,14 @@
             // contentPanel
             // 
             this.contentPanel.BackColor = System.Drawing.Color.Transparent;
+            this.contentPanel.BackgroundImage = global::GUI.Properties.Resources.Sườn_UI__dark_;
             this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contentPanel.Controls.Add(this.hinhGiua);
-            this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.contentPanel.Location = new System.Drawing.Point(70, 56);
+            this.contentPanel.Location = new System.Drawing.Point(76, 59);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contentPanel.Size = new System.Drawing.Size(992, 497);
             this.contentPanel.TabIndex = 0;
-            // 
-            // hinhGiua
-            // 
-            this.hinhGiua.Image = global::GUI.Properties.Resources.logo_bg_removebg_preview;
-            this.hinhGiua.Location = new System.Drawing.Point(246, 6);
-            this.hinhGiua.Name = "hinhGiua";
-            this.hinhGiua.Size = new System.Drawing.Size(500, 500);
-            this.hinhGiua.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.hinhGiua.TabIndex = 0;
-            this.hinhGiua.TabStop = false;
+            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
             // 
             // header
             // 
@@ -128,7 +114,7 @@
             this.btnThongbao.ForeColor = System.Drawing.Color.White;
             this.btnThongbao.Image = ((System.Drawing.Image)(resources.GetObject("btnThongbao.Image")));
             this.btnThongbao.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnThongbao.Location = new System.Drawing.Point(371, 0);
+            this.btnThongbao.Location = new System.Drawing.Point(323, 0);
             this.btnThongbao.Name = "btnThongbao";
             this.btnThongbao.Size = new System.Drawing.Size(50, 50);
             this.btnThongbao.TabIndex = 2;
@@ -353,8 +339,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.GUI_main_Load);
             this.mainPanel.ResumeLayout(false);
-            this.contentPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.hinhGiua)).EndInit();
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
             this.sidebar.ResumeLayout(false);
@@ -380,7 +364,6 @@
         private System.Windows.Forms.Label lblUser;
         private Guna.UI2.WinForms.Guna2Panel mainPanel;
         private Guna.UI2.WinForms.Guna2GradientPanel sidebar;
-        private System.Windows.Forms.PictureBox hinhGiua;
     }
 }
 
