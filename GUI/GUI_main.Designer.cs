@@ -333,6 +333,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1062, 553);
             this.Controls.Add(this.mainPanel);
+            this.MaximizeBox = false;
             this.Name = "GUI_main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
