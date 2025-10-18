@@ -52,7 +52,7 @@ namespace GUI
             this.loctheoquy.BackColor = System.Drawing.Color.SeaGreen;
             this.loctheoquy.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loctheoquy.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loctheoquy.Location = new System.Drawing.Point(389, 107);
+            this.loctheoquy.Location = new System.Drawing.Point(376, 20);
             this.loctheoquy.Name = "loctheoquy";
             this.loctheoquy.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.loctheoquy.Size = new System.Drawing.Size(120, 28);
@@ -65,7 +65,7 @@ namespace GUI
             this.loctheongay.BackColor = System.Drawing.Color.SeaGreen;
             this.loctheongay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loctheongay.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loctheongay.Location = new System.Drawing.Point(181, 107);
+            this.loctheongay.Location = new System.Drawing.Point(168, 20);
             this.loctheongay.Name = "loctheongay";
             this.loctheongay.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.loctheongay.Size = new System.Drawing.Size(138, 28);
@@ -78,7 +78,7 @@ namespace GUI
             this.loctheonam.BackColor = System.Drawing.Color.SeaGreen;
             this.loctheonam.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loctheonam.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loctheonam.Location = new System.Drawing.Point(583, 107);
+            this.loctheonam.Location = new System.Drawing.Point(570, 20);
             this.loctheonam.Name = "loctheonam";
             this.loctheonam.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.loctheonam.Size = new System.Drawing.Size(131, 28);
@@ -100,7 +100,7 @@ namespace GUI
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(565, 104);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(552, 17);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(171, 36);
             this.guna2ComboBox3.TabIndex = 45;
@@ -119,7 +119,7 @@ namespace GUI
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(371, 102);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(358, 15);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
             this.guna2ComboBox2.Size = new System.Drawing.Size(166, 36);
             this.guna2ComboBox2.TabIndex = 43;
@@ -134,7 +134,7 @@ namespace GUI
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel3);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Location = new System.Drawing.Point(73, 237);
+            this.guna2Panel1.Location = new System.Drawing.Point(60, 150);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(900, 146);
             this.guna2Panel1.TabIndex = 47;
@@ -209,7 +209,7 @@ namespace GUI
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(159, 102);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(146, 15);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(183, 36);
             this.guna2ComboBox1.TabIndex = 41;
@@ -219,7 +219,7 @@ namespace GUI
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(41, 107);
+            this.label1.Location = new System.Drawing.Point(28, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 25);
             this.label1.TabIndex = 40;
@@ -239,13 +239,13 @@ namespace GUI
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(762, 102);
+            this.guna2TextBox1.Location = new System.Drawing.Point(749, 15);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.PlaceholderText = "Thanh tìm kiếm...";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(280, 43);
+            this.guna2TextBox1.Size = new System.Drawing.Size(219, 43);
             this.guna2TextBox1.TabIndex = 39;
             this.guna2TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged_1);
@@ -267,7 +267,7 @@ namespace GUI
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_QuanLyThongSoDonHang";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(1497, 796);
+            this.Size = new System.Drawing.Size(968, 796);
             this.Load += new System.EventHandler(this.UC_QuanLyDonHang_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_main));
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
+            this.hinhGiua = new System.Windows.Forms.PictureBox();
             this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
@@ -46,6 +47,8 @@
             this.btnKhachHang = new Guna.UI2.WinForms.Guna2Button();
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
             this.mainPanel.SuspendLayout();
+            this.contentPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.hinhGiua)).BeginInit();
             this.header.SuspendLayout();
             this.sidebar.SuspendLayout();
             this.SuspendLayout();
@@ -67,12 +70,23 @@
             // 
             this.contentPanel.BackColor = System.Drawing.Color.Transparent;
             this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.contentPanel.Controls.Add(this.hinhGiua);
             this.contentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentPanel.Location = new System.Drawing.Point(70, 56);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contentPanel.Size = new System.Drawing.Size(992, 497);
             this.contentPanel.TabIndex = 0;
+            // 
+            // hinhGiua
+            // 
+            this.hinhGiua.Image = global::GUI.Properties.Resources.logo_bg_removebg_preview;
+            this.hinhGiua.Location = new System.Drawing.Point(246, 6);
+            this.hinhGiua.Name = "hinhGiua";
+            this.hinhGiua.Size = new System.Drawing.Size(500, 500);
+            this.hinhGiua.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.hinhGiua.TabIndex = 0;
+            this.hinhGiua.TabStop = false;
             // 
             // header
             // 
@@ -339,6 +353,8 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.GUI_main_Load);
             this.mainPanel.ResumeLayout(false);
+            this.contentPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.hinhGiua)).EndInit();
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
             this.sidebar.ResumeLayout(false);
@@ -364,6 +380,7 @@
         private System.Windows.Forms.Label lblUser;
         private Guna.UI2.WinForms.Guna2Panel mainPanel;
         private Guna.UI2.WinForms.Guna2GradientPanel sidebar;
+        private System.Windows.Forms.PictureBox hinhGiua;
     }
 }
 

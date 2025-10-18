@@ -277,5 +277,11 @@
   <ItemGroup>
     <None Include="Resources\view.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\logo bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\logo_bg-removebg-preview.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

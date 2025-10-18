@@ -30,7 +30,7 @@ namespace GUI
         // Lớp layout riêng
         private Panel backgroundLayer;
         private Panel contentLayer;
-        private PictureBox logoCenter;
+        private TransparentPictureBox logoCenter;
 
         // ==============
         // Constructor
@@ -87,7 +87,7 @@ namespace GUI
 
     contentPanel.Controls.Clear();
 
-    // 1️⃣ Tạo lớp nền
+    // 1️⃣ Tạo lớp nền (backgroundLayer) - sẽ chứa logo và contentLayer như các child
     backgroundLayer = new Panel
     {
         Dock = DockStyle.Fill,
@@ -95,43 +95,36 @@ namespace GUI
         BackgroundImageLayout = ImageLayout.Stretch
     };
 
-    // 2️⃣ Tạo logo giữa
-    logoCenter = new PictureBox
+    // 2️⃣ Tạo logo giữa (add vào backgroundLayer)
+    logoCenter = new TransparentPictureBox
     {
         Image = Properties.Resources.logo_bg_removebg_preview,
-        SizeMode = PictureBoxSizeMode.Zoom,
         Size = new Size(280, 280),
+        Opacity = 0.55f,
         BackColor = Color.Transparent
     };
 
-    // 3️⃣ Tạo lớp chứa UC
+    // 3️⃣ Tạo lớp chứa UC (là child của backgroundLayer để có thể thấy logo khi contentLayer trong suốt)
     contentLayer = new Panel
     {
         Dock = DockStyle.Fill,
         BackColor = Color.Transparent
     };
 
-    // 4️⃣ Thêm các lớp theo thứ tự: nền -> logo -> UC
+    // 4️⃣ Thêm logo và contentLayer vào backgroundLayer (logo trước, contentLayer sau so it sits above if needed)
+    backgroundLayer.Controls.Add(logoCenter);
+    backgroundLayer.Controls.Add(contentLayer);
+
+    // 5️⃣ Thêm backgroundLayer vào contentPanel
     contentPanel.Controls.Add(backgroundLayer);
-    contentPanel.Controls.Add(logoCenter);
-    contentPanel.Controls.Add(contentLayer);
 
-    // 5️⃣ Canh logo giữa panel
-    contentPanel.Resize += (s, e) =>
-    {
-        if (logoCenter != null)
-        {
-            logoCenter.Location = new Point(
-                (contentPanel.Width - logoCenter.Width) / 2,
-                (contentPanel.Height - logoCenter.Height) / 2
-            );
-        }
-    };
+    // 6️⃣ Canh logo giữa backgroundLayer
+    backgroundLayer.Resize += (s, e) => CenterLogo();
+    // Call once to center immediately
+    CenterLogo();
 
-    // 6️⃣ Đặt thứ tự hiển thị
-    backgroundLayer.SendToBack();  // nền dưới cùng
-    logoCenter.BringToFront();     // logo ở giữa
-    contentLayer.BringToFront();   // UC nằm trên cùng (nhưng có thể trong suốt)
+    // 7️⃣ Đặt thứ tự hiển thị: logo ở trên background nhưng cần nằm trên contentLayer visually — we'll bring logo to front of backgroundLayer
+    logoCenter.BringToFront();
 }
 
         private void ShowControl(UserControl uc)
@@ -157,7 +150,11 @@ namespace GUI
             currentUC = uc;
 
             // Ẩn logo khi không ở trang chủ
-            logoCenter.Visible = (uc == ucTrangChu);
+            // We'll instead dim logo but keep it visible underneath transparent UCs
+            if (uc == ucTrangChu)
+                logoCenter.Visible = true;
+            else
+                logoCenter.Visible = true; // keep visible but it will appear beneath semi-transparent UCs
         }
 
         // ====================
@@ -183,11 +180,10 @@ namespace GUI
             }
 
             guna2CircleButton1.Image = Properties.Resources.light_mode;
-            backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
             if (backgroundLayer != null)
-    backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
-if (logoCenter != null)
-    logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
+                backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
+            if (logoCenter != null)
+                logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
 
         }
 
@@ -211,11 +207,10 @@ if (logoCenter != null)
             }
 
             guna2CircleButton1.Image = Properties.Resources.dark_mode;
-            backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
             if (backgroundLayer != null)
-    backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
-if (logoCenter != null)
-    logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
+                backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
+            if (logoCenter != null)
+                logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
 
         }
 
@@ -243,6 +238,20 @@ if (logoCenter != null)
                 enabledProp?.SetValue(shadow, false);
             }
             catch { }
+        }
+
+        // Helper to center the logo inside backgroundLayer (fallback to contentPanel)
+        private void CenterLogo()
+        {
+            if (logoCenter == null) return;
+
+            var parent = backgroundLayer ?? contentPanel;
+            if (parent == null) return;
+
+            logoCenter.Location = new Point(
+                (parent.ClientSize.Width - logoCenter.Width) / 2,
+                (parent.ClientSize.Height - logoCenter.Height) / 2
+            );
         }
 
         private void CacheSidebarButtons()

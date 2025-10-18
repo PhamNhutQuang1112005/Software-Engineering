@@ -104,6 +104,9 @@ namespace GUI
         BackColor = Color.Transparent
     };
 
+    // Ensure logo does not use anchors so we can position it manually
+    logoCenter.Anchor = AnchorStyles.None;
+
     // 3️⃣ Tạo lớp chứa UC
     contentLayer = new Panel
     {
@@ -116,17 +119,9 @@ namespace GUI
     contentPanel.Controls.Add(logoCenter);
     contentPanel.Controls.Add(contentLayer);
 
-    // 5️⃣ Canh logo giữa panel
-    contentPanel.Resize += (s, e) =>
-    {
-        if (logoCenter != null)
-        {
-            logoCenter.Location = new Point(
-                (contentPanel.Width - logoCenter.Width) / 2,
-                (contentPanel.Height - logoCenter.Height) / 2
-            );
-        }
-    };
+    // Center logo immediately and keep centered on resize
+    CenterLogo();
+    contentPanel.Resize += (s, e) => CenterLogo();
 
     // 6️⃣ Đặt thứ tự hiển thị
     backgroundLayer.SendToBack();  // nền dưới cùng
@@ -183,11 +178,10 @@ namespace GUI
             }
 
             guna2CircleButton1.Image = Properties.Resources.light_mode;
-            backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
             if (backgroundLayer != null)
-    backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
-if (logoCenter != null)
-    logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
+                backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
+            if (logoCenter != null)
+                logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
 
         }
 
@@ -211,11 +205,10 @@ if (logoCenter != null)
             }
 
             guna2CircleButton1.Image = Properties.Resources.dark_mode;
-            backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
             if (backgroundLayer != null)
-    backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
-if (logoCenter != null)
-    logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
+                backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
+            if (logoCenter != null)
+                logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
 
         }
 
@@ -243,6 +236,17 @@ if (logoCenter != null)
                 enabledProp?.SetValue(shadow, false);
             }
             catch { }
+        }
+
+        // Helper to center the logo inside contentPanel
+        private void CenterLogo()
+        {
+            if (logoCenter == null || contentPanel == null) return;
+
+            logoCenter.Location = new Point(
+                (contentPanel.ClientSize.Width - logoCenter.Width) / 2,
+                (contentPanel.ClientSize.Height - logoCenter.Height) / 2
+            );
         }
 
         private void CacheSidebarButtons()
