@@ -64,3 +64,17 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI_q
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.csproj.Up2Date
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.exe
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\bin\Debug\UI.exe.config
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\bin\Debug\UI.exe
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\bin\Debug\UI.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\bin\Debug\Guna.UI2.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.csproj.AssemblyReference.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.exe.config
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.Form1.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.UI_main.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.Properties.Resources.resources
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.csproj.GenerateResource.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.csproj.CoreCompileInputs.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.csproj.Up2Date
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.exe
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\UI_quanlidonhang\obj\Debug\UI.pdb

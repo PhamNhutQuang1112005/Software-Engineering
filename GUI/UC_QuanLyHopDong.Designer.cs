@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Windows.Forms;
+
+namespace GUI
 {
     partial class UC_QuanLyHopDong
     {
@@ -122,7 +124,6 @@
             // 
             // guna2GradientPanel3
             // 
-            this.guna2GradientPanel3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2GradientPanel3.BorderColor = System.Drawing.Color.White;
             this.guna2GradientPanel3.BorderRadius = 15;
             this.guna2GradientPanel3.BorderThickness = 2;
@@ -239,7 +240,6 @@
             // 
             // guna2GradientPanel4
             // 
-            this.guna2GradientPanel4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2GradientPanel4.BorderColor = System.Drawing.Color.White;
             this.guna2GradientPanel4.BorderRadius = 15;
             this.guna2GradientPanel4.BorderThickness = 2;
@@ -367,7 +367,6 @@
             // 
             // guna2GradientPanel1
             // 
-            this.guna2GradientPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2GradientPanel1.BorderColor = System.Drawing.Color.White;
             this.guna2GradientPanel1.BorderRadius = 15;
             this.guna2GradientPanel1.BorderThickness = 2;
@@ -484,7 +483,6 @@
             // 
             // label3
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.BackColor = System.Drawing.Color.SeaGreen;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -498,7 +496,6 @@
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.BackColor = System.Drawing.Color.SeaGreen;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
@@ -512,7 +509,6 @@
             // 
             // guna2ComboBox2
             // 
-            this.guna2ComboBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2ComboBox2.BorderColor = System.Drawing.Color.White;
             this.guna2ComboBox2.BorderRadius = 15;
@@ -532,7 +528,6 @@
             // 
             // guna2ComboBox1
             // 
-            this.guna2ComboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ComboBox1.BorderColor = System.Drawing.Color.White;
             this.guna2ComboBox1.BorderRadius = 15;
@@ -552,7 +547,6 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
@@ -564,7 +558,6 @@
             // 
             // guna2TextBox1
             // 
-            this.guna2TextBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2TextBox1.BorderColor = System.Drawing.Color.Black;
             this.guna2TextBox1.BorderRadius = 15;
             this.guna2TextBox1.BorderThickness = 2;
@@ -589,7 +582,6 @@
             // 
             // guna2Button3
             // 
-            this.guna2Button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2Button3.BorderColor = System.Drawing.Color.White;
             this.guna2Button3.BorderRadius = 15;
             this.guna2Button3.BorderThickness = 2;
@@ -608,7 +600,6 @@
             // 
             // guna2Button2
             // 
-            this.guna2Button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2Button2.BorderColor = System.Drawing.Color.White;
             this.guna2Button2.BorderRadius = 15;
             this.guna2Button2.BorderThickness = 2;
@@ -627,7 +618,6 @@
             // 
             // guna2Button1
             // 
-            this.guna2Button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2Button1.BorderColor = System.Drawing.Color.White;
             this.guna2Button1.BorderRadius = 15;
             this.guna2Button1.BorderThickness = 2;
@@ -680,7 +670,6 @@
             // 
             // guna2GradientPanel2
             // 
-            this.guna2GradientPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.guna2GradientPanel2.BorderColor = System.Drawing.Color.White;
             this.guna2GradientPanel2.BorderRadius = 15;
             this.guna2GradientPanel2.BorderThickness = 2;
@@ -721,6 +710,7 @@
             // UC_QuanLyHopDong
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2GradientPanel3);
             this.Controls.Add(this.guna2GradientPanel4);
@@ -735,8 +725,10 @@
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2GradientPanel2);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_QuanLyHopDong";
-            this.Size = new System.Drawing.Size(1088, 682);
+            this.Padding = new System.Windows.Forms.Padding(10);
+            this.Size = new System.Drawing.Size(1497, 796);
             this.guna2GradientPanel3.ResumeLayout(false);
             this.guna2GradientPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

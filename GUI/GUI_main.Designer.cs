@@ -34,7 +34,6 @@
             this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.sidebar = new Guna.UI2.WinForms.Guna2GradientPanel();
@@ -48,7 +47,6 @@
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
             this.mainPanel.SuspendLayout();
             this.header.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.sidebar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,7 +79,6 @@
             this.header.BackColor = System.Drawing.Color.Transparent;
             this.header.Controls.Add(this.guna2CircleButton1);
             this.header.Controls.Add(this.btnThongbao);
-            this.header.Controls.Add(this.guna2CirclePictureBox1);
             this.header.Controls.Add(this.lblVersion);
             this.header.Controls.Add(this.lblUser);
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
@@ -115,24 +112,13 @@
             this.btnThongbao.FillColor = System.Drawing.Color.Transparent;
             this.btnThongbao.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnThongbao.ForeColor = System.Drawing.Color.White;
+            this.btnThongbao.Image = ((System.Drawing.Image)(resources.GetObject("btnThongbao.Image")));
             this.btnThongbao.ImageSize = new System.Drawing.Size(30, 30);
             this.btnThongbao.Location = new System.Drawing.Point(371, 0);
             this.btnThongbao.Name = "btnThongbao";
             this.btnThongbao.Size = new System.Drawing.Size(50, 50);
             this.btnThongbao.TabIndex = 2;
-            // 
-            // guna2CirclePictureBox1
-            // 
-            this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CirclePictureBox1.Image")));
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(323, 8);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(45, 45);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2CirclePictureBox1.TabIndex = 0;
-            this.guna2CirclePictureBox1.TabStop = false;
+            this.btnThongbao.Click += new System.EventHandler(this.btnThongbao_Click);
             // 
             // lblVersion
             // 
@@ -234,6 +220,7 @@
             this.btnThongKeDonHang.PressedColor = System.Drawing.Color.Transparent;
             this.btnThongKeDonHang.Size = new System.Drawing.Size(50, 50);
             this.btnThongKeDonHang.TabIndex = 5;
+            this.btnThongKeDonHang.Click += new System.EventHandler(this.btnThongKeDonHang_Click);
             // 
             // btnThongKeTienDo
             // 
@@ -353,7 +340,6 @@
             this.mainPanel.ResumeLayout(false);
             this.header.ResumeLayout(false);
             this.header.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.sidebar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -372,7 +358,6 @@
         private System.Windows.Forms.Panel contentPanel;
         private Guna.UI2.WinForms.Guna2CircleButton guna2CircleButton1;
         private Guna.UI2.WinForms.Guna2Button btnThongbao;
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label lblVersion;
         private Guna.UI2.WinForms.Guna2GradientPanel header;
         private System.Windows.Forms.Label lblUser;

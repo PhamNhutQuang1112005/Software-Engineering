@@ -1,4 +1,6 @@
-﻿namespace GUI
+﻿using System.Windows.Forms;
+
+namespace GUI
 {
     partial class UC_ChinhSuaThongTin
     {
@@ -373,6 +375,11 @@
             this.Size = new System.Drawing.Size(946, 529);
             this.Load += new System.EventHandler(this.UC_ChinhSuaThongTin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox2)).EndInit();
+            this.Dock = System.Windows.Forms.DockStyle.Fill;
+this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+this.Anchor = (AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right);
+this.Margin = new Padding(0);
+this.Padding = new Padding(10);
             this.ResumeLayout(false);
             this.PerformLayout();
 

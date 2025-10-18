@@ -1,7 +1,6 @@
-﻿﻿using Guna.UI2.WinForms;
+﻿using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -15,29 +14,26 @@ namespace GUI
         {
             InitializeComponent();
 
-            // Bật double buffering cho Form
+            // Bật double buffering cho Form và panel
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
-
-            // Bật double buffering cho các panel quan trọng
             SetDoubleBuffered(mainPanel);
             SetDoubleBuffered(contentPanel);
             SetDoubleBuffered(sidebar);
             SetDoubleBuffered(header);
 
-            // Tắt shadow (Guna) có thể gây lag khi render
+            // Tắt shadow (Guna UI2) để tránh lag render
             TryDisableShadow(mainPanel);
             TryDisableShadow(contentPanel);
             TryDisableShadow(sidebar);
             TryDisableShadow(header);
 
-            // Chuẩn bị danh sách nút sidebar (cache) để set theme nhanh
             CacheSidebarButtons();
         }
 
-        // =======================
-        // Trạng thái + UC instances
-        // =======================
+        // ==============
+        // Các biến
+        // ==============
         private bool isDark = true;
         private UC_QuanLyUserS ucQuanLyUsers;
         private UC_QuanLyKhachHang ucQuanLyKhachHang;
@@ -45,6 +41,7 @@ namespace GUI
         private UC_QuanLyDonHang ucDonHang;
         private UC_ChinhSuaThongTin ucChinhSuaThongTin;
         private UC_QuanLyHopDong ucQuanLyHopDong;
+        private UC_QuanLyThongSoDonHang ucQuanLyThongSoDonHang;
         private UC_TrangChu ucTrangChu;
         private List<Guna2Button> sidebarButtons = new List<Guna2Button>();
         private UserControl currentUC;
@@ -53,8 +50,8 @@ namespace GUI
         {
             get
             {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED - double buffer toàn form
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED - giảm flicker toàn form
                 return cp;
             }
         }
@@ -62,14 +59,16 @@ namespace GUI
         private void GUI_main_Load(object sender, EventArgs e)
         {
             ApplyDarkTheme();
+            contentPanel.Dock = DockStyle.Fill;
         }
 
-        #region Theme (Dark / Light)
+        // ====================
+        // Theme (Dark / Light)
+        // ====================
         private void ApplyDarkTheme()
         {
             mainPanel.BackgroundImage = Properties.Resources.background__dark_;
             mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
-
             contentPanel.BackgroundImage = null;
             contentPanel.BackColor = Color.Transparent;
 
@@ -85,7 +84,6 @@ namespace GUI
             {
                 btn.FillColor = Color.DarkSeaGreen;
                 btn.ForeColor = Color.Black;
-                btn.Animated = false;
             }
 
             guna2CircleButton1.Image = Properties.Resources.light_mode;
@@ -95,7 +93,6 @@ namespace GUI
         {
             mainPanel.BackgroundImage = Properties.Resources.background__light_;
             mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
-
             contentPanel.BackgroundImage = null;
             contentPanel.BackColor = Color.Transparent;
 
@@ -111,22 +108,21 @@ namespace GUI
             {
                 btn.FillColor = Color.LemonChiffon;
                 btn.ForeColor = Color.Black;
-                btn.Animated = false;
             }
 
             guna2CircleButton1.Image = Properties.Resources.dark_mode;
         }
-        #endregion
 
-        #region Utility Helpers
+        // =========================
+        // Helpers (Double Buffering)
+        // =========================
         private void SetDoubleBuffered(Control c)
         {
             try
             {
                 PropertyInfo pi = c.GetType().GetProperty("DoubleBuffered",
                     BindingFlags.Instance | BindingFlags.NonPublic);
-                if (pi != null)
-                    pi.SetValue(c, true, null);
+                pi?.SetValue(c, true, null);
             }
             catch { }
         }
@@ -136,13 +132,9 @@ namespace GUI
             try
             {
                 var prop = c.GetType().GetProperty("ShadowDecoration");
-                if (prop != null)
-                {
-                    var shadow = prop.GetValue(c);
-                    var enabledProp = shadow.GetType().GetProperty("Enabled");
-                    if (enabledProp != null)
-                        enabledProp.SetValue(shadow, false);
-                }
+                var shadow = prop?.GetValue(c);
+                var enabledProp = shadow?.GetType().GetProperty("Enabled");
+                enabledProp?.SetValue(shadow, false);
             }
             catch { }
         }
@@ -151,20 +143,19 @@ namespace GUI
         {
             sidebarButtons = sidebar.Controls.OfType<Guna2Button>().ToList();
         }
-        #endregion
 
-        #region ShowControl + CenterLayout
+        // =====================
+        // ShowControl (AutoFit)
+        // =====================
         private void ShowControl(UserControl uc)
         {
             if (uc == null) return;
 
             if (!contentPanel.Controls.Contains(uc))
             {
+                uc.Dock = DockStyle.Fill;
                 uc.AutoScaleMode = AutoScaleMode.None;
-                uc.Anchor = AnchorStyles.None;
                 uc.BackColor = Color.Transparent;
-
-                CenterControl(uc);
                 contentPanel.Controls.Add(uc);
             }
 
@@ -173,30 +164,12 @@ namespace GUI
 
             uc.Visible = true;
             uc.BringToFront();
-            CenterControl(uc);
             currentUC = uc;
         }
 
-        private void CenterControl(Control ctrl)
-        {
-            if (ctrl == null || contentPanel == null) return;
-
-            int x = (contentPanel.ClientSize.Width - ctrl.Width) / 2;
-            int y = (contentPanel.ClientSize.Height - ctrl.Height) / 2;
-
-            if (ctrl.Width > contentPanel.ClientSize.Width || ctrl.Height > contentPanel.ClientSize.Height)
-            {
-                ctrl.Dock = DockStyle.Fill;
-            }
-            else
-            {
-                ctrl.Dock = DockStyle.None;
-                ctrl.Location = new Point(Math.Max(0, x), Math.Max(0, y));
-            }
-        }
-        #endregion
-
-        #region Events
+        // ===============
+        // Sự kiện nút
+        // ===============
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
             if (isDark)
@@ -211,17 +184,14 @@ namespace GUI
             }
         }
 
-        private void contentPanel_Resize(object sender, EventArgs e)
+        // Sidebar Buttons
+        private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            foreach (Control ctrl in contentPanel.Controls.OfType<UserControl>())
-            {
-                if (ctrl.Visible)
-                    CenterControl(ctrl);
-            }
+            if (ucTrangChu == null)
+    ucTrangChu = new UC_TrangChu();
+            ShowControl(ucTrangChu);
         }
-        #endregion
 
-        #region Buttons -> Show UC
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
             if (ucQuanLyUsers == null)
@@ -234,13 +204,6 @@ namespace GUI
             if (ucQuanLyKhachHang == null)
                 ucQuanLyKhachHang = new UC_QuanLyKhachHang();
             ShowControl(ucQuanLyKhachHang);
-        }
-
-        private void btnThongKeTienDo_Click(object sender, EventArgs e)
-        {
-            if (ucThongKeDonHang == null)
-                ucThongKeDonHang = new UC_ThongKe();
-            ShowControl(ucThongKeDonHang);
         }
 
         private void btnDonHang_Click(object sender, EventArgs e)
@@ -257,19 +220,58 @@ namespace GUI
             ShowControl(ucQuanLyHopDong);
         }
 
+        private void btnThongKeTienDo_Click(object sender, EventArgs e)
+        {
+            if (ucThongKeDonHang == null)
+                ucThongKeDonHang = new UC_ThongKe();
+            ShowControl(ucThongKeDonHang);
+        }
+
+        private void btnThongKeDonHang_Click(object sender, EventArgs e)
+        {
+            if (ucQuanLyThongSoDonHang == null)
+                ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
+            ShowControl(ucQuanLyThongSoDonHang);
+        }
+
         private void btnQuanLyUser_Click(object sender, EventArgs e)
         {
             if (ucChinhSuaThongTin == null)
                 ucChinhSuaThongTin = new UC_ChinhSuaThongTin();
             ShowControl(ucChinhSuaThongTin);
         }
-        #endregion
 
-        private void btnTrangChu_Click(object sender, EventArgs e)
+        // =================
+        // Popup thông báo
+        // =================
+        private void btnThongbao_Click(object sender, EventArgs e)
         {
-            if (ucTrangChu == null)
-                ucTrangChu = new UC_TrangChu();
-            ShowControl(ucTrangChu);
+            UC_PopupThongBao popup = new UC_PopupThongBao();
+
+            Form frm = new Form
+            {
+                Size = popup.Size,
+                FormBorderStyle = FormBorderStyle.None,
+                StartPosition = FormStartPosition.Manual,
+                ShowInTaskbar = false,
+                TopMost = true,
+                BackColor = Color.FromArgb(40, 70, 55),
+                Opacity = 0,
+                Location = new Point(this.Right - popup.Width - 30, this.Top + 80)
+            };
+            frm.Controls.Add(popup);
+
+            // Animation fade-in
+            Timer t = new Timer { Interval = 15 };
+            t.Tick += (s, ev) =>
+            {
+                frm.Opacity += 0.05;
+                if (frm.Opacity >= 0.95) t.Stop();
+            };
+            t.Start();
+
+            frm.Deactivate += (s, ev) => frm.Close();
+            frm.Show();
         }
     }
 }
