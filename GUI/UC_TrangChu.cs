@@ -16,5 +16,15 @@ namespace GUI
         {
             InitializeComponent();
         }
+
+        private void UC_TrangChu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gradient_box_message_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -58,6 +58,8 @@ namespace GUI
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel21 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel22 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.guna2GradientPanel2.SuspendLayout();
             this.guna2GradientPanel1.SuspendLayout();
@@ -122,15 +124,17 @@ namespace GUI
             this.guna2GradientPanel2.BorderColor = System.Drawing.Color.White;
             this.guna2GradientPanel2.BorderRadius = 15;
             this.guna2GradientPanel2.BorderThickness = 2;
+            this.guna2GradientPanel2.Controls.Add(this.guna2HtmlLabel21);
             this.guna2GradientPanel2.Controls.Add(this.guna2HtmlLabel3);
             this.guna2GradientPanel2.Controls.Add(this.guna2HtmlLabel2);
             this.guna2GradientPanel2.Controls.Add(this.guna2HtmlLabel1);
             this.guna2GradientPanel2.Controls.Add(this.pictureBox2);
             this.guna2GradientPanel2.Controls.Add(this.guna2HtmlLabel14);
-            this.guna2GradientPanel2.Location = new System.Drawing.Point(69, 212);
+            this.guna2GradientPanel2.Location = new System.Drawing.Point(89, 117);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(376, 202);
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(376, 242);
             this.guna2GradientPanel2.TabIndex = 62;
+            this.guna2GradientPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel2_Paint);
             // 
             // guna2HtmlLabel11
             // 
@@ -269,14 +273,15 @@ namespace GUI
             this.guna2GradientPanel1.BorderColor = System.Drawing.Color.White;
             this.guna2GradientPanel1.BorderRadius = 15;
             this.guna2GradientPanel1.BorderThickness = 2;
+            this.guna2GradientPanel1.Controls.Add(this.guna2HtmlLabel22);
             this.guna2GradientPanel1.Controls.Add(this.guna2HtmlLabel17);
             this.guna2GradientPanel1.Controls.Add(this.guna2HtmlLabel18);
             this.guna2GradientPanel1.Controls.Add(this.guna2HtmlLabel19);
             this.guna2GradientPanel1.Controls.Add(this.pictureBox1);
             this.guna2GradientPanel1.Controls.Add(this.guna2HtmlLabel20);
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(485, 212);
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(505, 117);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(376, 202);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(376, 242);
             this.guna2GradientPanel1.TabIndex = 63;
             // 
             // guna2HtmlLabel17
@@ -411,6 +416,28 @@ namespace GUI
             this.guna2Button1.TabIndex = 65;
             this.guna2Button1.Text = "Thêm";
             // 
+            // guna2HtmlLabel21
+            // 
+            this.guna2HtmlLabel21.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel21.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel21.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.guna2HtmlLabel21.Location = new System.Drawing.Point(150, 197);
+            this.guna2HtmlLabel21.Name = "guna2HtmlLabel21";
+            this.guna2HtmlLabel21.Size = new System.Drawing.Size(71, 25);
+            this.guna2HtmlLabel21.TabIndex = 22;
+            this.guna2HtmlLabel21.Text = "Chức vụ:";
+            // 
+            // guna2HtmlLabel22
+            // 
+            this.guna2HtmlLabel22.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel22.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel22.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.guna2HtmlLabel22.Location = new System.Drawing.Point(150, 197);
+            this.guna2HtmlLabel22.Name = "guna2HtmlLabel22";
+            this.guna2HtmlLabel22.Size = new System.Drawing.Size(71, 25);
+            this.guna2HtmlLabel22.TabIndex = 23;
+            this.guna2HtmlLabel22.Text = "Chức vụ:";
+            // 
             // UC_QuanLyUserS
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -427,7 +454,7 @@ namespace GUI
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_QuanLyUserS";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(971, 796);
+            this.Size = new System.Drawing.Size(971, 381);
             this.Load += new System.EventHandler(this.UC_QuanLyUserS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.guna2GradientPanel2.ResumeLayout(false);
@@ -468,5 +495,7 @@ namespace GUI
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel21;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel22;
     }
 }

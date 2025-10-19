@@ -24,5 +24,10 @@ namespace GUI
         {
 
         }
+
+        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
