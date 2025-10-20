@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\gui_formthemkhach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:gui_formthemkhach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|d:\\h\u1ECDc k\u1EF3 5\\c\u00F4ng ngh\u1EC7 ph\u1EA7n m\u1EC1m\\cuoiky\\ui_v1\\software-engineering\\gui\\uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|d:\\h\u1ECDc k\u1EF3 5\\c\u00F4ng ngh\u1EC7 ph\u1EA7n m\u1EC1m\\cuoiky\\ui_v1\\software-engineering\\gui\\uc_trangchu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_trangchu.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_quanlykhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_quanlykhachhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\gui_formthemkhach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:gui_formthemkhach.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_quanlyusers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_quanlythongsodonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_quanlythongsodonhang.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|d:\\h\u1ECDc k\u1EF3 5\\c\u00F4ng ngh\u1EC7 ph\u1EA7n m\u1EC1m\\cuoiky\\ui_v1\\software-engineering\\gui\\uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_trangchu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\gui_main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -51,7 +55,7 @@
       "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:gui_formthemthongso - v2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|d:\\h\u1ECDc k\u1EF3 5\\c\u00F4ng ngh\u1EC7 ph\u1EA7n m\u1EC1m\\cuoiky\\ui_v1\\software-engineering\\gui\\uc_quanlyhopdong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\uc_quanlyhopdong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7973EFC4-AAF0-42E4-97D6-DC36DBA19329}|GUI.csproj|solutionrelative:uc_quanlyhopdong.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -215,7 +219,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -227,7 +231,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "UC_TrangChu.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_TrangChu.cs",
               "RelativeDocumentMoniker": "UC_TrangChu.cs",
@@ -239,15 +243,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UC_QuanLyThongSoDonHang.cs [Design]",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyThongSoDonHang.cs",
-              "RelativeDocumentMoniker": "UC_QuanLyThongSoDonHang.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyThongSoDonHang.cs [Design]",
-              "RelativeToolTip": "UC_QuanLyThongSoDonHang.cs [Design]",
+              "DocumentIndex": 6,
+              "Title": "UC_QuanLyUserS.cs [Design]",
+              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs",
+              "RelativeDocumentMoniker": "UC_QuanLyUserS.cs",
+              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs [Design]",
+              "RelativeToolTip": "UC_QuanLyUserS.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:20:24.468Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-17T06:56:14.21Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UC_QuanLyUserS.cs",
+              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs",
+              "RelativeDocumentMoniker": "UC_QuanLyUserS.cs",
+              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs",
+              "RelativeToolTip": "UC_QuanLyUserS.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T15:45:50.383Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UC_TrangChu.cs",
+              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_TrangChu.cs",
+              "RelativeDocumentMoniker": "UC_TrangChu.cs",
+              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_TrangChu.cs",
+              "RelativeToolTip": "UC_TrangChu.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwDcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T09:17:07.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UC_TrangChu.Designer.cs",
+              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_TrangChu.Designer.cs",
+              "RelativeDocumentMoniker": "UC_TrangChu.Designer.cs",
+              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_TrangChu.Designer.cs",
+              "RelativeToolTip": "UC_TrangChu.Designer.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAArwHsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-20T11:39:00.203Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GUI_FormThemKhach.cs [Design]",
+              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemKhach.cs",
+              "RelativeDocumentMoniker": "GUI_FormThemKhach.cs",
+              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemKhach.cs [Design]",
+              "RelativeToolTip": "GUI_FormThemKhach.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-15T14:36:22.89Z"
             },
             {
               "$type": "Document",
@@ -258,62 +310,22 @@
               "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyKhachHang.cs [Design]",
               "RelativeToolTip": "UC_QuanLyKhachHang.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T15:45:36.102Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-15T15:45:36.102Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UC_QuanLyUserS.cs [Design]",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs",
-              "RelativeDocumentMoniker": "UC_QuanLyUserS.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs [Design]",
-              "RelativeToolTip": "UC_QuanLyUserS.cs [Design]",
+              "DocumentIndex": 7,
+              "Title": "UC_QuanLyThongSoDonHang.cs [Design]",
+              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyThongSoDonHang.cs",
+              "RelativeDocumentMoniker": "UC_QuanLyThongSoDonHang.cs",
+              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyThongSoDonHang.cs [Design]",
+              "RelativeToolTip": "UC_QuanLyThongSoDonHang.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T06:56:14.21Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-18T01:20:24.468Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UC_QuanLyUserS.cs",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs",
-              "RelativeDocumentMoniker": "UC_QuanLyUserS.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.cs",
-              "RelativeToolTip": "UC_QuanLyUserS.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T15:45:50.383Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GUI_FormThemKhach.cs [Design]",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemKhach.cs",
-              "RelativeDocumentMoniker": "GUI_FormThemKhach.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemKhach.cs [Design]",
-              "RelativeToolTip": "GUI_FormThemKhach.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T14:36:22.89Z",
-              "EditorCaption": " [Design]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UC_TrangChu.cs",
-              "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_TrangChu.cs",
-              "RelativeDocumentMoniker": "UC_TrangChu.cs",
-              "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_TrangChu.cs",
-              "RelativeToolTip": "UC_TrangChu.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAmwBoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-19T09:17:07.997Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "UC_QuanLyThongSoDonHang.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyThongSoDonHang.cs",
               "RelativeDocumentMoniker": "UC_QuanLyThongSoDonHang.cs",
@@ -321,36 +333,33 @@
               "RelativeToolTip": "UC_QuanLyThongSoDonHang.cs",
               "ViewState": "AgIAAJgAAAAAAAAAAAApwOcAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:21:30.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-18T01:21:30.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "GUI_main.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_main.cs",
               "RelativeDocumentMoniker": "GUI_main.cs",
               "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_main.cs [Design]",
               "RelativeToolTip": "GUI_main.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T14:05:55.038Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-15T14:05:55.038Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "GUI_FormThemThongSo - v2.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemThongSo - v2.cs",
               "RelativeDocumentMoniker": "GUI_FormThemThongSo - v2.cs",
               "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemThongSo - v2.cs [Design]",
               "RelativeToolTip": "GUI_FormThemThongSo - v2.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:20:10.21Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-18T01:20:10.21Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UC_QuanLyHopDong.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyHopDong.cs",
               "RelativeDocumentMoniker": "UC_QuanLyHopDong.cs",
@@ -358,48 +367,44 @@
               "RelativeToolTip": "UC_QuanLyHopDong.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T15:45:31.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-15T15:45:31.771Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "UC_QuanLyDonHang.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyDonHang.cs",
               "RelativeDocumentMoniker": "UC_QuanLyDonHang.cs",
               "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyDonHang.cs [Design]",
               "RelativeToolTip": "UC_QuanLyDonHang.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T14:23:08.716Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-15T14:23:08.716Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "UC_QuanLyHopDong.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyHopDong.cs",
               "RelativeDocumentMoniker": "UC_QuanLyHopDong.cs",
               "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyHopDong.cs [Design]",
               "RelativeToolTip": "UC_QuanLyHopDong.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T14:38:50.88Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-15T14:38:50.88Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "GUI_FormThemThongSo.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemThongSo.cs",
               "RelativeDocumentMoniker": "GUI_FormThemThongSo.cs",
               "ToolTip": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemThongSo.cs [Design]",
               "RelativeToolTip": "GUI_FormThemThongSo.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:20:12.325Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-10-18T01:20:12.325Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "GUI_main.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_main.cs",
               "RelativeDocumentMoniker": "GUI_main.cs",
@@ -407,12 +412,11 @@
               "RelativeToolTip": "GUI_main.cs",
               "ViewState": "AgIAAFsBAAAAAAAAAAAuwGoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T14:19:44.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-15T14:19:44.638Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "BLL.csproj",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\BLL\\BLL.csproj",
               "RelativeDocumentMoniker": "..\\BLL\\BLL.csproj",
@@ -424,7 +428,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\DAL\\Class1.cs",
               "RelativeDocumentMoniker": "..\\DAL\\Class1.cs",
@@ -432,11 +436,12 @@
               "RelativeToolTip": "..\\DAL\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T07:09:44.658Z"
+              "WhenOpened": "2025-10-18T07:09:44.658Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "UC_ThongKe.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_ThongKe.cs",
               "RelativeDocumentMoniker": "UC_ThongKe.cs",
@@ -447,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "UC_ChinhSuaThongTin.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_ChinhSuaThongTin.cs",
               "RelativeDocumentMoniker": "UC_ChinhSuaThongTin.cs",
@@ -458,7 +463,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "GUI_main.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_main.Designer.cs",
               "RelativeDocumentMoniker": "GUI_main.Designer.cs",
@@ -466,12 +471,11 @@
               "RelativeToolTip": "GUI_main.Designer.cs",
               "ViewState": "AgIAAGsBAAAAAAAAAAAlwHYBAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T15:53:36.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-15T15:53:36.546Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Class1.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\BLL\\Class1.cs",
               "RelativeDocumentMoniker": "..\\BLL\\Class1.cs",
@@ -479,11 +483,12 @@
               "RelativeToolTip": "..\\BLL\\Class1.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T07:09:07.644Z"
+              "WhenOpened": "2025-10-18T07:09:07.644Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "UC_QuanLyKhachHang.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyKhachHang.Designer.cs",
               "RelativeDocumentMoniker": "UC_QuanLyKhachHang.Designer.cs",
@@ -491,12 +496,11 @@
               "RelativeToolTip": "UC_QuanLyKhachHang.Designer.cs",
               "ViewState": "AgIAALYAAAAAAAAAAAAAAMQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:49:35.307Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-18T01:49:35.307Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "UC_ThongKe.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_ThongKe.Designer.cs",
               "RelativeDocumentMoniker": "UC_ThongKe.Designer.cs",
@@ -508,7 +512,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "UC_ChinhSuaThongTin.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_ChinhSuaThongTin.Designer.cs",
               "RelativeDocumentMoniker": "UC_ChinhSuaThongTin.Designer.cs",
@@ -520,7 +524,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "UC_QuanLyHopDong.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyHopDong.Designer.cs",
               "RelativeDocumentMoniker": "UC_QuanLyHopDong.Designer.cs",
@@ -532,7 +536,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "UC_QuanLyUserS.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyUserS.Designer.cs",
               "RelativeDocumentMoniker": "UC_QuanLyUserS.Designer.cs",
@@ -540,12 +544,11 @@
               "RelativeToolTip": "UC_QuanLyUserS.Designer.cs",
               "ViewState": "AgIAAKgBAAAAAAAAAAAQwLUBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:50:02.008Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-18T01:50:02.008Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "UC_QuanLyDonHang.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyDonHang.Designer.cs",
               "RelativeDocumentMoniker": "UC_QuanLyDonHang.Designer.cs",
@@ -553,12 +556,11 @@
               "RelativeToolTip": "UC_QuanLyDonHang.Designer.cs",
               "ViewState": "AgIAAFsCAAAAAAAAAAAAAGkCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:48:12.209Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-18T01:48:12.209Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "UC_QuanLyThongSoDonHang.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyThongSoDonHang.Designer.cs",
               "RelativeDocumentMoniker": "UC_QuanLyThongSoDonHang.Designer.cs",
@@ -566,12 +568,11 @@
               "RelativeToolTip": "UC_QuanLyThongSoDonHang.Designer.cs",
               "ViewState": "AgIAAAcBAAAAAAAAAAAAABEBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-18T01:26:22.656Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-18T01:26:22.656Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "UC_PopupThongBao.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_PopupThongBao.cs",
               "RelativeDocumentMoniker": "UC_PopupThongBao.cs",
@@ -583,7 +584,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "UC_PopupThongBao.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_PopupThongBao.cs",
               "RelativeDocumentMoniker": "UC_PopupThongBao.cs",
@@ -594,7 +595,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "UC_PopupThongBao.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_PopupThongBao.Designer.cs",
               "RelativeDocumentMoniker": "UC_PopupThongBao.Designer.cs",
@@ -606,7 +607,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "UC_QuanLyKhachHang.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyKhachHang.cs",
               "RelativeDocumentMoniker": "UC_QuanLyKhachHang.cs",
@@ -614,12 +615,11 @@
               "RelativeToolTip": "UC_QuanLyKhachHang.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T14:21:36.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-15T14:21:36.667Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 33,
               "Title": "GUI_FormThemDonHang.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemDonHang.cs",
               "RelativeDocumentMoniker": "GUI_FormThemDonHang.cs",
@@ -630,7 +630,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 34,
               "Title": "GUI_Form_Them_HopDong.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_Them_HopDong.cs",
               "RelativeDocumentMoniker": "GUI_Form_Them_HopDong.cs",
@@ -641,7 +641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 35,
               "Title": "GUI_Form_DangNhap_SMS.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_SMS.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_SMS.cs",
@@ -652,7 +652,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 36,
               "Title": "GUI_Form_DangNhap_OTP.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_OTP.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_OTP.cs",
@@ -663,7 +663,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 37,
               "Title": "GUI_Form_DangNhap_Moi.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_Moi.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_Moi.cs",
@@ -674,7 +674,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 38,
               "Title": "GUI_Form_DangNhap.cs [Design]",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap.cs",
@@ -685,7 +685,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 39,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -697,7 +697,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "GUI_Form_DangNhap_OTP.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_OTP.Designer.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_OTP.Designer.cs",
@@ -709,7 +709,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "GUI_Form_DangNhap_SMS.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_SMS.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_SMS.cs",
@@ -721,7 +721,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "GUI_Form_DangNhap_SMS.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_SMS.Designer.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_SMS.Designer.cs",
@@ -733,7 +733,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "GUI_Form_DangNhap_OTP.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_OTP.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_OTP.cs",
@@ -745,7 +745,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "GUI_Form_DangNhap_Moi.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_Moi.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_Moi.cs",
@@ -757,7 +757,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "GUI_Form_DangNhap_Moi.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap_Moi.Designer.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap_Moi.Designer.cs",
@@ -769,7 +769,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "GUI_Form_DangNhap.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap.cs",
@@ -781,7 +781,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "GUI_Form_DangNhap.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_Form_DangNhap.Designer.cs",
               "RelativeDocumentMoniker": "GUI_Form_DangNhap.Designer.cs",
@@ -793,7 +793,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "UC_ChinhSuaThongTin.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_ChinhSuaThongTin.cs",
               "RelativeDocumentMoniker": "UC_ChinhSuaThongTin.cs",
@@ -805,7 +805,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "UC_ThongKe.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_ThongKe.cs",
               "RelativeDocumentMoniker": "UC_ThongKe.cs",
@@ -817,7 +817,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "UC_QuanLyDonHang.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\UC_QuanLyDonHang.cs",
               "RelativeDocumentMoniker": "UC_QuanLyDonHang.cs",
@@ -825,12 +825,11 @@
               "RelativeToolTip": "UC_QuanLyDonHang.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T14:29:54.177Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-15T14:29:54.177Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "GUI_FormThemDonHang.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemDonHang.cs",
               "RelativeDocumentMoniker": "GUI_FormThemDonHang.cs",
@@ -842,7 +841,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "GUI_FormThemDonHang.Designer.cs",
               "DocumentMoniker": "D:\\H\u1ECCC K\u1EF2 5\\C\u00D4NG NGH\u1EC6 PH\u1EA6N M\u1EC0M\\CUOIKY\\UI_V1\\Software-Engineering\\GUI\\GUI_FormThemDonHang.Designer.cs",
               "RelativeDocumentMoniker": "GUI_FormThemDonHang.Designer.cs",
