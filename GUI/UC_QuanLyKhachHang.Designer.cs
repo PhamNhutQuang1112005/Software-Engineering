@@ -56,7 +56,7 @@ namespace GUI
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(675, 73);
+            this.guna2TextBox1.Location = new System.Drawing.Point(618, 74);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -79,9 +79,9 @@ namespace GUI
             this.guna2Button3.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(416, 73);
+            this.guna2Button3.Location = new System.Drawing.Point(427, 74);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button3.Size = new System.Drawing.Size(142, 36);
             this.guna2Button3.TabIndex = 48;
             this.guna2Button3.Text = "Sửa";
             // 
@@ -98,9 +98,9 @@ namespace GUI
             this.guna2Button2.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(257, 73);
+            this.guna2Button2.Location = new System.Drawing.Point(236, 74);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button2.Size = new System.Drawing.Size(142, 36);
             this.guna2Button2.TabIndex = 47;
             this.guna2Button2.Text = "Xóa";
             // 
@@ -118,9 +118,9 @@ namespace GUI
             this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(100, 73);
+            this.guna2Button1.Location = new System.Drawing.Point(45, 74);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button1.Size = new System.Drawing.Size(142, 36);
             this.guna2Button1.TabIndex = 46;
             this.guna2Button1.Text = "Thêm";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -149,12 +149,12 @@ namespace GUI
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(10, 221);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(10, 186);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersVisible = false;
             this.guna2DataGridView1.RowHeadersWidth = 51;
             this.guna2DataGridView1.RowTemplate.Height = 24;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(1119, 397);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(972, 392);
             this.guna2DataGridView1.TabIndex = 50;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -191,7 +191,7 @@ namespace GUI
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_QuanLyKhachHang";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(1139, 628);
+            this.Size = new System.Drawing.Size(992, 588);
             this.Load += new System.EventHandler(this.UC_QuanLyKhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
             this.ResumeLayout(false);

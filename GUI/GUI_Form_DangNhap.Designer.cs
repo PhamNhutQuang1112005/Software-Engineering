@@ -38,7 +38,6 @@
             this.text_chaomung = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.nhap_matkhau = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.captcha = new System.Windows.Forms.WebBrowser();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.view_password = new Guna.UI2.WinForms.Guna2PictureBox();
             this.hide_password = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -96,7 +95,7 @@
             this.btn_dang_nhap.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_dang_nhap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btn_dang_nhap.ForeColor = System.Drawing.Color.Black;
-            this.btn_dang_nhap.Location = new System.Drawing.Point(232, 537);
+            this.btn_dang_nhap.Location = new System.Drawing.Point(229, 483);
             this.btn_dang_nhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_dang_nhap.Name = "btn_dang_nhap";
             this.btn_dang_nhap.Size = new System.Drawing.Size(180, 46);
@@ -167,15 +166,6 @@
             this.label1.Size = new System.Drawing.Size(98, 15);
             this.label1.TabIndex = 13;
             this.label1.Text = "Quên mật khẩu?";
-            // 
-            // captcha
-            // 
-            this.captcha.Location = new System.Drawing.Point(202, 472);
-            this.captcha.Margin = new System.Windows.Forms.Padding(4);
-            this.captcha.MinimumSize = new System.Drawing.Size(27, 25);
-            this.captcha.Name = "captcha";
-            this.captcha.Size = new System.Drawing.Size(237, 44);
-            this.captcha.TabIndex = 14;
             // 
             // guna2CirclePictureBox1
             // 
@@ -260,7 +250,6 @@
             this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.view_password);
             this.Controls.Add(this.hide_password);
-            this.Controls.Add(this.captcha);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.anh_minhhoa);
             this.Controls.Add(this.nhap_matkhau);
@@ -296,7 +285,6 @@
         private Guna.UI2.WinForms.Guna2PictureBox anh_minhhoa;
         
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.WebBrowser captcha;
         private Guna.UI2.WinForms.Guna2PictureBox hide_password;
         private Guna.UI2.WinForms.Guna2PictureBox view_password;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;

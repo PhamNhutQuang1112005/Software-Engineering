@@ -184,6 +184,7 @@
             // 
             // btnQuanLyUsers
             // 
+            this.btnQuanLyUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnQuanLyUsers.BackColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUsers.BorderColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUsers.BorderRadius = 25;
@@ -193,9 +194,9 @@
             this.btnQuanLyUsers.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnQuanLyUsers.ForeColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUsers.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnQuanLyUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnQuanLyUsers.Image")));
+            this.btnQuanLyUsers.Image = global::GUI.Properties.Resources.people;
             this.btnQuanLyUsers.ImageSize = new System.Drawing.Size(24, 24);
-            this.btnQuanLyUsers.Location = new System.Drawing.Point(10, 374);
+            this.btnQuanLyUsers.Location = new System.Drawing.Point(10, 435);
             this.btnQuanLyUsers.Name = "btnQuanLyUsers";
             this.btnQuanLyUsers.PressedColor = System.Drawing.Color.Transparent;
             this.btnQuanLyUsers.Size = new System.Drawing.Size(50, 50);

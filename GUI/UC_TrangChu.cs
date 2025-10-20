@@ -32,14 +32,7 @@ namespace GUI
 
         "<b>GreenSol</b> được thành lập để giải quyết những khó khăn thường gặp trong việc quản lý hợp đồng, đơn hàng và lịch trình quan trắc. " +
         "Thay vì phụ thuộc vào giấy tờ phức tạp hay bảng tính thủ công dễ sai sót, chúng tôi mang đến một nền tảng số hóa toàn diện – " +
-        "giúp bạn tiết kiệm thời gian, nâng cao độ tin cậy và đảm bảo tuân thủ quy định pháp luật.<br><br>" +
-
-        "Sứ mệnh của <b>GreenSol</b> là xây dựng một hệ sinh thái quản lý hiện đại, minh bạch và thân thiện, góp phần hỗ trợ doanh nghiệp " +
-        "hoạt động hiệu quả hơn, đồng thời hướng tới một hành tinh sạch và bền vững. Trong tương lai, <b>GreenSol</b> sẽ không ngừng mở rộng, " +
-        "tích hợp thêm nhiều tính năng thông minh, để trở thành người bạn đồng hành tin cậy của bạn trên hành trình bảo vệ môi trường.<br><br>" +
-
-        "Khi bắt đầu sử dụng <b>GreenSol</b>, bạn không chỉ đang quản lý công việc hiệu quả hơn, mà còn cùng chúng tôi đặt một viên gạch vững chắc " +
-        "cho tương lai xanh – nơi dữ liệu và công nghệ phục vụ cho sự phát triển bền vững.";
+        "giúp bạn tiết kiệm thời gian, nâng cao độ tin cậy và đảm bảo tuân thủ quy định pháp luật.<br><br>";
 
     // Tạo label HTML và chèn nội dung
     var html = new Guna.UI2.WinForms.Guna2HtmlLabel
@@ -50,7 +43,7 @@ namespace GUI
         Dock = DockStyle.Fill,
         Padding = new Padding(2, 0, 2, 4),
         // Nếu muốn cỡ chữ lớn hơn, tăng size dưới đây
-        Font = new Font("Segoe UI", 10f),
+        Font = new Font("Segoe UI", 16f),
         Text = introHtml,
         ForeColor = Color.White
     };
@@ -61,6 +54,9 @@ namespace GUI
     gradient_box_message.Resize += (s, _e) => gradient_box_message.Invalidate();
 }
 
+        private void slogan3_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

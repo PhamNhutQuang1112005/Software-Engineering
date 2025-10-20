@@ -75,7 +75,7 @@ namespace GUI
             this.label3.BackColor = System.Drawing.Color.SeaGreen;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(383, 109);
+            this.label3.Location = new System.Drawing.Point(519, 106);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.label3.Size = new System.Drawing.Size(138, 28);
@@ -89,7 +89,7 @@ namespace GUI
             this.label2.BackColor = System.Drawing.Color.SeaGreen;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(186, 109);
+            this.label2.Location = new System.Drawing.Point(266, 106);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.label2.Size = new System.Drawing.Size(85, 28);
@@ -103,10 +103,10 @@ namespace GUI
             this.label4.BackColor = System.Drawing.Color.SeaGreen;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(661, 104);
+            this.label4.Location = new System.Drawing.Point(777, 106);
             this.label4.Name = "label4";
             this.label4.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.label4.Size = new System.Drawing.Size(182, 28);
+            this.label4.Size = new System.Drawing.Size(166, 28);
             this.label4.TabIndex = 37;
             this.label4.Text = "Phòng phụ trách";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,9 +126,9 @@ namespace GUI
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(630, 101);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(724, 101);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
-            this.guna2ComboBox3.Size = new System.Drawing.Size(256, 36);
+            this.guna2ComboBox3.Size = new System.Drawing.Size(247, 36);
             this.guna2ComboBox3.TabIndex = 36;
             this.guna2ComboBox3.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox3_SelectedIndexChanged);
             // 
@@ -146,9 +146,9 @@ namespace GUI
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(365, 104);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(452, 101);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(196, 36);
+            this.guna2ComboBox2.Size = new System.Drawing.Size(247, 36);
             this.guna2ComboBox2.TabIndex = 34;
             this.guna2ComboBox2.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox2_SelectedIndexChanged);
             // 
@@ -163,7 +163,7 @@ namespace GUI
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel3);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Location = new System.Drawing.Point(10, 194);
+            this.guna2Panel1.Location = new System.Drawing.Point(21, 194);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(532, 230);
             this.guna2Panel1.TabIndex = 38;
@@ -174,7 +174,7 @@ namespace GUI
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(118, 126);
+            this.guna2HtmlLabel6.Location = new System.Drawing.Point(24, 130);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
             this.guna2HtmlLabel6.Size = new System.Drawing.Size(170, 25);
             this.guna2HtmlLabel6.TabIndex = 5;
@@ -186,7 +186,7 @@ namespace GUI
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(118, 186);
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(24, 188);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             this.guna2HtmlLabel5.Size = new System.Drawing.Size(143, 25);
             this.guna2HtmlLabel5.TabIndex = 4;
@@ -198,7 +198,7 @@ namespace GUI
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(317, 55);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(317, 74);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
             this.guna2HtmlLabel4.Size = new System.Drawing.Size(98, 25);
             this.guna2HtmlLabel4.TabIndex = 3;
@@ -210,7 +210,7 @@ namespace GUI
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(118, 55);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(24, 74);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(132, 25);
             this.guna2HtmlLabel3.TabIndex = 2;
@@ -222,7 +222,7 @@ namespace GUI
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(317, 13);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(317, 17);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(111, 25);
             this.guna2HtmlLabel2.TabIndex = 1;
@@ -234,7 +234,7 @@ namespace GUI
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(118, 13);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(24, 17);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(114, 25);
             this.guna2HtmlLabel1.TabIndex = 0;
@@ -255,9 +255,9 @@ namespace GUI
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(164, 104);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(180, 101);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(140, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(247, 36);
             this.guna2ComboBox1.TabIndex = 32;
             this.guna2ComboBox1.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
             // 
@@ -266,7 +266,7 @@ namespace GUI
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(46, 109);
+            this.label1.Location = new System.Drawing.Point(57, 109);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 25);
             this.label1.TabIndex = 31;
@@ -287,7 +287,7 @@ namespace GUI
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(640, 37);
+            this.guna2TextBox1.Location = new System.Drawing.Point(632, 37);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -526,9 +526,9 @@ namespace GUI
             this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(53, 37);
+            this.guna2Button1.Location = new System.Drawing.Point(64, 37);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button1.Size = new System.Drawing.Size(135, 36);
             this.guna2Button1.TabIndex = 24;
             this.guna2Button1.Text = "Thêm";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -545,9 +545,9 @@ namespace GUI
             this.guna2Button2.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(189, 37);
+            this.guna2Button2.Location = new System.Drawing.Point(206, 37);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button2.Size = new System.Drawing.Size(135, 36);
             this.guna2Button2.TabIndex = 25;
             this.guna2Button2.Text = "Xóa";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
@@ -564,9 +564,9 @@ namespace GUI
             this.guna2Button3.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
-            this.guna2Button3.Location = new System.Drawing.Point(336, 37);
+            this.guna2Button3.Location = new System.Drawing.Point(348, 37);
             this.guna2Button3.Name = "guna2Button3";
-            this.guna2Button3.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button3.Size = new System.Drawing.Size(135, 36);
             this.guna2Button3.TabIndex = 26;
             this.guna2Button3.Text = "Sửa";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
@@ -583,7 +583,7 @@ namespace GUI
             this.guna2Button4.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Location = new System.Drawing.Point(470, 37);
+            this.guna2Button4.Location = new System.Drawing.Point(490, 37);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(135, 36);
             this.guna2Button4.TabIndex = 29;
@@ -611,7 +611,7 @@ namespace GUI
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_QuanLyDonHang";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(973, 796);
+            this.Size = new System.Drawing.Size(992, 796);
             this.Load += new System.EventHandler(this.UC_QuanLyDonHang_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();

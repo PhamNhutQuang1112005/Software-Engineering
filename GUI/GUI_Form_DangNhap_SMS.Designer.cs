@@ -169,9 +169,9 @@
             this.sdt_email.Location = new System.Drawing.Point(141, 284);
             this.sdt_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sdt_email.Name = "sdt_email";
-            this.sdt_email.Size = new System.Drawing.Size(153, 17);
+            this.sdt_email.Size = new System.Drawing.Size(109, 17);
             this.sdt_email.TabIndex = 18;
-            this.sdt_email.Text = "Số điện thoại/Email:";
+            this.sdt_email.Text = "Số điện thoại:\r\n";
             // 
             // GUI_Form_DangNhap_SMS
             // 

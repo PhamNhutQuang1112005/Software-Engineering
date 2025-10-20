@@ -47,7 +47,7 @@
             slogan4.BackColor = System.Drawing.Color.Transparent;
             slogan4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             slogan4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(220)))), ((int)(((byte)(89)))));
-            slogan4.Location = new System.Drawing.Point(673, 158);
+            slogan4.Location = new System.Drawing.Point(642, 158);
             slogan4.Name = "slogan4";
             slogan4.Size = new System.Drawing.Size(242, 48);
             slogan4.TabIndex = 19;
@@ -65,7 +65,8 @@
             slogan3.Size = new System.Drawing.Size(199, 48);
             slogan3.TabIndex = 18;
             slogan3.TabStop = false;
-            slogan3.Text = "...Giải pháp";
+            slogan3.Text = "Giải pháp";
+            slogan3.Click += new System.EventHandler(this.slogan3_Click);
             // 
             // guna2HtmlLabel2
             // 
@@ -118,7 +119,7 @@
             this.logo.Location = new System.Drawing.Point(85, 38);
             this.logo.Name = "logo";
             this.logo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.logo.Size = new System.Drawing.Size(183, 168);
+            this.logo.Size = new System.Drawing.Size(183, 183);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 15;
             this.logo.TabStop = false;

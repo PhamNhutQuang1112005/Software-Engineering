@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>GUI.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
@@ -39,6 +42,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -288,6 +292,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icon\Sườn UI %28light%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\people.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\dark mode config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\don hang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\hop dong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\khach hang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\light mode config.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\quan ly user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\quan ly users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\thong bao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\thong ke don hang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\thong ke tien do.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icon\trang chu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

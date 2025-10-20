@@ -63,7 +63,7 @@ namespace GUI
                 BorderThickness = 1,
                 BorderColor = Color.FromArgb(200, 200, 200),
                 Padding = new Padding(10),
-                Size = new Size(380, 80),
+                Size = new Size(380, 110),
                 BackColor = Color.FromArgb(35, 60, 45),
                 Margin = new Padding(5)
             };
