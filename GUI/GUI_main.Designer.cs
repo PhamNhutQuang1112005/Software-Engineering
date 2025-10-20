@@ -67,7 +67,7 @@
             this.contentPanel.BackColor = System.Drawing.Color.Transparent;
             this.contentPanel.BackgroundImage = global::GUI.Properties.Resources.Sườn_UI__dark_;
             this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contentPanel.Location = new System.Drawing.Point(76, 59);
+            this.contentPanel.Location = new System.Drawing.Point(70, 56);
             this.contentPanel.Name = "contentPanel";
             this.contentPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.contentPanel.Size = new System.Drawing.Size(992, 497);

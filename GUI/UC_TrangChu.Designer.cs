@@ -41,22 +41,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
-            // gradient_box_message
-            // 
-            this.gradient_box_message.BackColor = System.Drawing.Color.Transparent;
-            this.gradient_box_message.BorderRadius = 20;
-            this.gradient_box_message.BorderThickness = 1;
-            this.gradient_box_message.FillColor = System.Drawing.Color.Black;
-            this.gradient_box_message.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.gradient_box_message.FillColor3 = System.Drawing.Color.Transparent;
-            this.gradient_box_message.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.gradient_box_message.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gradient_box_message.Location = new System.Drawing.Point(0, 242);
-            this.gradient_box_message.Name = "gradient_box_message";
-            this.gradient_box_message.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.gradient_box_message.Size = new System.Drawing.Size(925, 397);
-            this.gradient_box_message.TabIndex = 20;
-            // 
             // slogan4
             // 
             slogan4.AutoSize = false;
@@ -109,6 +93,24 @@
             guna2HtmlLabel3.TabStop = false;
             guna2HtmlLabel3.Text = "Gốc rễ";
             // 
+            // gradient_box_message
+            // 
+            this.gradient_box_message.AutoScroll = true;
+            this.gradient_box_message.BackColor = System.Drawing.Color.Transparent;
+            this.gradient_box_message.BorderRadius = 20;
+            this.gradient_box_message.BorderThickness = 1;
+            this.gradient_box_message.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.gradient_box_message.FillColor = System.Drawing.Color.Black;
+            this.gradient_box_message.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.gradient_box_message.FillColor3 = System.Drawing.Color.Transparent;
+            this.gradient_box_message.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.gradient_box_message.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gradient_box_message.Location = new System.Drawing.Point(0, 244);
+            this.gradient_box_message.Name = "gradient_box_message";
+            this.gradient_box_message.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.gradient_box_message.Size = new System.Drawing.Size(928, 284);
+            this.gradient_box_message.TabIndex = 20;
+            // 
             // logo
             // 
             this.logo.Image = global::GUI.Properties.Resources.Green_Sol;
@@ -134,7 +136,7 @@
             this.Controls.Add(this.logo);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UC_TrangChu";
-            this.Size = new System.Drawing.Size(928, 642);
+            this.Size = new System.Drawing.Size(928, 528);
             this.Load += new System.EventHandler(this.UC_TrangChu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);

@@ -10,9 +10,7 @@ namespace GUI
 {
     public partial class GUI_main : Form
     {
-        // ==============
-        // Biến lớp
-        // ==============
+        // ============== Biến lớp ==============
         private bool isDark = true;
         private List<Guna2Button> sidebarButtons = new List<Guna2Button>();
         private UserControl currentUC;
@@ -28,18 +26,16 @@ namespace GUI
         private UC_TrangChu ucTrangChu;
 
         // Lớp layout riêng
-        private Panel backgroundLayer;
-        private Panel contentLayer;
-        private PictureBox logoCenter;
+        private Panel backgroundLayer;   // nền ảnh
+        private Panel contentLayer;      // chứa UC
+        private PictureBox logoCenter;   // logo ở giữa
 
-        // ==============
-        // Constructor
-        // ==============
+        // ============== Constructor ==============
         public GUI_main()
         {
             InitializeComponent();
 
-            // Bật double buffering cho Form và các panel
+            // Double buffering toàn form + panel chính
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
             SetDoubleBuffered(mainPanel);
@@ -47,7 +43,7 @@ namespace GUI
             SetDoubleBuffered(sidebar);
             SetDoubleBuffered(header);
 
-            // Tắt shadow của Guna UI2
+            // Tắt shadow của một số control Guna
             TryDisableShadow(mainPanel);
             TryDisableShadow(contentPanel);
             TryDisableShadow(sidebar);
@@ -56,6 +52,7 @@ namespace GUI
             CacheSidebarButtons();
         }
 
+        // Chống nhấp nháy cho toàn form
         protected override CreateParams CreateParams
         {
             get
@@ -66,108 +63,125 @@ namespace GUI
             }
         }
 
-        // ==============
-        // Form Load
-        // ==============
+        // ============== Form Load ==============
         private void GUI_main_Load(object sender, EventArgs e)
         {
-            
-            InitContentLayout(); // tạo layout chuẩn
-            ApplyDarkTheme();
+            InitContentLayout(); // tạo layout chuẩn cho contentPanel
+            ApplyDarkTheme();    // mặc định dark
+            // Mặc định mở trang chủ (nếu muốn)
+            if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
+            ShowControl(ucTrangChu);
         }
 
-        // ============================
-        // Khởi tạo layout contentPanel
-        // ============================
+        // ============================ Khởi tạo layout contentPanel ============================
         private void InitContentLayout()
-{
-    // Nếu đã khởi tạo rồi thì không cần tạo lại
-    if (backgroundLayer != null && contentLayer != null && logoCenter != null)
-        return;
-
-    contentPanel.Controls.Clear();
-
-    // 1️⃣ Tạo lớp nền
-    backgroundLayer = new Panel
-    {
-        Dock = DockStyle.Fill,
-        BackgroundImage = Properties.Resources.background__dark_,
-        BackgroundImageLayout = ImageLayout.Stretch
-    };
-
-    // 2️⃣ Tạo logo giữa
-    logoCenter = new PictureBox
-    {
-        Image = Properties.Resources.logo_bg_removebg_preview,
-        SizeMode = PictureBoxSizeMode.Zoom,
-        Size = new Size(280, 280),
-        BackColor = Color.Transparent
-    };
-
-    // 3️⃣ Tạo lớp chứa UC
-    contentLayer = new Panel
-    {
-        Dock = DockStyle.Fill,
-        BackColor = Color.Transparent
-    };
-
-    // 4️⃣ Thêm các lớp theo thứ tự: nền -> logo -> UC
-    contentPanel.Controls.Add(backgroundLayer);
-    contentPanel.Controls.Add(logoCenter);
-    contentPanel.Controls.Add(contentLayer);
-
-    // 5️⃣ Canh logo giữa panel
-    contentPanel.Resize += (s, e) =>
-    {
-        if (logoCenter != null)
         {
-            logoCenter.Location = new Point(
-                (contentPanel.Width - logoCenter.Width) / 2,
-                (contentPanel.Height - logoCenter.Height) / 2
-            );
+            if (contentPanel == null) return;
+
+            contentPanel.SuspendLayout();
+            try
+            {
+                contentPanel.Controls.Clear();
+
+                // Lớp nền
+                backgroundLayer = new Panel
+                {
+                    Dock = DockStyle.Fill,
+                    BackgroundImageLayout = ImageLayout.Stretch
+                };
+                SetDoubleBuffered(backgroundLayer);
+
+                // Lớp nội dung (trong suốt)
+                contentLayer = new Panel
+                {
+                    Dock = DockStyle.Fill,
+                    BackColor = Color.Transparent
+                };
+                SetDoubleBuffered(contentLayer);
+
+                // Logo trung tâm (hiện khi ở Trang chủ)
+                logoCenter = new PictureBox
+                {
+                    SizeMode = PictureBoxSizeMode.Zoom,
+                    Anchor = AnchorStyles.None,
+                    BackColor = Color.Transparent,
+                    Image = Properties.Resources.logo_bg_removebg_preview,
+                    Size = new Size(360, 240) // tùy chỉnh
+                };
+
+                
+
+                // Ghép lớp: nền -> nội dung -> logo (logo nằm trên contentLayer)
+                contentPanel.Controls.Add(contentLayer);
+                contentPanel.Controls.Add(backgroundLayer);
+        
+                contentPanel.PerformLayout();
+            }
+            finally
+            {
+                contentPanel.ResumeLayout(true);
+            }
         }
-    };
 
-    // 6️⃣ Đặt thứ tự hiển thị
-    backgroundLayer.SendToBack();  // nền dưới cùng
-    logoCenter.BringToFront();     // logo ở giữa
-    contentLayer.BringToFront();   // UC nằm trên cùng (nhưng có thể trong suốt)
-}
-
+        // ============================ Hiển thị UC ============================
         private void ShowControl(UserControl uc)
         {
-            if (uc == null) return;
+            if (uc == null || contentLayer == null) return;
 
-            if (!contentLayer.Controls.Contains(uc))
+            contentLayer.SuspendLayout();
+            try
             {
-                uc.Dock = DockStyle.Fill;
-                uc.AutoScaleMode = AutoScaleMode.None;
-                uc.BackColor = Color.Transparent;
-                contentLayer.Controls.Add(uc);
+                // Thêm UC nếu chưa có parent
+                if (uc.Parent != contentLayer)
+                {
+                    uc.Dock = DockStyle.Fill;
+                    uc.AutoScaleMode = AutoScaleMode.None;
+                    uc.BackColor = Color.Transparent;
+                    uc.Visible = false; // tạm ẩn tránh nháy
+                    contentLayer.Controls.Add(uc);
+                }
+
+                // Ẩn UC cũ
+                if (currentUC != null && currentUC != uc && !currentUC.IsDisposed)
+                    currentUC.Visible = false;
+
+                // Hiện UC mới
+                uc.Visible = true;
+                uc.BringToFront();
+                currentUC = uc;
+
+                // Logo chỉ hiện ở Trang chủ
+                bool isHome = (uc == ucTrangChu)
+                              || uc is UC_TrangChu
+                              || string.Equals(uc.Name, "UC_TrangChu", StringComparison.OrdinalIgnoreCase);
+
+                if (logoCenter != null && !logoCenter.IsDisposed)
+                    logoCenter.Visible = isHome;
             }
-
-            // Ẩn UC cũ
-            if (currentUC != null && currentUC != uc)
-                currentUC.Visible = false;
-
-            // Hiện UC mới
-            uc.Visible = true;
-            uc.BringToFront();
-
-            currentUC = uc;
-
-            // Ẩn logo khi không ở trang chủ
-            logoCenter.Visible = (uc == ucTrangChu);
+            finally
+            {
+                contentLayer.ResumeLayout(true);
+            }
         }
 
-        // ====================
-        // Theme (Dark / Light)
-        // ====================
+        // ==================== Theme (Dark / Light) ====================
         private void ApplyDarkTheme()
         {
-            mainPanel.BackgroundImage = Properties.Resources.background__dark_;
-            mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            // Nền cho contentPanel (không để ở mainPanel để tránh chồng)
+            if (contentPanel.BackgroundImage != null)
+            {
+                contentPanel.BackgroundImage = Properties.Resources.Sườn_UI__dark_;
+                contentPanel.BackgroundImageLayout = ImageLayout.Stretch; // hoặc Zoom
+            }
 
+            // Xóa nền chỗ khác để không chồng ảnh
+            if (mainPanel != null)
+            {
+                mainPanel.BackgroundImage = null;
+                mainPanel.BackgroundImageLayout = ImageLayout.None;
+            }
+
+            // Header / Sidebar
             header.FillColor = Color.FromArgb(151, 176, 103);
             header.FillColor2 = Color.FromArgb(47, 82, 73);
             lblUser.ForeColor = Color.White;
@@ -183,18 +197,26 @@ namespace GUI
             }
 
             guna2CircleButton1.Image = Properties.Resources.light_mode;
-            backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
-            if (backgroundLayer != null)
-    backgroundLayer.BackgroundImage = Properties.Resources.background__dark_;
-if (logoCenter != null)
-    logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
 
+            if (logoCenter != null)
+                logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
+
+            isDark = true;
         }
 
         private void ApplyLightTheme()
         {
-            mainPanel.BackgroundImage = Properties.Resources.background__light_;
-            mainPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            if (contentPanel != null)
+            {
+                contentPanel.BackgroundImage = Properties.Resources.Sườn_UI__light_;
+                contentPanel.BackgroundImageLayout = ImageLayout.Stretch; // hoặc Zoom
+            }
+
+            if (mainPanel != null)
+            {
+                mainPanel.BackgroundImage = null;
+                mainPanel.BackgroundImageLayout = ImageLayout.None;
+            }
 
             header.FillColor = ColorTranslator.FromHtml("#c6d870");
             header.FillColor2 = ColorTranslator.FromHtml("#eff5d2");
@@ -211,30 +233,28 @@ if (logoCenter != null)
             }
 
             guna2CircleButton1.Image = Properties.Resources.dark_mode;
-            backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
-            if (backgroundLayer != null)
-    backgroundLayer.BackgroundImage = Properties.Resources.background__light_;
-if (logoCenter != null)
-    logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
 
+            if (logoCenter != null)
+                logoCenter.Image = Properties.Resources.logo_bg_removebg_preview;
+
+            isDark = false;
         }
 
-        // =========================
-        // Helpers (Buffer + Shadow)
-        // =========================
+        // ========================= Helpers (Buffer + Shadow) =========================
         private void SetDoubleBuffered(Control c)
         {
+            if (c == null) return;
             try
             {
-                PropertyInfo pi = c.GetType().GetProperty("DoubleBuffered",
-                    BindingFlags.Instance | BindingFlags.NonPublic);
+                var pi = c.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
                 pi?.SetValue(c, true, null);
             }
-            catch { }
+            catch { /* ignore */ }
         }
 
         private void TryDisableShadow(Control c)
         {
+            if (c == null) return;
             try
             {
                 var prop = c.GetType().GetProperty("ShadowDecoration");
@@ -242,95 +262,86 @@ if (logoCenter != null)
                 var enabledProp = shadow?.GetType().GetProperty("Enabled");
                 enabledProp?.SetValue(shadow, false);
             }
-            catch { }
+            catch { /* ignore */ }
         }
 
         private void CacheSidebarButtons()
         {
-            sidebarButtons = sidebar.Controls.OfType<Guna2Button>().ToList();
+            sidebarButtons = GetAllDescendants(sidebar).OfType<Guna2Button>().ToList();
         }
 
-        // ===============
-        // Sidebar Buttons
-        // ===============
+        // Duyệt tất cả control con (kể cả lồng sâu)
+        private static IEnumerable<Control> GetAllDescendants(Control root)
+        {
+            if (root == null) yield break;
+            foreach (Control c in root.Controls)
+            {
+                yield return c;
+                foreach (var child in GetAllDescendants(c)) yield return child;
+            }
+        }
+
+        // =============== Sidebar Buttons ===============
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
-            if (isDark)
-            {
-                ApplyLightTheme();
-                isDark = false;
-            }
-            else
-            {
-                ApplyDarkTheme();
-                isDark = true;
-            }
+            if (isDark) ApplyLightTheme();
+            else ApplyDarkTheme();
         }
 
         private void btnTrangChu_Click(object sender, EventArgs e)
         {
-            if (ucTrangChu == null)
-                ucTrangChu = new UC_TrangChu();
+            if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
             ShowControl(ucTrangChu);
         }
 
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
-            if (ucQuanLyUsers == null)
-                ucQuanLyUsers = new UC_QuanLyUserS();
+            if (ucQuanLyUsers == null) ucQuanLyUsers = new UC_QuanLyUserS();
             ShowControl(ucQuanLyUsers);
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            if (ucQuanLyKhachHang == null)
-                ucQuanLyKhachHang = new UC_QuanLyKhachHang();
+            if (ucQuanLyKhachHang == null) ucQuanLyKhachHang = new UC_QuanLyKhachHang();
             ShowControl(ucQuanLyKhachHang);
         }
 
         private void btnDonHang_Click(object sender, EventArgs e)
         {
-            if (ucDonHang == null)
-                ucDonHang = new UC_QuanLyDonHang();
+            if (ucDonHang == null) ucDonHang = new UC_QuanLyDonHang();
             ShowControl(ucDonHang);
         }
 
         private void btnHopDong_Click(object sender, EventArgs e)
         {
-            if (ucQuanLyHopDong == null)
-                ucQuanLyHopDong = new UC_QuanLyHopDong();
+            if (ucQuanLyHopDong == null) ucQuanLyHopDong = new UC_QuanLyHopDong();
             ShowControl(ucQuanLyHopDong);
         }
 
         private void btnThongKeTienDo_Click(object sender, EventArgs e)
         {
-            if (ucThongKeDonHang == null)
-                ucThongKeDonHang = new UC_ThongKe();
+            if (ucThongKeDonHang == null) ucThongKeDonHang = new UC_ThongKe();
             ShowControl(ucThongKeDonHang);
         }
 
         private void btnThongKeDonHang_Click(object sender, EventArgs e)
         {
-            if (ucQuanLyThongSoDonHang == null)
-                ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
+            if (ucQuanLyThongSoDonHang == null) ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
             ShowControl(ucQuanLyThongSoDonHang);
         }
 
         private void btnQuanLyUser_Click(object sender, EventArgs e)
         {
-            if (ucChinhSuaThongTin == null)
-                ucChinhSuaThongTin = new UC_ChinhSuaThongTin();
+            if (ucChinhSuaThongTin == null) ucChinhSuaThongTin = new UC_ChinhSuaThongTin();
             ShowControl(ucChinhSuaThongTin);
         }
 
-        // =================
-        // Popup thông báo
-        // =================
+        // ================= Popup thông báo =================
         private void btnThongbao_Click(object sender, EventArgs e)
         {
-            UC_PopupThongBao popup = new UC_PopupThongBao();
+            var popup = new UC_PopupThongBao();
 
-            Form frm = new Form
+            var frm = new Form
             {
                 Size = popup.Size,
                 FormBorderStyle = FormBorderStyle.None,
@@ -343,8 +354,7 @@ if (logoCenter != null)
             };
             frm.Controls.Add(popup);
 
-            // Animation fade-in
-            Timer t = new Timer { Interval = 15 };
+            var t = new Timer { Interval = 15 };
             t.Tick += (s, ev) =>
             {
                 frm.Opacity += 0.05;
@@ -358,7 +368,7 @@ if (logoCenter != null)
 
         private void contentPanel_Paint(object sender, PaintEventArgs e)
         {
-
+            // Không cần vẽ tay, đã có backgroundLayer lo hình nền.
         }
     }
 }
