@@ -53,5 +53,15 @@ namespace GUI
         {
 
         }
+
+        private void matkhau_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void anh_minhhoa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

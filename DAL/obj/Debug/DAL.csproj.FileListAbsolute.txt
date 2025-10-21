@@ -1,0 +1,6 @@
+C:\CNPM\Software-Engineering\DAL\bin\Debug\DAL.dll
+C:\CNPM\Software-Engineering\DAL\bin\Debug\DAL.pdb
+C:\CNPM\Software-Engineering\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\CNPM\Software-Engineering\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\CNPM\Software-Engineering\DAL\obj\Debug\DAL.dll
+C:\CNPM\Software-Engineering\DAL\obj\Debug\DAL.pdb

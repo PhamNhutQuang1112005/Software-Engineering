@@ -344,5 +344,41 @@
       <Name>BLL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sườn UI %28dark%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nền trong khung form.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nền trong khung form1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sườn UI %28dark%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nền trong khung form2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nền trong khung form3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z7140709878752_be407ebe826c1b37377d585a67d297dd.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z7140716790575_90a11eab8848f44eab962e85f17d7de1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\z7140725321888_bda9f87c707acd69fb56bb7a71174795.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sườn UI %28dark%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sườn UI %28dark%293.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sườn UI %28dark%294.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

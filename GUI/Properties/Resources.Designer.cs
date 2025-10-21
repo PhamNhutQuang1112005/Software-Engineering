@@ -283,6 +283,46 @@ namespace GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap nền_trong_khung_form {
+            get {
+                object obj = ResourceManager.GetObject("nền trong khung form", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nền_trong_khung_form1 {
+            get {
+                object obj = ResourceManager.GetObject("nền trong khung form1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nền_trong_khung_form2 {
+            get {
+                object obj = ResourceManager.GetObject("nền trong khung form2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nền_trong_khung_form3 {
+            get {
+                object obj = ResourceManager.GetObject("nền trong khung form3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap people {
             get {
                 object obj = ResourceManager.GetObject("people", resourceCulture);
@@ -326,6 +366,56 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap Sườn_UI__dark_1 {
             get {
                 object obj = ResourceManager.GetObject("Sườn UI (dark)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sườn_UI__dark_2 {
+            get {
+                object obj = ResourceManager.GetObject("Sườn UI (dark)2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sườn_UI__dark_3 {
+            get {
+                object obj = ResourceManager.GetObject("Sườn UI (dark)3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sườn_UI__dark_4 {
+            get {
+                object obj = ResourceManager.GetObject("Sườn UI (dark)4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sườn_UI__dark_5 {
+            get {
+                object obj = ResourceManager.GetObject("Sườn UI (dark)5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sườn_UI__dark_6 {
+            get {
+                object obj = ResourceManager.GetObject("Sườn UI (dark)6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -416,6 +506,36 @@ namespace GUI.Properties {
         internal static System.Drawing.Bitmap view {
             get {
                 object obj = ResourceManager.GetObject("view", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z7140709878752_be407ebe826c1b37377d585a67d297dd {
+            get {
+                object obj = ResourceManager.GetObject("z7140709878752_be407ebe826c1b37377d585a67d297dd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z7140716790575_90a11eab8848f44eab962e85f17d7de1 {
+            get {
+                object obj = ResourceManager.GetObject("z7140716790575_90a11eab8848f44eab962e85f17d7de1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap z7140725321888_bda9f87c707acd69fb56bb7a71174795 {
+            get {
+                object obj = ResourceManager.GetObject("z7140725321888_bda9f87c707acd69fb56bb7a71174795", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -118,80 +118,23 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="light mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\light mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dark mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\dark mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cog-wheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cog-wheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Sườn UI (light)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\Sườn UI (light).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sườn UI (dark)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\Sườn UI (dark).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="thong ke tien do" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\thong ke tien do.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\logo bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="quan ly users" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\quan ly users.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hide" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sườn UI (light)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\Sườn UI (light).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="background [light]" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\background [light].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="view" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo_bg-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\logo_bg-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Green-Sol" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\Green-Sol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Untitled image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\Untitled image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background [dark]" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\background [dark].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="people" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\people.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background [dark]1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\background [dark].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="background [light]1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\background [light].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dark mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\dark mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dark mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\dark mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="don hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\don hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hide1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hop dong" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\hop dong.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="khach hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\khach hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="light mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\light mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="light mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\light mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\logo bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="nền trong khung form3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nền trong khung form3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo_bg-removebg-preview1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\logo_bg-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,31 +142,124 @@
   <data name="quan ly user" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\quan ly user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="quan ly users" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\quan ly users.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="z7140716790575_90a11eab8848f44eab962e85f17d7de1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\z7140716790575_90a11eab8848f44eab962e85f17d7de1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thong bao" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\thong bao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dark mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\dark mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thong ke don hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\thong ke don hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sườn UI (dark)4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sườn UI (dark)2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="thong ke tien do" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\thong ke tien do.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sườn UI (dark)2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sườn UI (dark).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="trang chu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\trang chu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="people" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\people.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\logo bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="light mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\light mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hop dong" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\hop dong.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\logo bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nền trong khung form1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nền trong khung form1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background [light]1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\background [light].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background [dark]1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\background [dark].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="light mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\light mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sườn UI (dark)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\Sườn UI (dark).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="background [dark]" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\background [dark].png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hide" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\Untitled image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Green-Sol1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\Green-Sol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_bg-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\logo_bg-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="z7140725321888_bda9f87c707acd69fb56bb7a71174795" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\z7140725321888_bda9f87c707acd69fb56bb7a71174795.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cog-wheel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cog-wheel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="don hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\don hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dark mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\dark mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="z7140709878752_be407ebe826c1b37377d585a67d297dd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\z7140709878752_be407ebe826c1b37377d585a67d297dd.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thong ke don hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\thong ke don hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="khach hang" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\khach hang.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Untitled image1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\Untitled image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dark mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\dark mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="view" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sườn UI (dark)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\Sườn UI (dark).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sườn UI (light)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\Sườn UI (light).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sườn UI (dark)5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sườn UI (dark)3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Untitled image1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\Untitled image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sườn UI (dark)3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sườn UI (dark)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Green-Sol" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\Green-Sol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="light mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\light mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nền trong khung form2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nền trong khung form2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hide1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\hide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thong bao" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\thong bao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nền trong khung form" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nền trong khung form.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sườn UI (dark)6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sườn UI (dark)4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

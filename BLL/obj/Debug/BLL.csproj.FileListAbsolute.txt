@@ -1,0 +1,9 @@
+C:\CNPM\Software-Engineering\BLL\bin\Debug\BLL.dll
+C:\CNPM\Software-Engineering\BLL\bin\Debug\BLL.pdb
+C:\CNPM\Software-Engineering\BLL\bin\Debug\DAL.dll
+C:\CNPM\Software-Engineering\BLL\bin\Debug\DAL.pdb
+C:\CNPM\Software-Engineering\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\CNPM\Software-Engineering\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\CNPM\Software-Engineering\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\CNPM\Software-Engineering\BLL\obj\Debug\BLL.dll
+C:\CNPM\Software-Engineering\BLL\obj\Debug\BLL.pdb
