@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 
 namespace GUI
 
 {
-    public partial class GUI_Form_DangNhap_OTP : Form
+    public partial class GUI_Form_DangNhap_OTP : SmoothFormBase
     {
         public GUI_Form_DangNhap_OTP()
         {
             InitializeComponent();
+           
+          
         }
 
         private void button1_Click(object sender, EventArgs e)

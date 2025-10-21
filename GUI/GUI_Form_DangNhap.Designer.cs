@@ -32,7 +32,6 @@
         {
             this.text_chaomung = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
             this.hide_password = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.view_password = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -42,20 +41,18 @@
             this.hoten_email = new System.Windows.Forms.Label();
             this.btn_dang_nhap = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.anh_minhhoa = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hide_password)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.view_password)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anh_minhhoa)).BeginInit();
             this.SuspendLayout();
             // 
             // text_chaomung
             // 
-            this.text_chaomung.BackColor = System.Drawing.Color.Black;
+            this.text_chaomung.BackColor = System.Drawing.Color.Transparent;
             this.text_chaomung.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_chaomung.ForeColor = System.Drawing.Color.Wheat;
-            this.text_chaomung.Location = new System.Drawing.Point(356, 192);
+            this.text_chaomung.ForeColor = System.Drawing.Color.PaleGreen;
+            this.text_chaomung.Location = new System.Drawing.Point(372, 201);
             this.text_chaomung.Margin = new System.Windows.Forms.Padding(4);
             this.text_chaomung.Name = "text_chaomung";
             this.text_chaomung.Size = new System.Drawing.Size(295, 40);
@@ -64,8 +61,9 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form;
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.hide_password);
             this.panel1.Controls.Add(this.guna2TextBox2);
             this.panel1.Controls.Add(this.view_password);
@@ -73,23 +71,11 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.matkhau);
             this.panel1.Controls.Add(this.hoten_email);
-            this.panel1.Location = new System.Drawing.Point(322, 253);
+            this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panel1.Location = new System.Drawing.Point(330, 248);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 234);
             this.panel1.TabIndex = 18;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Image = global::GUI.Properties.Resources.nền_trong_khung_form;
-            this.label2.Location = new System.Drawing.Point(173, 206);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 16);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Đăng kí";
             // 
             // hide_password
             // 
@@ -107,7 +93,7 @@
             // 
             // guna2TextBox2
             // 
-            this.guna2TextBox2.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form;
+            this.guna2TextBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2TextBox2.BorderColor = System.Drawing.Color.Black;
             this.guna2TextBox2.BorderRadius = 20;
             this.guna2TextBox2.BorderThickness = 2;
@@ -144,7 +130,7 @@
             // 
             // nhap_matkhau
             // 
-            this.nhap_matkhau.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form;
+            this.nhap_matkhau.BackColor = System.Drawing.Color.Transparent;
             this.nhap_matkhau.BorderColor = System.Drawing.Color.Black;
             this.nhap_matkhau.BorderRadius = 20;
             this.nhap_matkhau.BorderThickness = 2;
@@ -168,9 +154,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Image = global::GUI.Properties.Resources.nền_trong_khung_form;
             this.label1.Location = new System.Drawing.Point(233, 206);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
@@ -184,7 +170,6 @@
             this.matkhau.BackColor = System.Drawing.Color.Transparent;
             this.matkhau.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.matkhau.ForeColor = System.Drawing.Color.White;
-            this.matkhau.Image = global::GUI.Properties.Resources.nền_trong_khung_form;
             this.matkhau.Location = new System.Drawing.Point(31, 123);
             this.matkhau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.matkhau.Name = "matkhau";
@@ -199,7 +184,6 @@
             this.hoten_email.BackColor = System.Drawing.Color.Transparent;
             this.hoten_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hoten_email.ForeColor = System.Drawing.Color.White;
-            this.hoten_email.Image = global::GUI.Properties.Resources.nền_trong_khung_form2;
             this.hoten_email.Location = new System.Drawing.Point(31, 23);
             this.hoten_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.hoten_email.Name = "hoten_email";
@@ -210,8 +194,9 @@
             // 
             // btn_dang_nhap
             // 
-            this.btn_dang_nhap.BackgroundImage = global::GUI.Properties.Resources.z7140725321888_bda9f87c707acd69fb56bb7a71174795;
-            this.btn_dang_nhap.BorderRadius = 10;
+            this.btn_dang_nhap.AutoRoundedCorners = true;
+            this.btn_dang_nhap.BackColor = System.Drawing.Color.Transparent;
+            this.btn_dang_nhap.BorderRadius = 22;
             this.btn_dang_nhap.BorderThickness = 1;
             this.btn_dang_nhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_dang_nhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -221,55 +206,40 @@
             this.btn_dang_nhap.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_dang_nhap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btn_dang_nhap.ForeColor = System.Drawing.Color.Black;
-            this.btn_dang_nhap.Location = new System.Drawing.Point(419, 505);
+            this.btn_dang_nhap.Location = new System.Drawing.Point(427, 502);
             this.btn_dang_nhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_dang_nhap.Name = "btn_dang_nhap";
             this.btn_dang_nhap.Size = new System.Drawing.Size(180, 46);
             this.btn_dang_nhap.TabIndex = 5;
             this.btn_dang_nhap.Text = "Đăng nhập";
+            this.btn_dang_nhap.UseTransparentBackground = true;
             // 
             // guna2CirclePictureBox1
             // 
-            this.guna2CirclePictureBox1.BackgroundImage = global::GUI.Properties.Resources.z7140709878752_be407ebe826c1b37377d585a67d297dd;
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.Image = global::GUI.Properties.Resources.Green_Sol;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(443, 44);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(451, 41);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CirclePictureBox1.Size = new System.Drawing.Size(130, 130);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 17;
             this.guna2CirclePictureBox1.TabStop = false;
+            this.guna2CirclePictureBox1.UseTransparentBackground = true;
             this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click_2);
-            // 
-            // anh_minhhoa
-            // 
-            this.anh_minhhoa.BackColor = System.Drawing.Color.Transparent;
-            this.anh_minhhoa.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form3;
-            this.anh_minhhoa.Dock = System.Windows.Forms.DockStyle.Right;
-            this.anh_minhhoa.FillColor = System.Drawing.Color.Transparent;
-            this.anh_minhhoa.Image = global::GUI.Properties.Resources.Sườn_UI__dark_2;
-            this.anh_minhhoa.ImageRotate = 0F;
-            this.anh_minhhoa.Location = new System.Drawing.Point(0, 0);
-            this.anh_minhhoa.Margin = new System.Windows.Forms.Padding(4);
-            this.anh_minhhoa.Name = "anh_minhhoa";
-            this.anh_minhhoa.Size = new System.Drawing.Size(1038, 588);
-            this.anh_minhhoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.anh_minhhoa.TabIndex = 11;
-            this.anh_minhhoa.TabStop = false;
-            this.anh_minhhoa.Click += new System.EventHandler(this.anh_minhhoa_Click);
             // 
             // GUI_Form_DangNhap
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
+            this.BackgroundImage = global::GUI.Properties.Resources.Sườn_UI__dark_6;
             this.ClientSize = new System.Drawing.Size(1038, 588);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btn_dang_nhap);
             this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.text_chaomung);
-            this.Controls.Add(this.anh_minhhoa);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI_Form_DangNhap";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -279,7 +249,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.hide_password)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.view_password)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anh_minhhoa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -291,7 +260,6 @@
         private Guna.UI2.WinForms.Guna2Button btn_dang_nhap;
         private Guna.UI2.WinForms.Guna2HtmlLabel text_chaomung;
         private Guna.UI2.WinForms.Guna2TextBox nhap_matkhau;
-        private Guna.UI2.WinForms.Guna2PictureBox anh_minhhoa;
         
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox hide_password;
@@ -299,7 +267,6 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
-        private System.Windows.Forms.Label label2;
     }
 }
 

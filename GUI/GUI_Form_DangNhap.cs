@@ -12,11 +12,13 @@ using System.Drawing.Drawing2D;
 namespace GUI
 
 {
-    public partial class GUI_Form_DangNhap : Form
+    public partial class GUI_Form_DangNhap : SmoothFormBase
     {
         public GUI_Form_DangNhap()
         {
             InitializeComponent();
+            
+       
         }
 
         private void button1_Click(object sender, EventArgs e)

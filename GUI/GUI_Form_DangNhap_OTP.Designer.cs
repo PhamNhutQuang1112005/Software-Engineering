@@ -30,34 +30,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.text_chaomung = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btn_dang_nhap = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.anh_minhhoa = new Guna.UI2.WinForms.Guna2PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.text_chaomung = new Guna.UI2.WinForms.Guna2HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anh_minhhoa)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // text_chaomung
-            // 
-            this.text_chaomung.BackColor = System.Drawing.Color.Transparent;
-            this.text_chaomung.BackgroundImage = global::GUI.Properties.Resources.z7140716790575_90a11eab8848f44eab962e85f17d7de1;
-            this.text_chaomung.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.text_chaomung.ForeColor = System.Drawing.Color.White;
-            this.text_chaomung.Location = new System.Drawing.Point(422, 226);
-            this.text_chaomung.Margin = new System.Windows.Forms.Padding(4);
-            this.text_chaomung.Name = "text_chaomung";
-            this.text_chaomung.Size = new System.Drawing.Size(295, 40);
-            this.text_chaomung.TabIndex = 8;
-            this.text_chaomung.Text = "CHÀO MỪNG BẠN!";
-            // 
             // btn_dang_nhap
             // 
-            this.btn_dang_nhap.BorderRadius = 10;
+            this.btn_dang_nhap.AutoRoundedCorners = true;
+            this.btn_dang_nhap.BackColor = System.Drawing.Color.Transparent;
+            this.btn_dang_nhap.BorderRadius = 22;
             this.btn_dang_nhap.BorderThickness = 1;
             this.btn_dang_nhap.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btn_dang_nhap.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -67,49 +54,36 @@
             this.btn_dang_nhap.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_dang_nhap.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btn_dang_nhap.ForeColor = System.Drawing.Color.Black;
-            this.btn_dang_nhap.Location = new System.Drawing.Point(477, 468);
+            this.btn_dang_nhap.Location = new System.Drawing.Point(429, 474);
             this.btn_dang_nhap.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_dang_nhap.Name = "btn_dang_nhap";
             this.btn_dang_nhap.Size = new System.Drawing.Size(180, 46);
             this.btn_dang_nhap.TabIndex = 19;
             this.btn_dang_nhap.Text = "Xác nhận OTP";
+            this.btn_dang_nhap.UseTransparentBackground = true;
             // 
             // guna2CirclePictureBox1
             // 
-            this.guna2CirclePictureBox1.BackgroundImage = global::GUI.Properties.Resources.z7140709878752_be407ebe826c1b37377d585a67d297dd;
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.Image = global::GUI.Properties.Resources.Green_Sol;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(477, 61);
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(454, 69);
             this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
             this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CirclePictureBox1.Size = new System.Drawing.Size(130, 130);
             this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox1.TabIndex = 17;
             this.guna2CirclePictureBox1.TabStop = false;
+            this.guna2CirclePictureBox1.UseTransparentBackground = true;
             this.guna2CirclePictureBox1.Click += new System.EventHandler(this.guna2CirclePictureBox1_Click_2);
-            // 
-            // anh_minhhoa
-            // 
-            this.anh_minhhoa.BackColor = System.Drawing.Color.Transparent;
-            this.anh_minhhoa.Dock = System.Windows.Forms.DockStyle.Right;
-            this.anh_minhhoa.FillColor = System.Drawing.Color.Transparent;
-            this.anh_minhhoa.Image = global::GUI.Properties.Resources.Sườn_UI__dark_6;
-            this.anh_minhhoa.ImageRotate = 0F;
-            this.anh_minhhoa.Location = new System.Drawing.Point(1, 0);
-            this.anh_minhhoa.Margin = new System.Windows.Forms.Padding(4);
-            this.anh_minhhoa.Name = "anh_minhhoa";
-            this.anh_minhhoa.Size = new System.Drawing.Size(1037, 588);
-            this.anh_minhhoa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.anh_minhhoa.TabIndex = 11;
-            this.anh_minhhoa.TabStop = false;
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form;
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.guna2TextBox2);
-            this.panel1.Location = new System.Drawing.Point(378, 293);
+            this.panel1.Location = new System.Drawing.Point(330, 299);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(378, 148);
             this.panel1.TabIndex = 29;
@@ -130,9 +104,10 @@
             // 
             // guna2TextBox2
             // 
-            this.guna2TextBox2.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form;
+            this.guna2TextBox2.AutoRoundedCorners = true;
+            this.guna2TextBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2TextBox2.BorderColor = System.Drawing.Color.Black;
-            this.guna2TextBox2.BorderRadius = 20;
+            this.guna2TextBox2.BorderRadius = 24;
             this.guna2TextBox2.BorderThickness = 2;
             this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.guna2TextBox2.DefaultText = "";
@@ -151,38 +126,48 @@
             this.guna2TextBox2.Size = new System.Drawing.Size(305, 50);
             this.guna2TextBox2.TabIndex = 16;
             // 
+            // text_chaomung
+            // 
+            this.text_chaomung.AutoSize = false;
+            this.text_chaomung.BackColor = System.Drawing.Color.Transparent;
+            this.text_chaomung.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.text_chaomung.ForeColor = System.Drawing.Color.PaleGreen;
+            this.text_chaomung.Location = new System.Drawing.Point(372, 234);
+            this.text_chaomung.Margin = new System.Windows.Forms.Padding(4);
+            this.text_chaomung.Name = "text_chaomung";
+            this.text_chaomung.Size = new System.Drawing.Size(295, 40);
+            this.text_chaomung.TabIndex = 30;
+            this.text_chaomung.Text = "CHÀO MỪNG BẠN!";
+            // 
             // GUI_Form_DangNhap_OTP
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
+            this.BackgroundImage = global::GUI.Properties.Resources.Sườn_UI__dark_5;
             this.ClientSize = new System.Drawing.Size(1038, 588);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.text_chaomung);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.btn_dang_nhap);
-            this.Controls.Add(this.anh_minhhoa);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI_Form_DangNhap_OTP";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.GUI_Form_DangNhap_OTP_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.anh_minhhoa)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2HtmlLabel text_chaomung;
-        private Guna.UI2.WinForms.Guna2PictureBox anh_minhhoa;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2Button btn_dang_nhap;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel text_chaomung;
     }
 }
 

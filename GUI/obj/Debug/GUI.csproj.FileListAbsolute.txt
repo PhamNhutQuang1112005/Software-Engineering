@@ -92,3 +92,6 @@ C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
 C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.csproj.Up2Date
 C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.exe
 C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\BLL.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\BLL.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Config.resources
