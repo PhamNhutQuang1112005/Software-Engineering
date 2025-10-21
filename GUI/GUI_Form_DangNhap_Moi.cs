@@ -4,12 +4,12 @@ using System.Windows.Forms;
 namespace GUI
 
 {
-    public partial class GUI_Form_DangNhap_Moi : SmoothFormBase
+    public partial class GUI_Form_DangNhap_Moi : Form
     {
         public GUI_Form_DangNhap_Moi()
         {
             InitializeComponent();
-           
+           SmoothUI.Apply(this);
          
         }
 

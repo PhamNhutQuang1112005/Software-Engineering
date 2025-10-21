@@ -1,29 +1,3 @@
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.AssemblyReference.cache
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_main.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.Properties.Resources.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\GUI.exe.config
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\GUI.exe
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\GUI.pdb
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\Guna.UI2.dll
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.Up2Date
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.exe
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.pdb
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyUserS.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyKhachHang.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemKhach.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_ThongKe.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyDonHang.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemDonHang.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyHopDong.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_ChinhSuaThongTin.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Them_HopDong.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_TrangChu.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_SMS.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_OTP.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_Moi.resources
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\GUI.exe.config
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\GUI.exe
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\GUI.pdb
@@ -53,11 +27,6 @@ C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\G
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.pdb
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSo.resources
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSoV2.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSoV2.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSo.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyThongSoDonHang.resources
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.exe.config
-D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_PopupThongBao.resources
 C:\CNPM\Software-Engineering\GUI\bin\Debug\GUI.exe.config
 C:\CNPM\Software-Engineering\GUI\bin\Debug\GUI.exe
 C:\CNPM\Software-Engineering\GUI\bin\Debug\GUI.pdb
@@ -92,6 +61,36 @@ C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
 C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.csproj.Up2Date
 C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.exe
 C:\CNPM\Software-Engineering\GUI\obj\Debug\GUI.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\GUI.exe.config
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\GUI.exe
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\GUI.pdb
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\BLL.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\Guna.UI2.dll
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\bin\Debug\BLL.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.AssemblyReference.cache
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Config.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSoV2.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSo.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_SMS.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_OTP.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap_Moi.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Them_HopDong.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_main.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemKhach.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.Properties.Resources.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemDonHang.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_PopupThongBao.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyThongSoDonHang.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyHopDong.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyUserS.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyKhachHang.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_ThongKe.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyDonHang.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_ChinhSuaThongTin.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_TrangChu.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.csproj.Up2Date
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.exe
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.pdb

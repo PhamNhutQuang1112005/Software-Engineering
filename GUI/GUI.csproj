@@ -125,9 +125,7 @@
     <Compile Include="GUI_FormThemDonHang.Designer.cs">
       <DependentUpon>GUI_FormThemDonHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="SmoothFormBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SmoothUI.cs" />
     <Compile Include="UC_PopupThongBao.cs">
       <SubType>UserControl</SubType>
     </Compile>

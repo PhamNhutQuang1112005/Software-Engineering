@@ -12,12 +12,12 @@ using System.Drawing.Drawing2D;
 namespace GUI
 
 {
-    public partial class GUI_Form_DangNhap : SmoothFormBase
+    public partial class GUI_Form_DangNhap : Form
     {
         public GUI_Form_DangNhap()
         {
             InitializeComponent();
-            
+            SmoothUI.Apply(this);
        
         }
 

@@ -4,12 +4,12 @@ using System.Windows.Forms;
 namespace GUI
 
 {
-    public partial class GUI_Form_DangNhap_OTP : SmoothFormBase
+    public partial class GUI_Form_DangNhap_OTP : Form
     {
         public GUI_Form_DangNhap_OTP()
         {
             InitializeComponent();
-           
+           SmoothUI.Apply(this);
           
         }
 
