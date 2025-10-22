@@ -75,24 +75,6 @@
     <Compile Include="GUI_FormThemThongSo.Designer.cs">
       <DependentUpon>GUI_FormThemThongSo.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI_Form_DangNhap_SMS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI_Form_DangNhap_SMS.Designer.cs">
-      <DependentUpon>GUI_Form_DangNhap_SMS.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI_Form_DangNhap_OTP.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI_Form_DangNhap_OTP.Designer.cs">
-      <DependentUpon>GUI_Form_DangNhap_OTP.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI_Form_DangNhap_Moi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI_Form_DangNhap_Moi.Designer.cs">
-      <DependentUpon>GUI_Form_DangNhap_Moi.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI_Form_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,15 +170,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_FormThemThongSo.resx">
       <DependentUpon>GUI_FormThemThongSo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI_Form_DangNhap_SMS.resx">
-      <DependentUpon>GUI_Form_DangNhap_SMS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI_Form_DangNhap_OTP.resx">
-      <DependentUpon>GUI_Form_DangNhap_OTP.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI_Form_DangNhap_Moi.resx">
-      <DependentUpon>GUI_Form_DangNhap_Moi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_Form_DangNhap.resx">
       <DependentUpon>GUI_Form_DangNhap.cs</DependentUpon>
@@ -380,6 +353,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Sườn UI %28dark%294.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sườn UI %28dark%295.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
