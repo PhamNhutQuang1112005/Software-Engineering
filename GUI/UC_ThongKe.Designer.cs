@@ -30,69 +30,140 @@ namespace GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.CustomLabel customLabel1 = new System.Windows.Forms.DataVisualization.Charting.CustomLabel();
-            System.Windows.Forms.DataVisualization.Charting.CustomLabel customLabel2 = new System.Windows.Forms.DataVisualization.Charting.CustomLabel();
-            System.Windows.Forms.DataVisualization.Charting.CustomLabel customLabel3 = new System.Windows.Forms.DataVisualization.Charting.CustomLabel();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 4D);
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 15D);
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(3D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 4D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 8D);
-            this.label1 = new System.Windows.Forms.Label();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.CustomLabel customLabel4 = new System.Windows.Forms.DataVisualization.Charting.CustomLabel();
+            System.Windows.Forms.DataVisualization.Charting.CustomLabel customLabel5 = new System.Windows.Forms.DataVisualization.Charting.CustomLabel();
+            System.Windows.Forms.DataVisualization.Charting.CustomLabel customLabel6 = new System.Windows.Forms.DataVisualization.Charting.CustomLabel();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(1D, 4D);
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(2D, 15D);
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(3D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 4D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 20D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 8D);
+            this.BieuDo1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox4 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.BieuDo1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BieuDo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // BieuDo1
             // 
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(277, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(621, 68);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Thống Kê Tiến Độ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BieuDo1.BackColor = System.Drawing.Color.Transparent;
+            this.BieuDo1.BorderlineWidth = 3;
+            customLabel4.FromPosition = 0.1D;
+            customLabel4.Text = "Quá hạn";
+            customLabel4.ToPosition = 1D;
+            customLabel5.FromPosition = 1.5D;
+            customLabel5.Text = "Đang xử lí";
+            customLabel5.ToPosition = 2.5D;
+            customLabel6.FromPosition = 3D;
+            customLabel6.Text = "Hoàn thành";
+            customLabel6.ToPosition = 4D;
+            chartArea3.AxisX.CustomLabels.Add(customLabel4);
+            chartArea3.AxisX.CustomLabels.Add(customLabel5);
+            chartArea3.AxisX.CustomLabels.Add(customLabel6);
+            chartArea3.AxisX.Interval = 1D;
+            chartArea3.AxisX.IsMarginVisible = false;
+            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea3.AxisX.MajorGrid.Enabled = false;
+            chartArea3.AxisX.MajorTickMark.Enabled = false;
+            chartArea3.AxisX.Maximum = 4D;
+            chartArea3.AxisX.Minimum = 0D;
+            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            chartArea3.BackColor = System.Drawing.Color.Transparent;
+            chartArea3.Name = "ChartArea1";
+            this.BieuDo1.ChartAreas.Add(chartArea3);
+            legend3.Alignment = System.Drawing.StringAlignment.Center;
+            legend3.BackColor = System.Drawing.Color.Transparent;
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend3.ForeColor = System.Drawing.Color.White;
+            legend3.Name = "Legend1";
+            this.BieuDo1.Legends.Add(legend3);
+            this.BieuDo1.Location = new System.Drawing.Point(45, 207);
+            this.BieuDo1.Name = "BieuDo1";
+            series5.BorderWidth = 7;
+            series5.ChartArea = "ChartArea1";
+            series5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(147)))), ((int)(((byte)(216)))));
+            series5.CustomProperties = "PointWidth=1.4";
+            series5.IsValueShownAsLabel = true;
+            series5.LabelForeColor = System.Drawing.Color.White;
+            series5.Legend = "Legend1";
+            series5.MarkerBorderColor = System.Drawing.Color.DarkGray;
+            series5.Name = "Quá hạn";
+            series5.Points.Add(dataPoint7);
+            series6.ChartArea = "ChartArea1";
+            series6.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(118)))));
+            series6.CustomProperties = "PointWidth=1.4";
+            series6.IsValueShownAsLabel = true;
+            series6.LabelForeColor = System.Drawing.Color.White;
+            series6.Legend = "Legend1";
+            series6.Name = "Đang xử lí";
+            series6.Points.Add(dataPoint8);
+            series7.ChartArea = "ChartArea1";
+            series7.Color = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
+            series7.CustomProperties = "PointWidth=1.4";
+            series7.IsValueShownAsLabel = true;
+            series7.LabelForeColor = System.Drawing.Color.White;
+            series7.Legend = "Legend1";
+            series7.Name = "Hoàn thành";
+            series7.Points.Add(dataPoint9);
+            this.BieuDo1.Series.Add(series5);
+            this.BieuDo1.Series.Add(series6);
+            this.BieuDo1.Series.Add(series7);
+            this.BieuDo1.Size = new System.Drawing.Size(584, 360);
+            this.BieuDo1.TabIndex = 0;
+            this.BieuDo1.Text = "Segoe UI, 10pt, style=Bold";
             // 
-            // guna2Panel1
+            // chart2
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Gray;
-            this.guna2Panel1.Location = new System.Drawing.Point(209, 106);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(778, 5);
-            this.guna2Panel1.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(113, 178);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 25);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Thống Kê Theo :";
+            this.chart2.BackColor = System.Drawing.Color.Transparent;
+            chartArea4.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea4.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea4.BackColor = System.Drawing.Color.Transparent;
+            chartArea4.Name = "ChartAreaPie";
+            this.chart2.ChartAreas.Add(chartArea4);
+            legend4.Alignment = System.Drawing.StringAlignment.Center;
+            legend4.BackColor = System.Drawing.Color.Transparent;
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend4.ForeColor = System.Drawing.Color.White;
+            legend4.Name = "LegendPie";
+            this.chart2.Legends.Add(legend4);
+            this.chart2.Location = new System.Drawing.Point(719, 196);
+            this.chart2.Name = "chart2";
+            series8.ChartArea = "ChartAreaPie";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            series8.IsValueShownAsLabel = true;
+            series8.Label = "#PERCENT{P1}";
+            series8.LabelForeColor = System.Drawing.Color.White;
+            series8.Legend = "LegendPie";
+            series8.Name = "SeriesPie";
+            dataPoint10.AxisLabel = "Quá hạn";
+            dataPoint11.AxisLabel = "Đang xử lí";
+            dataPoint12.AxisLabel = "Hoàn thành";
+            series8.Points.Add(dataPoint10);
+            series8.Points.Add(dataPoint11);
+            series8.Points.Add(dataPoint12);
+            this.chart2.Series.Add(series8);
+            this.chart2.Size = new System.Drawing.Size(433, 358);
+            this.chart2.TabIndex = 14;
+            this.chart2.Text = "chart2";
             // 
             // guna2ComboBox1
             // 
@@ -108,9 +179,9 @@ namespace GUI
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(353, 173);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(156, 46);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(166, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(171, 36);
             this.guna2ComboBox1.TabIndex = 9;
             // 
             // guna2ComboBox2
@@ -127,9 +198,9 @@ namespace GUI
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(563, 173);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(355, 46);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(166, 36);
+            this.guna2ComboBox2.Size = new System.Drawing.Size(182, 36);
             this.guna2ComboBox2.TabIndex = 5;
             this.guna2ComboBox2.Tag = "sf";
             this.guna2ComboBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -148,9 +219,9 @@ namespace GUI
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(754, 173);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(573, 46);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
-            this.guna2ComboBox3.Size = new System.Drawing.Size(166, 36);
+            this.guna2ComboBox3.Size = new System.Drawing.Size(139, 36);
             this.guna2ComboBox3.TabIndex = 6;
             this.guna2ComboBox3.Tag = "sf";
             this.guna2ComboBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -169,34 +240,22 @@ namespace GUI
             this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox4.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox4.ItemHeight = 30;
-            this.guna2ComboBox4.Location = new System.Drawing.Point(945, 173);
+            this.guna2ComboBox4.Location = new System.Drawing.Point(745, 46);
             this.guna2ComboBox4.Name = "guna2ComboBox4";
-            this.guna2ComboBox4.Size = new System.Drawing.Size(166, 36);
+            this.guna2ComboBox4.Size = new System.Drawing.Size(140, 36);
             this.guna2ComboBox4.TabIndex = 7;
             this.guna2ComboBox4.Tag = "sf";
             this.guna2ComboBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.SeaGreen;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(367, 182);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Ngày Bắt Đầu";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.SeaGreen;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(574, 182);
+            this.label4.Location = new System.Drawing.Point(366, 56);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(121, 20);
+            this.label4.Size = new System.Drawing.Size(127, 23);
             this.label4.TabIndex = 11;
             this.label4.Text = "Ngày Kết Thúc";
             // 
@@ -204,11 +263,11 @@ namespace GUI
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.SeaGreen;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(765, 182);
+            this.label5.Location = new System.Drawing.Point(582, 56);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 20);
+            this.label5.Size = new System.Drawing.Size(86, 23);
             this.label5.TabIndex = 12;
             this.label5.Text = "Theo Quý";
             // 
@@ -216,116 +275,25 @@ namespace GUI
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.SeaGreen;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(954, 182);
+            this.label6.Location = new System.Drawing.Point(754, 56);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 20);
+            this.label6.Size = new System.Drawing.Size(92, 23);
             this.label6.TabIndex = 13;
             this.label6.Text = "Theo Năm";
             // 
-            // BieuDo1
+            // label3
             // 
-            this.BieuDo1.BackColor = System.Drawing.Color.Transparent;
-            this.BieuDo1.BorderlineWidth = 3;
-            customLabel1.FromPosition = 0.1D;
-            customLabel1.Text = "Quá hạn";
-            customLabel1.ToPosition = 1D;
-            customLabel2.FromPosition = 1.5D;
-            customLabel2.Text = "Đang xử lí";
-            customLabel2.ToPosition = 2.5D;
-            customLabel3.FromPosition = 3D;
-            customLabel3.Text = "Hoàn thành";
-            customLabel3.ToPosition = 4D;
-            chartArea1.AxisX.CustomLabels.Add(customLabel1);
-            chartArea1.AxisX.CustomLabels.Add(customLabel2);
-            chartArea1.AxisX.CustomLabels.Add(customLabel3);
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.IsMarginVisible = false;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisX.MajorGrid.Enabled = false;
-            chartArea1.AxisX.MajorTickMark.Enabled = false;
-            chartArea1.AxisX.Maximum = 4D;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.White;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            chartArea1.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.BieuDo1.ChartAreas.Add(chartArea1);
-            legend1.Alignment = System.Drawing.StringAlignment.Center;
-            legend1.BackColor = System.Drawing.Color.Transparent;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.ForeColor = System.Drawing.Color.White;
-            legend1.Name = "Legend1";
-            this.BieuDo1.Legends.Add(legend1);
-            this.BieuDo1.Location = new System.Drawing.Point(118, 249);
-            this.BieuDo1.Name = "BieuDo1";
-            series1.BorderWidth = 7;
-            series1.ChartArea = "ChartArea1";
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(147)))), ((int)(((byte)(216)))));
-            series1.CustomProperties = "PointWidth=1.4";
-            series1.IsValueShownAsLabel = true;
-            series1.LabelForeColor = System.Drawing.Color.White;
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.Color.DarkGray;
-            series1.Name = "Quá hạn";
-            series1.Points.Add(dataPoint1);
-            series2.ChartArea = "ChartArea1";
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(118)))));
-            series2.CustomProperties = "PointWidth=1.4";
-            series2.IsValueShownAsLabel = true;
-            series2.LabelForeColor = System.Drawing.Color.White;
-            series2.Legend = "Legend1";
-            series2.Name = "Đang xử lí";
-            series2.Points.Add(dataPoint2);
-            series3.ChartArea = "ChartArea1";
-            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(181)))), ((int)(((byte)(246)))));
-            series3.CustomProperties = "PointWidth=1.4";
-            series3.IsValueShownAsLabel = true;
-            series3.LabelForeColor = System.Drawing.Color.White;
-            series3.Legend = "Legend1";
-            series3.Name = "Hoàn thành";
-            series3.Points.Add(dataPoint3);
-            this.BieuDo1.Series.Add(series1);
-            this.BieuDo1.Series.Add(series2);
-            this.BieuDo1.Series.Add(series3);
-            this.BieuDo1.Size = new System.Drawing.Size(468, 300);
-            this.BieuDo1.TabIndex = 0;
-            // 
-            // chart2
-            // 
-            this.chart2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea2.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartAreaPie";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Alignment = System.Drawing.StringAlignment.Center;
-            legend2.BackColor = System.Drawing.Color.Transparent;
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.ForeColor = System.Drawing.Color.White;
-            legend2.Name = "LegendPie";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(807, 249);
-            this.chart2.Name = "chart2";
-            series4.ChartArea = "ChartAreaPie";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            series4.IsValueShownAsLabel = true;
-            series4.Label = "#PERCENT{P1}";
-            series4.LabelForeColor = System.Drawing.Color.White;
-            series4.Legend = "LegendPie";
-            series4.Name = "SeriesPie";
-            dataPoint4.AxisLabel = "Quá hạn";
-            dataPoint5.AxisLabel = "Đang xử lí";
-            dataPoint6.AxisLabel = "Hoàn thành";
-            series4.Points.Add(dataPoint4);
-            series4.Points.Add(dataPoint5);
-            series4.Points.Add(dataPoint6);
-            this.chart2.Series.Add(series4);
-            this.chart2.Size = new System.Drawing.Size(405, 300);
-            this.chart2.TabIndex = 14;
-            this.chart2.Text = "chart2";
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.SeaGreen;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(168, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(121, 23);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Ngày Bắt Đầu";
             // 
             // UC_ThongKe
             // 
@@ -345,13 +313,10 @@ namespace GUI
             this.Controls.Add(this.guna2ComboBox3);
             this.Controls.Add(this.guna2ComboBox2);
             this.Controls.Add(this.guna2ComboBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.guna2Panel1);
-            this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_ThongKe";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(1225, 562);
+            this.Size = new System.Drawing.Size(1165, 580);
             ((System.ComponentModel.ISupportInitialize)(this.BieuDo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
@@ -360,19 +325,15 @@ namespace GUI
         }
 
         #endregion
-
-        public System.Windows.Forms.Label label1;
-        public Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.DataVisualization.Charting.Chart BieuDo1;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
         public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
         public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox4;
-        public System.Windows.Forms.Label label3;
-        public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.Label label5;
-        public System.Windows.Forms.Label label6;
-        public System.Windows.Forms.DataVisualization.Charting.Chart BieuDo1;
-        public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        public Label label4;
+        public Label label5;
+        public Label label6;
+        public Label label3;
     }
 }

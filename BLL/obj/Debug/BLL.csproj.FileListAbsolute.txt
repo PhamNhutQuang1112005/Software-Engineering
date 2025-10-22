@@ -16,3 +16,12 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\obj\Debug\BLL.csproj.Up2Date
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\obj\Debug\BLL.dll
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\obj\Debug\BLL.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\bin\Debug\BLL.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\bin\Debug\BLL.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\bin\Debug\DAL.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\bin\Debug\DAL.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\obj\Debug\BLL.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\BLL\obj\Debug\BLL.pdb

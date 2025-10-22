@@ -45,11 +45,11 @@
             // 
             slogan4.AutoSize = false;
             slogan4.BackColor = System.Drawing.Color.Transparent;
-            slogan4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            slogan4.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Bold);
             slogan4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(220)))), ((int)(((byte)(89)))));
-            slogan4.Location = new System.Drawing.Point(642, 158);
+            slogan4.Location = new System.Drawing.Point(609, 123);
             slogan4.Name = "slogan4";
-            slogan4.Size = new System.Drawing.Size(242, 48);
+            slogan4.Size = new System.Drawing.Size(279, 65);
             slogan4.TabIndex = 19;
             slogan4.TabStop = false;
             slogan4.Text = "thông minh!";
@@ -58,41 +58,41 @@
             // 
             slogan3.AutoSize = false;
             slogan3.BackColor = System.Drawing.Color.Transparent;
-            slogan3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            slogan3.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             slogan3.ForeColor = System.Drawing.Color.White;
-            slogan3.Location = new System.Drawing.Point(482, 158);
+            slogan3.Location = new System.Drawing.Point(460, 132);
             slogan3.Name = "slogan3";
             slogan3.Size = new System.Drawing.Size(199, 48);
             slogan3.TabIndex = 18;
             slogan3.TabStop = false;
-            slogan3.Text = "Giải pháp";
+            slogan3.Text = "Giải pháp...";
             slogan3.Click += new System.EventHandler(this.slogan3_Click);
             // 
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.AutoSize = false;
             guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Bold);
             guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(109)))), ((int)(((byte)(77)))));
-            guna2HtmlLabel2.Location = new System.Drawing.Point(457, 104);
+            guna2HtmlLabel2.Location = new System.Drawing.Point(430, 68);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new System.Drawing.Size(211, 48);
+            guna2HtmlLabel2.Size = new System.Drawing.Size(266, 68);
             guna2HtmlLabel2.TabIndex = 17;
             guna2HtmlLabel2.TabStop = false;
-            guna2HtmlLabel2.Text = "vững vàng...";
+            guna2HtmlLabel2.Text = "vững vàng,";
             // 
             // guna2HtmlLabel3
             // 
             guna2HtmlLabel3.AutoSize = false;
             guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            guna2HtmlLabel3.Location = new System.Drawing.Point(340, 104);
+            guna2HtmlLabel3.Location = new System.Drawing.Point(322, 78);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new System.Drawing.Size(158, 48);
+            guna2HtmlLabel3.Size = new System.Drawing.Size(150, 48);
             guna2HtmlLabel3.TabIndex = 16;
             guna2HtmlLabel3.TabStop = false;
-            guna2HtmlLabel3.Text = "Gốc rễ";
+            guna2HtmlLabel3.Text = "Gốc rễ...";
             // 
             // gradient_box_message
             // 
@@ -116,10 +116,10 @@
             // 
             this.logo.Image = global::GUI.Properties.Resources.Green_Sol;
             this.logo.ImageRotate = 0F;
-            this.logo.Location = new System.Drawing.Point(85, 38);
+            this.logo.Location = new System.Drawing.Point(103, 39);
             this.logo.Name = "logo";
             this.logo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.logo.Size = new System.Drawing.Size(183, 183);
+            this.logo.Size = new System.Drawing.Size(158, 152);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 15;
             this.logo.TabStop = false;

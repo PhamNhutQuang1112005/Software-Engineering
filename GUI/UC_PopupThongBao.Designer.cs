@@ -30,9 +30,9 @@
             this.btnSapHetHan.ForeColor = System.Drawing.Color.White;
             this.btnSapHetHan.Location = new System.Drawing.Point(10, 10);
             this.btnSapHetHan.Name = "btnSapHetHan";
-            this.btnSapHetHan.Size = new System.Drawing.Size(190, 40);
+            this.btnSapHetHan.Size = new System.Drawing.Size(207, 40);
             this.btnSapHetHan.TabIndex = 0;
-            this.btnSapHetHan.Text = "Đơn hàng sắp hết hạn";
+            this.btnSapHetHan.Text = "Đơn hàng sắp hết hạn ";
             this.btnSapHetHan.Click += new System.EventHandler(this.btnSapHetHan_Click);
             // 
             // btnQuaHan
@@ -41,9 +41,9 @@
             this.btnQuaHan.FillColor = System.Drawing.Color.Transparent;
             this.btnQuaHan.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnQuaHan.ForeColor = System.Drawing.Color.White;
-            this.btnQuaHan.Location = new System.Drawing.Point(210, 10);
+            this.btnQuaHan.Location = new System.Drawing.Point(223, 10);
             this.btnQuaHan.Name = "btnQuaHan";
-            this.btnQuaHan.Size = new System.Drawing.Size(190, 40);
+            this.btnQuaHan.Size = new System.Drawing.Size(187, 40);
             this.btnQuaHan.TabIndex = 1;
             this.btnQuaHan.Text = "Đơn hàng quá hạn";
             this.btnQuaHan.Click += new System.EventHandler(this.btnQuaHan_Click);

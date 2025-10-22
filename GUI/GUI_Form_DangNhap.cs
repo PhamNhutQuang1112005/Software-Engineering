@@ -136,5 +136,15 @@ namespace GUI
         {
 
         }
+
+        private void NhapSMS_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ĐăngNhap_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

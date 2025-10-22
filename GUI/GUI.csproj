@@ -357,5 +357,8 @@
   <ItemGroup>
     <None Include="Resources\Sườn UI %28dark%295.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mic.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

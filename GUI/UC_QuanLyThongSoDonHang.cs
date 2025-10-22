@@ -236,5 +236,20 @@ namespace GUI
         {
 
         }
+
+        private void guna2ComboBox3_SelectedIndexChanged_1(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void guna2ComboBox2_SelectedIndexChanged_1(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged_1(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

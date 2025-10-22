@@ -31,9 +31,7 @@
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.info_tendonhang = new System.Windows.Forms.Label();
             this.info_madonhang = new System.Windows.Forms.Label();
             this.label_Thongsomoitruong = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,6 +44,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.giatrithongsochuan = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -55,12 +54,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.giatri = new System.Windows.Forms.Label();
-            this.dolan3 = new System.Windows.Forms.Label();
-            this.dolan2 = new System.Windows.Forms.Label();
-            this.dolan1 = new System.Windows.Forms.Label();
-            this.donvithongso = new System.Windows.Forms.Label();
-            this.giatrithongsochuan = new System.Windows.Forms.Label();
             this.tenthongso = new System.Windows.Forms.Label();
+            this.donvithongso = new System.Windows.Forms.Label();
+            this.dolan1 = new System.Windows.Forms.Label();
+            this.dolan2 = new System.Windows.Forms.Label();
+            this.dolan3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,11 +74,11 @@
             this.guna2Button6.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button6.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button6.FillColor = System.Drawing.Color.Green;
-            this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(476, 447);
+            this.guna2Button6.Location = new System.Drawing.Point(472, 448);
             this.guna2Button6.Name = "guna2Button6";
-            this.guna2Button6.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button6.Size = new System.Drawing.Size(111, 41);
             this.guna2Button6.TabIndex = 47;
             this.guna2Button6.Text = "Hủy";
             // 
@@ -95,11 +93,11 @@
             this.guna2Button5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button5.FillColor = System.Drawing.Color.Green;
-            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(222, 447);
+            this.guna2Button5.Location = new System.Drawing.Point(218, 448);
             this.guna2Button5.Name = "guna2Button5";
-            this.guna2Button5.Size = new System.Drawing.Size(95, 36);
+            this.guna2Button5.Size = new System.Drawing.Size(111, 41);
             this.guna2Button5.TabIndex = 46;
             this.guna2Button5.Text = "Thêm";
             // 
@@ -109,23 +107,11 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.Window;
-            this.label6.Location = new System.Drawing.Point(419, 20);
+            this.label6.Location = new System.Drawing.Point(44, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(179, 29);
             this.label6.TabIndex = 37;
             this.label6.Text = "Mã đơn hàng:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.Window;
-            this.label5.Location = new System.Drawing.Point(45, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(188, 29);
-            this.label5.TabIndex = 36;
-            this.label5.Text = "Tên đơn hàng:";
             // 
             // guna2GradientPanel1
             // 
@@ -136,25 +122,13 @@
             this.guna2GradientPanel1.Size = new System.Drawing.Size(816, 10);
             this.guna2GradientPanel1.TabIndex = 48;
             // 
-            // info_tendonhang
-            // 
-            this.info_tendonhang.AutoSize = true;
-            this.info_tendonhang.BackColor = System.Drawing.Color.Transparent;
-            this.info_tendonhang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.info_tendonhang.ForeColor = System.Drawing.SystemColors.Window;
-            this.info_tendonhang.Location = new System.Drawing.Point(230, 23);
-            this.info_tendonhang.Name = "info_tendonhang";
-            this.info_tendonhang.Size = new System.Drawing.Size(164, 26);
-            this.info_tendonhang.TabIndex = 49;
-            this.info_tendonhang.Text = "<tendonhang>";
-            // 
             // info_madonhang
             // 
             this.info_madonhang.AutoSize = true;
             this.info_madonhang.BackColor = System.Drawing.Color.Transparent;
             this.info_madonhang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.info_madonhang.ForeColor = System.Drawing.SystemColors.Window;
-            this.info_madonhang.Location = new System.Drawing.Point(604, 23);
+            this.info_madonhang.Location = new System.Drawing.Point(229, 23);
             this.info_madonhang.Name = "info_madonhang";
             this.info_madonhang.Size = new System.Drawing.Size(164, 26);
             this.info_madonhang.TabIndex = 50;
@@ -182,7 +156,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 107F));
             this.tableLayoutPanel1.Controls.Add(this.label19, 5, 3);
             this.tableLayoutPanel1.Controls.Add(this.label18, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.label17, 3, 3);
@@ -224,7 +198,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(617, 224);
+            this.label19.Location = new System.Drawing.Point(615, 224);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(56, 17);
             this.label19.TabIndex = 23;
@@ -236,7 +210,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(505, 224);
+            this.label18.Location = new System.Drawing.Point(500, 224);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(56, 17);
             this.label18.TabIndex = 22;
@@ -248,7 +222,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(387, 224);
+            this.label17.Location = new System.Drawing.Point(383, 224);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(56, 17);
             this.label17.TabIndex = 21;
@@ -260,7 +234,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(269, 224);
+            this.label16.Location = new System.Drawing.Point(266, 224);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 17);
             this.label16.TabIndex = 20;
@@ -272,7 +246,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(170, 224);
+            this.label15.Location = new System.Drawing.Point(168, 224);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(56, 17);
             this.label15.TabIndex = 19;
@@ -296,7 +270,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(617, 158);
+            this.label13.Location = new System.Drawing.Point(615, 158);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 17);
             this.label13.TabIndex = 17;
@@ -308,7 +282,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(505, 158);
+            this.label12.Location = new System.Drawing.Point(500, 158);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 17);
             this.label12.TabIndex = 16;
@@ -320,11 +294,23 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(387, 158);
+            this.label11.Location = new System.Drawing.Point(383, 158);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 17);
             this.label11.TabIndex = 15;
             this.label11.Text = "Giá trị x";
+            // 
+            // giatrithongsochuan
+            // 
+            this.giatrithongsochuan.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.giatrithongsochuan.AutoSize = true;
+            this.giatrithongsochuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giatrithongsochuan.ForeColor = System.Drawing.Color.White;
+            this.giatrithongsochuan.Location = new System.Drawing.Point(609, 15);
+            this.giatrithongsochuan.Name = "giatrithongsochuan";
+            this.giatrithongsochuan.Size = new System.Drawing.Size(68, 40);
+            this.giatrithongsochuan.TabIndex = 1;
+            this.giatrithongsochuan.Text = "Giá trị chuẩn";
             // 
             // label10
             // 
@@ -332,7 +318,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(269, 158);
+            this.label10.Location = new System.Drawing.Point(266, 158);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(56, 17);
             this.label10.TabIndex = 14;
@@ -344,7 +330,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(170, 158);
+            this.label9.Location = new System.Drawing.Point(168, 158);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 17);
             this.label9.TabIndex = 13;
@@ -368,7 +354,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(617, 94);
+            this.label7.Location = new System.Drawing.Point(615, 94);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 17);
             this.label7.TabIndex = 11;
@@ -380,7 +366,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(505, 94);
+            this.label4.Location = new System.Drawing.Point(500, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 17);
             this.label4.TabIndex = 10;
@@ -392,7 +378,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(387, 94);
+            this.label3.Location = new System.Drawing.Point(383, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 17);
             this.label3.TabIndex = 9;
@@ -404,7 +390,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(269, 94);
+            this.label2.Location = new System.Drawing.Point(266, 94);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 17);
             this.label2.TabIndex = 8;
@@ -416,7 +402,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(170, 94);
+            this.label1.Location = new System.Drawing.Point(168, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 17);
             this.label1.TabIndex = 7;
@@ -434,66 +420,6 @@
             this.giatri.TabIndex = 6;
             this.giatri.Text = "Giá trị x";
             // 
-            // dolan3
-            // 
-            this.dolan3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dolan3.AutoSize = true;
-            this.dolan3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dolan3.ForeColor = System.Drawing.Color.White;
-            this.dolan3.Location = new System.Drawing.Point(493, 25);
-            this.dolan3.Name = "dolan3";
-            this.dolan3.Size = new System.Drawing.Size(79, 20);
-            this.dolan3.TabIndex = 5;
-            this.dolan3.Text = "Đo lần 3";
-            // 
-            // dolan2
-            // 
-            this.dolan2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dolan2.AutoSize = true;
-            this.dolan2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dolan2.ForeColor = System.Drawing.Color.White;
-            this.dolan2.Location = new System.Drawing.Point(375, 25);
-            this.dolan2.Name = "dolan2";
-            this.dolan2.Size = new System.Drawing.Size(79, 20);
-            this.dolan2.TabIndex = 4;
-            this.dolan2.Text = "Đo lần 2";
-            // 
-            // dolan1
-            // 
-            this.dolan1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dolan1.AutoSize = true;
-            this.dolan1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dolan1.ForeColor = System.Drawing.Color.White;
-            this.dolan1.Location = new System.Drawing.Point(257, 25);
-            this.dolan1.Name = "dolan1";
-            this.dolan1.Size = new System.Drawing.Size(79, 20);
-            this.dolan1.TabIndex = 3;
-            this.dolan1.Text = "Đo lần 1";
-            // 
-            // donvithongso
-            // 
-            this.donvithongso.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.donvithongso.AutoSize = true;
-            this.donvithongso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.donvithongso.ForeColor = System.Drawing.Color.White;
-            this.donvithongso.Location = new System.Drawing.Point(167, 25);
-            this.donvithongso.Name = "donvithongso";
-            this.donvithongso.Size = new System.Drawing.Size(62, 20);
-            this.donvithongso.TabIndex = 2;
-            this.donvithongso.Text = "Đơn vị";
-            // 
-            // giatrithongsochuan
-            // 
-            this.giatrithongsochuan.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.giatrithongsochuan.AutoSize = true;
-            this.giatrithongsochuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.giatrithongsochuan.ForeColor = System.Drawing.Color.White;
-            this.giatrithongsochuan.Location = new System.Drawing.Point(611, 15);
-            this.giatrithongsochuan.Name = "giatrithongsochuan";
-            this.giatrithongsochuan.Size = new System.Drawing.Size(68, 40);
-            this.giatrithongsochuan.TabIndex = 1;
-            this.giatrithongsochuan.Text = "Giá trị chuẩn";
-            // 
             // tenthongso
             // 
             this.tenthongso.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -506,6 +432,54 @@
             this.tenthongso.TabIndex = 0;
             this.tenthongso.Text = "Tên thông số";
             // 
+            // donvithongso
+            // 
+            this.donvithongso.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.donvithongso.AutoSize = true;
+            this.donvithongso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.donvithongso.ForeColor = System.Drawing.Color.White;
+            this.donvithongso.Location = new System.Drawing.Point(165, 25);
+            this.donvithongso.Name = "donvithongso";
+            this.donvithongso.Size = new System.Drawing.Size(62, 20);
+            this.donvithongso.TabIndex = 2;
+            this.donvithongso.Text = "Đơn vị";
+            // 
+            // dolan1
+            // 
+            this.dolan1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dolan1.AutoSize = true;
+            this.dolan1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dolan1.ForeColor = System.Drawing.Color.White;
+            this.dolan1.Location = new System.Drawing.Point(248, 25);
+            this.dolan1.Name = "dolan1";
+            this.dolan1.Size = new System.Drawing.Size(92, 20);
+            this.dolan1.TabIndex = 3;
+            this.dolan1.Text = "Vị trí đo 1";
+            // 
+            // dolan2
+            // 
+            this.dolan2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dolan2.AutoSize = true;
+            this.dolan2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dolan2.ForeColor = System.Drawing.Color.White;
+            this.dolan2.Location = new System.Drawing.Point(365, 25);
+            this.dolan2.Name = "dolan2";
+            this.dolan2.Size = new System.Drawing.Size(92, 20);
+            this.dolan2.TabIndex = 4;
+            this.dolan2.Text = "Vị trí đo 2";
+            // 
+            // dolan3
+            // 
+            this.dolan3.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dolan3.AutoSize = true;
+            this.dolan3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dolan3.ForeColor = System.Drawing.Color.White;
+            this.dolan3.Location = new System.Drawing.Point(482, 25);
+            this.dolan3.Name = "dolan3";
+            this.dolan3.Size = new System.Drawing.Size(92, 20);
+            this.dolan3.TabIndex = 5;
+            this.dolan3.Text = "Vị trí đo 3";
+            // 
             // GUI_FormThemThongSo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -515,12 +489,10 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label_Thongsomoitruong);
             this.Controls.Add(this.info_madonhang);
-            this.Controls.Add(this.info_tendonhang);
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.guna2Button6);
             this.Controls.Add(this.guna2Button5);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
             this.Name = "GUI_FormThemThongSo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -535,9 +507,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
-        private System.Windows.Forms.Label info_tendonhang;
         private System.Windows.Forms.Label info_madonhang;
         private System.Windows.Forms.Label label_Thongsomoitruong;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;

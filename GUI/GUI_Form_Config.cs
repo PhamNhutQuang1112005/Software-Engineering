@@ -67,5 +67,10 @@ namespace GUI
         {
             this.Close();
         }
+
+        private void GUI_Form_Config_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

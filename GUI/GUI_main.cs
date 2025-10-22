@@ -71,6 +71,8 @@ namespace GUI
             // Mặc định mở trang chủ (nếu muốn)
             if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
             ShowControl(ucTrangChu);
+            // Đặt trạng thái chọn cho nút Trang chủ ban đầu
+            SetActiveSidebarButton(btnTrangChu);
         }
 
         // ============================ Khởi tạo layout contentPanel ============================
@@ -192,8 +194,20 @@ namespace GUI
 
             foreach (var btn in sidebarButtons)
             {
+                // Bật chế độ radio để tự quản checked
+                btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+
+                // Màu thường
                 btn.FillColor = Color.DarkSeaGreen;
                 btn.ForeColor = Color.Black;
+
+                // Màu hover
+                btn.HoverState.FillColor = Color.WhiteSmoke;
+                btn.HoverState.ForeColor = Color.ForestGreen;
+
+                // Màu khi được chọn
+                btn.CheckedState.FillColor = Color.White;
+                btn.CheckedState.ForeColor = Color.ForestGreen;
             }
 
             guna2CircleButton1.Image = Properties.Resources.light_mode;
@@ -228,8 +242,19 @@ namespace GUI
 
             foreach (var btn in sidebarButtons)
             {
+                btn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+
+                // Màu thường
                 btn.FillColor = Color.LemonChiffon;
                 btn.ForeColor = Color.Black;
+
+                // Màu hover
+                btn.HoverState.FillColor = Color.WhiteSmoke;
+                btn.HoverState.ForeColor = Color.ForestGreen;
+
+                // Màu khi được chọn
+                btn.CheckedState.FillColor = Color.White;
+                btn.CheckedState.ForeColor = Color.ForestGreen;
             }
 
             guna2CircleButton1.Image = Properties.Resources.dark_mode;
@@ -281,6 +306,22 @@ namespace GUI
             }
         }
 
+        // Đặt trạng thái nút đang hoạt động trên sidebar
+        private void SetActiveSidebarButton(Guna2Button btn)
+        {
+            if (btn == null) return;
+
+            // Bỏ chọn tất cả
+            foreach (var b in sidebarButtons)
+            {
+                if (b == null || b.IsDisposed) continue;
+                b.Checked = false;
+            }
+
+            // Chọn nút hiện tại
+            btn.Checked = true;
+        }
+
         // =============== Sidebar Buttons ===============
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
@@ -292,48 +333,56 @@ namespace GUI
         {
             if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
             ShowControl(ucTrangChu);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
             if (ucQuanLyUsers == null) ucQuanLyUsers = new UC_QuanLyUserS();
             ShowControl(ucQuanLyUsers);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
             if (ucQuanLyKhachHang == null) ucQuanLyKhachHang = new UC_QuanLyKhachHang();
             ShowControl(ucQuanLyKhachHang);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnDonHang_Click(object sender, EventArgs e)
         {
             if (ucDonHang == null) ucDonHang = new UC_QuanLyDonHang();
             ShowControl(ucDonHang);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnHopDong_Click(object sender, EventArgs e)
         {
             if (ucQuanLyHopDong == null) ucQuanLyHopDong = new UC_QuanLyHopDong();
             ShowControl(ucQuanLyHopDong);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnThongKeTienDo_Click(object sender, EventArgs e)
         {
             if (ucThongKeDonHang == null) ucThongKeDonHang = new UC_ThongKe();
             ShowControl(ucThongKeDonHang);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnThongKeDonHang_Click(object sender, EventArgs e)
         {
             if (ucQuanLyThongSoDonHang == null) ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
             ShowControl(ucQuanLyThongSoDonHang);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnQuanLyUser_Click(object sender, EventArgs e)
         {
             if (ucChinhSuaThongTin == null) ucChinhSuaThongTin = new UC_ChinhSuaThongTin();
             ShowControl(ucChinhSuaThongTin);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         // ================= Popup thông báo =================

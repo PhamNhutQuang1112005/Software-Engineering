@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_main));
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.contentPanel = new System.Windows.Forms.Panel();
             this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
             this.lblVersion = new System.Windows.Forms.Label();
             this.lblUser = new System.Windows.Forms.Label();
             this.sidebar = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.contentPanel = new System.Windows.Forms.Panel();
+            this.guna2CircleButton1 = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.btnThongbao = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuanLyUser = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuanLyUsers = new Guna.UI2.WinForms.Guna2Button();
             this.btnThongKeDonHang = new Guna.UI2.WinForms.Guna2Button();
@@ -62,18 +62,6 @@
             this.mainPanel.Size = new System.Drawing.Size(1062, 553);
             this.mainPanel.TabIndex = 1;
             // 
-            // contentPanel
-            // 
-            this.contentPanel.BackColor = System.Drawing.Color.Transparent;
-            this.contentPanel.BackgroundImage = global::GUI.Properties.Resources.Sườn_UI__dark_;
-            this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.contentPanel.Location = new System.Drawing.Point(70, 56);
-            this.contentPanel.Name = "contentPanel";
-            this.contentPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.contentPanel.Size = new System.Drawing.Size(992, 497);
-            this.contentPanel.TabIndex = 0;
-            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
-            // 
             // header
             // 
             this.header.BackColor = System.Drawing.Color.Transparent;
@@ -86,46 +74,15 @@
             this.header.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(82)))), ((int)(((byte)(73)))));
             this.header.Location = new System.Drawing.Point(70, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(992, 56);
+            this.header.Size = new System.Drawing.Size(992, 64);
             this.header.TabIndex = 1;
-            // 
-            // guna2CircleButton1
-            // 
-            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
-            this.guna2CircleButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton1.Image")));
-            this.guna2CircleButton1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2CircleButton1.Location = new System.Drawing.Point(98, 3);
-            this.guna2CircleButton1.Name = "guna2CircleButton1";
-            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CircleButton1.Size = new System.Drawing.Size(50, 50);
-            this.guna2CircleButton1.TabIndex = 3;
-            this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
-            // 
-            // btnThongbao
-            // 
-            this.btnThongbao.FillColor = System.Drawing.Color.Transparent;
-            this.btnThongbao.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnThongbao.ForeColor = System.Drawing.Color.White;
-            this.btnThongbao.Image = ((System.Drawing.Image)(resources.GetObject("btnThongbao.Image")));
-            this.btnThongbao.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnThongbao.Location = new System.Drawing.Point(323, 0);
-            this.btnThongbao.Name = "btnThongbao";
-            this.btnThongbao.Size = new System.Drawing.Size(50, 50);
-            this.btnThongbao.TabIndex = 2;
-            this.btnThongbao.Click += new System.EventHandler(this.btnThongbao_Click);
             // 
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(6, 14);
+            this.lblVersion.Location = new System.Drawing.Point(6, 16);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(86, 23);
             this.lblVersion.TabIndex = 0;
@@ -136,7 +93,7 @@
             this.lblUser.AutoSize = true;
             this.lblUser.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblUser.ForeColor = System.Drawing.Color.White;
-            this.lblUser.Location = new System.Drawing.Point(178, 14);
+            this.lblUser.Location = new System.Drawing.Point(178, 16);
             this.lblUser.Name = "lblUser";
             this.lblUser.Size = new System.Drawing.Size(139, 23);
             this.lblUser.TabIndex = 1;
@@ -160,6 +117,49 @@
             this.sidebar.Name = "sidebar";
             this.sidebar.Size = new System.Drawing.Size(70, 553);
             this.sidebar.TabIndex = 2;
+            // 
+            // contentPanel
+            // 
+            this.contentPanel.BackColor = System.Drawing.Color.Transparent;
+            this.contentPanel.BackgroundImage = global::GUI.Properties.Resources.Sườn_UI__dark_;
+            this.contentPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.contentPanel.Location = new System.Drawing.Point(70, 56);
+            this.contentPanel.Name = "contentPanel";
+            this.contentPanel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.contentPanel.Size = new System.Drawing.Size(992, 497);
+            this.contentPanel.TabIndex = 0;
+            this.contentPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.contentPanel_Paint);
+            // 
+            // guna2CircleButton1
+            // 
+            this.guna2CircleButton1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2CircleButton1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2CircleButton1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2CircleButton1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2CircleButton1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2CircleButton1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
+            this.guna2CircleButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2CircleButton1.Image")));
+            this.guna2CircleButton1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2CircleButton1.Location = new System.Drawing.Point(98, 6);
+            this.guna2CircleButton1.Name = "guna2CircleButton1";
+            this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CircleButton1.Size = new System.Drawing.Size(46, 47);
+            this.guna2CircleButton1.TabIndex = 3;
+            this.guna2CircleButton1.Click += new System.EventHandler(this.guna2CircleButton1_Click);
+            // 
+            // btnThongbao
+            // 
+            this.btnThongbao.FillColor = System.Drawing.Color.Transparent;
+            this.btnThongbao.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnThongbao.ForeColor = System.Drawing.Color.White;
+            this.btnThongbao.Image = ((System.Drawing.Image)(resources.GetObject("btnThongbao.Image")));
+            this.btnThongbao.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnThongbao.Location = new System.Drawing.Point(323, 6);
+            this.btnThongbao.Name = "btnThongbao";
+            this.btnThongbao.Size = new System.Drawing.Size(52, 47);
+            this.btnThongbao.TabIndex = 2;
+            this.btnThongbao.Click += new System.EventHandler(this.btnThongbao_Click);
             // 
             // btnQuanLyUser
             // 
