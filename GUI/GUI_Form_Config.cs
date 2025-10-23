@@ -1,3 +1,4 @@
+﻿
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
@@ -66,11 +67,6 @@ namespace GUI
         private void bCancel_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void GUI_Form_Config_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

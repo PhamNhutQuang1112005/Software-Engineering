@@ -50,6 +50,7 @@
             this.guna2TextBox9 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.ĐăngNhap = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.textDangNhap = new Guna.UI2.WinForms.Guna2TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -77,7 +78,6 @@
             this.guna2PictureBox8 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.guna2TextBox12 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.TAB.SuspendLayout();
             this.SMS.SuspendLayout();
@@ -157,7 +157,7 @@
             this.SMS.Location = new System.Drawing.Point(4, 4);
             this.SMS.Name = "SMS";
             this.SMS.Padding = new System.Windows.Forms.Padding(3);
-            this.SMS.Size = new System.Drawing.Size(237, 334);
+            this.SMS.Size = new System.Drawing.Size(241, 334);
             this.SMS.TabIndex = 3;
             this.SMS.Text = "GửiSMS";
             // 
@@ -266,7 +266,7 @@
             this.TaoTK.Location = new System.Drawing.Point(4, 4);
             this.TaoTK.Name = "TaoTK";
             this.TaoTK.Padding = new System.Windows.Forms.Padding(3);
-            this.TaoTK.Size = new System.Drawing.Size(237, 334);
+            this.TaoTK.Size = new System.Drawing.Size(241, 334);
             this.TaoTK.TabIndex = 4;
             this.TaoTK.Text = "Tạo TK";
             this.TaoTK.Click += new System.EventHandler(this.tabPage2_Click);
@@ -468,6 +468,19 @@
             this.ĐăngNhap.Text = "Đăng nhập";
             this.ĐăngNhap.Click += new System.EventHandler(this.ĐăngNhap_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(108, 295);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(162, 19);
+            this.label7.TabIndex = 39;
+            this.label7.Text = "Bạn chưa có tài khoản?";
+            // 
             // guna2Button4
             // 
             this.guna2Button4.AutoRoundedCorners = true;
@@ -506,6 +519,7 @@
             this.textDangNhap.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textDangNhap.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textDangNhap.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textDangNhap.ForeColor = System.Drawing.Color.Black;
             this.textDangNhap.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textDangNhap.Location = new System.Drawing.Point(30, 58);
             this.textDangNhap.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -614,6 +628,7 @@
             this.textMK.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.textMK.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textMK.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.textMK.ForeColor = System.Drawing.Color.Black;
             this.textMK.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.textMK.Location = new System.Drawing.Point(30, 149);
             this.textMK.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -636,7 +651,7 @@
             this.NhapSMS.Location = new System.Drawing.Point(4, 4);
             this.NhapSMS.Name = "NhapSMS";
             this.NhapSMS.Padding = new System.Windows.Forms.Padding(3);
-            this.NhapSMS.Size = new System.Drawing.Size(237, 334);
+            this.NhapSMS.Size = new System.Drawing.Size(241, 334);
             this.NhapSMS.TabIndex = 6;
             this.NhapSMS.Text = "NhapSMS";
             this.NhapSMS.Click += new System.EventHandler(this.NhapSMS_Click);
@@ -760,7 +775,7 @@
             this.XacNhanMK.Location = new System.Drawing.Point(4, 4);
             this.XacNhanMK.Name = "XacNhanMK";
             this.XacNhanMK.Padding = new System.Windows.Forms.Padding(3);
-            this.XacNhanMK.Size = new System.Drawing.Size(237, 334);
+            this.XacNhanMK.Size = new System.Drawing.Size(241, 334);
             this.XacNhanMK.TabIndex = 8;
             this.XacNhanMK.Text = "Xác Nhận MK";
             // 
@@ -946,19 +961,6 @@
             this.guna2TextBox12.SelectedText = "";
             this.guna2TextBox12.Size = new System.Drawing.Size(339, 51);
             this.guna2TextBox12.TabIndex = 37;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(108, 295);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 19);
-            this.label7.TabIndex = 39;
-            this.label7.Text = "Bạn chưa có tài khoản?";
             // 
             // GUI_Form_DangNhap
             // 

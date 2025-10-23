@@ -37,35 +37,12 @@ namespace GUI
             // === Sự kiện chuyển tab ===
             this.label10.Click += (s, e) => TAB.SelectedTab = TaoTK;
             this.label11.Click += (s, e) => TAB.SelectedTab = SMS;
-
-            // === Gán phím chuyển tab ===
-            this.KeyPreview = true;
-            this.KeyDown += GUI_Form_DangNhap_KeyDown;
         }
 
         private void GUI_Form_DangNhap_Load(object sender, EventArgs e) { }
 
         // =================== Xử lý phím chuyển tab ===================
-        private void GUI_Form_DangNhap_KeyDown(object sender, KeyEventArgs e)
-        {
-            int current = TAB.SelectedIndex;
-
-            if (e.KeyCode == Keys.Right || e.KeyCode == Keys.Enter)
-            {
-                if (current < TAB.TabCount - 1)
-                    TAB.SelectedIndex++;
-                else
-                    TAB.SelectedIndex = 0;
-            }
-
-            if (e.KeyCode == Keys.Left)
-            {
-                if (current > 0)
-                    TAB.SelectedIndex--;
-                else
-                    TAB.SelectedIndex = TAB.TabCount - 1;
-            }
-        }
+        
 
         // =================== Các nút điều hướng ===================
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -105,9 +82,11 @@ namespace GUI
 
                     MessageBox.Show($"Chào mừng {hoten} ({vaitro})!", "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    
                     this.Hide();
-                    GUI_main main = new GUI_main();
-                    main.ShowDialog();
+var main = new GUI_main(/* hoten, vaitro */);
+main.FormClosed += (s, args) => this.Close(); // khi main tắt thì đóng login
+main.Show();
                 }
                 else
                 {

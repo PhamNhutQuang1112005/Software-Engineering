@@ -1,55 +1,180 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using BLL;
 
 namespace GUI
 {
     public partial class GUI_FormThemKhach : Form
     {
+        // Nếu null => THÊM, ngược lại => SỬA
+        private readonly string khachHangID;
+        private readonly DataRow rowToEdit;
+
         public GUI_FormThemKhach()
         {
             InitializeComponent();
+            this.khachHangID = null;
+            this.rowToEdit = null;
+            this.Text = "Thêm khách hàng";
         }
 
-        private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
+        // Overload: truyền sẵn DataRow để sửa
+        public GUI_FormThemKhach(DataRow row)
         {
-
+            InitializeComponent();
+            this.rowToEdit = row;
+            this.khachHangID = row?["KhachHangID"]?.ToString();
+            this.Text = "Sửa khách hàng";
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        // Overload: truyền ID để sửa
+        public GUI_FormThemKhach(string id)
         {
-
+            InitializeComponent();
+            this.khachHangID = id;
+            this.rowToEdit = null;
+            this.Text = "Sửa khách hàng";
+            LoadByIdAndFill(id);
         }
 
-        private void guna2TextBox5_TextChanged(object sender, EventArgs e)
+        // Nạp dữ liệu theo ID và fill control (không cần Linq)
+        private void LoadByIdAndFill(string id)
         {
+            try
+            {
+                var dt = BLL_KhachHang.GetAllKhachHang();
+                if (dt == null) return;
 
+                string safeId = (id ?? "").Replace("'", "''");
+                DataRow[] rows = dt.Select("KhachHangID = '" + safeId + "'");
+                if (rows.Length == 0) return;
+
+                var r = rows[0];
+                txtMaKH.Text         = Convert.ToString(r["MaKhachHang"]);
+                txtTenCongTy.Text    = Convert.ToString(r["TenCongTy"]);
+                txtMaSoThue.Text     = Convert.ToString(r["MaSoThue"]);
+                txtNguoiDaiDien.Text = Convert.ToString(r["NguoiDaiDien"]);
+                txtSDT.Text          = Convert.ToString(r["DienThoai"]);
+                txtEmail.Text        = Convert.ToString(r["Email"]);
+                txtDiaChi.Text       = Convert.ToString(r["DiaChi"]);
+                txtGhiChu.Text       = Convert.ToString(r["GhiChu"]);
+            }
+            catch
+            {
+                // Có thể log/MessageBox nếu cần
+            }
         }
 
-        private void guna2TextBox3_TextChanged(object sender, EventArgs e)
+        private void GUI_FormThemKhach_Load(object sender, EventArgs e)
         {
-
+            if (rowToEdit != null)
+            {
+                // Map dữ liệu lên control khi sửa (chế độ DataRow)
+                txtMaKH.Text          = rowToEdit["MaKhachHang"]?.ToString();
+                txtTenCongTy.Text     = rowToEdit["TenCongTy"]?.ToString();
+                txtMaSoThue.Text      = rowToEdit["MaSoThue"]?.ToString();
+                txtNguoiDaiDien.Text  = rowToEdit["NguoiDaiDien"]?.ToString();
+                txtSDT.Text           = rowToEdit["DienThoai"]?.ToString();
+                txtEmail.Text         = rowToEdit["Email"]?.ToString();
+                txtDiaChi.Text        = rowToEdit["DiaChi"]?.ToString();
+                txtGhiChu.Text        = rowToEdit["GhiChu"]?.ToString();
+            }
         }
 
-        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
+        private bool ValidateInputs(out string message)
         {
+            if (string.IsNullOrWhiteSpace(txtMaKH.Text))
+            {
+                message = "Vui lòng nhập Mã khách hàng.";
+                txtMaKH.Focus(); return false;
+            }
+            if (string.IsNullOrWhiteSpace(txtTenCongTy.Text))
+            {
+                message = "Vui lòng nhập Tên công ty.";
+                txtTenCongTy.Focus(); return false;
+            }
 
+            // MST: rỗng thì bỏ qua; nếu có phải 10 hoặc 13 số
+            if (!string.IsNullOrWhiteSpace(txtMaSoThue.Text))
+            {
+                var ms = Regex.Replace(txtMaSoThue.Text, @"\D", "");
+                if (!(ms.Length == 10 || ms.Length == 13))
+                {
+                    message = "Mã số thuế phải gồm 10 hoặc 13 chữ số.";
+                    txtMaSoThue.Focus(); return false;
+                }
+            }
+
+            // Email: đơn giản
+            if (!string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                if (!Regex.IsMatch(txtEmail.Text.Trim(),
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$", RegexOptions.IgnoreCase))
+                {
+                    message = "Email không hợp lệ.";
+                    txtEmail.Focus(); return false;
+                }
+            }
+
+            // SĐT: tối đa 20 ký tự theo DB
+            if (!string.IsNullOrWhiteSpace(txtSDT.Text) && txtSDT.Text.Trim().Length > 20)
+            {
+                message = "Số điện thoại không được vượt quá 20 ký tự.";
+                txtSDT.Focus(); return false;
+            }
+
+            message = null;
+            return true;
         }
 
-        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
+        private void btnLuu_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (!ValidateInputs(out var msg))
+                {
+                    MessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
+                // Chuẩn hóa input
+                string ma           = txtMaKH.Text.Trim();
+                string ten          = txtTenCongTy.Text.Trim();
+                string maSoThue     = string.IsNullOrWhiteSpace(txtMaSoThue.Text) ? null : txtMaSoThue.Text.Trim();
+                string nguoiDaiDien = string.IsNullOrWhiteSpace(txtNguoiDaiDien.Text) ? null : txtNguoiDaiDien.Text.Trim();
+                string sdt          = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim();
+                string email        = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+                string diachi       = string.IsNullOrWhiteSpace(txtDiaChi.Text) ? null : txtDiaChi.Text.Trim();
+                string ghichu       = string.IsNullOrWhiteSpace(txtGhiChu.Text) ? null : txtGhiChu.Text.Trim();
+
+                if (string.IsNullOrEmpty(khachHangID))
+                {
+                    // THÊM MỚI: ID tự sinh trong proc
+                    BLL_KhachHang.ThemKhachHang(ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
+                    MessageBox.Show("Thêm khách hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // CẬP NHẬT
+                    BLL_KhachHang.SuaKhachHang(khachHangID, ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
+                    MessageBox.Show("Cập nhật khách hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
+        private void btnHuy_Click(object sender, EventArgs e)
         {
-
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
     }
 }

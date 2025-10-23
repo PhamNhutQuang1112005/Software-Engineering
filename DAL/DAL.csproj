@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DAL_KhachHang.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

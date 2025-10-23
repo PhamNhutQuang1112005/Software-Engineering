@@ -1,4 +1,4 @@
-﻿create database SQL
+﻿
 -- =============================================
 -- BẢNG TRA CỨU (Lookup Tables)
 -- =============================================
@@ -429,7 +429,6 @@ GO
 
 -- ===== 2. THÊM KHÁCH HÀNG =====
 CREATE PROCEDURE sp_ThemKhachHang
-    @KhachHangID NVARCHAR(50),
     @MaKhachHang NVARCHAR(50),
     @TenCongTy NVARCHAR(200),
     @MaSoThue NVARCHAR(50) = NULL,
@@ -443,23 +442,38 @@ BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
         BEGIN TRANSACTION;
-        
-        -- Kiểm tra MaKhachHang đã tồn tại
+
+        -- Kiểm tra mã khách hàng trùng
         IF EXISTS (SELECT 1 FROM KhachHang WHERE MaKhachHang = @MaKhachHang AND IsDeleted = 0)
         BEGIN
             RAISERROR(N'Mã khách hàng đã tồn tại!', 16, 1);
             RETURN;
-        END
-        
+        END;
+
+        -- ===== Tự động sinh KhachHangID dạng KH0001 =====
+        DECLARE @NewID NVARCHAR(50);
+        DECLARE @MaxID INT;
+
+        SELECT @MaxID = 
+            MAX(CAST(SUBSTRING(KhachHangID, 3, LEN(KhachHangID) - 2) AS INT))
+        FROM KhachHang
+        WHERE KhachHangID LIKE 'KH%';
+
+        IF @MaxID IS NULL
+            SET @MaxID = 0;
+
+        SET @NewID = 'KH' + RIGHT('0000' + CAST(@MaxID + 1 AS NVARCHAR(4)), 4);
+
+        -- Thêm dữ liệu
         INSERT INTO KhachHang (
             KhachHangID, MaKhachHang, TenCongTy, MaSoThue,
             NguoiDaiDien, DienThoai, Email, DiaChi, GhiChu
         )
         VALUES (
-            @KhachHangID, @MaKhachHang, @TenCongTy, @MaSoThue,
+            @NewID, @MaKhachHang, @TenCongTy, @MaSoThue,
             @NguoiDaiDien, @DienThoai, @Email, @DiaChi, @GhiChu
         );
-        
+
         COMMIT TRANSACTION;
         PRINT N'Thêm khách hàng thành công!';
     END TRY
@@ -470,6 +484,7 @@ BEGIN
     END CATCH
 END;
 GO
+
 
 -- ===== 3. THÊM HỢP ĐỒNG =====
 CREATE PROCEDURE sp_ThemHopDong
@@ -1112,3 +1127,150 @@ VALUES (
     N'PB001',              -- phòng ban Kinh doanh (theo bảng PhongBan)
     1                      -- đang hoạt động
 );
+-- Thêm dữ liệu mẫu vào bảng KhachHang
+INSERT INTO KhachHang (
+    KhachHangID, MaKhachHang, TenCongTy, MaSoThue, 
+    NguoiDaiDien, DienThoai, Email, DiaChi, GhiChu
+) VALUES
+('KH0001', 'C001', N'Công ty TNHH Xanh Việt', '0312567890',
+ N'Nguyễn Văn A', '0901234567', 'contact@xanhviet.com',
+ N'12 Nguyễn Trãi, Quận 5, TP.HCM', N'Khách hàng thân thiết'),
+
+('KH0002', 'C002', N'Công ty Cổ phần ABC', '0301123456',
+ N'Trần Thị B', '0912345678', 'info@abc.vn',
+ N'45 Lý Thường Kiệt, Quận 10, TP.HCM', N'Thường xuyên đặt hàng'),
+
+('KH0003', 'C003', N'Công ty TNHH TechSmart', '0109876543',
+ N'Lê Minh C', '0987654321', 'lm.c@techsmart.vn',
+ N'25 Nguyễn Văn Linh, Quận 7, TP.HCM', N'Khách hàng doanh nghiệp'),
+
+('KH0004', 'C004', N'Công ty TNHH Hòa Bình', '0405566778',
+ N'Phạm Ngọc D', '0977123456', 'sales@hoabinh.com',
+ N'78 Hoàng Diệu, Quận Hải Châu, Đà Nẵng', N'Khách hàng miền Trung'),
+
+('KH0005', 'C005', N'Công ty Cổ phần GreenSoft', '0503344556',
+ N'Đặng Thu E', '0933221144', 'support@greensoft.vn',
+ N'123 Nguyễn Huệ, Quận 1, TP.HCM', N'Đối tác phần mềm');
+create or ALTER PROCEDURE dbo.sp_LayDanhSachKhachHang
+AS
+BEGIN
+  SET NOCOUNT ON;
+  SELECT KhachHangID, MaKhachHang, TenCongTy, MaSoThue, NguoiDaiDien,
+         DienThoai, Email, DiaChi, GhiChu
+  FROM KhachHang
+  WHERE IsDeleted = 0
+  ORDER BY TenCongTy;
+END
+
+create or ALTER PROCEDURE [dbo].[sp_XoaKhachHang]
+    @KhachHangID NVARCHAR(50),
+    @XoaCung BIT = 0,
+    @Cascade BIT = 1,
+    @NguoiDungID NVARCHAR(50) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Kiểm tra tồn tại
+        IF NOT EXISTS (SELECT 1 FROM dbo.KhachHang WHERE KhachHangID = @KhachHangID)
+        BEGIN
+            RAISERROR(N'Khách hàng không tồn tại!', 16, 1);
+        END
+
+        IF @XoaCung = 1
+        BEGIN
+            -- Chặn xóa cứng nếu còn Hợp đồng
+            IF EXISTS (SELECT 1 FROM dbo.HopDong WHERE KhachHangID = @KhachHangID)
+            BEGIN
+                RAISERROR(N'Không thể xóa cứng vì còn Hợp đồng liên quan. Hãy xóa Hợp đồng trước.', 16, 1);
+            END
+
+            DELETE FROM dbo.KhachHang
+            WHERE KhachHangID = @KhachHangID;
+
+            IF @NguoiDungID IS NOT NULL
+            BEGIN
+                INSERT INTO dbo.NhatKy (NhatKyID,NguoiDungID,HanhDong,TenThucThe,ThucTheID,ChiTiet,CreatedAt)
+                VALUES (NEWID(), @NguoiDungID, N'Xóa KH (cứng)', N'KhachHang', @KhachHangID,
+                        N'Xóa cứng khách hàng ' + @KhachHangID, GETDATE());
+            END
+        END
+        ELSE
+        BEGIN
+            -- XÓA MỀM KH
+            UPDATE dbo.KhachHang
+            SET IsDeleted = 1,
+                DeletedAt = GETDATE()
+            WHERE KhachHangID = @KhachHangID;
+
+            IF @Cascade = 1
+            BEGIN
+                -- XÓA MỀM HỢP ĐỒNG TRỰC TIẾP THEO KH
+                UPDATE dbo.HopDong
+                SET IsDeleted = 1,
+                    DeletedAt = GETDATE()
+                WHERE KhachHangID = @KhachHangID;
+
+                -- XÓA MỀM ĐƠN HÀNG THEO CÁC HỢP ĐỒNG CỦA KH
+                UPDATE dbo.DonHang
+                SET IsDeleted = 1,
+                    DeletedAt = GETDATE()
+                WHERE HopDongID IN (
+                    SELECT HD.HopDongID FROM dbo.HopDong AS HD WHERE HD.KhachHangID = @KhachHangID
+                );
+            END
+
+            IF @NguoiDungID IS NOT NULL
+            BEGIN
+                INSERT INTO dbo.NhatKy (NhatKyID,NguoiDungID,HanhDong,TenThucThe,ThucTheID,ChiTiet,CreatedAt)
+                VALUES (NEWID(), @NguoiDungID, N'Xóa KH (mềm)', N'KhachHang', @KhachHangID,
+                        N'Xóa mềm khách hàng ' + @KhachHangID + N' (Cascade=' + CAST(@Cascade AS NVARCHAR(1)) + N')',
+                        GETDATE());
+            END
+        END
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0 ROLLBACK TRANSACTION;
+        DECLARE @Err NVARCHAR(4000) = ERROR_MESSAGE();
+        RAISERROR(@Err, 16, 1);
+    END CATCH
+END
+go
+CREATE OR ALTER PROCEDURE sp_KhachHang_Update
+    @KhachHangID NVARCHAR(50),
+    @MaKhachHang NVARCHAR(50),
+    @TenCongTy NVARCHAR(200),
+    @MaSoThue NVARCHAR(50)=NULL,
+    @NguoiDaiDien NVARCHAR(200)=NULL,
+    @DienThoai NVARCHAR(20)=NULL,
+    @Email NVARCHAR(100)=NULL,
+    @DiaChi NVARCHAR(500)=NULL,
+    @GhiChu NVARCHAR(MAX)=NULL
+AS
+BEGIN
+    SET NOCOUNT ON; SET XACT_ABORT ON;
+    BEGIN TRY
+        UPDATE KhachHang
+        SET MaKhachHang=@MaKhachHang,
+            TenCongTy=@TenCongTy,
+            MaSoThue=@MaSoThue,
+            NguoiDaiDien=@NguoiDaiDien,
+            DienThoai=@DienThoai,
+            Email=@Email,
+            DiaChi=@DiaChi,
+            GhiChu=@GhiChu
+        WHERE KhachHangID=@KhachHangID AND IsDeleted=0;
+
+        IF @@ROWCOUNT=0 THROW 50010, N'Cập nhật KH thất bại (không tìm thấy).', 1;
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END;
+GO
