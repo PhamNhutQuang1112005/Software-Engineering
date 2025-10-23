@@ -32,7 +32,7 @@ namespace GUI
 
         "<b>GreenSol</b> được thành lập để giải quyết những khó khăn thường gặp trong việc quản lý hợp đồng, đơn hàng và lịch trình quan trắc. " +
         "Thay vì phụ thuộc vào giấy tờ phức tạp hay bảng tính thủ công dễ sai sót, chúng tôi mang đến một nền tảng số hóa toàn diện – " +
-        "giúp bạn tiết kiệm thời gian, nâng cao độ tin cậy và đảm bảo tuân thủ quy định pháp luật.<br><br>";
+        "giúp bạn tiết kiệm thời gian và nguồn lực.<br><br>";
 
     // Tạo label HTML và chèn nội dung
     var html = new Guna.UI2.WinForms.Guna2HtmlLabel
@@ -55,6 +55,11 @@ namespace GUI
 }
 
         private void slogan3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gradient_box_message_Paint(object sender, PaintEventArgs e)
         {
 
         }

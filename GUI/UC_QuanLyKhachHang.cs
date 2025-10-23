@@ -29,5 +29,11 @@ namespace GUI
         {
 
         }
+
+        private void themkhachhang_Click(object sender, EventArgs e)
+        {
+            GUI_FormThemKhach gUI_Form_them_khachhang = new GUI_FormThemKhach();
+            gUI_Form_them_khachhang.ShowDialog();
+        }
     }
 }

@@ -66,7 +66,7 @@ namespace GUI
             this.xuatketqua = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.themdonhang = new Guna.UI2.WinForms.Guna2Button();
             this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
@@ -571,23 +571,24 @@ namespace GUI
             this.guna2Button2.TabIndex = 46;
             this.guna2Button2.Text = "Xóa";
             // 
-            // guna2Button1
+            // themdonhang
             // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.White;
-            this.guna2Button1.BorderRadius = 15;
-            this.guna2Button1.BorderThickness = 2;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(106, 36);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(113, 36);
-            this.guna2Button1.TabIndex = 45;
-            this.guna2Button1.Text = "Thêm";
+            this.themdonhang.BorderColor = System.Drawing.Color.White;
+            this.themdonhang.BorderRadius = 15;
+            this.themdonhang.BorderThickness = 2;
+            this.themdonhang.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.themdonhang.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.themdonhang.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.themdonhang.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.themdonhang.FillColor = System.Drawing.Color.SeaGreen;
+            this.themdonhang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.themdonhang.ForeColor = System.Drawing.Color.White;
+            this.themdonhang.Location = new System.Drawing.Point(106, 36);
+            this.themdonhang.Name = "themdonhang";
+            this.themdonhang.Size = new System.Drawing.Size(113, 36);
+            this.themdonhang.TabIndex = 45;
+            this.themdonhang.Text = "Thêm";
+            this.themdonhang.Click += new System.EventHandler(this.themdonhang_Click);
             // 
             // microphone
             // 
@@ -610,7 +611,7 @@ namespace GUI
             this.Controls.Add(this.microphone);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button2);
-            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.themdonhang);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label4);
@@ -671,7 +672,7 @@ namespace GUI
         private Guna.UI2.WinForms.Guna2Button xuatketqua;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button themdonhang;
         private Guna.UI2.WinForms.Guna2PictureBox microphone;
     }
 }

@@ -36,6 +36,7 @@ namespace GUI
             this.guna2HtmlLabel14 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2HtmlLabel21 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.guna2HtmlLabel11 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel10 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel9 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -51,8 +52,7 @@ namespace GUI
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.themuser = new Guna.UI2.WinForms.Guna2Button();
             this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2GradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -116,7 +116,7 @@ namespace GUI
             this.guna2GradientPanel2.Controls.Add(this.guna2HtmlLabel14);
             this.guna2GradientPanel2.Location = new System.Drawing.Point(38, 176);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(376, 201);
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(475, 201);
             this.guna2GradientPanel2.TabIndex = 62;
             this.guna2GradientPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel2_Paint);
             // 
@@ -130,6 +130,15 @@ namespace GUI
             this.guna2HtmlLabel21.Size = new System.Drawing.Size(72, 25);
             this.guna2HtmlLabel21.TabIndex = 22;
             this.guna2HtmlLabel21.Text = "Chức vụ:";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(26, 48);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(99, 96);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 18;
+            this.pictureBox2.TabStop = false;
             // 
             // guna2HtmlLabel11
             // 
@@ -323,32 +332,24 @@ namespace GUI
             this.guna2Button2.TabIndex = 56;
             this.guna2Button2.Text = "Xóa";
             // 
-            // guna2Button1
+            // themuser
             // 
-            this.guna2Button1.BorderColor = System.Drawing.Color.White;
-            this.guna2Button1.BorderRadius = 15;
-            this.guna2Button1.BorderThickness = 2;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(106, 36);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(113, 36);
-            this.guna2Button1.TabIndex = 55;
-            this.guna2Button1.Text = "Thêm";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(26, 48);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(99, 96);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 18;
-            this.pictureBox2.TabStop = false;
+            this.themuser.BorderColor = System.Drawing.Color.White;
+            this.themuser.BorderRadius = 15;
+            this.themuser.BorderThickness = 2;
+            this.themuser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.themuser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.themuser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.themuser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.themuser.FillColor = System.Drawing.Color.SeaGreen;
+            this.themuser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.themuser.ForeColor = System.Drawing.Color.White;
+            this.themuser.Location = new System.Drawing.Point(106, 36);
+            this.themuser.Name = "themuser";
+            this.themuser.Size = new System.Drawing.Size(113, 36);
+            this.themuser.TabIndex = 55;
+            this.themuser.Text = "Thêm";
+            this.themuser.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // microphone
             // 
@@ -374,7 +375,7 @@ namespace GUI
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.guna2GradientPanel2);
-            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.themuser);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_QuanLyUserS";
@@ -412,7 +413,7 @@ namespace GUI
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button themuser;
         private Guna.UI2.WinForms.Guna2PictureBox microphone;
     }
 }

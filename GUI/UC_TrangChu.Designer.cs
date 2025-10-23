@@ -47,7 +47,7 @@
             slogan4.BackColor = System.Drawing.Color.Transparent;
             slogan4.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Bold);
             slogan4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(220)))), ((int)(((byte)(89)))));
-            slogan4.Location = new System.Drawing.Point(609, 123);
+            slogan4.Location = new System.Drawing.Point(609, 106);
             slogan4.Name = "slogan4";
             slogan4.Size = new System.Drawing.Size(279, 65);
             slogan4.TabIndex = 19;
@@ -60,7 +60,7 @@
             slogan3.BackColor = System.Drawing.Color.Transparent;
             slogan3.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             slogan3.ForeColor = System.Drawing.Color.White;
-            slogan3.Location = new System.Drawing.Point(460, 132);
+            slogan3.Location = new System.Drawing.Point(460, 115);
             slogan3.Name = "slogan3";
             slogan3.Size = new System.Drawing.Size(199, 48);
             slogan3.TabIndex = 18;
@@ -74,7 +74,7 @@
             guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 25F, System.Drawing.FontStyle.Bold);
             guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(109)))), ((int)(((byte)(77)))));
-            guna2HtmlLabel2.Location = new System.Drawing.Point(430, 68);
+            guna2HtmlLabel2.Location = new System.Drawing.Point(430, 51);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             guna2HtmlLabel2.Size = new System.Drawing.Size(266, 68);
             guna2HtmlLabel2.TabIndex = 17;
@@ -87,7 +87,7 @@
             guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            guna2HtmlLabel3.Location = new System.Drawing.Point(322, 78);
+            guna2HtmlLabel3.Location = new System.Drawing.Point(322, 61);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             guna2HtmlLabel3.Size = new System.Drawing.Size(150, 48);
             guna2HtmlLabel3.TabIndex = 16;
@@ -98,25 +98,24 @@
             // 
             this.gradient_box_message.AutoScroll = true;
             this.gradient_box_message.BackColor = System.Drawing.Color.Transparent;
-            this.gradient_box_message.BorderRadius = 20;
-            this.gradient_box_message.BorderThickness = 1;
             this.gradient_box_message.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gradient_box_message.FillColor = System.Drawing.Color.Black;
             this.gradient_box_message.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.gradient_box_message.FillColor3 = System.Drawing.Color.Transparent;
             this.gradient_box_message.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.gradient_box_message.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.gradient_box_message.Location = new System.Drawing.Point(0, 244);
+            this.gradient_box_message.Location = new System.Drawing.Point(0, 235);
             this.gradient_box_message.Name = "gradient_box_message";
             this.gradient_box_message.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.gradient_box_message.Size = new System.Drawing.Size(928, 284);
+            this.gradient_box_message.Size = new System.Drawing.Size(928, 293);
             this.gradient_box_message.TabIndex = 20;
+            this.gradient_box_message.Paint += new System.Windows.Forms.PaintEventHandler(this.gradient_box_message_Paint);
             // 
             // logo
             // 
             this.logo.Image = global::GUI.Properties.Resources.Green_Sol;
             this.logo.ImageRotate = 0F;
-            this.logo.Location = new System.Drawing.Point(103, 39);
+            this.logo.Location = new System.Drawing.Point(103, 28);
             this.logo.Name = "logo";
             this.logo.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.logo.Size = new System.Drawing.Size(158, 152);

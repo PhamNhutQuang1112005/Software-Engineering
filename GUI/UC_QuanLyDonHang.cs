@@ -215,5 +215,11 @@ namespace GUI
         {
 
         }
+
+        private void themdonhang_Click(object sender, System.EventArgs e)
+        {
+            GUI_FormThemDonHang gUI_Form_them_donhang = new GUI_FormThemDonHang();
+            gUI_Form_them_donhang.ShowDialog();
+        }
     }
 }

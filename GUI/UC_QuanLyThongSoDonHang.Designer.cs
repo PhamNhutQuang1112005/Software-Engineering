@@ -32,7 +32,6 @@ namespace GUI
         {
             this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.ngaydonhang = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -41,6 +40,7 @@ namespace GUI
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
             this.SuspendLayout();
@@ -74,28 +74,17 @@ namespace GUI
             this.guna2Panel1.BorderColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderRadius = 15;
             this.guna2Panel1.BorderThickness = 2;
-            this.guna2Panel1.Controls.Add(this.ngaydonhang);
+            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel5);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel4);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel3);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
             this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
             this.guna2Panel1.Location = new System.Drawing.Point(38, 176);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(652, 124);
+            this.guna2Panel1.Size = new System.Drawing.Size(735, 149);
             this.guna2Panel1.TabIndex = 47;
             this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint_1);
             this.guna2Panel1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.guna2Panel1_MouseDoubleClick);
-            // 
-            // ngaydonhang
-            // 
-            this.ngaydonhang.BackColor = System.Drawing.Color.Transparent;
-            this.ngaydonhang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.ngaydonhang.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ngaydonhang.Location = new System.Drawing.Point(30, 75);
-            this.ngaydonhang.Name = "ngaydonhang";
-            this.ngaydonhang.Size = new System.Drawing.Size(163, 25);
-            this.ngaydonhang.TabIndex = 4;
-            this.ngaydonhang.Text = "Ngày tạo đơn hàng:";
             // 
             // guna2HtmlLabel4
             // 
@@ -113,7 +102,7 @@ namespace GUI
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(30, 44);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(30, 75);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(137, 25);
             this.guna2HtmlLabel3.TabIndex = 2;
@@ -227,6 +216,17 @@ namespace GUI
             this.microphone.TabStop = false;
             this.microphone.UseTransparentBackground = true;
             // 
+            // guna2HtmlLabel5
+            // 
+            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.guna2HtmlLabel5.Location = new System.Drawing.Point(30, 44);
+            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(163, 25);
+            this.guna2HtmlLabel5.TabIndex = 5;
+            this.guna2HtmlLabel5.Text = "Ngày tạo đơn hàng:";
+            // 
             // UC_QuanLyThongSoDonHang
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -253,7 +253,6 @@ namespace GUI
         #endregion
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel ngaydonhang;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
@@ -262,5 +261,6 @@ namespace GUI
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
         private Guna.UI2.WinForms.Guna2PictureBox microphone;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
     }
 }
