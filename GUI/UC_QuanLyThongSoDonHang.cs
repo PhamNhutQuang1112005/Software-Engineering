@@ -228,7 +228,7 @@ namespace GUI
 
         private void guna2Panel1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            GUI_FormThemThongSo gUI_FormThemThongSo = new GUI_FormThemThongSo();
+            GUI_FormThemThongSoV2 gUI_FormThemThongSo = new GUI_FormThemThongSoV2();
             gUI_FormThemThongSo.ShowDialog();
         }
 

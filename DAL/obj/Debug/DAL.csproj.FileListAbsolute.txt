@@ -10,3 +10,9 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\obj\Debug\DAL.dll
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\obj\Debug\DAL.pdb
+C:\CNPM2\Software-Engineering\DAL\bin\Debug\DAL.dll
+C:\CNPM2\Software-Engineering\DAL\bin\Debug\DAL.pdb
+C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.dll
+C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.pdb

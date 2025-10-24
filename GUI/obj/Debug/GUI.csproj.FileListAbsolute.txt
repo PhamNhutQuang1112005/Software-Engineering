@@ -96,3 +96,37 @@ C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\G
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyThongSoDonHang.resources
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.exe.config
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemNguoiDung.resources
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\GUI.exe.config
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\GUI.exe
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\GUI.pdb
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\BLL.dll
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\Guna.UI2.dll
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\DAL.dll
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\BLL.pdb
+C:\CNPM2\Software-Engineering\GUI\bin\Debug\DAL.pdb
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.csproj.AssemblyReference.cache
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.exe.config
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemNguoiDung.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Config.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSoV2.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemThongSo.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_DangNhap.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_Form_Them_HopDong.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_main.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemKhach.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.Properties.Resources.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemDonHang.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_PopupThongBao.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyThongSoDonHang.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyHopDong.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyUserS.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyKhachHang.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_ThongKe.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_QuanLyDonHang.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_ChinhSuaThongTin.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_TrangChu.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.csproj.GenerateResource.cache
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.csproj.Up2Date
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.exe
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.pdb
