@@ -176,5 +176,15 @@ namespace GUI
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenCongTy_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

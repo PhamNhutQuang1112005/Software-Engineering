@@ -84,6 +84,12 @@
     <Compile Include="GUI_Form_DangNhap.Designer.cs">
       <DependentUpon>GUI_Form_DangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI_FormThemNguoiDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_FormThemNguoiDung.Designer.cs">
+      <DependentUpon>GUI_FormThemNguoiDung.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_Form_Them_HopDong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,11 @@
       <DependentUpon>GUI_FormThemDonHang.cs</DependentUpon>
     </Compile>
     <Compile Include="SmoothUI.cs" />
+    <Compile Include="SQL1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SQL1DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UC_PopupThongBao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,6 +176,9 @@
     <Compile Include="UC_TrangChu.Designer.cs">
       <DependentUpon>UC_TrangChu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI_FormThemNguoiDung.resx">
+      <DependentUpon>GUI_FormThemNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_Form_Config.resx">
       <DependentUpon>GUI_Form_Config.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +250,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SQL1DataSet.xsc">
+      <DependentUpon>SQL1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SQL1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SQL1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SQL1DataSet.xss">
+      <DependentUpon>SQL1DataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

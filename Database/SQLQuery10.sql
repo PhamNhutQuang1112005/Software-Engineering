@@ -492,7 +492,6 @@ GO
 
 -- 2) Thêm người dùng
 CREATE OR ALTER PROCEDURE dbo.sp_ThemNguoiDung
-    @NguoiDungID NVARCHAR(50),
     @TenDangNhap NVARCHAR(100),
     @MatKhauHash NVARCHAR(255),
     @HoVaTen     NVARCHAR(200),
@@ -505,19 +504,39 @@ BEGIN
     SET NOCOUNT ON;
     BEGIN TRY
         BEGIN TRAN;
+
+        -- Kiểm tra Vai trò tồn tại
         IF NOT EXISTS (SELECT 1 FROM dbo.VaiTro WHERE VaiTroID = @VaiTroID)
-            RAISERROR(N'Vai trò không tồn tại!', 16, 1);
-        ELSE IF EXISTS (SELECT 1 FROM dbo.NguoiDung WHERE TenDangNhap = @TenDangNhap)
-            RAISERROR(N'Tên đăng nhập đã tồn tại!', 16, 1);
-        ELSE
         BEGIN
-            INSERT INTO dbo.NguoiDung (NguoiDungID, TenDangNhap, MatKhauHash, HoVaTen,
-                                       DienThoai, Email, VaiTroID, PhongBanID)
-            VALUES (@NguoiDungID, @TenDangNhap, @MatKhauHash, @HoVaTen,
-                    @DienThoai, @Email, @VaiTroID, @PhongBanID);
+            RAISERROR(N'Vai trò không tồn tại!', 16, 1);
+            ROLLBACK;
+            RETURN;
         END
+
+        -- Kiểm tra trùng tên đăng nhập
+        IF EXISTS (SELECT 1 FROM dbo.NguoiDung WHERE TenDangNhap = @TenDangNhap)
+        BEGIN
+            RAISERROR(N'Tên đăng nhập đã tồn tại!', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- === Sinh mã NguoiDungID dạng NV001, NV002... ===
+        DECLARE @NextID NVARCHAR(10);
+        SELECT @NextID = 'NV' + RIGHT('000' + CAST(ISNULL(MAX(TRY_CAST(SUBSTRING(NguoiDungID, 3, LEN(NguoiDungID)-2) AS INT)), 0) + 1 AS NVARCHAR(3)), 3)
+        FROM dbo.NguoiDung;
+
+        -- Nếu bảng trống
+        IF @NextID IS NULL SET @NextID = 'NV001';
+
+        -- Thêm người dùng
+        INSERT INTO dbo.NguoiDung (NguoiDungID, TenDangNhap, MatKhauHash, HoVaTen,
+                                   DienThoai, Email, VaiTroID, PhongBanID)
+        VALUES (@NextID, @TenDangNhap, @MatKhauHash, @HoVaTen,
+                @DienThoai, @Email, @VaiTroID, @PhongBanID);
+
         COMMIT;
-        PRINT N'Thêm người dùng thành công!';
+        PRINT N'Thêm người dùng thành công! ID = ' + @NextID;
     END TRY
     BEGIN CATCH
         IF XACT_STATE() <> 0 ROLLBACK;
@@ -525,6 +544,7 @@ BEGIN
     END CATCH
 END
 GO
+
 
 -- 3) Thêm khách hàng (ĐỔI THEO BẢN MỚI: tự sinh KhachHangID KH0001)
 CREATE OR ALTER PROCEDURE dbo.sp_ThemKhachHang
@@ -1090,4 +1110,159 @@ INSERT [dbo].[KhachHang] ([KhachHangID], [MaKhachHang], [TenCongTy], [MaSoThue],
 GO
 
 PRINT N'🎉 Hoàn tất hợp nhất schema + SP. Format sạch, chạy được ngay.';
+GO
+
+CREATE OR ALTER PROCEDURE dbo.sp_GetAllNguoiDung
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        ND.NguoiDungID,
+        ND.TenDangNhap,
+        ND.HoVaTen,
+        ND.DienThoai,
+        ND.Email,
+        ND.IsActive,
+        ND.LanDangNhapCuoi,
+        VT.VaiTroID,
+        VT.TenVaiTro,
+        PB.PhongBanID,
+        PB.TenPhongBan
+    FROM dbo.NguoiDung AS ND
+    LEFT JOIN dbo.VaiTro AS VT ON ND.VaiTroID = VT.VaiTroID
+    LEFT JOIN dbo.PhongBan AS PB ON ND.PhongBanID = PB.PhongBanID
+    ORDER BY ND.NguoiDungID;
+END
+GO
+CREATE OR ALTER PROCEDURE dbo.sp_GetAllVaiTro
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT VaiTroID, TenVaiTro
+    FROM dbo.VaiTro
+    ORDER BY TenVaiTro;
+END
+GO
+
+/* ================================
+   LẤY DANH SÁCH PHÒNG BAN
+   ================================ */
+CREATE OR ALTER PROCEDURE dbo.sp_GetAllPhongBan
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT PhongBanID, TenPhongBan
+    FROM dbo.PhongBan
+    ORDER BY TenPhongBan;
+END
+GO
+CREATE OR ALTER PROCEDURE dbo.sp_SuaNguoiDung
+    @NguoiDungID NVARCHAR(50),
+    @TenDangNhap NVARCHAR(100),
+    @MatKhauHash NVARCHAR(255),
+    @HoVaTen     NVARCHAR(200),
+    @DienThoai   NVARCHAR(20)  = NULL,
+    @Email       NVARCHAR(100) = NULL,
+    @VaiTroID    NVARCHAR(50),
+    @PhongBanID  NVARCHAR(50)  = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRAN;
+
+        -- Kiểm tra tồn tại
+        IF NOT EXISTS (SELECT 1 FROM dbo.NguoiDung WHERE NguoiDungID = @NguoiDungID)
+        BEGIN
+            RAISERROR(N'Người dùng không tồn tại!', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+
+        -- Kiểm tra Vai trò tồn tại
+        IF NOT EXISTS (SELECT 1 FROM dbo.VaiTro WHERE VaiTroID = @VaiTroID)
+        BEGIN
+            RAISERROR(N'Vai trò không tồn tại!', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+
+        UPDATE dbo.NguoiDung
+        SET 
+            TenDangNhap = @TenDangNhap,
+            MatKhauHash = @MatKhauHash,
+            HoVaTen = @HoVaTen,
+            DienThoai = @DienThoai,
+            Email = @Email,
+            VaiTroID = @VaiTroID,
+            PhongBanID = @PhongBanID
+        WHERE NguoiDungID = @NguoiDungID;
+
+        COMMIT;
+        PRINT N'Cập nhật người dùng thành công!';
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0 ROLLBACK;
+        THROW;
+    END CATCH
+END
+GO
+CREATE OR ALTER PROCEDURE dbo.sp_XoaNguoiDung
+    @NguoiDungID NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRAN;
+
+        IF NOT EXISTS (SELECT 1 FROM dbo.NguoiDung WHERE NguoiDungID = @NguoiDungID)
+        BEGIN
+            RAISERROR(N'Người dùng không tồn tại!', 16, 1);
+            ROLLBACK;
+            RETURN;
+        END
+
+        DELETE FROM dbo.NguoiDung WHERE NguoiDungID = @NguoiDungID;
+
+        COMMIT;
+        PRINT N'Đã xóa người dùng thành công!';
+    END TRY
+    BEGIN CATCH
+        IF XACT_STATE() <> 0 ROLLBACK;
+        THROW;
+    END CATCH
+END
+GO
+CREATE OR ALTER PROCEDURE dbo.sp_TimKiemNguoiDung
+    @Keyword NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        ND.NguoiDungID,
+        ND.TenDangNhap,
+        ND.HoVaTen,
+        ND.DienThoai,
+        ND.Email,
+        ND.IsActive,
+        ND.LanDangNhapCuoi,
+        VT.VaiTroID,
+        VT.TenVaiTro,
+        PB.PhongBanID,
+        PB.TenPhongBan
+    FROM dbo.NguoiDung AS ND
+    LEFT JOIN dbo.VaiTro AS VT ON ND.VaiTroID = VT.VaiTroID
+    LEFT JOIN dbo.PhongBan AS PB ON ND.PhongBanID = PB.PhongBanID
+    WHERE 
+        @Keyword IS NULL OR @Keyword = N'' OR
+        ND.TenDangNhap LIKE N'%' + @Keyword + N'%' OR
+        ND.HoVaTen LIKE N'%' + @Keyword + N'%' OR
+        ND.DienThoai LIKE N'%' + @Keyword + N'%' OR
+        ND.Email LIKE N'%' + @Keyword + N'%' OR
+        VT.TenVaiTro LIKE N'%' + @Keyword + N'%' OR
+        PB.TenPhongBan LIKE N'%' + @Keyword + N'%'
+    ORDER BY ND.HoVaTen;
+END
 GO
