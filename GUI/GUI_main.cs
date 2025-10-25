@@ -1,11 +1,12 @@
-﻿using Guna.UI2.WinForms;
+﻿using BLL;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-
 namespace GUI
 {
     public partial class GUI_main : Form
@@ -14,7 +15,7 @@ namespace GUI
         private bool isDark = true;
         private List<Guna2Button> sidebarButtons = new List<Guna2Button>();
         private UserControl currentUC;
-
+        private readonly BLL_TaiKhoan bllTaiKhoan = new BLL_TaiKhoan();
         // Các UC
         private UC_QuanLyUserS ucQuanLyUsers;
         private UC_QuanLyKhachHang ucQuanLyKhachHang;
@@ -24,16 +25,22 @@ namespace GUI
         private UC_QuanLyHopDong ucQuanLyHopDong;
         private UC_QuanLyThongSoDonHang ucQuanLyThongSoDonHang;
         private UC_TrangChu ucTrangChu;
-
+        private bool isAdmin = false;
         // Lớp layout riêng
         private Panel backgroundLayer;   // nền ảnh
         private Panel contentLayer;      // chứa UC
         private PictureBox logoCenter;   // logo ở giữa
-
+        //Lớp Đăng nhập
+        private readonly string TenDangNhap;
+        
         // ============== Constructor ==============
         public GUI_main()
         {
             InitializeComponent();
+            btnQuanLyUsers.Visible = false;  // ẩn mặc định cho chắc
+            btnQuanLyUsers.Enabled = false;
+            TenDangNhap = string.Empty;
+            
 
             // Double buffering toàn form + panel chính
             this.DoubleBuffered = true;
@@ -51,7 +58,12 @@ namespace GUI
 
             CacheSidebarButtons();
         }
-
+        public GUI_main(string id) : this()
+{
+    // Lưu lại thông tin người đăng nhập
+    TenDangNhap  = id ?? string.Empty;
+    
+}
         // Chống nhấp nháy cho toàn form
         protected override CreateParams CreateParams
         {
@@ -68,11 +80,12 @@ namespace GUI
         {
             InitContentLayout(); // tạo layout chuẩn cho contentPanel
             ApplyDarkTheme();    // mặc định dark
+            ResolveUserHeaderFromUsername();
             // Mặc định mở trang chủ (nếu muốn)
             if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
             ShowControl(ucTrangChu);
-            // Đặt trạng thái chọn cho nút Trang chủ ban đầu
-            SetActiveSidebarButton(btnTrangChu);
+            
+    
         }
 
         // ============================ Khởi tạo layout contentPanel ============================
@@ -123,7 +136,35 @@ namespace GUI
             {
                 contentPanel.ResumeLayout(true);
             }
+
         }
+        // ============================ Hiển thị Tên Đăng nhập ============================
+       private void ResolveUserHeaderFromUsername()
+{
+    if (string.IsNullOrWhiteSpace(TenDangNhap)) return;
+
+    var info = bllTaiKhoan.GetUserHeaderByUsername(TenDangNhap);
+    if (info == null)
+    {
+        lblUser.Text = TenDangNhap;
+        isAdmin = false;
+        btnQuanLyUsers.Visible = false;
+        btnQuanLyUsers.Enabled = false;
+       
+        return;
+    }
+
+    lblUser.Text = $"Xin chào {info.HoTen}";
+
+    // chỉ admin khi VaiTroID == "VT001"
+    isAdmin = string.Equals(info.VaiTroID, "VT001", StringComparison.OrdinalIgnoreCase);
+
+    btnQuanLyUsers.Visible = isAdmin;   // ⟵ ẩn hẳn khi không phải admin
+    btnQuanLyUsers.Enabled = isAdmin;
+
+    
+}
+
 
         // ============================ Hiển thị UC ============================
         private void ShowControl(UserControl uc)
@@ -380,7 +421,7 @@ namespace GUI
 
         private void btnQuanLyUser_Click(object sender, EventArgs e)
         {
-            if (ucChinhSuaThongTin == null) ucChinhSuaThongTin = new UC_ChinhSuaThongTin();
+            if (ucChinhSuaThongTin == null) ucChinhSuaThongTin = new UC_ChinhSuaThongTin(TenDangNhap);
             ShowControl(ucChinhSuaThongTin);
             SetActiveSidebarButton(sender as Guna2Button);
         }
@@ -418,6 +459,11 @@ namespace GUI
         private void contentPanel_Paint(object sender, PaintEventArgs e)
         {
             // Không cần vẽ tay, đã có backgroundLayer lo hình nền.
+        }
+
+        private void lblUser_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

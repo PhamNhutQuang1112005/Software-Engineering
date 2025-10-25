@@ -26,7 +26,8 @@ namespace GUI
             {
                 DataTable dt = bllNguoiDung.LayTatCaNguoiDung();
                 dataGridView1.DataSource = dt;
-
+                 dataGridView1.AllowUserToAddRows = false;
+                dataGridView1.RowHeadersVisible = false; 
                 // Tùy chỉnh cột cho đẹp
                 dataGridView1.Columns["NguoiDungID"].HeaderText = "Mã NV";
                 dataGridView1.Columns["TenDangNhap"].HeaderText = "Tên đăng nhập";

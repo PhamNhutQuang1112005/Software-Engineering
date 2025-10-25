@@ -84,9 +84,9 @@ namespace GUI
 
                     
                     this.Hide();
-var main = new GUI_main(/* hoten, vaitro */);
-main.FormClosed += (s, args) => this.Close(); // khi main tắt thì đóng login
-main.Show();
+                            var main = new GUI_main(username);
+                            main.FormClosed += (s, args) => this.Close(); // khi main tắt thì đóng login
+                            main.Show();
                 }
                 else
                 {

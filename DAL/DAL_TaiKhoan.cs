@@ -25,6 +25,28 @@ namespace DAL
                 return dt;
             }
         }
+        public string LayMatKhauTheoID(string id)
+{
+    using (SqlConnection conn = DBConnection.GetConnection())
+    {
+        SqlCommand cmd = new SqlCommand("SELECT MatKhauHash FROM NguoiDung WHERE NguoiDungID = @id", conn);
+        cmd.Parameters.AddWithValue("@id", id);
+        conn.Open();
+        return cmd.ExecuteScalar()?.ToString();
+    }
+}
+
+public void CapNhatMatKhau(string id, string newPass)
+{
+    using (SqlConnection conn = DBConnection.GetConnection())
+    {
+        SqlCommand cmd = new SqlCommand("UPDATE NguoiDung SET MatKhauHash = @mk WHERE NguoiDungID = @id", conn);
+        cmd.Parameters.AddWithValue("@id", id);
+        cmd.Parameters.AddWithValue("@mk", newPass);
+        conn.Open();
+        cmd.ExecuteNonQuery();
+    }
+}
         // Lấy tất cả người dùng
         public static DataTable GetAllNguoiDung()
         {
@@ -136,5 +158,6 @@ public static void XoaNguoiDung(string id)
     }
 }
     }
+
 
 }

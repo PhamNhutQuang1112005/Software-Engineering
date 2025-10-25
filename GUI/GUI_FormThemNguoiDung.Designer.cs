@@ -92,6 +92,7 @@ namespace GUI
             this.txtSDT.SelectedText = "";
             this.txtSDT.Size = new System.Drawing.Size(250, 40);
             this.txtSDT.TabIndex = 3;
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress_1);
             // 
             // txtEmail
             // 

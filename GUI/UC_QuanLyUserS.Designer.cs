@@ -48,10 +48,10 @@ namespace GUI
             this.themuser = new Guna.UI2.WinForms.Guna2Button();
             this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.sQL1DataSet = new GUI.SQL1DataSet();
+          
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sQL1DataSet)).BeginInit();
+            
             this.SuspendLayout();
             // 
             // guna2HtmlLabel11
@@ -296,8 +296,7 @@ namespace GUI
             // 
             // sQL1DataSet
             // 
-            this.sQL1DataSet.DataSetName = "SQL1DataSet";
-            this.sQL1DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+          
             // 
             // UC_QuanLyUserS
             // 
@@ -317,7 +316,7 @@ namespace GUI
             this.Load += new System.EventHandler(this.UC_QuanLyUserS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sQL1DataSet)).EndInit();
+          
             this.ResumeLayout(false);
 
         }
@@ -341,6 +340,6 @@ namespace GUI
         private Guna.UI2.WinForms.Guna2Button themuser;
         private Guna.UI2.WinForms.Guna2PictureBox microphone;
         private DataGridView dataGridView1;
-        private SQL1DataSet sQL1DataSet;
+        
     }
 }
