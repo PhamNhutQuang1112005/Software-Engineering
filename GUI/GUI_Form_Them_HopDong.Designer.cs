@@ -172,6 +172,7 @@
             this.khachhang.Name = "khachhang";
             this.khachhang.Size = new System.Drawing.Size(187, 36);
             this.khachhang.TabIndex = 28;
+            this.khachhang.SelectedIndexChanged += new System.EventHandler(this.khachhang_SelectedIndexChanged);
             // 
             // loaihopdong
             // 
@@ -188,6 +189,7 @@
             this.loaihopdong.Name = "loaihopdong";
             this.loaihopdong.Size = new System.Drawing.Size(187, 36);
             this.loaihopdong.TabIndex = 27;
+            this.loaihopdong.SelectedIndexChanged += new System.EventHandler(this.loaihopdong_SelectedIndexChanged);
             // 
             // tenhopdong
             // 

@@ -57,10 +57,15 @@
             this.guna2ComboBox5.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox5.ItemHeight = 30;
+            this.guna2ComboBox5.Items.AddRange(new object[] {
+            "Đang xử lý",
+            "Hoàn thành",
+            "Quá hạn"});
             this.guna2ComboBox5.Location = new System.Drawing.Point(235, 241);
             this.guna2ComboBox5.Name = "guna2ComboBox5";
             this.guna2ComboBox5.Size = new System.Drawing.Size(192, 36);
             this.guna2ComboBox5.TabIndex = 49;
+            this.guna2ComboBox5.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox5_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -112,6 +117,7 @@
             this.guna2Button5.Size = new System.Drawing.Size(112, 43);
             this.guna2Button5.TabIndex = 46;
             this.guna2Button5.Text = "Thêm";
+            this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
             // guna2ComboBox4
             // 
@@ -124,6 +130,12 @@
             this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox4.ItemHeight = 30;
+            this.guna2ComboBox4.Items.AddRange(new object[] {
+            "Hiện trường",
+            "Kế hoạch",
+            "Kết quả",
+            "Kinh doanh",
+            "Thí nghiệm"});
             this.guna2ComboBox4.Location = new System.Drawing.Point(235, 180);
             this.guna2ComboBox4.Name = "guna2ComboBox4";
             this.guna2ComboBox4.Size = new System.Drawing.Size(192, 36);
@@ -174,6 +186,7 @@
             this.guna2TextBox4.SelectedText = "";
             this.guna2TextBox4.Size = new System.Drawing.Size(814, 96);
             this.guna2TextBox4.TabIndex = 41;
+            this.guna2TextBox4.TextChanged += new System.EventHandler(this.guna2TextBox4_TextChanged);
             // 
             // label7
             // 
@@ -208,6 +221,7 @@
             this.guna2TextBox2.SelectedText = "";
             this.guna2TextBox2.Size = new System.Drawing.Size(192, 48);
             this.guna2TextBox2.TabIndex = 38;
+            this.guna2TextBox2.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
             // 
             // label6
             // 
@@ -253,6 +267,7 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(192, 48);
             this.guna2TextBox1.TabIndex = 50;
+            this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // guna2TextBox3
             // 
@@ -274,6 +289,7 @@
             this.guna2TextBox3.SelectedText = "";
             this.guna2TextBox3.Size = new System.Drawing.Size(192, 48);
             this.guna2TextBox3.TabIndex = 51;
+            this.guna2TextBox3.TextChanged += new System.EventHandler(this.guna2TextBox3_TextChanged);
             // 
             // guna2GradientPanel1
             // 

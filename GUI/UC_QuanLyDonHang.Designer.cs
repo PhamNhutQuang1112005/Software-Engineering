@@ -35,13 +35,6 @@ namespace GUI
             this.label4 = new System.Windows.Forms.Label();
             this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
@@ -68,7 +61,8 @@ namespace GUI
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.themdonhang = new Guna.UI2.WinForms.Guna2Button();
             this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2Panel1.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,6 +122,12 @@ namespace GUI
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox3.ItemHeight = 30;
+            this.guna2ComboBox3.Items.AddRange(new object[] {
+            "Hiện trường ",
+            "Kế hoạch",
+            "Kết quả",
+            "Kinh doanh",
+            "Thí nghiệm"});
             this.guna2ComboBox3.Location = new System.Drawing.Point(565, 103);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(207, 36);
@@ -154,95 +154,6 @@ namespace GUI
             this.guna2ComboBox2.TabIndex = 34;
             this.guna2ComboBox2.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox2_SelectedIndexChanged);
             // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BorderColor = System.Drawing.Color.White;
-            this.guna2Panel1.BorderRadius = 15;
-            this.guna2Panel1.BorderThickness = 2;
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel6);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel5);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel4);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel3);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel2);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Location = new System.Drawing.Point(38, 176);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(532, 191);
-            this.guna2Panel1.TabIndex = 38;
-            this.guna2Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
-            // 
-            // guna2HtmlLabel6
-            // 
-            this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel6.Location = new System.Drawing.Point(24, 48);
-            this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(176, 25);
-            this.guna2HtmlLabel6.TabIndex = 5;
-            this.guna2HtmlLabel6.Text = "Phòng ban phụ trách:";
-            this.guna2HtmlLabel6.Click += new System.EventHandler(this.guna2HtmlLabel6_Click);
-            // 
-            // guna2HtmlLabel5
-            // 
-            this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel5.Location = new System.Drawing.Point(24, 79);
-            this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(150, 25);
-            this.guna2HtmlLabel5.TabIndex = 4;
-            this.guna2HtmlLabel5.Text = "Tiến độ đơn hàng:";
-            this.guna2HtmlLabel5.Click += new System.EventHandler(this.guna2HtmlLabel5_Click);
-            // 
-            // guna2HtmlLabel4
-            // 
-            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(317, 48);
-            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(101, 25);
-            this.guna2HtmlLabel4.TabIndex = 3;
-            this.guna2HtmlLabel4.Text = "Khách hàng:";
-            this.guna2HtmlLabel4.Click += new System.EventHandler(this.guna2HtmlLabel4_Click);
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(24, 110);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(137, 25);
-            this.guna2HtmlLabel3.TabIndex = 2;
-            this.guna2HtmlLabel3.Text = "Mô tả đơn hàng: ";
-            this.guna2HtmlLabel3.Click += new System.EventHandler(this.guna2HtmlLabel3_Click);
-            // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(317, 17);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(115, 25);
-            this.guna2HtmlLabel2.TabIndex = 1;
-            this.guna2HtmlLabel2.Text = "Mã đơn hàng: ";
-            this.guna2HtmlLabel2.Click += new System.EventHandler(this.guna2HtmlLabel2_Click);
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(24, 17);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(119, 25);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "Tên đơn hàng: ";
-            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
-            // 
             // guna2ComboBox1
             // 
             this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
@@ -257,6 +168,10 @@ namespace GUI
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.Items.AddRange(new object[] {
+            "Đang xử Lý",
+            "Hoàn thành",
+            "Quá hạn"});
             this.guna2ComboBox1.Location = new System.Drawing.Point(226, 103);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(132, 36);
@@ -570,6 +485,7 @@ namespace GUI
             this.guna2Button2.Size = new System.Drawing.Size(113, 36);
             this.guna2Button2.TabIndex = 46;
             this.guna2Button2.Text = "Xóa";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
             // 
             // themdonhang
             // 
@@ -603,11 +519,30 @@ namespace GUI
             this.microphone.TabStop = false;
             this.microphone.UseTransparentBackground = true;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(10, 162);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(945, 624);
+            this.flowLayoutPanel1.TabIndex = 57;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // guna2Panel1
+            // 
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.Location = new System.Drawing.Point(10, 10);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(945, 146);
+            this.guna2Panel1.TabIndex = 58;
+            // 
             // UC_QuanLyDonHang
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.microphone);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button2);
@@ -617,18 +552,16 @@ namespace GUI
             this.Controls.Add(this.label4);
             this.Controls.Add(this.guna2ComboBox3);
             this.Controls.Add(this.guna2ComboBox2);
-            this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.xuatketqua);
+            this.Controls.Add(this.guna2Panel1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_QuanLyDonHang";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.Size = new System.Drawing.Size(965, 796);
             this.Load += new System.EventHandler(this.UC_QuanLyDonHang_Load);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -641,13 +574,6 @@ namespace GUI
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
@@ -674,5 +600,7 @@ namespace GUI
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button themdonhang;
         private Guna.UI2.WinForms.Guna2PictureBox microphone;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }
