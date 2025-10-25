@@ -16,14 +16,9 @@ namespace GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           string configPath = "config.txt";
+           
 
-            // Kiểm tra file cấu hình tồn tại hay chưa
-            if (!File.Exists(configPath))
-            {
-                // Chưa có => mở form Config để tạo database / cấu hình
-                Application.Run(new GUI_Form_Config());
-            }
+           
 
             // Sau khi Config (hoặc nếu file đã tồn tại), chạy form đăng nhập
             Application.Run(new GUI_Form_DangNhap());
