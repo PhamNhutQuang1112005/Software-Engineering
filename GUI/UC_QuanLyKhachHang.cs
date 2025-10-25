@@ -338,5 +338,10 @@ namespace GUI
             }
             catch { return null; }
         }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

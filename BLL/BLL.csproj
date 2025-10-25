@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL_HopDong.cs" />
     <Compile Include="BLL_KhachHang.cs" />
+    <Compile Include="BLL_KyHanHopDong.cs" />
     <Compile Include="BLL_TaiKhoan.cs" />
     <Compile Include="BLL_ThongSoMoiTruong.cs" />
     <Compile Include="Class1.cs" />

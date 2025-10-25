@@ -91,7 +91,7 @@
             this.dgvStation.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvStation.GridColor = System.Drawing.Color.Black;
-            this.dgvStation.Location = new System.Drawing.Point(4, 122);
+            this.dgvStation.Location = new System.Drawing.Point(0, 145);
             this.dgvStation.Name = "dgvStation";
             this.dgvStation.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -110,7 +110,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dgvStation.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvStation.RowTemplate.Height = 40;
-            this.dgvStation.Size = new System.Drawing.Size(793, 321);
+            this.dgvStation.Size = new System.Drawing.Size(804, 336);
             this.dgvStation.TabIndex = 53;
             this.dgvStation.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvStation.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -178,7 +178,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.Window;
-            this.label6.Location = new System.Drawing.Point(12, 9);
+            this.label6.Location = new System.Drawing.Point(13, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(179, 29);
             this.label6.TabIndex = 54;
@@ -190,7 +190,7 @@
             this.info_madonhang.BackColor = System.Drawing.Color.Transparent;
             this.info_madonhang.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.info_madonhang.ForeColor = System.Drawing.SystemColors.Window;
-            this.info_madonhang.Location = new System.Drawing.Point(186, 12);
+            this.info_madonhang.Location = new System.Drawing.Point(187, 22);
             this.info_madonhang.Name = "info_madonhang";
             this.info_madonhang.Size = new System.Drawing.Size(164, 26);
             this.info_madonhang.TabIndex = 55;
@@ -209,7 +209,7 @@
             this.guna2Button1.FillColor = System.Drawing.Color.Green;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(600, 9);
+            this.guna2Button1.Location = new System.Drawing.Point(600, 14);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(188, 41);
             this.guna2Button1.TabIndex = 57;
@@ -220,9 +220,9 @@
             // 
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(216)))), ((int)(((byte)(112)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(245)))), ((int)(((byte)(210)))));
-            this.guna2GradientPanel2.Location = new System.Drawing.Point(4, 56);
+            this.guna2GradientPanel2.Location = new System.Drawing.Point(0, 70);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(816, 4);
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(829, 10);
             this.guna2GradientPanel2.TabIndex = 58;
             // 
             // guna2Button5
@@ -238,7 +238,7 @@
             this.guna2Button5.FillColor = System.Drawing.Color.DarkGreen;
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(239, 461);
+            this.guna2Button5.Location = new System.Drawing.Point(240, 504);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(111, 41);
             this.guna2Button5.TabIndex = 60;
@@ -259,7 +259,7 @@
             this.guna2Button6.FillColor = System.Drawing.Color.Firebrick;
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(448, 461);
+            this.guna2Button6.Location = new System.Drawing.Point(449, 504);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(111, 41);
             this.guna2Button6.TabIndex = 61;
@@ -272,7 +272,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(12, 72);
+            this.label1.Location = new System.Drawing.Point(12, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(275, 29);
             this.label1.TabIndex = 62;
@@ -285,7 +285,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(800, 514);
+            this.ClientSize = new System.Drawing.Size(800, 586);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Button6);
             this.Controls.Add(this.guna2Button5);

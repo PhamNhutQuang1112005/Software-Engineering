@@ -173,7 +173,7 @@ namespace GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(700, 430);
+            this.ClientSize = new System.Drawing.Size(651, 396);
             this.Controls.Add(this.txtTenDangNhap);
             this.Controls.Add(this.txtMatKhau);
             this.Controls.Add(this.txtHoTen);

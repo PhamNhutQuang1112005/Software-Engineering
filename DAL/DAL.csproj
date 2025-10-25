@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DAL_HopDong.cs" />
     <Compile Include="DAL_KhachHang.cs" />
+    <Compile Include="DAL_KyHanHopDong.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="DAL_ThongSoMoiTruong.cs" />
     <Compile Include="DBConnection.cs" />

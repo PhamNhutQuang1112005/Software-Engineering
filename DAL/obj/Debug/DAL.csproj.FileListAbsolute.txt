@@ -16,3 +16,9 @@ C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
 C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.dll
 C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\bin\Debug\DAL.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\bin\Debug\DAL.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.dll
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.pdb

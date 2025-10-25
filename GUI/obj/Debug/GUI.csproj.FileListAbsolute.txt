@@ -130,3 +130,4 @@ C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.csproj.CoreCompileInputs.cache
 C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.csproj.Up2Date
 C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.exe
 C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.pdb
+C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.GUI_FormThemNguoiDung.resources

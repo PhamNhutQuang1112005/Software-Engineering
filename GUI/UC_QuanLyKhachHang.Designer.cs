@@ -55,7 +55,7 @@ namespace GUI
             this.ThanhTimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.ThanhTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ThanhTimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ThanhTimKiem.Location = new System.Drawing.Point(531, 33);
+            this.ThanhTimKiem.Location = new System.Drawing.Point(536, 26);
             this.ThanhTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ThanhTimKiem.Name = "ThanhTimKiem";
             this.ThanhTimKiem.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -78,7 +78,7 @@ namespace GUI
             this.btnSua.FillColor = System.Drawing.Color.SeaGreen;
             this.btnSua.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSua.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(376, 33);
+            this.btnSua.Location = new System.Drawing.Point(381, 26);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(113, 36);
             this.btnSua.TabIndex = 53;
@@ -97,7 +97,7 @@ namespace GUI
             this.btnXoa.FillColor = System.Drawing.Color.SeaGreen;
             this.btnXoa.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(230, 33);
+            this.btnXoa.Location = new System.Drawing.Point(235, 26);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(113, 36);
             this.btnXoa.TabIndex = 52;
@@ -116,7 +116,7 @@ namespace GUI
             this.themkhachhang.FillColor = System.Drawing.Color.SeaGreen;
             this.themkhachhang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.themkhachhang.ForeColor = System.Drawing.Color.White;
-            this.themkhachhang.Location = new System.Drawing.Point(91, 33);
+            this.themkhachhang.Location = new System.Drawing.Point(96, 26);
             this.themkhachhang.Name = "themkhachhang";
             this.themkhachhang.Size = new System.Drawing.Size(113, 36);
             this.themkhachhang.TabIndex = 51;
@@ -144,6 +144,7 @@ namespace GUI
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(972, 451);
             this.flowLayoutPanel1.TabIndex = 56;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // guna2Panel1
             // 

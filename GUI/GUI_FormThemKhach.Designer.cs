@@ -54,12 +54,12 @@ namespace GUI
             this.txtMaKH.DefaultText = "";
             this.txtMaKH.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMaKH.ForeColor = System.Drawing.Color.Black;
-            this.txtMaKH.Location = new System.Drawing.Point(157, 22);
+            this.txtMaKH.Location = new System.Drawing.Point(172, 22);
             this.txtMaKH.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtMaKH.Name = "txtMaKH";
             this.txtMaKH.PlaceholderText = "";
             this.txtMaKH.SelectedText = "";
-            this.txtMaKH.Size = new System.Drawing.Size(247, 42);
+            this.txtMaKH.Size = new System.Drawing.Size(215, 42);
             this.txtMaKH.TabIndex = 0;
             // 
             // txtTenCongTy
@@ -71,12 +71,12 @@ namespace GUI
             this.txtTenCongTy.DefaultText = "";
             this.txtTenCongTy.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtTenCongTy.ForeColor = System.Drawing.Color.Black;
-            this.txtTenCongTy.Location = new System.Drawing.Point(577, 22);
+            this.txtTenCongTy.Location = new System.Drawing.Point(592, 22);
             this.txtTenCongTy.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtTenCongTy.Name = "txtTenCongTy";
             this.txtTenCongTy.PlaceholderText = "";
             this.txtTenCongTy.SelectedText = "";
-            this.txtTenCongTy.Size = new System.Drawing.Size(273, 42);
+            this.txtTenCongTy.Size = new System.Drawing.Size(241, 42);
             this.txtTenCongTy.TabIndex = 1;
             this.txtTenCongTy.TextChanged += new System.EventHandler(this.txtTenCongTy_TextChanged);
             // 
@@ -89,12 +89,12 @@ namespace GUI
             this.txtMaSoThue.DefaultText = "";
             this.txtMaSoThue.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMaSoThue.ForeColor = System.Drawing.Color.Black;
-            this.txtMaSoThue.Location = new System.Drawing.Point(157, 196);
+            this.txtMaSoThue.Location = new System.Drawing.Point(172, 196);
             this.txtMaSoThue.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtMaSoThue.Name = "txtMaSoThue";
             this.txtMaSoThue.PlaceholderText = "";
             this.txtMaSoThue.SelectedText = "";
-            this.txtMaSoThue.Size = new System.Drawing.Size(247, 42);
+            this.txtMaSoThue.Size = new System.Drawing.Size(215, 42);
             this.txtMaSoThue.TabIndex = 6;
             // 
             // txtNguoiDaiDien
@@ -106,12 +106,12 @@ namespace GUI
             this.txtNguoiDaiDien.DefaultText = "";
             this.txtNguoiDaiDien.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtNguoiDaiDien.ForeColor = System.Drawing.Color.Black;
-            this.txtNguoiDaiDien.Location = new System.Drawing.Point(157, 80);
+            this.txtNguoiDaiDien.Location = new System.Drawing.Point(172, 80);
             this.txtNguoiDaiDien.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtNguoiDaiDien.Name = "txtNguoiDaiDien";
             this.txtNguoiDaiDien.PlaceholderText = "";
             this.txtNguoiDaiDien.SelectedText = "";
-            this.txtNguoiDaiDien.Size = new System.Drawing.Size(247, 42);
+            this.txtNguoiDaiDien.Size = new System.Drawing.Size(215, 42);
             this.txtNguoiDaiDien.TabIndex = 2;
             // 
             // txtSDT
@@ -123,12 +123,12 @@ namespace GUI
             this.txtSDT.DefaultText = "";
             this.txtSDT.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtSDT.ForeColor = System.Drawing.Color.Black;
-            this.txtSDT.Location = new System.Drawing.Point(577, 80);
+            this.txtSDT.Location = new System.Drawing.Point(592, 80);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.PlaceholderText = "";
             this.txtSDT.SelectedText = "";
-            this.txtSDT.Size = new System.Drawing.Size(273, 42);
+            this.txtSDT.Size = new System.Drawing.Size(241, 42);
             this.txtSDT.TabIndex = 3;
             // 
             // txtEmail
@@ -140,12 +140,12 @@ namespace GUI
             this.txtEmail.DefaultText = "";
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
-            this.txtEmail.Location = new System.Drawing.Point(157, 138);
+            this.txtEmail.Location = new System.Drawing.Point(172, 138);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderText = "";
             this.txtEmail.SelectedText = "";
-            this.txtEmail.Size = new System.Drawing.Size(247, 42);
+            this.txtEmail.Size = new System.Drawing.Size(215, 42);
             this.txtEmail.TabIndex = 4;
             // 
             // txtDiaChi
@@ -157,12 +157,12 @@ namespace GUI
             this.txtDiaChi.DefaultText = "";
             this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtDiaChi.ForeColor = System.Drawing.Color.Black;
-            this.txtDiaChi.Location = new System.Drawing.Point(577, 138);
+            this.txtDiaChi.Location = new System.Drawing.Point(592, 138);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.PlaceholderText = "";
             this.txtDiaChi.SelectedText = "";
-            this.txtDiaChi.Size = new System.Drawing.Size(273, 42);
+            this.txtDiaChi.Size = new System.Drawing.Size(241, 42);
             this.txtDiaChi.TabIndex = 5;
             // 
             // txtGhiChu
@@ -174,13 +174,13 @@ namespace GUI
             this.txtGhiChu.DefaultText = "";
             this.txtGhiChu.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtGhiChu.ForeColor = System.Drawing.Color.Black;
-            this.txtGhiChu.Location = new System.Drawing.Point(22, 254);
+            this.txtGhiChu.Location = new System.Drawing.Point(22, 263);
             this.txtGhiChu.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.PlaceholderText = "Ghi chú";
             this.txtGhiChu.SelectedText = "";
-            this.txtGhiChu.Size = new System.Drawing.Size(828, 150);
+            this.txtGhiChu.Size = new System.Drawing.Size(811, 128);
             this.txtGhiChu.TabIndex = 7;
             // 
             // btnLuu
