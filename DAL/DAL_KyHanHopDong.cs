@@ -9,9 +9,9 @@ namespace DAL
         {
             using (var conn = DBConnection.GetConnection())
             using (var cmd = new SqlCommand("sp_GetAllKyHanHopDong", conn))
-            using (var da = new SqlDataAdapter(cmd))
+            using (var da  = new SqlDataAdapter(cmd))
             {
-                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 var dt = new DataTable();
                 da.Fill(dt);
                 return dt;

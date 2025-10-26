@@ -150,9 +150,9 @@
             this.khachhang.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.khachhang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.khachhang.ItemHeight = 30;
-            this.khachhang.Location = new System.Drawing.Point(614, 120);
+            this.khachhang.Location = new System.Drawing.Point(577, 120);
             this.khachhang.Name = "khachhang";
-            this.khachhang.Size = new System.Drawing.Size(216, 36);
+            this.khachhang.Size = new System.Drawing.Size(253, 36);
             this.khachhang.TabIndex = 28;
             this.khachhang.SelectedIndexChanged += new System.EventHandler(this.khachhang_SelectedIndexChanged);
             // 
@@ -281,12 +281,12 @@
             this.IDhopdong.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.IDhopdong.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.IDhopdong.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.IDhopdong.Location = new System.Drawing.Point(614, 21);
+            this.IDhopdong.Location = new System.Drawing.Point(577, 21);
             this.IDhopdong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.IDhopdong.Name = "IDhopdong";
             this.IDhopdong.PlaceholderText = "";
             this.IDhopdong.SelectedText = "";
-            this.IDhopdong.Size = new System.Drawing.Size(216, 45);
+            this.IDhopdong.Size = new System.Drawing.Size(253, 45);
             this.IDhopdong.TabIndex = 37;
             this.IDhopdong.TextChanged += new System.EventHandler(this.IDhopdong_TextChanged);
             // 

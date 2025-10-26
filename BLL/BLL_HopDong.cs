@@ -1,6 +1,6 @@
-using System;
 using System.Data;
 using DAL;
+using DTO;
 
 namespace BLL
 {
@@ -9,32 +9,13 @@ namespace BLL
         public static DataTable GetAllHopDong()
             => DAL_HopDong.GetAllHopDong();
 
-        public static void XoaHopDong(string id)
-            => DAL_HopDong.XoaHopDong(id);
+        public static void ThemHopDong(DTO_HopDong dto)
+            => DAL_HopDong.ThemHopDong(dto);
 
-        // Thêm m?i: truy?n vào HopDongID do code sinh ra
-        public static void ThemHopDong(
-            string hopDongID,
-            string maHopDong,
-            string khachHangID,
-            DateTime ngayKy,
-            string kyHanID,
-            DateTime? ngayBatDau,
-            DateTime? ngayKetThuc,
-            string trangThai,
-            string ghiChu)
-            => DAL_HopDong.ThemHopDong(hopDongID, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
+        public static void SuaHopDong(DTO_HopDong dto)
+            => DAL_HopDong.SuaHopDong(dto);
 
-        public static void SuaHopDong(
-            string hopDongID,
-            string maHopDong,
-            string khachHangID,
-            DateTime ngayKy,
-            string kyHanID,
-            DateTime? ngayBatDau,
-            DateTime? ngayKetThuc,
-            string trangThai,
-            string ghiChu)
-            => DAL_HopDong.SuaHopDong(hopDongID, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
+        public static void XoaHopDong(string hopDongID)
+            => DAL_HopDong.XoaHopDong(hopDongID);
     }
 }

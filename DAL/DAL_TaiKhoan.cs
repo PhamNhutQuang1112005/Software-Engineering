@@ -1,163 +1,221 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using DTO;
 
 namespace DAL
 {
     public class DAL_TaiKhoan
     {
-        public DataTable DangNhap(string tenDangNhap, string matKhau)
-        {
-            using (SqlConnection conn = DBConnection.GetConnection())
-            using (SqlCommand cmd = new SqlCommand("sp_DangNhapNguoiDung", conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@TenDangNhap", tenDangNhap);
-                cmd.Parameters.AddWithValue("@MatKhau", matKhau);
+        private static SqlConnection NewConn() => DBConnection.GetConnection();
+        private static SqlCommand NewSp(SqlConnection conn, string spName)
+            => new SqlCommand(spName, conn) { CommandType = CommandType.StoredProcedure };
 
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
+        // ===== ĐĂNG NHẬP (trả DTO_NguoiDung) =====
+        public DTO_NguoiDung DangNhap(string tenDangNhap, string matKhau)
+        {
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_DangNhapNguoiDung"))
+            {
+                cmd.Parameters.Add("@TenDangNhap", SqlDbType.NVarChar, 100).Value = tenDangNhap;
+                cmd.Parameters.Add("@MatKhau",     SqlDbType.NVarChar, 255).Value = matKhau;
 
                 conn.Open();
-                adapter.Fill(dt);
-                conn.Close();
-
-                return dt;
+                using (var r = cmd.ExecuteReader())
+                {
+                    if (!r.Read()) return null;
+                    return new DTO_NguoiDung
+                    {
+                        NguoiDungID = r["NguoiDungID"] as string,
+                        TenDangNhap = tenDangNhap,
+                        HoVaTen     = r["HoVaTen"]   as string,
+                        Email       = r["Email"]     as string,
+                        DienThoai   = r["DienThoai"] as string,
+                        VaiTroID    = r["VaiTroID"]  as string,
+                        PhongBanID  = r["PhongBanID"] as string
+                    };
+                }
             }
         }
-        public string LayMatKhauTheoID(string id)
-{
-    using (SqlConnection conn = DBConnection.GetConnection())
-    {
-        SqlCommand cmd = new SqlCommand("SELECT MatKhauHash FROM NguoiDung WHERE NguoiDungID = @id", conn);
-        cmd.Parameters.AddWithValue("@id", id);
-        conn.Open();
-        return cmd.ExecuteScalar()?.ToString();
-    }
-}
 
-public void CapNhatMatKhau(string id, string newPass)
-{
-    using (SqlConnection conn = DBConnection.GetConnection())
-    {
-        SqlCommand cmd = new SqlCommand("UPDATE NguoiDung SET MatKhauHash = @mk WHERE NguoiDungID = @id", conn);
-        cmd.Parameters.AddWithValue("@id", id);
-        cmd.Parameters.AddWithValue("@mk", newPass);
-        conn.Open();
-        cmd.ExecuteNonQuery();
-    }
-}
-        // Lấy tất cả người dùng
-        public static DataTable GetAllNguoiDung()
+        // ===== HEADER BY USERNAME (không login lại) =====
+        public DTO_NguoiDung GetUserHeaderByUsername(string tenDangNhap)
         {
-            using (SqlConnection conn = DBConnection.GetConnection())
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_GetUserHeaderByUsername"))
             {
-                SqlCommand cmd = new SqlCommand("sp_GetAllNguoiDung", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-
-                return dt;
+                cmd.Parameters.Add("@TenDangNhap", SqlDbType.NVarChar, 100).Value = tenDangNhap;
+                conn.Open();
+                using (var r = cmd.ExecuteReader())
+                {
+                    if (!r.Read()) return null;
+                    return new DTO_NguoiDung
+                    {
+                        NguoiDungID = r["NguoiDungID"] as string,
+                        TenDangNhap = r["TenDangNhap"] as string,
+                        HoVaTen     = r["HoVaTen"]     as string,
+                        DienThoai   = r["DienThoai"]   as string,
+                        Email       = r["Email"]       as string,
+                        VaiTroID    = r["VaiTroID"]    as string,
+                        PhongBanID  = r["PhongBanID"]  as string
+                    };
+                }
             }
         }
-        public static void ThemNguoiDung(string tenDN, string matKhau, string hoTen,
-                                         string sdt, string email, string vaiTroID, string phongBanID)
+
+        // ===== DANH SÁCH / TÌM KIẾM =====
+        public DataTable GetAllNguoiDung_DataTable()
         {
-            using (SqlConnection conn = DBConnection.GetConnection())
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_GetAllNguoiDung"))
             {
-                SqlCommand cmd = new SqlCommand("sp_ThemNguoiDung", conn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@TenDangNhap", tenDN);
-                cmd.Parameters.AddWithValue("@MatKhauHash", matKhau);
-                cmd.Parameters.AddWithValue("@HoVaTen", hoTen);
-                cmd.Parameters.AddWithValue("@DienThoai", (object)sdt ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@Email", (object)email ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@VaiTroID", vaiTroID);
-                cmd.Parameters.AddWithValue("@PhongBanID", (object)phongBanID ?? DBNull.Value);
+                using (var ad = new SqlDataAdapter(cmd))
+                {
+                    var dt = new DataTable();
+                    ad.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public DataTable TimKiemNguoiDung_DataTable(string keyword)
+        {
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_TimKiemNguoiDung"))
+            {
+                cmd.Parameters.Add("@Keyword", SqlDbType.NVarChar, 100).Value = (object)keyword ?? DBNull.Value;
+                using (var ad = new SqlDataAdapter(cmd))
+                {
+                    var dt = new DataTable();
+                    ad.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        // ===== CRUD =====
+        public void ThemNguoiDung(DTO_NguoiDung dto, string matKhau)
+        {
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_ThemNguoiDung"))
+            {
+                cmd.Parameters.Add("@TenDangNhap", SqlDbType.NVarChar, 100).Value = dto.TenDangNhap;
+                cmd.Parameters.Add("@MatKhauHash", SqlDbType.NVarChar, 255).Value = (object)matKhau ?? DBNull.Value; // không hash theo yêu cầu
+                cmd.Parameters.Add("@HoVaTen",     SqlDbType.NVarChar, 200).Value = (object)dto.HoVaTen ?? DBNull.Value;
+                cmd.Parameters.Add("@DienThoai",   SqlDbType.NVarChar, 20 ).Value = (object)dto.DienThoai ?? DBNull.Value;
+                cmd.Parameters.Add("@Email",       SqlDbType.NVarChar, 100).Value = (object)dto.Email     ?? DBNull.Value;
+                cmd.Parameters.Add("@VaiTroID",    SqlDbType.NVarChar, 50 ).Value = dto.VaiTroID;
+                cmd.Parameters.Add("@PhongBanID",  SqlDbType.NVarChar, 50 ).Value = (object)dto.PhongBanID ?? DBNull.Value;
+
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
 
-        // (Tuỳ chọn) update người dùng
-        
+        public void SuaNguoiDung(DTO_NguoiDung dto, string matKhauNullable)
+        {
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_SuaNguoiDung"))
+            {
+                cmd.Parameters.Add("@NguoiDungID", SqlDbType.NVarChar, 50 ).Value = dto.NguoiDungID;
+                cmd.Parameters.Add("@TenDangNhap", SqlDbType.NVarChar, 100).Value = dto.TenDangNhap;
+                cmd.Parameters.Add("@MatKhauHash", SqlDbType.NVarChar, 255).Value = (object)matKhauNullable ?? DBNull.Value; // null => giữ mật khẩu cũ
+                cmd.Parameters.Add("@HoVaTen",     SqlDbType.NVarChar, 200).Value = (object)dto.HoVaTen ?? DBNull.Value;
+                cmd.Parameters.Add("@DienThoai",   SqlDbType.NVarChar, 20 ).Value = (object)dto.DienThoai ?? DBNull.Value;
+                cmd.Parameters.Add("@Email",       SqlDbType.NVarChar, 100).Value = (object)dto.Email     ?? DBNull.Value;
+                cmd.Parameters.Add("@VaiTroID",    SqlDbType.NVarChar, 50 ).Value = dto.VaiTroID;
+                cmd.Parameters.Add("@PhongBanID",  SqlDbType.NVarChar, 50 ).Value = (object)dto.PhongBanID ?? DBNull.Value;
 
-        public static DataTable GetAllVaiTro()
-{
-    using (SqlConnection conn = DBConnection.GetConnection())
-    {
-        SqlCommand cmd = new SqlCommand("sp_GetAllVaiTro", conn);
-        cmd.CommandType = CommandType.StoredProcedure;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-        return dt;
+        public void XoaNguoiDung(string nguoiDungID)
+        {
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_XoaNguoiDung"))
+            {
+                cmd.Parameters.Add("@NguoiDungID", SqlDbType.NVarChar, 50).Value = nguoiDungID;
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // ===== TỪ ĐIỂN =====
+        public List<DTO_VaiTro> GetAllVaiTro()
+        {
+            var list = new List<DTO_VaiTro>();
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_GetAllVaiTro"))
+            {
+                conn.Open();
+                using (var r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        list.Add(new DTO_VaiTro
+                        {
+                            VaiTroID  = r["VaiTroID"]  as string,
+                            TenVaiTro = r["TenVaiTro"] as string
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public List<DTO_PhongBan> GetAllPhongBan()
+        {
+            var list = new List<DTO_PhongBan>();
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_GetAllPhongBan"))
+            {
+                conn.Open();
+                using (var r = cmd.ExecuteReader())
+                {
+                    while (r.Read())
+                    {
+                        list.Add(new DTO_PhongBan
+                        {
+                            PhongBanID  = r["PhongBanID"]  as string,
+                            TenPhongBan = r["TenPhongBan"] as string
+                        });
+                    }
+                }
+            }
+            return list;
+        }
+
+        public DTO_VaiTro GetVaiTroByID(string vaiTroID)
+        {
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_GetVaiTroByID"))
+            {
+                cmd.Parameters.Add("@VaiTroID", SqlDbType.NVarChar, 50).Value = vaiTroID;
+                conn.Open();
+                using (var r = cmd.ExecuteReader())
+                {
+                    if (!r.Read()) return null;
+                    return new DTO_VaiTro { VaiTroID = r["VaiTroID"] as string, TenVaiTro = r["TenVaiTro"] as string };
+                }
+            }
+        }
+
+        public DTO_PhongBan GetPhongBanByID(string phongBanID)
+        {
+            using (var conn = NewConn())
+            using (var cmd  = NewSp(conn, "sp_GetPhongBanByID"))
+            {
+                cmd.Parameters.Add("@PhongBanID", SqlDbType.NVarChar, 50).Value = phongBanID;
+                conn.Open();
+                using (var r = cmd.ExecuteReader())
+                {
+                    if (!r.Read()) return null;
+                    return new DTO_PhongBan { PhongBanID = r["PhongBanID"] as string, TenPhongBan = r["TenPhongBan"] as string };
+                }
+            }
+        }
     }
-}
-
-public static DataTable GetAllPhongBan()
-{
-    using (SqlConnection conn = DBConnection.GetConnection())
-    {
-        SqlCommand cmd = new SqlCommand("sp_GetAllPhongBan", conn);
-        cmd.CommandType = CommandType.StoredProcedure;
-
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-        return dt;
-    }
-}
-        // (Tuỳ chọn) update người dùng
-        public static void SuaNguoiDung(string id, string tenDN, string matKhau, string hoTen,
-                                string sdt, string email, string vaiTroID, string phongBanID)
-{
-    using (SqlConnection conn = DBConnection.GetConnection())
-    {
-        SqlCommand cmd = new SqlCommand("sp_SuaNguoiDung", conn);
-        cmd.CommandType = CommandType.StoredProcedure;
-        cmd.Parameters.AddWithValue("@NguoiDungID", id);
-        cmd.Parameters.AddWithValue("@TenDangNhap", tenDN);
-        cmd.Parameters.AddWithValue("@MatKhauHash", matKhau);
-        cmd.Parameters.AddWithValue("@HoVaTen", hoTen);
-        cmd.Parameters.AddWithValue("@DienThoai", (object)sdt ?? DBNull.Value);
-        cmd.Parameters.AddWithValue("@Email", (object)email ?? DBNull.Value);
-        cmd.Parameters.AddWithValue("@VaiTroID", vaiTroID);
-        cmd.Parameters.AddWithValue("@PhongBanID", (object)phongBanID ?? DBNull.Value);
-        conn.Open();
-        cmd.ExecuteNonQuery();
-    }
-}
-
-public static void XoaNguoiDung(string id)
-{
-    using (SqlConnection conn = DBConnection.GetConnection())
-    {
-        SqlCommand cmd = new SqlCommand("sp_XoaNguoiDung", conn);
-        cmd.CommandType = CommandType.StoredProcedure;
-        cmd.Parameters.AddWithValue("@NguoiDungID", id);
-        conn.Open();
-        cmd.ExecuteNonQuery();
-    }
-}
-        public static DataTable TimKiemNguoiDung(string keyword)
-{
-    using (SqlConnection conn = DBConnection.GetConnection())
-    {
-        SqlCommand cmd = new SqlCommand("sp_TimKiemNguoiDung", conn);
-        cmd.CommandType = CommandType.StoredProcedure;
-        cmd.Parameters.AddWithValue("@Keyword", (object)keyword ?? DBNull.Value);
-
-        SqlDataAdapter da = new SqlDataAdapter(cmd);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
-        return dt;
-    }
-}
-    }
-
-
 }

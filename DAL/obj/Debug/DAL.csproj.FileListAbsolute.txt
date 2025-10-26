@@ -22,3 +22,6 @@ C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\D
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.dll
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\bin\Debug\DTO.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\bin\Debug\DTO.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\obj\Debug\DAL.csproj.Up2Date

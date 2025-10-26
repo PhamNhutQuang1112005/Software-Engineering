@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data;
 using BLL; // Thêm để gọi tầng nghiệp vụ
-
+using DTO;
 namespace GUI
 {
     public partial class GUI_Form_DangNhap : Form
@@ -72,31 +72,33 @@ namespace GUI
             }
 
             try
-            {
-                DataTable result = bllTaiKhoan.DangNhap(username, password);
+{
+    var user = bllTaiKhoan.DangNhap(username, password); // trả DTO_NguoiDung
 
-                if (result.Rows.Count > 0)
-                {
-                    string hoten = result.Rows[0]["HoVaTen"].ToString();
-                    string vaitro = result.Rows[0]["VaiTroID"].ToString();
+    if (user != null)
+    {
+        // (nếu đã có AppSession, có thể lưu lại)
+        // AppSession.CurrentUser = user;
 
-                    MessageBox.Show($"Chào mừng {hoten} ({vaitro})!", "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        MessageBox.Show($"Chào mừng {user.HoVaTen} ({user.VaiTroID})!", 
+            "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    
-                    this.Hide();
-                            var main = new GUI_main(username);
-                            main.FormClosed += (s, args) => this.Close(); // khi main tắt thì đóng login
-                            main.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        this.Hide();
+        var main = new GUI_main(username); // nếu Main nhận username; 
+        // nếu bạn đã đổi Main không cần tham số: var main = new GUI_main();
+        main.FormClosed += (s, args) => this.Close();
+        main.Show();
+    }
+    else
+    {
+        MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
+catch (Exception ex)
+{
+    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+}
         }
 
         // =================== Các event trống ===================

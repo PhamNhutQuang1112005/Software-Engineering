@@ -4,7 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using System.Data.SqlClient; // for SqlException retry handling
-
+using DTO;
 namespace GUI
 {
     public partial class GUI_Form_Them_HopDong : Form
@@ -47,9 +47,10 @@ namespace GUI
                 var kh = BLL_KhachHang.GetAllKhachHang();
                 if (kh != null)
                 {
-                    khachhang.DisplayMember = "KhachHangID";
-                    khachhang.ValueMember = "KhachHangID";
-                    khachhang.DataSource = kh;
+                    khachhang.DisplayMember = "TenCongTy";     // hiển thị tên
+                    khachhang.ValueMember   = "KhachHangID";   // chọn theo ID
+                    khachhang.DataSource    = kh;
+
                 }
 
                 // Loại hợp đồng (Kỳ hạn): KyHanID + TenKyHan
@@ -260,7 +261,19 @@ namespace GUI
                         string currentId = BuildHopDongId(year, seq);
                         try
                         {
-                            BLL_HopDong.ThemHopDong(currentId, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
+                            var dtoAdd = new DTO_HopDong {
+    HopDongID   = currentId,
+    MaHopDong   = maHopDong,
+    KhachHangID = khachHangID,
+    NgayKy      = ngayKy,
+    KyHanID     = kyHanID,
+    NgayBatDau  = ngayBatDau,
+    NgayKetThuc = ngayKetThuc,
+    TrangThai   = trangThai,
+    GhiChu      = ghiChu
+};
+BLL_HopDong.ThemHopDong(dtoAdd);
+
                             MessageBox.Show("Thêm hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                         }
@@ -278,7 +291,19 @@ namespace GUI
                 else
                 {
                     // Cập nhật
-                    BLL_HopDong.SuaHopDong(hopDongID, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
+                    var dtoUpd = new DTO_HopDong {
+    HopDongID   = hopDongID,
+    MaHopDong   = maHopDong,
+    KhachHangID = khachHangID,
+    NgayKy      = ngayKy,
+    KyHanID     = kyHanID,
+    NgayBatDau  = ngayBatDau,
+    NgayKetThuc = ngayKetThuc,
+    TrangThai   = trangThai,
+    GhiChu      = ghiChu
+};
+BLL_HopDong.SuaHopDong(dtoUpd);
+
                     MessageBox.Show("Cập nhật hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

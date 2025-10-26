@@ -3,7 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using BLL;
-
+using DTO;
 namespace GUI
 {
     public partial class UC_ChinhSuaThongTin : UserControl
@@ -107,53 +107,45 @@ namespace GUI
 
         // ======= Lưu thay đổi =======
         private void comfirm_change_Click(object sender, EventArgs e)
+{
+    if (!ValidateInput(out string msg))
+    {
+        MessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+    }
+
+    try
+    {
+        string hoTen     = txtHoTen.Text.Trim();
+        string sdt       = string.IsNullOrWhiteSpace(txtSDT.Text)   ? null : txtSDT.Text.Trim();
+        string email     = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+        string matKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text) ? null : txtMatKhauMoi.Text.Trim();
+
+        // Gói DTO theo chuẩn mới (không đổi vai trò/phòng ban ở màn này)
+        var dto = new DTO_NguoiDung
         {
-            if (!ValidateInput(out string msg))
-            {
-                MessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            NguoiDungID = nguoiDungID,   // đã cache khi load
+            TenDangNhap = tenDangNhap,   // truyền lại username hiện tại
+            HoVaTen     = hoTen,
+            DienThoai   = sdt,
+            Email       = email,
+            VaiTroID    = vaiTroID,      // giữ nguyên
+            PhongBanID  = phongBanID     // giữ nguyên
+        };
 
-            try
-            {
-                string hoTen    = txtHoTen.Text.Trim();
-                string sdt      = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim();
-                string email    = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
-                
+        // matKhauMoi == null => không đổi mật khẩu
+        bllNguoiDung.SuaNguoiDung(dto, matKhauMoi);
 
-                string matKhauCu  = string.IsNullOrWhiteSpace(txtMatKhauCu.Text)  ? null : txtMatKhauCu.Text.Trim();
-                string matKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text) ? null : txtMatKhauMoi.Text.Trim();
+        MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo",
+            MessageBoxButtons.OK, MessageBoxIcon.Information);
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
 
-                // Nếu đổi mật khẩu → kiểm tra mật khẩu cũ
-                if (!string.IsNullOrEmpty(matKhauMoi))
-                {
-                    bool ok = bllNguoiDung.DoiMatKhauCoKiemTra(nguoiDungID, matKhauCu, matKhauMoi);
-                    if (!ok)
-                    {
-                        MessageBox.Show("Mật khẩu cũ không đúng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-                }
-
-                // Cập nhật thông tin (không đổi vai trò/phòng ban)
-                bllNguoiDung.SuaNguoiDung(
-                    nguoiDungID,
-                    tenDangNhap,
-                    matKhauMoi, // null => không đổi mật khẩu
-                    hoTen,
-                    sdt,
-                    email,
-                    vaiTroID,
-                    phongBanID
-                );
-
-                MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
 
         // ======= Hủy (giữ nguyên hành vi cũ: xóa nội dung) =======
         private void decline_change_Click(object sender, EventArgs e)

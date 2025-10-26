@@ -154,7 +154,9 @@ namespace GUI
         return;
     }
 
-    lblUser.Text = $"Xin chào {info.HoTen}";
+    
+lblUser.Text = $"Xin chào {info.HoVaTen}";
+
 
     // chỉ admin khi VaiTroID == "VT001"
     isAdmin = string.Equals(info.VaiTroID, "VT001", StringComparison.OrdinalIgnoreCase);

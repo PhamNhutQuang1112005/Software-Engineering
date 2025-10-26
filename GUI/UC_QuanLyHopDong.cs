@@ -115,36 +115,51 @@ namespace GUI
         }
 
         private void InitFilterCombos()
-        {
-            try
-            {
-                if (_cacheAll == null) return;
-                // Khách hàng: lấy distinct KhachHangID
-                var khList = _cacheAll.AsEnumerable()
-                    .Select(r => r.Field<string>("KhachHangID"))
-                    .Where(s => !string.IsNullOrWhiteSpace(s))
-                    .Distinct()
-                    .OrderBy(s => s)
-                    .ToList();
-                loctheokhachhang.Items.Clear();
-                loctheokhachhang.Items.Add("(Tất cả)");
-                loctheokhachhang.Items.AddRange(khList.Cast<object>().ToArray());
-                loctheokhachhang.SelectedIndex = 0;
+{
+    try
+    {
+        if (_cacheAll == null) return;
 
-                // Trạng thái: distinct theo cột TrangThai
-                var stList = _cacheAll.AsEnumerable()
-                    .Select(r => r.Field<string>("TrangThai"))
-                    .Where(s => !string.IsNullOrWhiteSpace(s))
-                    .Distinct()
-                    .OrderBy(s => s)
-                    .ToList();
-                loctheotrangthai.Items.Clear();
-                loctheotrangthai.Items.Add("(Tất cả)");
-                loctheotrangthai.Items.AddRange(stList.Cast<object>().ToArray());
-                loctheotrangthai.SelectedIndex = 0;
-            }
-            catch { }
-        }
+        // === Khách hàng: DataSource hiển thị tên (TenCongTy), Value là ID (KhachHangID) ===
+        var khDistinct = _cacheAll.AsEnumerable()
+            .Where(r => !string.IsNullOrWhiteSpace(r.Field<string>("KhachHangID")))
+            .GroupBy(r => r.Field<string>("KhachHangID"))
+            .Select(g => new
+            {
+                KhachHangID = g.Key,
+                TenCongTy = g.Select(r => r.Field<string>("TenCongTy")).FirstOrDefault()
+            })
+            .OrderBy(x => x.TenCongTy ?? x.KhachHangID)
+            .ToList();
+
+        var dtKH = new DataTable();
+        dtKH.Columns.Add("KhachHangID", typeof(string));
+        dtKH.Columns.Add("TenCongTy", typeof(string));
+        dtKH.Rows.Add(DBNull.Value, "(Tất cả)"); // option all
+
+        foreach (var x in khDistinct)
+            dtKH.Rows.Add(x.KhachHangID, x.TenCongTy ?? x.KhachHangID);
+
+        loctheokhachhang.DataSource = dtKH;
+        loctheokhachhang.DisplayMember = "TenCongTy";    // hiển thị tên
+        loctheokhachhang.ValueMember   = "KhachHangID";  // giá trị là ID
+        loctheokhachhang.SelectedIndex = 0;
+
+        // === Trạng thái: giữ như cũ ===
+        var stList = _cacheAll.AsEnumerable()
+            .Select(r => r.Field<string>("TrangThai"))
+            .Where(s => !string.IsNullOrWhiteSpace(s))
+            .Distinct()
+            .OrderBy(s => s)
+            .ToList();
+
+        loctheotrangthai.Items.Clear();
+        loctheotrangthai.Items.Add("(Tất cả)");
+        loctheotrangthai.Items.AddRange(stList.Cast<object>().ToArray());
+        loctheotrangthai.SelectedIndex = 0;
+    }
+    catch { }
+}
 
         private void ApplyFilters()
         {
@@ -158,17 +173,22 @@ namespace GUI
                 rows = rows.Where(r =>
                     (r.Field<string>("MaHopDong") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     (r.Field<string>("KhachHangID") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    (r.Field<string>("TenCongTy")  ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 || // thêm
+                    (r.Field<string>("TenKyHan")   ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 || // thêm
                     (r.Field<string>("TrangThai") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     (r.Field<string>("GhiChu") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0
                 );
             }
 
             // lọc theo khách hàng
-            var selKH = loctheokhachhang?.SelectedItem as string;
-            if (!string.IsNullOrWhiteSpace(selKH) && selKH != "(Tất cả)")
-            {
-                rows = rows.Where(r => string.Equals(r.Field<string>("KhachHangID"), selKH, StringComparison.OrdinalIgnoreCase));
-            }
+            var selKHId = loctheokhachhang?.SelectedValue as string;
+if (!string.IsNullOrWhiteSpace(selKHId))
+{
+    rows = rows.Where(r => string.Equals(
+        r.Field<string>("KhachHangID"),
+        selKHId,
+        StringComparison.OrdinalIgnoreCase));
+}
 
             // lọc theo trạng thái
             var selSt = loctheotrangthai?.SelectedItem as string;
