@@ -193,6 +193,7 @@
             this.tenhopdong.SelectedText = "";
             this.tenhopdong.Size = new System.Drawing.Size(216, 45);
             this.tenhopdong.TabIndex = 26;
+            this.tenhopdong.TextChanged += new System.EventHandler(this.tenhopdong_TextChanged);
             // 
             // ngayketthuc
             // 
@@ -287,6 +288,7 @@
             this.IDhopdong.SelectedText = "";
             this.IDhopdong.Size = new System.Drawing.Size(216, 45);
             this.IDhopdong.TabIndex = 37;
+            this.IDhopdong.TextChanged += new System.EventHandler(this.IDhopdong_TextChanged);
             // 
             // guna2GradientPanel1
             // 

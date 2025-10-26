@@ -166,6 +166,7 @@ namespace GUI
             this.guna2Button3.Size = new System.Drawing.Size(113, 36);
             this.guna2Button3.TabIndex = 44;
             this.guna2Button3.Text = "Sửa";
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click_1);
             // 
             // guna2Button2
             // 
@@ -184,6 +185,7 @@ namespace GUI
             this.guna2Button2.Size = new System.Drawing.Size(113, 36);
             this.guna2Button2.TabIndex = 43;
             this.guna2Button2.Text = "Xóa";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click_1);
             // 
             // guna2Button1
             // 

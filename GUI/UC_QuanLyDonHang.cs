@@ -18,6 +18,7 @@ namespace GUI
 
         }
 
+
         private void UC_QuanLyDonHang_Load(object sender, System.EventArgs e)
         {
             flowLayoutPanel1.WrapContents = true;
@@ -33,132 +34,119 @@ namespace GUI
         // ============ LOAD DANH SÁCH ============
        private void LoadDanhSachHopDong()
 {
-    flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Controls.Clear();
 
-    DataTable dtHopDong = BLL_HopDong.GetAllHopDong();
-    DataTable dtKhachHang = BLL_KhachHang.GetAllKhachHang();
-    DataTable dtDonHang = BLL_DonHang.GetAllDonHang();
-    DataTable dtTrangThai = BLL_DonHang.GetAllTrangThaiDonHang();
+            DataTable dtDonHang = BLL_DonHang.GetAllDonHang();
+            DataTable dtKhachHang = BLL_KhachHang.GetAllKhachHang();
+            DataTable dtTrangThai =BLL_DonHang.GetAllTrangThaiDonHang();
+            DataTable dtHopDong = BLL_HopDong.GetAllHopDong();
 
-    foreach (DataRow row in dtHopDong.Rows)
-    {
-        if (Convert.ToInt32(row["IsDeleted"]) == 1) continue;
 
-        string maHopDong = row["MaHopDong"]?.ToString() ?? "(Không rõ)";
-        string khachHangID = row["KhachHangID"]?.ToString();
-        string trangThaiHopDong = row["TrangThai"]?.ToString() ?? "(Không rõ)";
-        string ghiChu = string.IsNullOrWhiteSpace(row["GhiChu"]?.ToString()) ? "(Không có mô tả)" : row["GhiChu"].ToString();
 
-        // === Lấy tên khách hàng ===
-        string tenKhachHang = "(Không rõ)";
-        if (!string.IsNullOrEmpty(khachHangID))
-        {
-            var rowKH = dtKhachHang.AsEnumerable()
-                .FirstOrDefault(k => k["KhachHangID"].ToString() == khachHangID);
-            if (rowKH != null)
-                tenKhachHang = rowKH["TenCongTy"]?.ToString() ?? "(Không có tên)";
-        }
 
-        // === Lấy thông tin đơn hàng theo HopDongID ===
-        var rowDH = dtDonHang.AsEnumerable()
-            .FirstOrDefault(d => d["HopDongID"].ToString() == row["HopDongID"].ToString());
-
-        string maDonHang = "(Không có)";
-        string tenTienDo = "(Không rõ)";
-        if (rowDH != null)
-        {
-            maDonHang = rowDH["MaDonHang"]?.ToString() ?? "(Không có mã)";
-
-            string trangThaiID = rowDH["TrangThaiID"]?.ToString();
-            if (!string.IsNullOrEmpty(trangThaiID))
+            foreach (DataRow row in dtDonHang.Rows)
             {
-                var rowTrangThai = dtTrangThai.AsEnumerable()
-                    .FirstOrDefault(t => t["TrangThaiID"].ToString() == trangThaiID);
-                if (rowTrangThai != null)
-                    tenTienDo = rowTrangThai["TenTrangThai"]?.ToString() ?? "(Không rõ)";
+
+
+                string hopDongID = row["HopDongID"]?.ToString() ?? "(Không có)";
+                string donHangID = row["DonHangID"]?.ToString() ?? "(Không có)";
+                string tenHopDong = "(Không có)";
+                DataRow[] ketQua = dtHopDong.Select($"HopDongID = '{hopDongID}'");
+                if (ketQua.Length > 0)
+                {
+                    tenHopDong = ketQua[0]["MaHopDong"]?.ToString();
+                }
+
+                string trangThaiID = row["TrangThaiID"]?.ToString() ?? "(Không có)";
+                string khachHangID = row["IDKhachHang"]?.ToString() ?? "(Không có)";
+                string ghiChu = string.IsNullOrWhiteSpace(row["GhiChu"]?.ToString()) ? "(Không có mô tả)" : row["GhiChu"].ToString();
+
+                string tenKhachHang = "(Không có)";
+                DataRow[] khachRows = dtKhachHang.Select($"KhachHangID = '{khachHangID}'");
+                if (khachRows.Length > 0)
+                    tenKhachHang = khachRows[0]["TenCongTy"].ToString();
+
+                // Tìm tên trạng thái
+                string tenTrangThai = "(Không có)";
+                DataRow[] trangThaiRows = dtTrangThai.Select($"TrangThaiID = '{trangThaiID}'");
+                if (trangThaiRows.Length > 0)
+                    tenTrangThai = trangThaiRows[0]["TenTrangThai"].ToString();
+
+
+                // === Tạo card ===
+                Guna2Panel card = new Guna2Panel
+
+                {
+                    Width = 420,
+                    Height = 200,
+                    BorderRadius = 12,
+                    FillColor = Color.White,
+                    ShadowDecoration = { Enabled = true },
+                    Margin = new Padding(25),
+                    Cursor = Cursors.Hand
+                };
+
+                Label lblDonHang = new Label
+                {
+                    Text = $"📦 Đơn hàng ID: {donHangID}",
+                    Font = new Font("Segoe UI", 11, FontStyle.Bold),
+                    Dock = DockStyle.Top,
+                    Height = 30,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+
+                Label lblHopDong = new Label
+                {
+                    Text = $"📄 Hợp đồng: {tenHopDong}",
+                    Font = new Font("Segoe UI", 10),
+                    Dock = DockStyle.Top,
+                    Height = 25,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+
+                Label lblTrangThai = new Label
+                {
+                    Text = $"⚙️ Trạng thái: {tenTrangThai}",
+                    Font = new Font("Segoe UI", 10),
+                    Dock = DockStyle.Top,
+                    Height = 25,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+
+                Label lblKhachHang = new Label
+                {
+                    Text = $"👤 Khách hàng: {tenKhachHang}",
+                    Font = new Font("Segoe UI", 10),
+                    Dock = DockStyle.Top,
+                    Height = 25,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+
+                Label lblGhiChu = new Label
+                {
+                    Text = $"📑 Ghi chú: {ghiChu}",
+                    Font = new Font("Segoe UI", 9, FontStyle.Italic),
+                    ForeColor = Color.Gray,
+                    Dock = DockStyle.Top,
+                    Height = 25,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+
+                // Thêm các label vào card
+                card.Controls.Add(lblGhiChu);
+                card.Controls.Add(lblKhachHang);
+                card.Controls.Add(lblTrangThai);
+                card.Controls.Add(lblHopDong);
+                card.Controls.Add(lblDonHang);
+                card.Tag = donHangID;
+                AttachClickRecursive(card, () => SelectCard(card));
+                // Thêm card vào flowLayoutPanel
+                flowLayoutPanel1.Controls.Add(card);
             }
+
+            CenterCards(); // nếu bạn có hàm căn giữa
+            
         }
-
-        // === Tạo card hiển thị ===
-        Guna2Panel card = new Guna2Panel
-        {
-            Width = 420,
-            Height = 210,
-            BorderRadius = 12,
-            FillColor = Color.White,
-            ShadowDecoration = { Enabled = true },
-            Margin = new Padding(25),
-            Cursor = Cursors.Hand
-        };
-
-
-        Label lblMa = new Label
-        {
-            Text = $"📄 Hợp đồng: {maHopDong}",
-            Font = new Font("Segoe UI", 11, FontStyle.Bold),
-            Dock = DockStyle.Top,
-            Height = 30,
-            TextAlign = ContentAlignment.MiddleCenter
-        };
-
-        Label lblKH = new Label
-        {
-            Text = $"👤 Khách hàng: {tenKhachHang}",
-            Font = new Font("Segoe UI", 10),
-            Dock = DockStyle.Top,
-            Height = 25,
-            TextAlign = ContentAlignment.MiddleCenter
-        };
-
-        Label lblDH = new Label
-        {
-            Text = $"📦 Đơn hàng: {maDonHang}",
-            Font = new Font("Segoe UI", 10),
-            Dock = DockStyle.Top,
-            Height = 25,
-            TextAlign = ContentAlignment.MiddleCenter
-        };
-
-        Label lblTienDo = new Label
-        {
-            Text = $"⏳ Tiến độ: {tenTienDo}",
-            Font = new Font("Segoe UI", 10),
-            Dock = DockStyle.Top,
-            Height = 25,
-            TextAlign = ContentAlignment.MiddleCenter
-        };
-
-        Label lblTT = new Label
-        {
-            Text = $"⚙️ Trạng thái hợp đồng: {trangThaiHopDong}",
-            Font = new Font("Segoe UI", 9),
-            Dock = DockStyle.Top,
-            Height = 25,
-            TextAlign = ContentAlignment.MiddleCenter
-        };
-
-        Label lblGC = new Label
-        {
-            Text = $"📑 {ghiChu}",
-            Font = new Font("Segoe UI", 9, FontStyle.Italic),
-            ForeColor = Color.Gray,
-            Dock = DockStyle.Top,
-            Height = 25,
-            TextAlign = ContentAlignment.MiddleCenter
-        };
-
-        card.Controls.Add(lblGC);
-        card.Controls.Add(lblTT);
-        card.Controls.Add(lblTienDo);
-        card.Controls.Add(lblDH);
-        card.Controls.Add(lblKH);
-        card.Controls.Add(lblMa);
-
-        flowLayoutPanel1.Controls.Add(card);
-    }
-
-    CenterCards();
-}
 
 
         private Guna2Panel TaoCardDonHang(DataRow row, DataTable hopDong, DataTable trangThai)
@@ -239,11 +227,11 @@ namespace GUI
         {
             if (_selectedCard == card) return;
             if (_selectedCard != null) ApplySelectedStyle(_selectedCard, false);
-
             _selectedCard = card;
-            _selectedId = card.Tag?.ToString();
+            _selectedId = (card.Tag ?? "").ToString();
             ApplySelectedStyle(card, true);
         }
+
 
         private void ApplySelectedStyle(Guna2Panel card, bool selected)
         {
@@ -512,21 +500,19 @@ namespace GUI
                 return;
             }
 
-            // Lấy tên đơn hàng (hoặc mã đơn hàng) để hiển thị
-            var tenDon = LayTenDonHang(_selectedId) ?? "(không rõ)";
+            var confirm = MessageBox.Show($"Bạn có chắc muốn xóa đơn hàng?",
+                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            if (MessageBox.Show("Bạn có chắc muốn xóa đơn hàng '" + tenDon + "'?",
-                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (confirm == DialogResult.Yes)
             {
                 try
                 {
-                    // Gọi hàm trong lớp BLL để xóa đơn hàng
+                    // Gọi hàm trong lớp BLL để cập nhật IsDeleted = 1
                     BLL_DonHang.XoaDonHang(_selectedId);
+                    // Load lại danh sách đơn hàng
+                    LoadDanhSachHopDong();
 
-                    // Xóa lựa chọn hiện tại + load lại danh sách
-                    
-
-                    MessageBox.Show("Đã xóa đơn hàng!", "Thành công");
+                    MessageBox.Show("Đã xóa đơn hàng!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -534,8 +520,8 @@ namespace GUI
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
+
         private string LayTenDonHang(string donHangID)
         {
             try
@@ -550,7 +536,7 @@ namespace GUI
                 if (row != null)
                 {
                     // Trả về mã hoặc tên đơn hàng
-                    return row["MaDonHang"]?.ToString() ?? "(Không có mã)";
+                    return row["DonHangID"]?.ToString() ?? "(Không có mã)";
                 }
 
                 return "(Không tìm thấy)";
@@ -561,5 +547,21 @@ namespace GUI
             }
         }
 
+        private void guna2Button3_Click_1(object sender, EventArgs e)
+        {
+           
+            if (string.IsNullOrEmpty(_selectedId))
+            {
+                MessageBox.Show("Vui lòng chọn một đơn hàng để sửa.", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var form = new GUI_FormThemDonHang(_selectedId);
+            form.FormClosed += (s, args) => LoadDanhSachHopDong(); // Làm mới sau khi sửa
+            form.ShowDialog();
+        }
+    
+       
     }
 }

@@ -321,5 +321,15 @@ namespace GUI
         {
 
         }
+
+        private void IDhopdong_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tenhopdong_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
