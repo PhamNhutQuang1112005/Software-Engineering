@@ -51,7 +51,7 @@ namespace GUI
             this.lockhachhang.BackColor = System.Drawing.Color.SeaGreen;
             this.lockhachhang.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.lockhachhang.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lockhachhang.Location = new System.Drawing.Point(354, 86);
+            this.lockhachhang.Location = new System.Drawing.Point(276, 86);
             this.lockhachhang.Name = "lockhachhang";
             this.lockhachhang.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.lockhachhang.Size = new System.Drawing.Size(104, 28);
@@ -65,7 +65,7 @@ namespace GUI
             this.loctrangthai.BackColor = System.Drawing.Color.SeaGreen;
             this.loctrangthai.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.loctrangthai.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loctrangthai.Location = new System.Drawing.Point(642, 86);
+            this.loctrangthai.Location = new System.Drawing.Point(532, 86);
             this.loctrangthai.Name = "loctrangthai";
             this.loctrangthai.Padding = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.loctrangthai.Size = new System.Drawing.Size(93, 28);
@@ -91,6 +91,7 @@ namespace GUI
             this.loctheokhachhang.Name = "loctheokhachhang";
             this.loctheokhachhang.Size = new System.Drawing.Size(223, 36);
             this.loctheokhachhang.TabIndex = 49;
+            this.loctheokhachhang.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // loctheotrangthai
             // 
@@ -110,6 +111,7 @@ namespace GUI
             this.loctheotrangthai.Name = "loctheotrangthai";
             this.loctheotrangthai.Size = new System.Drawing.Size(247, 36);
             this.loctheotrangthai.TabIndex = 47;
+            this.loctheotrangthai.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
@@ -140,7 +142,7 @@ namespace GUI
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.PlaceholderText = "Tìm kiếm theo mã hợp đồng...";
+            this.guna2TextBox1.PlaceholderText = "Tìm kiếm theo tên hợp đồng...";
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(327, 36);
             this.guna2TextBox1.TabIndex = 45;

@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using BLL;
+using System.Data.SqlClient; // for SqlException retry handling
 
 namespace GUI
 {
@@ -60,32 +61,29 @@ namespace GUI
                     loaihopdong.DataSource = ky;
                 }
 
-                // Phòng phụ trách: dữ liệu tạm (không DB)
-                var dsPhong = new[]
-                {
-                    "Môi trường", "Kinh doanh", "Kỹ thuật", "Vận hành"
-                };
-                phongphutrach.Items.Clear();
-                phongphutrach.Items.AddRange(dsPhong);
-                if (phongphutrach.Items.Count > 0) phongphutrach.SelectedIndex = 0;
             }
             catch { }
         }
 
         private void InitFormForAdd()
         {
-            // Khóa ô mã hợp đồng, sinh gợi ý mã hợp đồng và HopDongID theo quy tắc: HD-năm-số thứ tự
+            // Khóa ô mã hợp đồng, hiển thị HopDongID và gợi ý tên hợp đồng
             LockMaHopDong();
-            var nextId = GenerateNextHopDongId(); // HDyyyy-####
-            var suggestedMa = GenerateSuggestedMaHopDong(); // HD-yyyyMMdd-HHmmss
-            mahopdong.Text = suggestedMa;
-            // Lưu ý: HopDongID sẽ dùng nextId khi lưu
-            mahopdong.Tag = nextId; // giữ tạm HopDongID trong Tag
+            var nextId = GenerateNextHopDongId();               // ví dụ: HD-2025-1
+            var suggestedName = GenerateSuggestedMaHopDong();   // ví dụ: HD-yyyyMMdd-HHmmss
+
+            // Mã hợp đồng (ID) - ReadOnly
+            IDhopdong.Text = nextId;
+            IDhopdong.Tag = nextId; // giữ HopDongID để lưu
+
+            // Tên hợp đồng (có thể sửa)
+            if (tenhopdong != null)
+                tenhopdong.Text = suggestedName;
         }
 
         private void LockMaHopDong()
         {
-            mahopdong.ReadOnly = true;
+            IDhopdong.ReadOnly = true;
         }
 
         // Tạo HopDongID tăng dần: HD-năm-số thứ tự (dựa trên dữ liệu hiện có)
@@ -115,7 +113,7 @@ namespace GUI
             }
         }
 
-        // Sinh gợi ý MaHopDong theo prefix: HD-yyyyMMdd-HHmmss
+        // Sinh gợi ý MaHopDong theo prefix: HD-yyyyMMdd-HHmmss (dùng làm Tên hợp đồng mặc định)
         private string GenerateSuggestedMaHopDong()
         {
             return "HD-" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
@@ -132,13 +130,22 @@ namespace GUI
                 if (rows.Length == 0) return;
                 var r = rows[0];
 
-                mahopdong.Text = r["MaHopDong"]?.ToString();
+                // Hiển thị ID hợp đồng (khóa, không sửa)
+                IDhopdong.Text = r["HopDongID"]?.ToString();
+
+                // Ngày
                 ngaykyhopdong.Value = r["NgayKy"] == DBNull.Value ? DateTime.Today : Convert.ToDateTime(r["NgayKy"]);
                 if (r["NgayBatDau"] != DBNull.Value) ngaybatdauhopdong.Value = Convert.ToDateTime(r["NgayBatDau"]);
                 if (r["NgayKetThuc"] != DBNull.Value) ngayhethanhopdong.Value = Convert.ToDateTime(r["NgayKetThuc"]);
+
+                // Tên hợp đồng (lưu ở cột MaHopDong)
+                if (tenhopdong != null)
+                    tenhopdong.Text = r["MaHopDong"]?.ToString();
+
+                // Ghi chú
                 tomtatnhiemvu.Text = r["GhiChu"]?.ToString();
 
-                // Set selected combos nếu có dữ liệu
+                // Combo
                 var khId = r["KhachHangID"]?.ToString();
                 if (!string.IsNullOrWhiteSpace(khId)) khachhang.SelectedValue = khId;
                 var kyId = r["KyHanID"]?.ToString();
@@ -150,10 +157,10 @@ namespace GUI
         private bool ValidateInputs(out string message)
         {
             // Ô mã hợp đồng là ReadOnly và đã sinh, vẫn kiểm tra đề phòng
-            if (string.IsNullOrWhiteSpace(mahopdong.Text))
+            if (string.IsNullOrWhiteSpace(IDhopdong.Text))
             {
                 message = "Mã hợp đồng chưa sẵn sàng.";
-                mahopdong.Focus(); return false;
+                IDhopdong.Focus(); return false;
             }
             if (khachhang.SelectedValue == null)
             {
@@ -174,7 +181,7 @@ namespace GUI
             if (ngaybatdauhopdong.Value.Date > ngayhethanhopdong.Value.Date)
             {
                 message = "Ngày bắt đầu không được sau Ngày kết thúc.";
-                ngaybatdau.Focus(); return false;
+                ngaybatdauhopdong.Focus(); return false;
             }
             message = null;
             return true;
@@ -190,6 +197,26 @@ namespace GUI
             return "đang hiệu lực";
         }
 
+        // ====== Helpers for retry ID build ======
+        private bool TryParseHopDongId(string id, out int year, out int seq)
+        {
+            year = DateTime.Now.Year;
+            seq = 1;
+            if (string.IsNullOrWhiteSpace(id)) return false;
+            var parts = id.Split('-');
+            if (parts.Length == 3
+                && int.TryParse(parts[1], out var y)
+                && int.TryParse(parts[2], out var s))
+            {
+                year = y;
+                seq = s;
+                return true;
+            }
+            return false;
+        }
+
+        private string BuildHopDongId(int year, int seq) => $"HD-{year}-{seq}";
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             try
@@ -200,8 +227,14 @@ namespace GUI
                     return;
                 }
 
-                string hopDongId = hopDongID ?? (mahopdong.Tag as string) ?? GenerateNextHopDongId();
-                string maHopDong = mahopdong.Text.Trim();
+                string hopDongId = hopDongID ?? (IDhopdong.Tag as string) ?? GenerateNextHopDongId();
+
+                // Tên hợp đồng sẽ lưu xuống cột MaHopDong
+                string maHopDong = (tenhopdong != null && !string.IsNullOrWhiteSpace(tenhopdong.Text))
+                    ? tenhopdong.Text.Trim()
+                    : GenerateSuggestedMaHopDong();
+                if (maHopDong.Length > 50) maHopDong = maHopDong.Substring(0, 50); // phòng NVARCHAR(50)
+
                 string khachHangID = (khachhang.SelectedValue ?? khachhang.Text)?.ToString();
                 DateTime ngayKy = ngaykyhopdong.Value.Date;
                 string kyHanID = (loaihopdong.SelectedValue ?? loaihopdong.Text)?.ToString();
@@ -212,12 +245,40 @@ namespace GUI
 
                 if (string.IsNullOrEmpty(hopDongID))
                 {
-                    BLL_HopDong.ThemHopDong(hopDongId, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
-                    MessageBox.Show("Thêm hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Thêm mới: retry khi trùng PK/UNIQUE trên HopDongID
+                    string baseId = hopDongId;
+                    if (!TryParseHopDongId(baseId, out int year, out int seq))
+                    {
+                        year = DateTime.Now.Year;
+                        seq = 1;
+                    }
+
+                    const int maxRetries = 50;
+                    int attempt = 0;
+                    while (true)
+                    {
+                        string currentId = BuildHopDongId(year, seq);
+                        try
+                        {
+                            BLL_HopDong.ThemHopDong(currentId, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
+                            MessageBox.Show("Thêm hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+                        }
+                        catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+                        {
+                            // Trùng khóa/unique -> tăng seq và thử lại
+                            attempt++;
+                            if (attempt >= maxRetries)
+                                throw new Exception($"Không thể tạo HopDongID duy nhất sau {maxRetries} lần thử. Vui lòng thử lại.", ex);
+                            seq++;
+                            continue;
+                        }
+                    }
                 }
                 else
                 {
-                    BLL_HopDong.SuaHopDong(hopDongId, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
+                    // Cập nhật
+                    BLL_HopDong.SuaHopDong(hopDongID, maHopDong, khachHangID, ngayKy, kyHanID, ngayBatDau, ngayKetThuc, trangThai, ghiChu);
                     MessageBox.Show("Cập nhật hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

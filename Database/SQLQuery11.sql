@@ -1461,3 +1461,6 @@ VALUES
     (N'HD0001', N'HD-2025-001', N'KH0002', '2025-01-15', N'KH001', '2025-01-15', '2025-04-15', N'Hiệu lực',     N'Hợp đồng chu kỳ Quý'),
     (N'HD0002', N'HD-2025-002', N'KH0003', '2025-02-10', N'KH002', '2025-02-10', '2025-08-10', N'Hiệu lực',     N'Hợp đồng 6 tháng'),
     (N'HD0003', N'HD-2025-003', N'KH0004', '2025-03-05', N'KH003', '2025-03-05', '2026-03-05', N'Chuẩn bị hiệu lực', N'Hợp đồng 1 năm');
+
+
+SELECT HopDongID, IsDeleted FROM dbo.HopDong WHERE HopDongID = 'HD-2025-1';

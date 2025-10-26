@@ -228,35 +228,45 @@ namespace GUI
             string ngayBD     = row["NgayBatDau"]  == DBNull.Value ? "" : Convert.ToDateTime(row["NgayBatDau"]).ToString("yyyy-MM-dd");
             string ngayKT     = row["NgayKetThuc"] == DBNull.Value ? "" : Convert.ToDateTime(row["NgayKetThuc"]).ToString("yyyy-MM-dd");
 
+            const int fixedWidth = 420;
+
             var card = new Guna2Panel
             {
-                Width = 420,
-                Height = 240,
+                Width = fixedWidth,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                MinimumSize = new Size(fixedWidth, 0),      // khóa width để không bị co nhỏ
+                MaximumSize = new Size(fixedWidth, int.MaxValue),
                 BorderRadius = 10,
                 ShadowDecoration = { Enabled = true },
                 FillColor = Color.White,
                 Margin = new Padding(15),
+                Padding = new Padding(12, 10, 12, 12),
                 Tag = hopDongID,
                 Cursor = Cursors.Hand
             };
 
-            // Header: HopDongID + MaHopDong
-            var lblHeader = new Label
-            {
-                Text = $"{hopDongID} | {ma}",
-                Font = new Font("Segoe UI", 11, FontStyle.Bold),
-                AutoSize = false,
-                Height = 28,
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-            var lblKH = new Label { Text = $"👤 KH: {khId} ({maKH}) - {tenCty}", Font = new Font("Segoe UI", 9), Height = 20, Dock = DockStyle.Top, TextAlign = ContentAlignment.MiddleCenter };
-            var lblKyHan = new Label { Text = $"⏱ Kỳ hạn: {kyHanID} - {tenKyHan}", Font = new Font("Segoe UI", 9), Height = 20, Dock = DockStyle.Top, TextAlign = ContentAlignment.MiddleCenter };
-            var lblNgayKy = new Label { Text = $"🗓 Ngày ký: {ngayKy}", Font = new Font("Segoe UI", 9), Height = 20, Dock = DockStyle.Top, TextAlign = ContentAlignment.MiddleCenter };
-            var lblHieuLuc = new Label { Text = $"⏳ Hiệu lực: {ngayBD} → {ngayKT}", Font = new Font("Segoe UI", 9), Height = 20, Dock = DockStyle.Top, TextAlign = ContentAlignment.MiddleCenter };
-            var lblTrangThai = new Label { Text = $"📌 Trạng thái: {trangThai}", Font = new Font("Segoe UI", 9), Height = 20, Dock = DockStyle.Top, TextAlign = ContentAlignment.MiddleCenter };
-            var lblMoTa = new Label { Text = $"📝 Mô tả nhiệm vụ: {(string.IsNullOrWhiteSpace(ghiChu) ? "(Không có)" : ghiChu)}", Font = new Font("Segoe UI", 9), Height = 40, Dock = DockStyle.Top, TextAlign = ContentAlignment.MiddleCenter };
+            int contentWidth = fixedWidth - card.Padding.Left - card.Padding.Right;
 
+            Func<string, Font, Label> L = (text, font) => new Label
+            {
+                AutoSize = true,
+                MaximumSize = new Size(contentWidth, 0), // wrap theo chiều rộng nội dung
+                Dock = DockStyle.Top,
+                Text = text,
+                Font = font ?? new Font("Segoe UI", 9),
+                TextAlign = ContentAlignment.MiddleLeft
+            };
+
+            var lblHeader    = L($"{hopDongID} | {ma}", new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblKH        = L($"👤 KH: {khId} ({maKH}) - {tenCty}", null);
+            var lblKyHan     = L($"⏱ Kỳ hạn: {kyHanID} - {tenKyHan}", null);
+            var lblNgayKy    = L($"🗓 Ngày ký: {ngayKy}", null);
+            var lblHieuLuc   = L($"⏳ Hiệu lực: {ngayBD} → {ngayKT}", null);
+            var lblTrangThai = L($"📌 Trạng thái: {trangThai}", null);
+            var lblMoTa      = L($"📝 Mô tả nhiệm vụ: {(string.IsNullOrWhiteSpace(ghiChu) ? "(Không có)" : ghiChu)}", null);
+
+            // Thêm theo thứ tự ngược để header ở trên cùng (Dock=Top)
             card.Controls.Add(lblMoTa);
             card.Controls.Add(lblTrangThai);
             card.Controls.Add(lblHieuLuc);
