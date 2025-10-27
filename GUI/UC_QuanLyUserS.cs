@@ -1,14 +1,22 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
-using BLL;
 
 namespace GUI
 {
     public partial class UC_QuanLyUserS : UserControl
     {
         private readonly BLL_TaiKhoan bllNguoiDung = new BLL_TaiKhoan();
-
+        private readonly Btnbeautifull _theme = new Btnbeautifull()
+{
+    Text = Color.White,
+    Outline = Color.FromArgb(120, 195, 170),
+    SearchFill = Color.Azure,
+    SearchText = Color.Black,
+    SearchPlaceholder = Color.Black
+};
         public UC_QuanLyUserS()
         {
             InitializeComponent();
@@ -18,6 +26,10 @@ namespace GUI
         private void UC_QuanLyUserS_Load(object sender, EventArgs e)
         {
             HienThiDanhSachNguoiDung();
+            PillStyler.Button(themuser,_theme);
+            PillStyler.Button(guna2Button2,_theme);
+            PillStyler.Button(guna2Button3,_theme);
+            PillStyler.SearchBox(txtTimKiem,_theme, "Tìm kiếm người dùng");
         }
 
         private void HienThiDanhSachNguoiDung()

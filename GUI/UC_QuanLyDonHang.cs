@@ -387,7 +387,7 @@ namespace GUI
                 MaximumSize = new Size(contentWidth, 0),
                 Dock = DockStyle.Top,
                 Text = text,
-                Font = font ?? new Font("Segoe UI", 9),
+                Font = font ?? new Font("Segoe UI", 12),
                 TextAlign = ContentAlignment.MiddleLeft,
                 ForeColor = ClrText,
                 BackColor = Color.Transparent
@@ -606,11 +606,7 @@ namespace GUI
 
                 StyleSearchBox(guna2TextBox1, "Thanh tìm kiếm");
 
-                if (labelLocTheo != null)
-                {
-                    labelLocTheo.ForeColor = ClrText;
-                    labelLocTheo.BackColor = Color.Transparent;
-                }
+                
             }
             catch { }
         }
@@ -634,8 +630,8 @@ namespace GUI
         private void StylePillCombo(Guna2ComboBox cb)
         {
             if (cb == null) return;
-            cb.BackColor   = Color.Transparent;
-            cb.FillColor   = Color.Transparent;
+             cb.BackColor   = Color.Transparent;
+            cb.FillColor   = Color.FromArgb(0, 0, 0, 0);  // trong suốt
             cb.BorderColor = ClrOutline;
             cb.ForeColor   = ClrText;
             cb.AutoRoundedCorners = true;
@@ -654,11 +650,11 @@ namespace GUI
         {
             if (txt == null) return;
             txt.BackColor   = Color.Transparent;
-            txt.FillColor   = Color.Transparent;
+            txt.FillColor   = Color.Azure;
             txt.BorderColor = ClrOutline;
-            txt.ForeColor   = ClrText;
+            txt.ForeColor   = Color.Black;
             txt.PlaceholderText = placeholder;
-            txt.PlaceholderForeColor = ClrHint;
+            txt.PlaceholderForeColor = Color.Black;
             txt.AutoRoundedCorners = true;
             txt.BorderRadius = Math.Max(20, txt.Height / 2);
             txt.FocusedState.BorderColor = ClrOutline;

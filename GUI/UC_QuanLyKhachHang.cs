@@ -19,10 +19,18 @@ namespace GUI
 
         private const int BottomPaddingForShadow = 30;
         private const int FlowTopPadding = 0;
-
+        private readonly Btnbeautifull _theme = new Btnbeautifull()
+{
+    Text = Color.White,
+    Outline = Color.FromArgb(120, 195, 170),
+    SearchFill = Color.Azure,
+    SearchText = Color.Black,
+    SearchPlaceholder = Color.Black
+};
         public UC_QuanLyKhachHang()
         {
             InitializeComponent();
+
         }
 
         private void UC_QuanLyKhachHang_Load(object sender, EventArgs e)
@@ -40,7 +48,10 @@ namespace GUI
             flowLayoutPanel1.Layout += (s, ev) => CenterCards();
             flowLayoutPanel1.SizeChanged += (s, ev) => CenterCards();
             this.SizeChanged += (s, ev) => LayoutFlowUnderToolbar();
-
+            PillStyler.Button(btnSua,_theme);
+            PillStyler.Button(themkhachhang,_theme);
+            PillStyler.Button(btnXoa,_theme);
+            PillStyler.SearchBox(ThanhTimKiem,_theme,"Tìm kiếm khách hàng");
             LayoutFlowUnderToolbar();
             LoadDanhSachKhachHang();
         }

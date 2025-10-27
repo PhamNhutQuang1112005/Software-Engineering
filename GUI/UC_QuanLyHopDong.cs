@@ -1,19 +1,27 @@
-﻿using System;
+﻿using BLL;
+using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BLL;
-using Guna.UI2.WinForms;
-
 namespace GUI
 {
     public partial class UC_QuanLyHopDong : UserControl
     {
+        private readonly Btnbeautifull _theme = new Btnbeautifull()
+{
+    Text = Color.White,
+    Outline = Color.FromArgb(120, 195, 170),
+    SearchFill = Color.Azure,
+    SearchText = Color.Black,
+    SearchPlaceholder = Color.Black
+};
         private string _selectedId = null;
         private Guna2Panel _selectedCard = null;
         private const int BottomPaddingForShadow = 30;
@@ -45,6 +53,12 @@ namespace GUI
             LayoutFlowUnderToolbar();
             LoadDanhSachHopDong();
             InitFilterCombos();
+             PillStyler.Button(guna2Button1, _theme);
+            PillStyler.Button(guna2Button2, _theme);
+            PillStyler.Button(guna2Button3, _theme);
+    PillStyler.Combo(loctheokhachhang, _theme);
+            PillStyler.Combo(loctheotrangthai, _theme);
+            PillStyler.SearchBox(guna2TextBox1,_theme, "Tìm kiếm theo tên hợp đồng...");
         }
 
         private void EnsureFlow()
@@ -218,7 +232,7 @@ if (!string.IsNullOrWhiteSpace(selKHId))
                 var lbl = new Label
                 {
                     Text = "Không tìm thấy hợp đồng nào.",
-                    Font = new Font("Segoe UI", 10, FontStyle.Italic),
+                    Font = new Font("Segoe UI", 12, FontStyle.Italic),
                     ForeColor = Color.Gray,
                     Dock = DockStyle.Top,
                     Height = 40,
@@ -450,6 +464,11 @@ if (!string.IsNullOrWhiteSpace(selKHId))
         }
 
         private void guna2Button3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loctrangthai_Click(object sender, EventArgs e)
         {
 
         }

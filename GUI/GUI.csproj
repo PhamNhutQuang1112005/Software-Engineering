@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Btnbeautifull.cs" />
     <Compile Include="Common\SmoothFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
