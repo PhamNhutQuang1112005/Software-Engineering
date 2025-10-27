@@ -356,5 +356,10 @@ BLL_HopDong.SuaHopDong(dtoUpd);
         {
 
         }
+
+        private void huy_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

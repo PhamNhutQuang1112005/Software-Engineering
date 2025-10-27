@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Data;
-using DAL;
+﻿using DAL;
 using DTO;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System;
+
 
 namespace BLL
 {
@@ -29,5 +32,14 @@ namespace BLL
         public List<DTO_PhongBan>  GetAllPhongBan()   => _dal.GetAllPhongBan();
         public DTO_VaiTro          GetVaiTroByID(string vaiTroID)       => _dal.GetVaiTroByID(vaiTroID);
         public DTO_PhongBan        GetPhongBanByID(string phongBanID)   => _dal.GetPhongBanByID(phongBanID);
+        public bool HasAdminAccount()
+        {
+            DataTable users = _dal.GetAllNguoiDung_DataTable();
+            if (users == null) return false;
+
+            return users.AsEnumerable().Any(u =>
+                u["VaiTroID"] != DBNull.Value &&
+                string.Equals(u["VaiTroID"].ToString(), "VT001", StringComparison.OrdinalIgnoreCase));
+        }
     }
 }

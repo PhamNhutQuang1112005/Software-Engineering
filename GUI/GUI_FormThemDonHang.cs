@@ -158,45 +158,9 @@ namespace GUI
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
-            guna2ComboBox1.DataSource = BLL_KhachHang.GetAllKhachHang();
-            guna2ComboBox1.DisplayMember = "TenCongTy";
-            guna2ComboBox1.ValueMember = "KhachHangID";
-
-            guna2ComboBox4.DataSource = BLL_HopDong.GetAllHopDong();
-            guna2ComboBox4.DisplayMember = "MaHopDong";
-            guna2ComboBox4.ValueMember = "HopDongID";
-
-            guna2ComboBox5.DataSource = BLL_DonHang.GetAllTrangThaiDonHang();
-            guna2ComboBox5.DisplayMember = "TenTrangThai";
-            guna2ComboBox5.ValueMember = "TrangThaiID";
-
-
-            if (string.IsNullOrEmpty(_donHangID))
-{
-                // THÊM MỚI
-                guna2TextBox1.Text = BLL_DonHang.SinhMaDonHang();
-                guna2TextBox2.Text = ""; // để trống
-                guna2TextBox4.Text = "";
-            }
-            else
-            {
-                DataTable dt = BLL_DonHang.GetDonHangByID(_donHangID);
-
-                if (dt.Rows.Count > 0)
-                {
-                    var row = dt.Rows[0];
-                    guna2TextBox2.Text = row["DonHangID"].ToString();
-                    guna2TextBox1.Text = row["MaDonHang"].ToString();
-                    guna2ComboBox4.SelectedValue = row["HopDongID"].ToString();
-                    guna2ComboBox5.SelectedValue = row["TrangThaiID"].ToString();
-                    guna2TextBox4.Text = row["GhiChu"].ToString();
-                    guna2ComboBox1.SelectedValue = row["IDKhachHang"].ToString();
-                    
-                }
-
-                guna2TextBox1.Enabled = false; // Không cho sửa mã đơn hàng
-
-            }
+            
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
 
         }
     }

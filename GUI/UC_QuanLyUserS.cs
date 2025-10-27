@@ -41,7 +41,6 @@ namespace GUI
                  dataGridView1.AllowUserToAddRows = false;
                 dataGridView1.RowHeadersVisible = false; 
                 // Tùy chỉnh cột cho đẹp
-                dataGridView1.Columns["NguoiDungID"].HeaderText = "Mã NV";
                 dataGridView1.Columns["TenDangNhap"].HeaderText = "Tên đăng nhập";
                 dataGridView1.Columns["HoVaTen"].HeaderText = "Họ và tên";
                 dataGridView1.Columns["DienThoai"].HeaderText = "Điện thoại";

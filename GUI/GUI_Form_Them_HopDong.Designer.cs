@@ -69,6 +69,7 @@
             this.huy.Size = new System.Drawing.Size(119, 45);
             this.huy.TabIndex = 36;
             this.huy.Text = "Hủy";
+            this.huy.Click += new System.EventHandler(this.huy_Click);
             // 
             // themhopdong
             // 

@@ -1,30 +1,33 @@
-﻿using System;
+﻿using BLL;
+using DTO;
+using Guna.UI2.WinForms;
+using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using BLL;
-using DTO;
+
 namespace GUI
 {
     public partial class UC_ChinhSuaThongTin : UserControl
     {
-        // Chỉ nhận username; các ID khác sẽ tự lấy từ DB
+        // ==================== Biến lớp ====================
         private readonly string tenDangNhap;
-
-        // Lưu lại để cập nhật
         private string nguoiDungID;
         private string vaiTroID;
         private string phongBanID;
 
+        // Lưu giá trị gốc để reset
+        private string originalHoTen;
+        private string originalSDT;
+        private string originalEmail;
+
         private readonly BLL_TaiKhoan bllNguoiDung = new BLL_TaiKhoan();
 
-        // ======= NHẬN MỖI TÊN ĐĂNG NHẬP =======
+        // ==================== Khởi tạo ====================
         public UC_ChinhSuaThongTin(string tenDN)
         {
             InitializeComponent();
             tenDangNhap = tenDN ?? string.Empty;
-
-            // Cập nhật label tên hiển thị theo họ tên khi gõ
             txtHoTen.TextChanged += (s, e) => display_name.Text = txtHoTen.Text.Trim();
         }
 
@@ -33,7 +36,7 @@ namespace GUI
             TryLoadUserByUsername();
         }
 
-        // ======= Load dữ liệu người dùng theo Tên đăng nhập =======
+        // ==================== Load dữ liệu người dùng ====================
         private void TryLoadUserByUsername()
         {
             if (string.IsNullOrWhiteSpace(tenDangNhap))
@@ -52,33 +55,27 @@ namespace GUI
                     return;
                 }
 
-                // Lấy đúng dòng theo TenDangNhap, không có thì lấy dòng đầu
                 var row = dt.AsEnumerable()
-                            .FirstOrDefault(r =>
-                                r.Table.Columns.Contains("TenDangNhap") &&
-                                string.Equals(Convert.ToString(r["TenDangNhap"]), tenDangNhap, StringComparison.OrdinalIgnoreCase))
-                          ?? dt.Rows[0];
+                    .FirstOrDefault(r =>
+                        r.Table.Columns.Contains("TenDangNhap") &&
+                        string.Equals(Convert.ToString(r["TenDangNhap"]), tenDangNhap, StringComparison.OrdinalIgnoreCase))
+                    ?? dt.Rows[0];
 
-                // Cache các ID để cập nhật về sau (không cho sửa vai trò/phòng)
-                nguoiDungID = row.Table.Columns.Contains("NguoiDungID") ? Convert.ToString(row["NguoiDungID"]) : null;
-                vaiTroID    = row.Table.Columns.Contains("VaiTroID")    ? Convert.ToString(row["VaiTroID"])    : null;
-                phongBanID  = row.Table.Columns.Contains("PhongBanID")  ? Convert.ToString(row["PhongBanID"])  : null;
+                nguoiDungID = row["NguoiDungID"]?.ToString();
+                vaiTroID    = row["VaiTroID"]?.ToString();
+                phongBanID  = row["PhongBanID"]?.ToString();
 
-                // Bind thông tin
-                txtHoTen.Text    = row.Table.Columns.Contains("HoVaTen")   ? Convert.ToString(row["HoVaTen"])   : "";
-                txtSDT.Text      = row.Table.Columns.Contains("DienThoai")  ? Convert.ToString(row["DienThoai"]) : "";
-                txtEmail.Text    = row.Table.Columns.Contains("Email")      ? Convert.ToString(row["Email"])     : "";
-                
+                txtHoTen.Text  = row["HoVaTen"]?.ToString() ?? "";
+                txtSDT.Text    = row["DienThoai"]?.ToString() ?? "";
+                txtEmail.Text  = row["Email"]?.ToString() ?? "";
+                guna2TextBox1.Text = row["TenPhongBan"]?.ToString() ?? row["PhongBanID"]?.ToString() ?? "";
 
-                // Hiển thị tên lớn + phòng (nếu có label)
                 display_name.Text = string.IsNullOrWhiteSpace(txtHoTen.Text) ? tenDangNhap : txtHoTen.Text;
-                if (this.Controls.ContainsKey("phong_display"))
-                {
-                    var tenPhong = row.Table.Columns.Contains("TenPhongBan")
-                                   ? Convert.ToString(row["TenPhongBan"])
-                                   : (row.Table.Columns.Contains("PhongBanID") ? Convert.ToString(row["PhongBanID"]) : "");
-                    phong_display.Text = tenPhong;
-                }
+
+                // === Lưu giá trị gốc để reset khi cần ===
+                originalHoTen = txtHoTen.Text;
+                originalSDT   = txtSDT.Text;
+                originalEmail = txtEmail.Text;
             }
             catch (Exception ex)
             {
@@ -87,7 +84,13 @@ namespace GUI
             }
         }
 
-        // ======= Validate tối thiểu =======
+        // ==================== Reload lại dữ liệu (cho UserMenu gọi) ====================
+        public void ReloadData()
+        {
+            TryLoadUserByUsername();
+        }
+
+        // ==================== Validate ====================
         private bool ValidateInput(out string msg)
         {
             if (string.IsNullOrWhiteSpace(txtHoTen.Text))
@@ -96,8 +99,14 @@ namespace GUI
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             { msg = "Vui lòng nhập email."; txtEmail.Focus(); return false; }
 
-            if (string.IsNullOrWhiteSpace(tenDangNhap))
-            { msg = "Thiếu Tên đăng nhập để cập nhật."; return false; }
+            if (!string.IsNullOrEmpty(txtSDT.Text))
+            {
+                if (!txtSDT.Text.All(char.IsDigit))
+                { msg = "Số điện thoại chỉ được chứa chữ số."; txtSDT.Focus(); return false; }
+
+                if (txtSDT.Text.Length != 10)
+                { msg = "Số điện thoại phải gồm đúng 10 chữ số."; txtSDT.Focus(); return false; }
+            }
 
             if (string.IsNullOrWhiteSpace(nguoiDungID))
             { msg = "Thiếu ID người dùng (không thể cập nhật)."; return false; }
@@ -105,73 +114,57 @@ namespace GUI
             msg = null; return true;
         }
 
-        // ======= Lưu thay đổi =======
+        // ==================== Lưu thay đổi ====================
         private void comfirm_change_Click(object sender, EventArgs e)
-{
-    if (!ValidateInput(out string msg))
-    {
-        MessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        return;
-    }
-
-    try
-    {
-        string hoTen     = txtHoTen.Text.Trim();
-        string sdt       = string.IsNullOrWhiteSpace(txtSDT.Text)   ? null : txtSDT.Text.Trim();
-        string email     = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
-        string matKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text) ? null : txtMatKhauMoi.Text.Trim();
-
-        // Gói DTO theo chuẩn mới (không đổi vai trò/phòng ban ở màn này)
-        var dto = new DTO_NguoiDung
         {
-            NguoiDungID = nguoiDungID,   // đã cache khi load
-            TenDangNhap = tenDangNhap,   // truyền lại username hiện tại
-            HoVaTen     = hoTen,
-            DienThoai   = sdt,
-            Email       = email,
-            VaiTroID    = vaiTroID,      // giữ nguyên
-            PhongBanID  = phongBanID     // giữ nguyên
-        };
+            if (!ValidateInput(out string msg))
+            {
+                MessageBox.Show(msg, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        // matKhauMoi == null => không đổi mật khẩu
-        bllNguoiDung.SuaNguoiDung(dto, matKhauMoi);
+            try
+            {
+                var dto = new DTO_NguoiDung
+                {
+                    NguoiDungID = nguoiDungID,
+                    TenDangNhap = tenDangNhap,
+                    HoVaTen     = txtHoTen.Text.Trim(),
+                    DienThoai   = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim(),
+                    Email       = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim(),
+                    VaiTroID    = vaiTroID,
+                    PhongBanID  = phongBanID
+                };
 
-        MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo",
-            MessageBoxButtons.OK, MessageBoxIcon.Information);
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi",
-            MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
+                string matKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text) ? null : txtMatKhauMoi.Text.Trim();
+                bllNguoiDung.SuaNguoiDung(dto, matKhauMoi);
 
+                MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        // ======= Hủy (giữ nguyên hành vi cũ: xóa nội dung) =======
+                // Cập nhật lại giá trị gốc để lần sau reset đúng dữ liệu mới
+                originalHoTen = txtHoTen.Text;
+                originalSDT   = txtSDT.Text;
+                originalEmail = txtEmail.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ==================== Hủy thay đổi (reset về dữ liệu gốc) ====================
         private void decline_change_Click(object sender, EventArgs e)
         {
-            txtHoTen.Clear();
-            txtSDT.Clear();
-            txtEmail.Clear();
-            
+            // Reset về dữ liệu ban đầu (không xóa trắng)
+            txtHoTen.Text = originalHoTen;
+            txtSDT.Text   = originalSDT;
+            txtEmail.Text = originalEmail;
+
+            // Xóa mật khẩu đang nhập (cho an toàn)
             txtMatKhauCu.Clear();
             txtMatKhauMoi.Clear();
-            display_name.Text = string.Empty;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void phong_display_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

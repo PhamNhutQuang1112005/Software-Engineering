@@ -102,7 +102,7 @@ namespace GUI
             catch { return false; }
         }
 
-        private bool UsernameExists(string tenDN, string excludeID = null)
+        public bool UsernameExists(string tenDN, string excludeID = null)
         {
             DataTable all = bllNguoiDung.LayTatCaNguoiDung();
             if (all == null) return false;

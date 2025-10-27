@@ -12,6 +12,8 @@ namespace GUI
     public partial class GUI_main : Form
     {
         // ============== Biến lớp ==============
+        private UserMenuPopup userMenu;
+
         private bool isDark = true;
         private List<Guna2Button> sidebarButtons = new List<Guna2Button>();
         private UserControl currentUC;
@@ -84,11 +86,34 @@ namespace GUI
             // Mặc định mở trang chủ (nếu muốn)
             if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
             ShowControl(ucTrangChu);
-            
+            popupUser();
     
         }
 
         // ============================ Khởi tạo layout contentPanel ============================
+        private void popupUser()
+        {
+            userMenu = new UserMenuPopup(
+    editProfileHandler: () =>
+    {
+        if (ucChinhSuaThongTin == null)
+            ucChinhSuaThongTin = new UC_ChinhSuaThongTin(TenDangNhap);
+        ShowControl(ucChinhSuaThongTin);
+        SetActiveSidebarButton(btnQuanLyUser);
+    },
+    logoutHandler: () =>
+    {
+        if (MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận",
+            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        {
+            this.Hide();
+            var login = new GUI_Form_DangNhap();
+            login.Show();
+        }
+    }
+);
+
+        }
         private void InitContentLayout()
         {
             if (contentPanel == null) return;
@@ -422,11 +447,9 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
         }
 
         private void btnQuanLyUser_Click(object sender, EventArgs e)
-        {
-            if (ucChinhSuaThongTin == null) ucChinhSuaThongTin = new UC_ChinhSuaThongTin(TenDangNhap);
-            ShowControl(ucChinhSuaThongTin);
-            SetActiveSidebarButton(sender as Guna2Button);
-        }
+{
+    userMenu.Show(sender as Control);
+}
 
         // ================= Popup thông báo =================
         private void btnThongbao_Click(object sender, EventArgs e)

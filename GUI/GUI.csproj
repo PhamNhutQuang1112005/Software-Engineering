@@ -172,6 +172,7 @@
     <Compile Include="UC_TrangChu.Designer.cs">
       <DependentUpon>UC_TrangChu.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserMenuPopup.cs" />
     <EmbeddedResource Include="GUI_FormThemNguoiDung.resx">
       <DependentUpon>GUI_FormThemNguoiDung.cs</DependentUpon>
     </EmbeddedResource>

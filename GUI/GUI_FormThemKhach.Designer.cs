@@ -113,6 +113,7 @@ namespace GUI
             this.txtNguoiDaiDien.SelectedText = "";
             this.txtNguoiDaiDien.Size = new System.Drawing.Size(215, 42);
             this.txtNguoiDaiDien.TabIndex = 2;
+            this.txtNguoiDaiDien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNguoiDaiDien_KeyPress);
             // 
             // txtSDT
             // 
