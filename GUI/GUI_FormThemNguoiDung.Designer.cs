@@ -78,6 +78,7 @@ namespace GUI
             this.txtHoTen.SelectedText = "";
             this.txtHoTen.Size = new System.Drawing.Size(250, 40);
             this.txtHoTen.TabIndex = 2;
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
             // 
             // txtSDT
             // 

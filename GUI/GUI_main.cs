@@ -93,11 +93,17 @@ namespace GUI
         // ============================ Khởi tạo layout contentPanel ============================
         private void popupUser()
         {
-            userMenu = new UserMenuPopup(
+           userMenu = new UserMenuPopup(
     editProfileHandler: () =>
     {
         if (ucChinhSuaThongTin == null)
+        {
             ucChinhSuaThongTin = new UC_ChinhSuaThongTin(TenDangNhap);
+            ucChinhSuaThongTin.OnUserUpdated += () =>
+            {
+                ResolveUserHeaderFromUsername(); // reload header sau khi lưu
+            };
+        }
         ShowControl(ucChinhSuaThongTin);
         SetActiveSidebarButton(btnQuanLyUser);
     },
@@ -112,6 +118,7 @@ namespace GUI
         }
     }
 );
+
 
         }
         private void InitContentLayout()

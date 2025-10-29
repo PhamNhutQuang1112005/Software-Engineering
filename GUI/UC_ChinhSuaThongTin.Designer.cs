@@ -53,6 +53,7 @@ namespace GUI
             this.txtHoTen.SelectedText = "";
             this.txtHoTen.Size = new System.Drawing.Size(230, 30);
             this.txtHoTen.TabIndex = 0;
+            this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
             // 
             // txtSDT
             // 
@@ -191,7 +192,6 @@ namespace GUI
             this.label3.Size = new System.Drawing.Size(63, 22);
             this.label3.TabIndex = 19;
             this.label3.Text = "Email:";
-            
             // 
             // txtMatKhauMoi
             // 
@@ -219,7 +219,6 @@ namespace GUI
             this.label5.Size = new System.Drawing.Size(111, 22);
             this.label5.TabIndex = 20;
             this.label5.Text = "Mật khẩu cũ:";
-            
             // 
             // label4
             // 

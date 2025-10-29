@@ -79,6 +79,7 @@ namespace GUI
             this.txtTenCongTy.Size = new System.Drawing.Size(241, 42);
             this.txtTenCongTy.TabIndex = 1;
             this.txtTenCongTy.TextChanged += new System.EventHandler(this.txtTenCongTy_TextChanged);
+            this.txtTenCongTy.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTenCongTy_KeyPress);
             // 
             // txtMaSoThue
             // 

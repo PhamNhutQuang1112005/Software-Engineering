@@ -202,5 +202,19 @@ namespace GUI
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;
         }
+
+       private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+{
+    // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
+    if (char.IsControl(e.KeyChar))
+        return;
+
+    // Nếu không phải là chữ hoặc khoảng trắng => chặn
+    if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+    {
+        e.Handled = true; // Ngăn nhập ký tự đó
+        System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
+    }
+}
     }
 }

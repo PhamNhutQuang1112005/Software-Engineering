@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_main));
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.contentPanel = new System.Windows.Forms.Panel();
@@ -45,6 +46,7 @@
             this.btnHopDong = new Guna.UI2.WinForms.Guna2Button();
             this.btnKhachHang = new Guna.UI2.WinForms.Guna2Button();
             this.btnTrangChu = new Guna.UI2.WinForms.Guna2Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mainPanel.SuspendLayout();
             this.header.SuspendLayout();
             this.sidebar.SuspendLayout();
@@ -366,6 +368,7 @@
         private System.Windows.Forms.Label lblUser;
         private Guna.UI2.WinForms.Guna2Panel mainPanel;
         private Guna.UI2.WinForms.Guna2GradientPanel sidebar;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

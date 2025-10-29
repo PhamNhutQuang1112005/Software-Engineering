@@ -63,7 +63,6 @@ namespace GUI
             this.ThanhTimKiem.SelectedText = "";
             this.ThanhTimKiem.Size = new System.Drawing.Size(327, 36);
             this.ThanhTimKiem.TabIndex = 54;
-            this.ThanhTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ThanhTimKiem.TextChanged += new System.EventHandler(this.ThanhTimKiem_TextChanged);
             // 
             // btnSua

@@ -11,6 +11,7 @@ namespace GUI
     public partial class UC_ChinhSuaThongTin : UserControl
     {
         // ==================== Biến lớp ====================
+        public event Action OnUserUpdated;
         private readonly string tenDangNhap;
         private string nguoiDungID;
         private string vaiTroID;
@@ -146,12 +147,15 @@ namespace GUI
                 originalHoTen = txtHoTen.Text;
                 originalSDT   = txtSDT.Text;
                 originalEmail = txtEmail.Text;
+                OnUserUpdated?.Invoke();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
         }
 
         // ==================== Hủy thay đổi (reset về dữ liệu gốc) ====================
@@ -165,6 +169,21 @@ namespace GUI
             // Xóa mật khẩu đang nhập (cho an toàn)
             txtMatKhauCu.Clear();
             txtMatKhauMoi.Clear();
+        }
+
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
+    if (char.IsControl(e.KeyChar))
+        return;
+
+    // Nếu không phải là chữ hoặc khoảng trắng => chặn
+    if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+    {
+        e.Handled = true; // Ngăn nhập ký tự đó
+        System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
+    }
+
         }
     }
 }
