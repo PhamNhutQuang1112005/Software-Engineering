@@ -95,7 +95,7 @@ namespace GUI
             legend1.ForeColor = System.Drawing.Color.White;
             legend1.Name = "Legend1";
             this.BieuDo1.Legends.Add(legend1);
-            this.BieuDo1.Location = new System.Drawing.Point(45, 117);
+            this.BieuDo1.Location = new System.Drawing.Point(29, 130);
             this.BieuDo1.Name = "BieuDo1";
             series1.BorderWidth = 7;
             series1.ChartArea = "ChartArea1";
@@ -179,9 +179,9 @@ namespace GUI
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(156, 46);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(161, 44);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(171, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(129, 36);
             this.guna2ComboBox1.TabIndex = 9;
             // 
             // guna2ComboBox2
@@ -198,9 +198,9 @@ namespace GUI
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(355, 46);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(472, 44);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(182, 36);
+            this.guna2ComboBox2.Size = new System.Drawing.Size(169, 36);
             this.guna2ComboBox2.TabIndex = 5;
             this.guna2ComboBox2.Tag = "sf";
             this.guna2ComboBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -219,7 +219,7 @@ namespace GUI
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(573, 46);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(1046, 44);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(139, 36);
             this.guna2ComboBox3.TabIndex = 6;
@@ -240,7 +240,7 @@ namespace GUI
             this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox4.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox4.ItemHeight = 30;
-            this.guna2ComboBox4.Location = new System.Drawing.Point(745, 46);
+            this.guna2ComboBox4.Location = new System.Drawing.Point(770, 44);
             this.guna2ComboBox4.Name = "guna2ComboBox4";
             this.guna2ComboBox4.Size = new System.Drawing.Size(140, 36);
             this.guna2ComboBox4.TabIndex = 7;
@@ -250,48 +250,48 @@ namespace GUI
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.SeaGreen;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(366, 56);
+            this.label4.Location = new System.Drawing.Point(296, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 23);
+            this.label4.Size = new System.Drawing.Size(170, 31);
             this.label4.TabIndex = 11;
             this.label4.Text = "Ngày Kết Thúc";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.SeaGreen;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(582, 56);
+            this.label5.Location = new System.Drawing.Point(648, 49);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 23);
+            this.label5.Size = new System.Drawing.Size(116, 31);
             this.label5.TabIndex = 12;
             this.label5.Text = "Theo Quý";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.SeaGreen;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(754, 56);
+            this.label6.Location = new System.Drawing.Point(916, 49);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 23);
+            this.label6.Size = new System.Drawing.Size(124, 31);
             this.label6.TabIndex = 13;
             this.label6.Text = "Theo Năm";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.SeaGreen;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(168, 55);
+            this.label3.Location = new System.Drawing.Point(-6, 49);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 23);
+            this.label3.Size = new System.Drawing.Size(161, 31);
             this.label3.TabIndex = 10;
             this.label3.Text = "Ngày Bắt Đầu";
             // 
@@ -303,20 +303,21 @@ namespace GUI
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.guna2ComboBox4);
+            this.Controls.Add(this.guna2ComboBox2);
+            this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.BieuDo1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.guna2ComboBox4);
             this.Controls.Add(this.guna2ComboBox3);
-            this.Controls.Add(this.guna2ComboBox2);
-            this.Controls.Add(this.guna2ComboBox1);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_ThongKe";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Size = new System.Drawing.Size(1165, 593);
+            this.Size = new System.Drawing.Size(1198, 606);
+            this.Load += new System.EventHandler(this.UC_ThongKe_Load);
             ((System.ComponentModel.ISupportInitialize)(this.BieuDo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);

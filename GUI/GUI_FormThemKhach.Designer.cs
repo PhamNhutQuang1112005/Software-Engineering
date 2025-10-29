@@ -178,6 +178,7 @@ namespace GUI
             this.txtGhiChu.ForeColor = System.Drawing.Color.Black;
             this.txtGhiChu.Location = new System.Drawing.Point(22, 263);
             this.txtGhiChu.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.txtGhiChu.MaxLength = 1024;
             this.txtGhiChu.Multiline = true;
             this.txtGhiChu.Name = "txtGhiChu";
             this.txtGhiChu.PlaceholderText = "Ghi chú";

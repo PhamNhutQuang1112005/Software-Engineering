@@ -36,3 +36,5 @@ C:\CNPM2\Software-Engineering\BLL\obj\Debug\BLL.dll
 C:\CNPM2\Software-Engineering\BLL\obj\Debug\BLL.pdb
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\DTO.dll
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\DTO.pdb
+C:\CNPM2\Software-Engineering\BLL\bin\Debug\DTO.dll
+C:\CNPM2\Software-Engineering\BLL\bin\Debug\DTO.pdb

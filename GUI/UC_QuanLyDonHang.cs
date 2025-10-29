@@ -410,6 +410,11 @@ namespace GUI
             var lblDates     = L(string.Format("🗓 Mẫu: {0} | Dự kiến: {1} | TT: {2}", ngayLayMau, ngayDuKien, ngayTraTT), null);
             var lblKy        = L(string.IsNullOrWhiteSpace(ky) ? "" : ("⏱ Kỳ: " + ky), null);
             var lblGhiChu    = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);
+          
+            lblGhiChu.MaximumSize = new Size(contentWidth, 20);  // Giới hạn chiều cao ~1 dòng
+            lblGhiChu.AutoEllipsis = true;
+            lblGhiChu.TextAlign = ContentAlignment.MiddleLeft;
+
 
             card.Controls.Add(lblGhiChu);
             if (!string.IsNullOrEmpty(ky)) card.Controls.Add(lblKy);

@@ -106,6 +106,7 @@
             this.tomtatnhiemvu.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.tomtatnhiemvu.Location = new System.Drawing.Point(31, 482);
             this.tomtatnhiemvu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tomtatnhiemvu.MaxLength = 1024;
             this.tomtatnhiemvu.Name = "tomtatnhiemvu";
             this.tomtatnhiemvu.PlaceholderText = "";
             this.tomtatnhiemvu.SelectedText = "";
