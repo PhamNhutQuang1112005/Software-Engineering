@@ -10,6 +10,7 @@ namespace GUI
     public partial class GUI_Form_Them_HopDong : Form
     {
         private readonly string hopDongID;
+        private const int MoTaMaxLen = 1024; // giới hạn mô tả
 
         public GUI_Form_Them_HopDong()
         {
@@ -19,6 +20,7 @@ namespace GUI
             WireEvents();
             InitCombos();
             InitFormForAdd();
+            InitMoTaLimiter();
         }
 
         public GUI_Form_Them_HopDong(string id)
@@ -30,12 +32,20 @@ namespace GUI
             InitCombos();
             LoadByIdAndFill(id);
             LockMaHopDong();
+            InitMoTaLimiter();
         }
 
         private void WireEvents()
         {
             themhopdong.Click += btnLuu_Click;
             huy.Click += btnHuy_Click;
+        }
+
+        // Chỉ set MaxLength đơn giản, không cắt và không beep
+        private void InitMoTaLimiter()
+        {
+            if (tomtatnhiemvu == null) return;
+            try { tomtatnhiemvu.MaxLength = MoTaMaxLen; } catch { }
         }
 
         // ====== INIT UI ======
@@ -228,6 +238,15 @@ namespace GUI
                     return;
                 }
 
+                // Kiểm tra mô tả không vượt quá 1024 ký tự (thông báo đơn giản)
+                var desc = (tomtatnhiemvu?.Text ?? string.Empty).Trim();
+                if (desc.Length > MoTaMaxLen)
+                {
+                    MessageBox.Show("giới hạn kí tự 1024", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    tomtatnhiemvu?.Focus();
+                    return;
+                }
+
                 string hopDongId = hopDongID ?? (IDhopdong.Tag as string) ?? GenerateNextHopDongId();
 
                 // Tên hợp đồng sẽ lưu xuống cột MaHopDong
@@ -242,7 +261,7 @@ namespace GUI
                 DateTime? ngayBatDau = ngaybatdauhopdong.Value.Date;
                 DateTime? ngayKetThuc = ngayhethanhopdong.Value.Date;
                 string trangThai = CalcTrangThai(ngayBatDau, ngayKetThuc);
-                string ghiChu = string.IsNullOrWhiteSpace(tomtatnhiemvu.Text) ? null : tomtatnhiemvu.Text.Trim();
+                string ghiChu = string.IsNullOrWhiteSpace(desc) ? null : desc;
 
                 if (string.IsNullOrEmpty(hopDongID))
                 {

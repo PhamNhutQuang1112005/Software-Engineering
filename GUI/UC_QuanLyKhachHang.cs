@@ -20,13 +20,19 @@ namespace GUI
         private const int BottomPaddingForShadow = 30;
         private const int FlowTopPadding = 0;
         private readonly Btnbeautifull _theme = new Btnbeautifull()
-{
-    Text = Color.White,
-    Outline = Color.FromArgb(120, 195, 170),
-    SearchFill = Color.Azure,
-    SearchText = Color.Black,
-    SearchPlaceholder = Color.Black
-};
+        {
+            Text = Color.White,
+            Outline = Color.FromArgb(120, 195, 170),
+            SearchFill = Color.Azure,
+            SearchText = Color.Black,
+            SearchPlaceholder = Color.Black
+        };
+
+        // Match UC_QuanLyDonHang theme for cards
+        private static readonly Color ClrOutline = Color.FromArgb(120, 195, 170);
+        private static readonly Color ClrText    = Color.WhiteSmoke;
+        private static readonly Color ClrCardBg  = Color.FromArgb(40, 255, 255, 255);
+
         public UC_QuanLyKhachHang()
         {
             InitializeComponent();
@@ -75,7 +81,7 @@ namespace GUI
 
             try
             {
-                DataTable dt = BLL_KhachHang.GetAllKhachHang(); // FIX tên lớp BLL
+                DataTable dt = BLL_KhachHang.GetAllKhachHang();
                 var rows = dt != null ? dt.AsEnumerable() : Enumerable.Empty<DataRow>();
 
                 if (!string.IsNullOrWhiteSpace(keyword))
@@ -85,8 +91,8 @@ namespace GUI
                         (Convert.ToString(r["TenCongTy"]  ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
                         (Convert.ToString(r["Email"]      ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
                         (Convert.ToString(r["DienThoai"]  ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (Convert.ToString(r["MaSoThue"]   ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) || // + MST
-                        (Convert.ToString(r["MaKhachHang"]?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0)    // + MãKH
+                        (Convert.ToString(r["MaSoThue"]   ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (Convert.ToString(r["MaKhachHang"]?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0)
                     );
                 }
 
@@ -131,72 +137,74 @@ namespace GUI
         // ====== TẠO CARD ======
         private Guna2Panel TaoCardKhachHang(DataRow row)
         {
-            string id     = Convert.ToString(row["KhachHangID"] ?? "");
-            string ten    = Convert.ToString(row["TenCongTy"]   ?? "(Chưa có tên)");
-            string email  = Convert.ToString(row["Email"]       ?? "");
-            string sdt    = Convert.ToString(row["DienThoai"]   ?? "");
-            string mst    = Convert.ToString(row["MaSoThue"]    ?? "");
-            string diachi = Convert.ToString(row["DiaChi"]      ?? "");
+            string id       = Convert.ToString(row["KhachHangID"] ?? "");
+            string maKH     = Convert.ToString(row.Table.Columns.Contains("MaKhachHang") ? row["MaKhachHang"] : "");
+            string ten      = Convert.ToString(row.Table.Columns.Contains("TenCongTy")   ? row["TenCongTy"]   : "");
+            string dd       = Convert.ToString(row.Table.Columns.Contains("NguoiDaiDien")? row["NguoiDaiDien"]: "");
+            string email    = Convert.ToString(row.Table.Columns.Contains("Email")       ? row["Email"]       : "");
+            string sdt      = Convert.ToString(row.Table.Columns.Contains("DienThoai")   ? row["DienThoai"]   : "");
+            string mst      = Convert.ToString(row.Table.Columns.Contains("MaSoThue")    ? row["MaSoThue"]    : "");
+            string diachi   = Convert.ToString(row.Table.Columns.Contains("DiaChi")      ? row["DiaChi"]      : "");
 
+            const int fixedWidth = 420;
             var card = new Guna2Panel
             {
-                Width = 320,
-                Height = 185, // tăng nhẹ để đủ 4-5 dòng
-                BorderRadius = 10,
-                ShadowDecoration = { Enabled = true },
-                FillColor = Color.White,
+                Width = fixedWidth,
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                MinimumSize = new Size(fixedWidth, 0),
+                MaximumSize = new Size(fixedWidth, int.MaxValue),
+
+                BorderRadius = 18,
+                BorderColor  = ClrOutline,
+                BorderThickness = 1,
+                ShadowDecoration = { Enabled = false },
+                FillColor = ClrCardBg,
+                BackColor = Color.Transparent,
+
                 Margin = new Padding(15),
+                Padding = new Padding(16, 12, 16, 14),
                 Tag = id,
                 Cursor = Cursors.Hand
             };
 
-            var lblTen = new Label
+            int contentWidth = fixedWidth - card.Padding.Left - card.Padding.Right;
+            Func<string, Font, Label> L = (text, font) => new Label
             {
-                Text = string.IsNullOrWhiteSpace(ten) ? "(Chưa có tên)" : ten,
-                Font = new Font("Segoe UI", 11, FontStyle.Bold),
-                AutoSize = false,
-                Height = 30,
+                AutoSize = true,
+                MaximumSize = new Size(contentWidth, 0),
                 Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-            var lblMst = new Label
-            {
-                Text = "🧾 " + (string.IsNullOrWhiteSpace(mst) ? "(Chưa có MST)" : mst),
-                Font = new Font("Segoe UI", 9),
-                Height = 22,
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-            var lblEmail = new Label
-            {
-                Text = "📧 " + (string.IsNullOrWhiteSpace(email) ? "(Chưa có email)" : email),
-                Font = new Font("Segoe UI", 9),
-                Height = 22,
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-            var lblSdt = new Label
-            {
-                Text = "📞 " + (string.IsNullOrWhiteSpace(sdt) ? "(Chưa có SĐT)" : sdt),
-                Font = new Font("Segoe UI", 9),
-                Height = 22,
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter
-            };
-            var lblDiaChi = new Label
-            {
-                Text = "🏠 " + (string.IsNullOrWhiteSpace(diachi) ? "(Không có địa chỉ)" : diachi),
-                Font = new Font("Segoe UI", 9),
-                Height = 22,
-                Dock = DockStyle.Top,
-                TextAlign = ContentAlignment.MiddleCenter
+                Text = text,
+                Font = font ?? new Font("Segoe UI", 12),
+                TextAlign = ContentAlignment.MiddleLeft,
+                ForeColor = ClrText,
+                BackColor = Color.Transparent
             };
 
-            card.Controls.Add(lblDiaChi);
-            card.Controls.Add(lblSdt);
-            card.Controls.Add(lblEmail);
-            card.Controls.Add(lblMst);  // + thêm MST
+            // Header: KhachHangID | MaKhachHang
+            var lblHeader  = L(string.Format("{0}{1}{2}", id, string.IsNullOrEmpty(maKH) ? "" : " | ", maKH), new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblTen     = L("🏢 " + (string.IsNullOrWhiteSpace(ten) ? "(Chưa có tên công ty)" : ten), null);
+            var lblDD      = L("👤 Người đại diện: " + (string.IsNullOrWhiteSpace(dd) ? "(Chưa có)" : dd), null);
+            var lblEmail   = L(string.IsNullOrWhiteSpace(email) ? "" : ("✉️ " + email), null);
+            var lblSdt     = L(string.IsNullOrWhiteSpace(sdt)   ? "" : ("📞 " + sdt), null);
+            var lblMst     = L(string.IsNullOrWhiteSpace(mst)   ? "" : ("🧾 MST: " + mst), null);
+            var lblDiaChi  = L(string.IsNullOrWhiteSpace(diachi)? "" : ("🏠 " + diachi), null);
+            // Clamp long address to one line like DonHang's note line
+            if (!string.IsNullOrWhiteSpace(diachi))
+            {
+                lblDiaChi.MaximumSize = new Size(contentWidth, 20);
+                lblDiaChi.AutoEllipsis = true;
+                lblDiaChi.TextAlign = ContentAlignment.MiddleLeft;
+            }
+
+            // Add bottom-up so header stays on top; order mirrors DonHang style
+            if (!string.IsNullOrWhiteSpace(diachi)) card.Controls.Add(lblDiaChi);
+            if (!string.IsNullOrWhiteSpace(mst))    card.Controls.Add(lblMst);
+            if (!string.IsNullOrWhiteSpace(sdt))    card.Controls.Add(lblSdt);
+            if (!string.IsNullOrWhiteSpace(email))  card.Controls.Add(lblEmail);
+            card.Controls.Add(lblDD);
             card.Controls.Add(lblTen);
+            card.Controls.Add(lblHeader);
 
             AttachClickRecursive(card, () => SelectCard(card));
             card.DoubleClick += (s, e) => MoFormSua(id);
@@ -236,15 +244,15 @@ namespace GUI
         {
             if (selected)
             {
-                card.FillColor = Color.FromArgb(245, 250, 255);
-                card.BorderColor = Color.FromArgb(51, 153, 255);
+                card.FillColor = Color.FromArgb(60, 255, 255, 255);
+                card.BorderColor = Color.FromArgb(180, ClrOutline);
                 card.BorderThickness = 2;
             }
             else
             {
-                card.FillColor = Color.White;
-                card.BorderColor = Color.Transparent;
-                card.BorderThickness = 0;
+                card.FillColor = ClrCardBg;
+                card.BorderColor = ClrOutline;
+                card.BorderThickness = 1;
             }
         }
 
@@ -304,7 +312,7 @@ namespace GUI
             {
                 try
                 {
-                    BLL_KhachHang.XoaKhachHang(_selectedId); // FIX tên lớp
+                    BLL_KhachHang.XoaKhachHang(_selectedId);
                     ClearSelection();
                     LoadDanhSachKhachHang(ThanhTimKiem.Text);
                     MessageBox.Show("Đã xóa khách hàng!", "Thành công");
@@ -330,7 +338,7 @@ namespace GUI
 
         private void MoFormSua(string id)
         {
-            using (var f = new GUI_FormThemKhach(id)) // cần overload nhận string id
+            using (var f = new GUI_FormThemKhach(id))
             {
                 if (f.ShowDialog() == DialogResult.OK)
                     LoadDanhSachKhachHang(ThanhTimKiem.Text);
@@ -341,7 +349,7 @@ namespace GUI
         {
             try
             {
-                var dt = BLL_KhachHang.GetAllKhachHang(); // FIX tên lớp
+                var dt = BLL_KhachHang.GetAllKhachHang();
                 if (dt == null) return null;
                 var row = dt.AsEnumerable().FirstOrDefault(r =>
                               ((r["KhachHangID"] ?? "").ToString()) == (id ?? ""));

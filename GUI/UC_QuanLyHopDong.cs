@@ -15,32 +15,36 @@ namespace GUI
     public partial class UC_QuanLyHopDong : UserControl
     {
         private readonly Btnbeautifull _theme = new Btnbeautifull()
-{
-    Text = Color.White,
-    Outline = Color.FromArgb(120, 195, 170),
-    SearchFill = Color.Azure,
-    SearchText = Color.Black,
-    SearchPlaceholder = Color.Black
-};
+        {
+            Text = Color.White,
+            Outline = Color.FromArgb(120, 195, 170),
+            SearchFill = Color.Azure,
+            SearchText = Color.Black,
+            SearchPlaceholder = Color.Black
+        };
         private string _selectedId = null;
         private Guna2Panel _selectedCard = null;
         private const int BottomPaddingForShadow = 30;
         private const int FlowTopPadding = 0;
+
+        // Card theme (match UC_QuanLyDonHang / UC_QuanLyKhachHang)
+        private static readonly Color ClrOutline = Color.FromArgb(120, 195, 170);
+        private static readonly Color ClrText = Color.WhiteSmoke;
+        private static readonly Color ClrCardBg = Color.FromArgb(40, 255, 255, 255);
 
         public UC_QuanLyHopDong()
         {
             InitializeComponent();
             this.Load += UC_QuanLyHopDong_Load;
 
-            if (guna2TextBox1 != null)
-                guna2TextBox1.TextChanged += (s, e) => ApplyFilters();
-            // Designer đã gán Click cho guna2Button1 (Thêm), tránh gán trùng để không mở form 2 lần
-            if (guna2Button2 != null)
-                guna2Button2.Click += guna2Button2_Click; // Xóa
-            if (guna2Button3 != null)
-                guna2Button3.Click += guna2Button3_Click; // Sửa
+            if (ThanhTimKiem != null)
+                ThanhTimKiem.TextChanged += (s, e) => ApplyFilters();
+            // Designer đã gán Click cho thêm; chỉ gắn các nút khác cần thiết
+            if (xoahopdong != null)
+                xoahopdong.Click += guna2Button2_Click; // Xóa
+            if (suahopdong != null)
+                suahopdong.Click += guna2Button3_Click; // Sửa
 
-            // Wire filter combos
             if (loctheotrangthai != null) loctheotrangthai.SelectedIndexChanged += (s, e) => ApplyFilters();
             if (loctheokhachhang != null) loctheokhachhang.SelectedIndexChanged += (s, e) => ApplyFilters();
         }
@@ -53,12 +57,18 @@ namespace GUI
             LayoutFlowUnderToolbar();
             LoadDanhSachHopDong();
             InitFilterCombos();
-             PillStyler.Button(guna2Button1, _theme);
-            PillStyler.Button(guna2Button2, _theme);
-            PillStyler.Button(guna2Button3, _theme);
-    PillStyler.Combo(loctheokhachhang, _theme);
-            PillStyler.Combo(loctheotrangthai, _theme);
-            PillStyler.SearchBox(guna2TextBox1,_theme, "Tìm kiếm theo tên hợp đồng...");
+
+            // Style controls to match other UCs (helper-based)
+            try
+            {
+                if (themhopdong != null) PillStyler.Button(themhopdong, _theme);
+                if (xoahopdong != null) PillStyler.Button(xoahopdong, _theme);
+                if (suahopdong != null) PillStyler.Button(suahopdong, _theme);
+                if (loctheokhachhang != null) PillStyler.Combo(loctheokhachhang, _theme);
+                if (loctheotrangthai != null) PillStyler.Combo(loctheotrangthai, _theme);
+                if (ThanhTimKiem != null) PillStyler.SearchBox(ThanhTimKiem, _theme, ThanhTimKiem.PlaceholderText);
+            }
+            catch { }
         }
 
         private void EnsureFlow()
@@ -129,51 +139,51 @@ namespace GUI
         }
 
         private void InitFilterCombos()
-{
-    try
-    {
-        if (_cacheAll == null) return;
-
-        // === Khách hàng: DataSource hiển thị tên (TenCongTy), Value là ID (KhachHangID) ===
-        var khDistinct = _cacheAll.AsEnumerable()
-            .Where(r => !string.IsNullOrWhiteSpace(r.Field<string>("KhachHangID")))
-            .GroupBy(r => r.Field<string>("KhachHangID"))
-            .Select(g => new
+        {
+            try
             {
-                KhachHangID = g.Key,
-                TenCongTy = g.Select(r => r.Field<string>("TenCongTy")).FirstOrDefault()
-            })
-            .OrderBy(x => x.TenCongTy ?? x.KhachHangID)
-            .ToList();
+                if (_cacheAll == null) return;
 
-        var dtKH = new DataTable();
-        dtKH.Columns.Add("KhachHangID", typeof(string));
-        dtKH.Columns.Add("TenCongTy", typeof(string));
-        dtKH.Rows.Add(DBNull.Value, "(Tất cả)"); // option all
+                // === Khách hàng: DataSource hiển thị tên (TenCongTy), Value là ID (KhachHangID) ===
+                var khDistinct = _cacheAll.AsEnumerable()
+                    .Where(r => !string.IsNullOrWhiteSpace(r.Field<string>("KhachHangID")))
+                    .GroupBy(r => r.Field<string>("KhachHangID"))
+                    .Select(g => new
+                    {
+                        KhachHangID = g.Key,
+                        TenCongTy = g.Select(r => r.Field<string>("TenCongTy")).FirstOrDefault()
+                    })
+                    .OrderBy(x => x.TenCongTy ?? x.KhachHangID)
+                    .ToList();
 
-        foreach (var x in khDistinct)
-            dtKH.Rows.Add(x.KhachHangID, x.TenCongTy ?? x.KhachHangID);
+                var dtKH = new DataTable();
+                dtKH.Columns.Add("KhachHangID", typeof(string));
+                dtKH.Columns.Add("TenCongTy", typeof(string));
+                dtKH.Rows.Add(DBNull.Value, "(Tất cả)"); // option all
 
-        loctheokhachhang.DataSource = dtKH;
-        loctheokhachhang.DisplayMember = "TenCongTy";    // hiển thị tên
-        loctheokhachhang.ValueMember   = "KhachHangID";  // giá trị là ID
-        loctheokhachhang.SelectedIndex = 0;
+                foreach (var x in khDistinct)
+                    dtKH.Rows.Add(x.KhachHangID, x.TenCongTy ?? x.KhachHangID);
 
-        // === Trạng thái: giữ như cũ ===
-        var stList = _cacheAll.AsEnumerable()
-            .Select(r => r.Field<string>("TrangThai"))
-            .Where(s => !string.IsNullOrWhiteSpace(s))
-            .Distinct()
-            .OrderBy(s => s)
-            .ToList();
+                loctheokhachhang.DataSource = dtKH;
+                loctheokhachhang.DisplayMember = "TenCongTy";    // hiển thị tên
+                loctheokhachhang.ValueMember = "KhachHangID";  // giá trị là ID
+                loctheokhachhang.SelectedIndex = 0;
 
-        loctheotrangthai.Items.Clear();
-        loctheotrangthai.Items.Add("(Tất cả)");
-        loctheotrangthai.Items.AddRange(stList.Cast<object>().ToArray());
-        loctheotrangthai.SelectedIndex = 0;
-    }
-    catch { }
-}
+                // === Trạng thái ===
+                var stList = _cacheAll.AsEnumerable()
+                    .Select(r => r.Field<string>("TrangThai"))
+                    .Where(s => !string.IsNullOrWhiteSpace(s))
+                    .Distinct()
+                    .OrderBy(s => s)
+                    .ToList();
+
+                loctheotrangthai.Items.Clear();
+                loctheotrangthai.Items.Add("(Tất cả)");
+                loctheotrangthai.Items.AddRange(stList.Cast<object>().ToArray());
+                loctheotrangthai.SelectedIndex = 0;
+            }
+            catch { }
+        }
 
         private void ApplyFilters()
         {
@@ -181,14 +191,14 @@ namespace GUI
             var rows = _cacheAll.AsEnumerable();
 
             // từ khóa
-            var kw = (guna2TextBox1?.Text ?? string.Empty).Trim();
+            var kw = (ThanhTimKiem?.Text ?? string.Empty).Trim();
             if (!string.IsNullOrEmpty(kw))
             {
                 rows = rows.Where(r =>
                     (r.Field<string>("MaHopDong") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     (r.Field<string>("KhachHangID") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
-                    (r.Field<string>("TenCongTy")  ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 || // thêm
-                    (r.Field<string>("TenKyHan")   ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 || // thêm
+                    (r.Field<string>("TenCongTy") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                    (r.Field<string>("TenKyHan") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     (r.Field<string>("TrangThai") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0 ||
                     (r.Field<string>("GhiChu") ?? string.Empty).IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0
                 );
@@ -196,13 +206,13 @@ namespace GUI
 
             // lọc theo khách hàng
             var selKHId = loctheokhachhang?.SelectedValue as string;
-if (!string.IsNullOrWhiteSpace(selKHId))
-{
-    rows = rows.Where(r => string.Equals(
-        r.Field<string>("KhachHangID"),
-        selKHId,
-        StringComparison.OrdinalIgnoreCase));
-}
+            if (!string.IsNullOrWhiteSpace(selKHId))
+            {
+                rows = rows.Where(r => string.Equals(
+                    r.Field<string>("KhachHangID"),
+                    selKHId,
+                    StringComparison.OrdinalIgnoreCase));
+            }
 
             // lọc theo trạng thái
             var selSt = loctheotrangthai?.SelectedItem as string;
@@ -249,33 +259,38 @@ if (!string.IsNullOrWhiteSpace(selKHId))
 
         private Guna2Panel TaoCardHopDong(DataRow row)
         {
-            string hopDongID  = Convert.ToString(row["HopDongID"]   ?? "");
-            string ma         = Convert.ToString(row["MaHopDong"]   ?? "");
-            string khId       = Convert.ToString(row["KhachHangID"] ?? "");
-            string maKH       = Convert.ToString(row["MaKhachHang"] ?? "");
-            string tenCty     = Convert.ToString(row["TenCongTy"]   ?? "");
-            string kyHanID    = Convert.ToString(row["KyHanID"]     ?? "");
-            string tenKyHan   = Convert.ToString(row["TenKyHan"]    ?? "");
-            string trangThai  = Convert.ToString(row["TrangThai"]   ?? "");
-            string ghiChu     = Convert.ToString(row["GhiChu"]      ?? "");
-            string ngayKy     = row["NgayKy"]      == DBNull.Value ? "" : Convert.ToDateTime(row["NgayKy"]).ToString("yyyy-MM-dd");
-            string ngayBD     = row["NgayBatDau"]  == DBNull.Value ? "" : Convert.ToDateTime(row["NgayBatDau"]).ToString("yyyy-MM-dd");
-            string ngayKT     = row["NgayKetThuc"] == DBNull.Value ? "" : Convert.ToDateTime(row["NgayKetThuc"]).ToString("yyyy-MM-dd");
+            string hopDongID = Convert.ToString(row["HopDongID"] ?? "");
+            string ma = Convert.ToString(row["MaHopDong"] ?? "");
+            string khId = Convert.ToString(row["KhachHangID"] ?? "");
+            string maKH = Convert.ToString(row["MaKhachHang"] ?? "");
+            string tenCty = Convert.ToString(row["TenCongTy"] ?? "");
+            string kyHanID = Convert.ToString(row["KyHanID"] ?? "");
+            string tenKyHan = Convert.ToString(row["TenKyHan"] ?? "");
+            string trangThai = Convert.ToString(row["TrangThai"] ?? "");
+            string ghiChu = Convert.ToString(row["GhiChu"] ?? "");
+            string ngayKy = row["NgayKy"] == DBNull.Value ? "" : Convert.ToDateTime(row["NgayKy"]).ToString("yyyy-MM-dd");
+            string ngayBD = row["NgayBatDau"] == DBNull.Value ? "" : Convert.ToDateTime(row["NgayBatDau"]).ToString("yyyy-MM-dd");
+            string ngayKT = row["NgayKetThuc"] == DBNull.Value ? "" : Convert.ToDateTime(row["NgayKetThuc"]).ToString("yyyy-MM-dd");
 
             const int fixedWidth = 420;
+            const int fixedHeight = 175;
 
             var card = new Guna2Panel
             {
                 Width = fixedWidth,
-                AutoSize = true,
+                Height = fixedHeight,
+                AutoSize = false,
                 AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                MinimumSize = new Size(fixedWidth, 0),      // khóa width để không bị co nhỏ
-                MaximumSize = new Size(fixedWidth, int.MaxValue),
-                BorderRadius = 10,
-                ShadowDecoration = { Enabled = true },
-                FillColor = Color.White,
+                MinimumSize = new Size(fixedWidth, fixedHeight),
+                MaximumSize = new Size(fixedWidth, fixedHeight),
+                BorderRadius = 18,
+                ShadowDecoration = { Enabled = false },
+                FillColor = ClrCardBg,
+                BorderColor = ClrOutline,
+                BorderThickness = 1,
+                BackColor = Color.Transparent,
                 Margin = new Padding(15),
-                Padding = new Padding(12, 10, 12, 12),
+                Padding = new Padding(16, 12, 16, 14),
                 Tag = hopDongID,
                 Cursor = Cursors.Hand
             };
@@ -288,17 +303,27 @@ if (!string.IsNullOrWhiteSpace(selKHId))
                 MaximumSize = new Size(contentWidth, 0), // wrap theo chiều rộng nội dung
                 Dock = DockStyle.Top,
                 Text = text,
-                Font = font ?? new Font("Segoe UI", 9),
-                TextAlign = ContentAlignment.MiddleLeft
+                Font = font ?? new Font("Segoe UI", 12),
+                TextAlign = ContentAlignment.MiddleLeft,
+                ForeColor = ClrText,
+                BackColor = Color.Transparent
             };
 
-            var lblHeader    = L($"{hopDongID} | {ma}", new Font("Segoe UI", 11, FontStyle.Bold));
-            var lblKH        = L($"👤 KH: {khId} ({maKH}) - {tenCty}", null);
-            var lblKyHan     = L($"⏱ Kỳ hạn: {kyHanID} - {tenKyHan}", null);
-            var lblNgayKy    = L($"🗓 Ngày ký: {ngayKy}", null);
-            var lblHieuLuc   = L($"⏳ Hiệu lực: {ngayBD} → {ngayKT}", null);
+            var lblHeader = L($"{hopDongID} | {ma}", new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblKH = L($"👤 KH: {khId}{(string.IsNullOrEmpty(maKH) ? "" : $" ({maKH})")}" + (string.IsNullOrEmpty(tenCty) ? "" : $" - {tenCty}"), null);
+            var lblKyHan = L($"⏱ Kỳ hạn: {kyHanID}{(string.IsNullOrEmpty(tenKyHan) ? "" : $" - {tenKyHan}")}", null);
+            var lblNgayKy = L($"🗓 Ngày ký: {ngayKy}", null);
+            var lblHieuLuc = L($"⏳ Hiệu lực: {ngayBD} → {ngayKT}", null);
             var lblTrangThai = L($"📌 Trạng thái: {trangThai}", null);
-            var lblMoTa      = L($"📝 Mô tả nhiệm vụ: {(string.IsNullOrWhiteSpace(ghiChu) ? "(Không có)" : ghiChu)}", null);
+            var lblMoTa = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có mô tả)" : ghiChu), null);
+
+            // Clamp description to one line like DonHang's note
+            if (!string.IsNullOrWhiteSpace(ghiChu))
+            {
+                lblMoTa.MaximumSize = new Size(contentWidth, 20);
+                lblMoTa.AutoEllipsis = true;
+                lblMoTa.TextAlign = ContentAlignment.MiddleLeft;
+            }
 
             // Thêm theo thứ tự ngược để header ở trên cùng (Dock=Top)
             card.Controls.Add(lblMoTa);
@@ -345,15 +370,15 @@ if (!string.IsNullOrWhiteSpace(selKHId))
         {
             if (selected)
             {
-                card.FillColor = Color.FromArgb(245, 250, 255);
-                card.BorderColor = Color.FromArgb(51, 153, 255);
+                card.FillColor = Color.FromArgb(60, 255, 255, 255);
+                card.BorderColor = Color.FromArgb(180, ClrOutline);
                 card.BorderThickness = 2;
             }
             else
             {
-                card.FillColor = Color.White;
-                card.BorderColor = Color.Transparent;
-                card.BorderThickness = 0;
+                card.FillColor = ClrCardBg;
+                card.BorderColor = ClrOutline;
+                card.BorderThickness = 1;
             }
         }
 

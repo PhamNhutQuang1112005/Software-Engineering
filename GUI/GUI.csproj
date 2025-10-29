@@ -118,6 +118,12 @@
       <DependentUpon>GUI_FormThemDonHang.cs</DependentUpon>
     </Compile>
     <Compile Include="SmoothUI.cs" />
+    <Compile Include="UC_solarisAI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_solarisAI.Designer.cs">
+      <DependentUpon>UC_solarisAI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_PopupThongBao.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </Compile>
     <EmbeddedResource Include="GUI_FormThemDonHang.resx">
       <DependentUpon>GUI_FormThemDonHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_solarisAI.resx">
+      <DependentUpon>UC_solarisAI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_PopupThongBao.resx">
       <DependentUpon>UC_PopupThongBao.cs</DependentUpon>
@@ -377,6 +386,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\mic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sun_AI_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sun-15710.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

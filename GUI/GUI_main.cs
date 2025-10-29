@@ -27,6 +27,7 @@ namespace GUI
         private UC_QuanLyHopDong ucQuanLyHopDong;
         private UC_QuanLyThongSoDonHang ucQuanLyThongSoDonHang;
         private UC_TrangChu ucTrangChu;
+        private UC_solarisAI ucSolarisAI; // add field for AI UC
         private bool isAdmin = false;
         // Lớp layout riêng
         private Panel backgroundLayer;   // nền ảnh
@@ -496,6 +497,12 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
         private void lblUser_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_motrangAI_Click(object sender, EventArgs e)
+        {
+            if (ucSolarisAI == null) ucSolarisAI = new UC_solarisAI();
+            ShowControl(ucSolarisAI);
         }
     }
 }

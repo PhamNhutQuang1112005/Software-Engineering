@@ -74,7 +74,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(577, 114);
+            this.label2.Location = new System.Drawing.Point(577, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(150, 31);
             this.label2.TabIndex = 10;
@@ -85,7 +85,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(43, 114);
+            this.label3.Location = new System.Drawing.Point(43, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(95, 31);
             this.label3.TabIndex = 11;
@@ -97,7 +97,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(297, 114);
+            this.label1.Location = new System.Drawing.Point(297, 109);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 31);
             this.label1.TabIndex = 9;
@@ -192,7 +192,7 @@
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Location = new System.Drawing.Point(144, 109);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(147, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(130, 36);
             this.guna2ComboBox1.TabIndex = 6;
             // 
             // guna2ComboBox2
@@ -205,9 +205,9 @@
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(405, 109);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(406, 109);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(166, 36);
+            this.guna2ComboBox2.Size = new System.Drawing.Size(165, 36);
             this.guna2ComboBox2.TabIndex = 7;
             this.guna2ComboBox2.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox2_SelectedIndexChanged);
             // 
@@ -221,9 +221,9 @@
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(732, 109);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(733, 109);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
-            this.guna2ComboBox3.Size = new System.Drawing.Size(218, 36);
+            this.guna2ComboBox3.Size = new System.Drawing.Size(213, 36);
             this.guna2ComboBox3.TabIndex = 8;
             // 
             // flowLayoutPanel1

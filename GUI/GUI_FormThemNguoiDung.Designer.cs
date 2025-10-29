@@ -148,7 +148,7 @@ namespace GUI
             this.btnLuu.FillColor = System.Drawing.Color.DarkGreen;
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(230, 320);
+            this.btnLuu.Location = new System.Drawing.Point(217, 320);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(100, 40);
             this.btnLuu.TabIndex = 7;
@@ -163,7 +163,7 @@ namespace GUI
             this.btnHuy.FillColor = System.Drawing.Color.Firebrick;
             this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(360, 320);
+            this.btnHuy.Location = new System.Drawing.Point(347, 320);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(100, 40);
             this.btnHuy.TabIndex = 8;

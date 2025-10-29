@@ -190,30 +190,26 @@ namespace GUI
         private void txtNguoiDaiDien_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
-    if (char.IsControl(e.KeyChar))
-        return;
+            if (char.IsControl(e.KeyChar)) return;
 
-    // Nếu không phải là chữ hoặc khoảng trắng => chặn
-    if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-    {
-        e.Handled = true; // Ngăn nhập ký tự đó
-        System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
-    }
-
+            // Chỉ cho phép chữ cái và khoảng trắng (không cho số)
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // chặn ký tự
+            }
         }
 
         private void txtTenCongTy_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
-    if (char.IsControl(e.KeyChar))
-        return;
+            if (char.IsControl(e.KeyChar))
+                return;
 
-    // Nếu không phải là chữ hoặc khoảng trắng => chặn
-    if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-    {
-        e.Handled = true; // Ngăn nhập ký tự đó
-        System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
-    }
+            // Nếu không phải là chữ hoặc khoảng trắng => chặn
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn nhập ký tự đó
+            }
 
         }
     }

@@ -148,6 +148,9 @@
   <data name="dark mode config" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\dark mode config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="sun_AI_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sun_AI_logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Sườn UI (dark)4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sườn UI (dark)2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -166,11 +169,14 @@
   <data name="logo bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\logo bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="light mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\light mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="mic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hop dong" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\hop dong.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sườn UI (dark)3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sườn UI (dark)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logo bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\logo bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -214,9 +220,6 @@
   <data name="dark mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\dark mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sườn UI (dark)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\icon\Sườn UI (dark).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="z7140709878752_be407ebe826c1b37377d585a67d297dd" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\z7140709878752_be407ebe826c1b37377d585a67d297dd.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -232,6 +235,9 @@
   <data name="dark mode" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\dark mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="light mode1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\light mode.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="view" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\view.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -241,8 +247,8 @@
   <data name="Sườn UI (dark)5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sườn UI (dark)3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sườn UI (dark)3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sườn UI (dark)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Sườn UI (dark)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon\Sườn UI (dark).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Green-Sol" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\icon\Green-Sol.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -265,7 +271,7 @@
   <data name="nền trong khung form" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\nền trong khung form.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sun-15710" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sun-15710.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
