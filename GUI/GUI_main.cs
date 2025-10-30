@@ -13,7 +13,7 @@ namespace GUI
     {
         // ============== Biến lớp ==============
         private UserMenuPopup userMenu;
-
+        private readonly BLL_TaiKhoan a= new BLL_TaiKhoan();
         private bool isDark = true;
         private List<Guna2Button> sidebarButtons = new List<Guna2Button>();
         private UserControl currentUC;
@@ -514,6 +514,11 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
         {
             if (ucSolarisAI == null) ucSolarisAI = new UC_solarisAI();
             ShowControl(ucSolarisAI);
+        }
+
+        private void GUI_main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            a.NgatKetNoiCSDL();
         }
     }
 }

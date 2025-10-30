@@ -9,7 +9,11 @@ using System;
 namespace BLL
 {
     public class BLL_TaiKhoan
+    {   
+        public void NgatKetNoiCSDL()
     {
+        DBConnection.CloseAllConnections();
+    }
         private readonly DAL_TaiKhoan _dal = new DAL_TaiKhoan();
 
         // Đăng nhập (không gọi lại nếu đã có session ở GUI)
