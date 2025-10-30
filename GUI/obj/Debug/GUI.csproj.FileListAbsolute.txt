@@ -138,3 +138,4 @@ C:\CNPM2\Software-Engineering\GUI\bin\Debug\DTO.pdb
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\DTO.dll
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\DTO.pdb
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_solarisAI.resources
+C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_solarisAI.resources

@@ -57,7 +57,7 @@ namespace GUI
             PillStyler.Button(btnSua,_theme);
             PillStyler.Button(themkhachhang,_theme);
             PillStyler.Button(btnXoa,_theme);
-            PillStyler.SearchBox(ThanhTimKiem,_theme,"Tìm kiếm khách hàng");
+            PillStyler.SearchBox(ThanhTimKiem,_theme,"Tìm kiếm khách hàng...");
             LayoutFlowUnderToolbar();
             LoadDanhSachKhachHang();
         }

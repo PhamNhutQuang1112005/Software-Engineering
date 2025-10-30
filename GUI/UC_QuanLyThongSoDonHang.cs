@@ -65,26 +65,29 @@ namespace GUI
             for (int i = 1; i <= 12; i++)
                 guna2ComboBox2.Items.Add(i.ToString());
 
-            guna2ComboBox3.Items.Clear();
-            guna2ComboBox3.Items.Add("");
-            for (int i = 2000; i <= DateTime.Now.Year; i++)
-                guna2ComboBox3.Items.Add(i.ToString());
            
+            guna2ComboBox3.Items.Clear();
+            guna2ComboBox3.Items.Add(""); // tất cả
+            guna2ComboBox3.Items.Add("Quý 1");
+            guna2ComboBox3.Items.Add("Quý 2");
+            guna2ComboBox3.Items.Add("Quý 3");
+            guna2ComboBox3.Items.Add("Quý 4");
+
         }
         private void LocDonHang()
         {
             try
             {
-                // Lấy giá trị ngày/tháng/năm từ 3 combobox
+                // Lấy giá trị ngày / tháng / quý từ 3 combobox
                 int? ngay = string.IsNullOrEmpty(guna2ComboBox1.Text) ? (int?)null : int.Parse(guna2ComboBox1.Text);
                 int? thang = string.IsNullOrEmpty(guna2ComboBox2.Text) ? (int?)null : int.Parse(guna2ComboBox2.Text);
-                int? nam = string.IsNullOrEmpty(guna2ComboBox3.Text) ? (int?)null : int.Parse(guna2ComboBox3.Text);
+                string quy = guna2ComboBox3.Text; // Quý được chọn (ví dụ: "Quý 1")
 
                 // Nếu _viewDonHang chưa có dữ liệu, bỏ qua
                 if (_viewDonHang == null || _viewDonHang.Rows.Count == 0)
                     return;
 
-                // Lọc theo ngày/tháng/năm (bất kỳ điều kiện nào khớp)
+                // Lọc dữ liệu
                 var rows = _viewDonHang.AsEnumerable().Where(r =>
                 {
                     if (r["NgayTao"] == DBNull.Value) return false;
@@ -92,15 +95,23 @@ namespace GUI
 
                     bool matchNgay = !ngay.HasValue || ngayTao.Day == ngay.Value;
                     bool matchThang = !thang.HasValue || ngayTao.Month == thang.Value;
-                    bool matchNam = !nam.HasValue || ngayTao.Year == nam.Value;
 
-                    // ✅ Nếu người dùng chọn bất kỳ ô nào, thì chỉ lọc theo ô đó
-                    return matchNgay && matchThang && matchNam;
+                    // ✅ Tính toán quý theo tháng
+                    int quyThang = (ngayTao.Month - 1) / 3 + 1; // VD: tháng 4 → quý 2
+
+                    bool matchQuy = string.IsNullOrEmpty(quy) ||
+                                    (quy == "Quý 1" && quyThang == 1) ||
+                                    (quy == "Quý 2" && quyThang == 2) ||
+                                    (quy == "Quý 3" && quyThang == 3) ||
+                                    (quy == "Quý 4" && quyThang == 4);
+
+                    // Kết hợp tất cả điều kiện
+                    return matchNgay && matchThang && matchQuy;
                 });
 
                 DataTable filtered = rows.Any() ? rows.CopyToDataTable() : null;
 
-                // ✅ Gọi lại hàm RebuildCards (hiển thị card theo chuẩn ban đầu)
+                // ✅ Cập nhật lại giao diện
                 RebuildCards(filtered);
             }
             catch (Exception ex)
@@ -108,6 +119,7 @@ namespace GUI
                 MessageBox.Show("Lỗi lọc đơn hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
 

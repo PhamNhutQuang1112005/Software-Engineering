@@ -15,6 +15,7 @@ namespace GUI
     public partial class GUI_FormThemThongSoV2 : Form
     {
         private BLL_ThongSoMoiTruong bll = new BLL_ThongSoMoiTruong();
+        private bool daThemMoi = false;
         public GUI_FormThemThongSoV2()
         {
             InitializeComponent();
@@ -22,16 +23,7 @@ namespace GUI
           
 
             // ⚙️ Chèn dữ liệu thủ công
-            dgvStation.Rows.Add("Amoni(NH₄⁺ tính theo N) 2024", "mg/L", "hcm", "hcm", "hcm", 5);
-            dgvStation.Rows.Add("Độ màu 2024-HT", "Pt-Co", "hcm", "hcm", "hcm", 50);
-            dgvStation.Rows.Add("Nhiệt độ 2024-HT", "°C", "hcm", "hcm", "hcm", 40);
-            dgvStation.Rows.Add("Lưu lượng 2024-HT", "m³/h", "hcm", "hcm", "hcm", 100);
-            dgvStation.Rows.Add("Nhu cầu oxy hóa học (COD) 2024", "mg/L", "hcm", "hcm", "hcm", 75);
-            dgvStation.Rows.Add("pH2024-HT", "mg/L", "hcm", "hcm", "hcm", "6 - 9");
-            dgvStation.Rows.Add("Tổng chất rắn lơ lửng (TSS) 2024", "mg/L", "hcm", "hcm", "hcm", 50);
-            dgvStation.Rows.Add("Tổng dầu mỡ khoáng 2024", "mg/L", "hcm", "hcm", "hcm", 5);
-            dgvStation.Rows.Add("Tổng N 2024", "mg/L", "hcm", "hcm", "hcm", 20);
-            dgvStation.Rows.Add("Tổng P 2024", "mg/L", "hcm", "hcm", "hcm", 4);
+  
 
             // ⚙️ Xóa hàng trống cuối (nếu có)
 
@@ -44,8 +36,8 @@ namespace GUI
 
         private void frmThongSoMoiTruong_Load(object sender, EventArgs e)
         {
-           
-            
+            dgvStation.DataSource = bll.GetThongSoMoiTruongView();
+
         }
         private void LoadThongSoMoiTruong()
         {
@@ -68,8 +60,12 @@ namespace GUI
 
         private void GUI_FormThemThongSoV2_Load(object sender, EventArgs e)
         {
-            dgvStation.AllowUserToAddRows = false;
+
+            dgvStation.DataSource = bll.GetThongSoMoiTruongView();
+            dgvStation.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            
         }
+
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
@@ -84,71 +80,104 @@ namespace GUI
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (dgvStation.Rows.Count > 0)
-            {
-                var lastRow = dgvStation.Rows[dgvStation.Rows.Count - 1];
-                bool isEmpty = true;
+            dgvStation.AllowUserToAddRows = true;
+            dgvStation.EditMode = DataGridViewEditMode.EditOnEnter;
+            daThemMoi = true; // ✅ đánh dấu là đã thêm dòng mới
 
-                foreach (DataGridViewCell cell in lastRow.Cells)
-                {
-                    if (cell.Value != null && !string.IsNullOrWhiteSpace(cell.Value.ToString()))
-                    {
-                        isEmpty = false;
-                        break;
-                    }
-                }
 
-                if (isEmpty)
-                {
-                    MessageBox.Show("Bạn đang có 1 hàng trống để nhập, vui lòng điền trước khi thêm hàng mới!");
-                    return;
-                }
-            }
 
-            // Thêm 1 hàng trống để người dùng nhập
-            dgvStation.Rows.Add();
-            int lastIndex = dgvStation.Rows.Count - 1;
-            dgvStation.CurrentCell = dgvStation.Rows[lastIndex].Cells[0]; // chọn ô đầu tiên để nhập
-            dgvStation.BeginEdit(true);
 
 
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dgvStation.Rows)
+            if (!daThemMoi)
             {
-                if (row.IsNewRow) continue; // bỏ qua hàng trống cuối
-
-                string tenThongSo = row.Cells[0].Value?.ToString() ?? "";
-                string donVi = row.Cells[1].Value?.ToString() ?? "";
-                string muc1 = row.Cells[2].Value?.ToString() ?? "";
-                string muc2 = row.Cells[3].Value?.ToString() ?? "";
-                string muc3 = row.Cells[4].Value?.ToString() ?? "";
-                string mucMax = row.Cells[5].Value?.ToString() ?? "";
-
-              
-                if (string.IsNullOrWhiteSpace(tenThongSo)) continue;
-
-             
-               
+                MessageBox.Show("⚠️ Bạn chưa thêm dữ liệu mới để lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+            if (dgvStation.Rows.Count > 1) // phải có ít nhất 1 dòng dữ liệu thật
+            {
+                // Dòng mới thêm là dòng kế cuối (dòng cuối thường là dòng trống để nhập mới)
+                var row = dgvStation.Rows[dgvStation.Rows.Count - 2];
 
-            MessageBox.Show("Lưu dữ liệu thành công!");
+                string tenThongSo = row.Cells["Tên thông số"].Value?.ToString()?.Trim();
+                string donVi = row.Cells["Đơn vị"].Value?.ToString()?.Trim();
+                string giaTri = row.Cells["Vị trí đo 1"].Value?.ToString()?.Trim();
+                string giaTriQuyChuan = row.Cells["Vị trí đo 2"].Value?.ToString()?.Trim();
+                string ketLuan = row.Cells["Vị trí đo 3"].Value?.ToString()?.Trim();
+                string phongban = row.Cells["Phòng phụ trách"].Value?.ToString()?.Trim();
+                int giaTriSo = int.TryParse(row.Cells["Giá trị chuẩn"].Value?.ToString(), out int val) ? val : 0;
+
+                // 🔍 Kiểm tra xem người dùng có thực sự nhập dữ liệu hay không
+                if (string.IsNullOrEmpty(tenThongSo) &&
+                    string.IsNullOrEmpty(donVi) &&
+                    string.IsNullOrEmpty(giaTri) &&
+                    string.IsNullOrEmpty(giaTriQuyChuan) &&
+                    string.IsNullOrEmpty(ketLuan) &&
+                    giaTriSo == 0 &&
+                    string.IsNullOrEmpty(phongban))
+                {
+                    MessageBox.Show("⚠️ Bạn chưa nhập dữ liệu mới để lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // ✅ Nếu có dữ liệu thì mới lưu
+                if (bll.LuuThongSoMoiTruong(tenThongSo, donVi, giaTri, giaTriQuyChuan, ketLuan, giaTriSo, phongban))
+                {
+                    MessageBox.Show("✅ Lưu thông số thành công!");
+                    GUI_FormThemThongSoV2_Load(sender, e);
+                    daThemMoi = false; // ✅ đánh dấu là đã thêm dòng mới
+                }
+                else
+                {
+                    MessageBox.Show("❌ Lưu thất bại!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("⚠️ Không có dữ liệu để lưu!");
+            }
+            dgvStation.AllowUserToAddRows = false;
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
-            if (dgvStation.CurrentRow != null && !dgvStation.CurrentRow.IsNewRow)
+            if (dgvStation.CurrentRow != null)
             {
-                // Xóa khỏi DataGridView
-                dgvStation.Rows.Remove(dgvStation.CurrentRow);
+                string tenThongSo = dgvStation.CurrentRow.Cells["Tên Thông Số"].Value.ToString();
 
-                // Nếu bạn đang lưu tạm trong BLL, cũng xóa khỏi danh sách
-                // Giả sử dựa vào cột 0 (Tên Thông Số) để tìm
-                string ten = dgvStation.CurrentRow.Cells[0].Value?.ToString() ?? "";
+                DialogResult result = MessageBox.Show(
+                    $"Bạn có chắc muốn xóa thông số '{tenThongSo}' không?",
+                    "Xác nhận xóa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
 
+                if (result == DialogResult.Yes)
+                {
+                    BLL_ThongSoMoiTruong bll = new BLL_ThongSoMoiTruong();
+                    bool success = bll.XoaThongSo(tenThongSo);
+
+                    if (success)
+                    {
+                        MessageBox.Show("Xóa thành công!");
+                        GUI_FormThemThongSoV2_Load(sender, e); 
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa thất bại hoặc thông số không tồn tại!");
+                    }
+                }
             }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn dòng cần xóa!");
+            }
+
+        }
         }
     }
-}
+

@@ -180,7 +180,7 @@ namespace GUI
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(323, 51);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(339, 46);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(169, 36);
             this.guna2ComboBox1.TabIndex = 9;
@@ -200,7 +200,7 @@ namespace GUI
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(323, 105);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(339, 105);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
             this.guna2ComboBox2.Size = new System.Drawing.Size(169, 36);
             this.guna2ComboBox2.TabIndex = 5;
@@ -221,7 +221,7 @@ namespace GUI
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(765, 105);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(779, 105);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(165, 36);
             this.guna2ComboBox3.TabIndex = 6;
@@ -242,7 +242,7 @@ namespace GUI
             this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox4.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox4.ItemHeight = 30;
-            this.guna2ComboBox4.Location = new System.Drawing.Point(764, 51);
+            this.guna2ComboBox4.Location = new System.Drawing.Point(778, 46);
             this.guna2ComboBox4.Name = "guna2ComboBox4";
             this.guna2ComboBox4.Size = new System.Drawing.Size(166, 36);
             this.guna2ComboBox4.TabIndex = 7;
@@ -256,7 +256,7 @@ namespace GUI
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(147, 105);
+            this.label4.Location = new System.Drawing.Point(147, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(176, 31);
             this.label4.TabIndex = 11;
@@ -268,7 +268,7 @@ namespace GUI
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(634, 51);
+            this.label5.Location = new System.Drawing.Point(626, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 31);
             this.label5.TabIndex = 12;
@@ -281,7 +281,7 @@ namespace GUI
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(634, 105);
+            this.label6.Location = new System.Drawing.Point(626, 110);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(130, 31);
             this.label6.TabIndex = 13;

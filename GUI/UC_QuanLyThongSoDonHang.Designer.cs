@@ -41,6 +41,7 @@ namespace GUI
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2TextBox1
@@ -88,17 +89,17 @@ namespace GUI
             this.guna2ComboBox2.BorderColor = System.Drawing.Color.White;
             this.guna2ComboBox2.BorderThickness = 2;
             this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownHeight = 100;
+            this.guna2ComboBox2.DropDownHeight = 120;
             this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.guna2ComboBox2.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox2.IntegralHeight = false;
             this.guna2ComboBox2.ItemHeight = 30;
             this.guna2ComboBox2.Location = new System.Drawing.Point(522, 36);
-            this.guna2ComboBox2.MaxDropDownItems = 5;
+            this.guna2ComboBox2.MaxDropDownItems = 7;
             this.guna2ComboBox2.Name = "guna2ComboBox2";
             this.guna2ComboBox2.Size = new System.Drawing.Size(169, 36);
             this.guna2ComboBox2.TabIndex = 49;
@@ -117,12 +118,12 @@ namespace GUI
             this.guna2ComboBox1.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox1.IntegralHeight = false;
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Location = new System.Drawing.Point(173, 36);
-            this.guna2ComboBox1.MaxDropDownItems = 5;
+            this.guna2ComboBox1.MaxDropDownItems = 7;
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(169, 36);
             this.guna2ComboBox1.TabIndex = 50;
@@ -137,17 +138,17 @@ namespace GUI
             this.guna2ComboBox3.BorderColor = System.Drawing.Color.White;
             this.guna2ComboBox3.BorderThickness = 2;
             this.guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox3.DropDownHeight = 100;
+            this.guna2ComboBox3.DropDownHeight = 120;
             this.guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.guna2ComboBox3.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox3.IntegralHeight = false;
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(173, 94);
-            this.guna2ComboBox3.MaxDropDownItems = 5;
+            this.guna2ComboBox3.Location = new System.Drawing.Point(163, 79);
+            this.guna2ComboBox3.MaxDropDownItems = 7;
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(169, 36);
             this.guna2ComboBox3.TabIndex = 51;
@@ -184,13 +185,14 @@ namespace GUI
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(13, 94);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 31);
+            this.label3.Size = new System.Drawing.Size(152, 31);
             this.label3.TabIndex = 54;
-            this.label3.Text = "Lọc theo năm";
+            this.label3.Text = "Lọc theo quý";
             // 
             // guna2Panel2
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel2.Controls.Add(this.guna2ComboBox3);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel2.Location = new System.Drawing.Point(10, 10);
             this.guna2Panel2.Name = "guna2Panel2";
@@ -219,7 +221,6 @@ namespace GUI
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.guna2ComboBox3);
             this.Controls.Add(this.microphone);
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.guna2Panel2);
@@ -229,6 +230,7 @@ namespace GUI
             this.Size = new System.Drawing.Size(992, 796);
             this.Load += new System.EventHandler(this.UC_QuanLyDonHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).EndInit();
+            this.guna2Panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

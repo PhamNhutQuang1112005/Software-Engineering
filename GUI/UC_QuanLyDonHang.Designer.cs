@@ -46,12 +46,15 @@
             this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.Controls.Add(this.microphone);
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.label3);
             this.guna2Panel1.Controls.Add(this.label1);
@@ -59,10 +62,10 @@
             this.guna2Panel1.Controls.Add(this.guna2Button3);
             this.guna2Panel1.Controls.Add(this.guna2Button2);
             this.guna2Panel1.Controls.Add(this.themdonhang);
-            this.guna2Panel1.Controls.Add(this.guna2TextBox1);
             this.guna2Panel1.Controls.Add(this.guna2ComboBox1);
             this.guna2Panel1.Controls.Add(this.guna2ComboBox2);
             this.guna2Panel1.Controls.Add(this.guna2ComboBox3);
+            this.guna2Panel1.Controls.Add(this.guna2TextBox1);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Name = "guna2Panel1";
@@ -236,6 +239,19 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(992, 586);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
+            // microphone
+            // 
+            this.microphone.FillColor = System.Drawing.Color.Transparent;
+            this.microphone.Image = global::GUI.Properties.Resources.mic;
+            this.microphone.ImageRotate = 0F;
+            this.microphone.Location = new System.Drawing.Point(907, 38);
+            this.microphone.Name = "microphone";
+            this.microphone.Size = new System.Drawing.Size(28, 35);
+            this.microphone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.microphone.TabIndex = 49;
+            this.microphone.TabStop = false;
+            this.microphone.UseTransparentBackground = true;
+            // 
             // UC_QuanLyDonHang
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -247,6 +263,7 @@
             this.Size = new System.Drawing.Size(992, 760);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.microphone)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -256,5 +273,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2PictureBox microphone;
     }
 }

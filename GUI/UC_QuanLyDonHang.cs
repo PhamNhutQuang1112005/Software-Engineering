@@ -609,7 +609,7 @@ namespace GUI
                 StylePillCombo(guna2ComboBox2);
                 StylePillCombo(guna2ComboBox3);
 
-                StyleSearchBox(guna2TextBox1, "Thanh tìm kiếm");
+                StyleSearchBox(guna2TextBox1, "Tìm kiếm đơn hàng...");
 
                 
             }
@@ -664,6 +664,7 @@ namespace GUI
             txt.BorderRadius = Math.Max(20, txt.Height / 2);
             txt.FocusedState.BorderColor = ClrOutline;
             txt.ShadowDecoration.Enabled = false;
+            txt.Font = new Font("Segoe UI", 9);
         }
 
         private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
