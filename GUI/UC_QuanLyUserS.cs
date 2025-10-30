@@ -50,6 +50,8 @@ namespace GUI
                 dataGridView1.Columns["IsActive"].HeaderText = "Trạng thái";
                 dataGridView1.Columns["VaiTroID"].Visible = false;
                 dataGridView1.Columns["PhongBanID"].Visible = false;
+                dataGridView1.Columns["NguoiDungID"].Visible = false;
+
             }
             catch (Exception ex)
             {

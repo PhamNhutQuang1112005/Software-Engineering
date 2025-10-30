@@ -48,10 +48,8 @@ namespace GUI
             this.themuser = new Guna.UI2.WinForms.Guna2Button();
             this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-          
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            
             this.SuspendLayout();
             // 
             // guna2HtmlLabel11
@@ -208,7 +206,6 @@ namespace GUI
             this.txtTimKiem.SelectedText = "";
             this.txtTimKiem.Size = new System.Drawing.Size(327, 36);
             this.txtTimKiem.TabIndex = 58;
-            this.txtTimKiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTimKiem.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // guna2Button3
@@ -283,6 +280,7 @@ namespace GUI
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -293,10 +291,6 @@ namespace GUI
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(972, 336);
             this.dataGridView1.TabIndex = 64;
-            // 
-            // sQL1DataSet
-            // 
-          
             // 
             // UC_QuanLyUserS
             // 
@@ -316,7 +310,6 @@ namespace GUI
             this.Load += new System.EventHandler(this.UC_QuanLyUserS_Load);
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-          
             this.ResumeLayout(false);
 
         }

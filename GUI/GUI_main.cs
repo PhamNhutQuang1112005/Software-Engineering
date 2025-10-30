@@ -441,11 +441,22 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
         }
 
         private void btnThongKeTienDo_Click(object sender, EventArgs e)
-        {
-            if (ucThongKeDonHang == null) ucThongKeDonHang = new UC_ThongKe();
-            ShowControl(ucThongKeDonHang);
-            SetActiveSidebarButton(sender as Guna2Button);
-        }
+{
+    // Xóa UC cũ nếu có
+    if (ucThongKeDonHang != null)
+    {
+        if (ucThongKeDonHang.Parent != null)
+            ucThongKeDonHang.Parent.Controls.Remove(ucThongKeDonHang);
+        ucThongKeDonHang.Dispose();
+        ucThongKeDonHang = null;
+    }
+
+    // Tạo mới -> UC.Load sẽ chạy lại và tự load dữ liệu
+    ucThongKeDonHang = new UC_ThongKe();
+    ShowControl(ucThongKeDonHang);
+    SetActiveSidebarButton(sender as Guna2Button);
+}
+
 
         private void btnThongKeDonHang_Click(object sender, EventArgs e)
         {

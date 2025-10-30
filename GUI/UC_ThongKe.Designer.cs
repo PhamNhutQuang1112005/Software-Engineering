@@ -164,7 +164,7 @@ namespace GUI
             this.chart2.Size = new System.Drawing.Size(422, 327);
             this.chart2.TabIndex = 14;
             this.chart2.Text = "chart2";
-            this.chart2.Click += new System.EventHandler(this.chart2_Click);
+         
             // 
             // guna2ComboBox1
             // 
@@ -184,7 +184,7 @@ namespace GUI
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(169, 36);
             this.guna2ComboBox1.TabIndex = 9;
-            this.guna2ComboBox1.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
+            
             // 
             // guna2ComboBox2
             // 
@@ -248,7 +248,7 @@ namespace GUI
             this.guna2ComboBox4.TabIndex = 7;
             this.guna2ComboBox4.Tag = "sf";
             this.guna2ComboBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.guna2ComboBox4.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox4_SelectedIndexChanged);
+            
             // 
             // label4
             // 
@@ -273,7 +273,7 @@ namespace GUI
             this.label5.Size = new System.Drawing.Size(122, 31);
             this.label5.TabIndex = 12;
             this.label5.Text = "Theo Quý:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+       
             // 
             // label6
             // 

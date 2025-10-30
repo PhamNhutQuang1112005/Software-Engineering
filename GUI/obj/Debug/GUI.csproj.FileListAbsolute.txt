@@ -139,3 +139,4 @@ C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\D
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\bin\Debug\DTO.pdb
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\GUI\obj\Debug\GUI.UC_solarisAI.resources
 C:\CNPM2\Software-Engineering\GUI\obj\Debug\GUI.UC_solarisAI.resources
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\GUI\obj\Debug\GUI.UC_solarisAI.resources
