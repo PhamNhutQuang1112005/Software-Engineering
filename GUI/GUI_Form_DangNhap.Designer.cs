@@ -113,7 +113,8 @@
             // XacNhanMK
             // 
             this.XacNhanMK.BackColor = System.Drawing.Color.Black;
-            this.XacNhanMK.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form3;
+            this.XacNhanMK.BackgroundImage = global::GUI.Properties.Resources.nền_login;
+            this.XacNhanMK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.XacNhanMK.Controls.Add(this.guna2Button10);
             this.XacNhanMK.Controls.Add(this.guna2PictureBox9);
             this.XacNhanMK.Controls.Add(this.guna2PictureBox10);
@@ -128,7 +129,7 @@
             this.XacNhanMK.Location = new System.Drawing.Point(4, 4);
             this.XacNhanMK.Name = "XacNhanMK";
             this.XacNhanMK.Padding = new System.Windows.Forms.Padding(3);
-            this.XacNhanMK.Size = new System.Drawing.Size(420, 334);
+            this.XacNhanMK.Size = new System.Drawing.Size(241, 334);
             this.XacNhanMK.TabIndex = 8;
             this.XacNhanMK.Text = "Xác Nhận MK";
             // 
@@ -147,7 +148,7 @@
             this.guna2Button10.Name = "guna2Button10";
             this.guna2Button10.Size = new System.Drawing.Size(88, 45);
             this.guna2Button10.TabIndex = 50;
-            this.guna2Button10.Text = "Quay lại ";
+            this.guna2Button10.Text = "Quay lại";
             // 
             // guna2PictureBox9
             // 
@@ -228,7 +229,7 @@
             this.guna2Button9.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.guna2Button9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button9.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button9.Location = new System.Drawing.Point(112, 210);
+            this.guna2Button9.Location = new System.Drawing.Point(114, 210);
             this.guna2Button9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button9.Name = "guna2Button9";
             this.guna2Button9.Size = new System.Drawing.Size(180, 46);
@@ -318,7 +319,8 @@
             // NhapSMS
             // 
             this.NhapSMS.BackColor = System.Drawing.Color.Black;
-            this.NhapSMS.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form3;
+            this.NhapSMS.BackgroundImage = global::GUI.Properties.Resources.nền_login;
+            this.NhapSMS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.NhapSMS.Controls.Add(this.guna2Button8);
             this.NhapSMS.Controls.Add(this.guna2Button5);
             this.NhapSMS.Controls.Add(this.btn_dang_nhap);
@@ -327,7 +329,7 @@
             this.NhapSMS.Location = new System.Drawing.Point(4, 4);
             this.NhapSMS.Name = "NhapSMS";
             this.NhapSMS.Padding = new System.Windows.Forms.Padding(3);
-            this.NhapSMS.Size = new System.Drawing.Size(420, 334);
+            this.NhapSMS.Size = new System.Drawing.Size(241, 334);
             this.NhapSMS.TabIndex = 6;
             this.NhapSMS.Text = "NhapSMS";
             this.NhapSMS.Click += new System.EventHandler(this.NhapSMS_Click);
@@ -348,7 +350,7 @@
             this.guna2Button8.Name = "guna2Button8";
             this.guna2Button8.Size = new System.Drawing.Size(88, 45);
             this.guna2Button8.TabIndex = 41;
-            this.guna2Button8.Text = "Quay lại ";
+            this.guna2Button8.Text = "Quay lại";
             this.guna2Button8.Click += new System.EventHandler(this.guna2Button8_Click);
             // 
             // guna2Button5
@@ -365,7 +367,7 @@
             this.guna2Button5.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button5.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button5.Location = new System.Drawing.Point(110, 186);
+            this.guna2Button5.Location = new System.Drawing.Point(116, 186);
             this.guna2Button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(180, 46);
@@ -436,7 +438,8 @@
             // ĐăngNhap
             // 
             this.ĐăngNhap.BackColor = System.Drawing.Color.Black;
-            this.ĐăngNhap.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form3;
+            this.ĐăngNhap.BackgroundImage = global::GUI.Properties.Resources.nền_login;
+            this.ĐăngNhap.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ĐăngNhap.Controls.Add(this.label7);
             this.ĐăngNhap.Controls.Add(this.guna2Button4);
             this.ĐăngNhap.Controls.Add(this.textDangNhap);
@@ -618,7 +621,8 @@
             // TaoTK
             // 
             this.TaoTK.BackColor = System.Drawing.Color.Transparent;
-            this.TaoTK.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form3;
+            this.TaoTK.BackgroundImage = global::GUI.Properties.Resources.nền_login;
+            this.TaoTK.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.TaoTK.Controls.Add(this.guna2Button7);
             this.TaoTK.Controls.Add(this.guna2Button3);
             this.TaoTK.Controls.Add(this.guna2PictureBox2);
@@ -651,7 +655,7 @@
             this.guna2Button7.Name = "guna2Button7";
             this.guna2Button7.Size = new System.Drawing.Size(88, 45);
             this.guna2Button7.TabIndex = 49;
-            this.guna2Button7.Text = "Quay lại ";
+            this.guna2Button7.Text = "Quay lại";
             this.guna2Button7.Click += new System.EventHandler(this.guna2Button7_Click);
             // 
             // guna2Button3
@@ -668,7 +672,7 @@
             this.guna2Button3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button3.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button3.Location = new System.Drawing.Point(118, 243);
+            this.guna2Button3.Location = new System.Drawing.Point(120, 243);
             this.guna2Button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(180, 46);
@@ -817,18 +821,21 @@
             // SMS
             // 
             this.SMS.BackColor = System.Drawing.Color.Transparent;
-            this.SMS.BackgroundImage = global::GUI.Properties.Resources.nền_trong_khung_form1;
+            this.SMS.BackgroundImage = global::GUI.Properties.Resources.nền_login;
+            this.SMS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SMS.Controls.Add(this.label6);
             this.SMS.Controls.Add(this.guna2Button6);
             this.SMS.Controls.Add(this.guna2Button1);
             this.SMS.Controls.Add(this.label5);
             this.SMS.Controls.Add(this.guna2TextBox3);
+            this.SMS.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.SMS.Location = new System.Drawing.Point(4, 4);
             this.SMS.Name = "SMS";
             this.SMS.Padding = new System.Windows.Forms.Padding(3);
-            this.SMS.Size = new System.Drawing.Size(420, 334);
+            this.SMS.Size = new System.Drawing.Size(241, 334);
             this.SMS.TabIndex = 3;
             this.SMS.Text = "GửiSMS";
+            this.SMS.Click += new System.EventHandler(this.SMS_Click);
             // 
             // label6
             // 
@@ -874,7 +881,7 @@
             this.guna2Button1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button1.Location = new System.Drawing.Point(109, 186);
+            this.guna2Button1.Location = new System.Drawing.Point(120, 186);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(180, 46);

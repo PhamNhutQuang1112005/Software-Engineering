@@ -273,5 +273,10 @@ catch (Exception ex)
         e.Handled = true; // bỏ ký tự không hợp lệ
     }
         }
+
+        private void SMS_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
