@@ -53,7 +53,7 @@ namespace GUI
     try
     {
         string donhangid   = guna2TextBox2.Text.Trim();
-        string maDonHang   = guna2TextBox1.Text.Trim();
+        string maDonHang   = guna2TextBox1.Text.ToString();
         string hopDongID   = guna2ComboBox4.SelectedValue?.ToString();
         string trangThaiID = guna2ComboBox5.SelectedValue?.ToString();
         string ghiChu      = guna2TextBox4.Text.Trim();
@@ -101,10 +101,6 @@ namespace GUI
 
         }
 
-        private void guna2TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void guna2TextBox3_TextChanged(object sender, EventArgs e)
         {
@@ -135,8 +131,7 @@ namespace GUI
 
     if (string.IsNullOrEmpty(_donHangID))
     {
-        guna2TextBox1.Text = BLL_DonHang.SinhMaDonHang(); // MaDonHang
-        guna2TextBox2.Text = "";                          // DonHangID do bạn nhập/điền
+        guna2TextBox2.Text = BLL_DonHang.SinhMaDonHang();                          // DonHangID do bạn nhập/điền
     }
     else
     {
@@ -152,7 +147,7 @@ namespace GUI
             guna2ComboBox1.SelectedValue = row["IDKhachHang"]?.ToString();
         }
         // Không cho sửa mã đơn hàng
-        guna2TextBox1.Enabled = false;
+        
     }
 }
 

@@ -393,7 +393,7 @@ namespace GUI
                 BackColor = Color.Transparent
             };
 
-            var lblHeader    = L(string.Format("{0} | {1}", donHangID, maDonHang), new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblHeader    = L(string.Format("|{0}",maDonHang), new Font("Segoe UI", 11, FontStyle.Bold));
             var lblKH        = L(string.Format("👤 KH: {0}{1}{2}{3}",
                                     string.IsNullOrEmpty(khachHangID) ? "" : khachHangID,
                                     string.IsNullOrEmpty(maKhachHang) ? "" : (" (" + maKhachHang + ")"),
