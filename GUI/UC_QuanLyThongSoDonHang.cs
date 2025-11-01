@@ -56,38 +56,61 @@ namespace GUI
         private void NapComboLoc()
         {
             guna2ComboBox1.Items.Clear();
-            guna2ComboBox1.Items.Add(""); // tất cả
+            guna2ComboBox1.Items.Add("(Tất cả)");
             for (int i = 1; i <= 31; i++)
                 guna2ComboBox1.Items.Add(i.ToString());
+            guna2ComboBox1.SelectedIndex = 0;
 
+            // ===== COMBO THÁNG =====
             guna2ComboBox2.Items.Clear();
-            guna2ComboBox2.Items.Add("");
+            guna2ComboBox2.Items.Add("(Tất cả)");
             for (int i = 1; i <= 12; i++)
                 guna2ComboBox2.Items.Add(i.ToString());
+            guna2ComboBox2.SelectedIndex = 0;
 
-           
+            // ===== COMBO QUÝ =====
             guna2ComboBox3.Items.Clear();
-            guna2ComboBox3.Items.Add(""); // tất cả
+            guna2ComboBox3.Items.Add("(Tất cả)");
             guna2ComboBox3.Items.Add("Quý 1");
             guna2ComboBox3.Items.Add("Quý 2");
             guna2ComboBox3.Items.Add("Quý 3");
             guna2ComboBox3.Items.Add("Quý 4");
+            guna2ComboBox3.SelectedIndex = 0;
 
         }
         private void LocDonHang()
         {
             try
             {
-                // Lấy giá trị ngày / tháng / quý từ 3 combobox
-                int? ngay = string.IsNullOrEmpty(guna2ComboBox1.Text) ? (int?)null : int.Parse(guna2ComboBox1.Text);
-                int? thang = string.IsNullOrEmpty(guna2ComboBox2.Text) ? (int?)null : int.Parse(guna2ComboBox2.Text);
-                string quy = guna2ComboBox3.Text; // Quý được chọn (ví dụ: "Quý 1")
+                // ===== LẤY GIÁ TRỊ TỪ COMBOBOX =====
+                int? ngay = null;
+                int? thang = null;
+                string quy = null;
 
-                // Nếu _viewDonHang chưa có dữ liệu, bỏ qua
+                // Ngày
+                if (guna2ComboBox1.Text != "(Tất cả)" && int.TryParse(guna2ComboBox1.Text, out int n))
+                    ngay = n;
+
+                // Tháng
+                if (guna2ComboBox2.Text != "(Tất cả)" && int.TryParse(guna2ComboBox2.Text, out int t))
+                    thang = t;
+
+                // Quý
+                if (guna2ComboBox3.Text != "(Tất cả)")
+                    quy = guna2ComboBox3.Text;
+
+                // ===== KIỂM TRA DỮ LIỆU =====
                 if (_viewDonHang == null || _viewDonHang.Rows.Count == 0)
                     return;
 
-                // Lọc dữ liệu
+                // Nếu tất cả đều là "(Tất cả)" → hiển thị toàn bộ
+                if (!ngay.HasValue && !thang.HasValue && string.IsNullOrEmpty(quy))
+                {
+                    RebuildCards(_viewDonHang);
+                    return;
+                }
+
+                // ===== LỌC DỮ LIỆU =====
                 var rows = _viewDonHang.AsEnumerable().Where(r =>
                 {
                     if (r["NgayTao"] == DBNull.Value) return false;
@@ -96,22 +119,18 @@ namespace GUI
                     bool matchNgay = !ngay.HasValue || ngayTao.Day == ngay.Value;
                     bool matchThang = !thang.HasValue || ngayTao.Month == thang.Value;
 
-                    // ✅ Tính toán quý theo tháng
-                    int quyThang = (ngayTao.Month - 1) / 3 + 1; // VD: tháng 4 → quý 2
-
+                    int quyThang = (ngayTao.Month - 1) / 3 + 1;
                     bool matchQuy = string.IsNullOrEmpty(quy) ||
                                     (quy == "Quý 1" && quyThang == 1) ||
                                     (quy == "Quý 2" && quyThang == 2) ||
                                     (quy == "Quý 3" && quyThang == 3) ||
                                     (quy == "Quý 4" && quyThang == 4);
 
-                    // Kết hợp tất cả điều kiện
                     return matchNgay && matchThang && matchQuy;
                 });
 
-                DataTable filtered = rows.Any() ? rows.CopyToDataTable() : null;
-
-                // ✅ Cập nhật lại giao diện
+                // ===== CẬP NHẬT GIAO DIỆN =====
+                DataTable filtered = rows.Any() ? rows.CopyToDataTable() : _viewDonHang.Clone();
                 RebuildCards(filtered);
             }
             catch (Exception ex)
@@ -913,6 +932,35 @@ namespace GUI
         private void guna2ComboBox3_SelectedIndexChanged_2(object sender, EventArgs e)
         {
             LocDonHang();
+            string quy = guna2ComboBox3.Text;
+            guna2ComboBox2.Items.Clear();
+
+            if (quy == "Quý 1")
+            {
+                guna2ComboBox2.Items.AddRange(new object[] { "(Tất cả)", "1", "2", "3" });
+            }
+            else if (quy == "Quý 2")
+            {
+                guna2ComboBox2.Items.AddRange(new object[] { "(Tất cả)", "4", "5", "6" });
+            }
+            else if (quy == "Quý 3")
+            {
+                guna2ComboBox2.Items.AddRange(new object[] { "(Tất cả)", "7", "8", "9" });
+            }
+            else if (quy == "Quý 4")
+            {
+                guna2ComboBox2.Items.AddRange(new object[] { "(Tất cả)", "10", "11", "12" });
+            }
+            else
+            {
+                // Nếu chọn lại "(Tất cả)" thì hiển thị toàn bộ tháng
+                guna2ComboBox2.Items.Add("(Tất cả)");
+                for (int i = 1; i <= 12; i++)
+                    guna2ComboBox2.Items.Add(i.ToString());
+            }
+
+            // Reset lại chọn tháng
+            guna2ComboBox2.SelectedIndex = 0;
         }
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)

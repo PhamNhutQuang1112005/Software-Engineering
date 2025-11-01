@@ -10,6 +10,8 @@ namespace GUI
     public partial class GUI_Form_DangNhap : Form
     {
         private readonly BLL_TaiKhoan bllTaiKhoan = new BLL_TaiKhoan();
+        private readonly BLL_SendEmail _bllEmail = new BLL_SendEmail();
+        private string _currentOtp = null;
 
         public GUI_Form_DangNhap()
 {
@@ -90,8 +92,62 @@ private void SyncHeaderWithTab()
         private void label11_Click(object sender, EventArgs e) => TAB.SelectedTab = SMS;
         private void guna2Button7_Click(object sender, EventArgs e) => TAB.SelectedTab = ĐăngNhap;
         private void guna2Button6_Click(object sender, EventArgs e) => TAB.SelectedTab = ĐăngNhap;
-        private void guna2Button1_Click(object sender, EventArgs e) => TAB.SelectedTab = NhapSMS;
-        private void guna2Button8_Click(object sender, EventArgs e) => TAB.SelectedTab = SMS;
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (_bllEmail.SendOtp(out string otp))
+                {
+                    _currentOtp = otp;
+                    MessageBox.Show($"✅ OTP đã được gửi tới",
+                        "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("❌ Gửi OTP thất bại. Vui lòng kiểm tra lại mạng hoặc Gmail App Password.",
+                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi gửi email: " + ex.Message);
+            }
+            TAB.SelectedTab = NhapSMS;
+        }
+  
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            string userInput = guna2TextBox2.Text.Trim();
+            if (string.IsNullOrEmpty(userInput))
+            {
+                MessageBox.Show("Vui lòng nhập mã OTP!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (_currentOtp == null)
+            {
+                MessageBox.Show("Chưa có mã OTP nào được gửi. Vui lòng thử lại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // So sánh mã người dùng nhập với mã hệ thống đã gửi
+            if (userInput == _currentOtp)
+            {
+                MessageBox.Show("✅ Xác nhận OTP thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Chuyển sang tab chính hoặc trang SMS như bạn định
+                TAB.SelectedTab = SMS;
+
+                // Xoá OTP để tránh dùng lại
+                _currentOtp = null;
+            }
+            else
+            {
+                MessageBox.Show("❌ Mã OTP không chính xác. Vui lòng thử lại!", "Sai mã", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+        }
+        
         private void guna2Button5_Click(object sender, EventArgs e) => TAB.SelectedTab = XacNhanMK;
         private void guna2Button9_Click(object sender, EventArgs e) => TAB.SelectedTab = ĐăngNhap;
 
@@ -139,6 +195,9 @@ catch (Exception ex)
 {
     MessageBox.Show("Lỗi: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
 }
+
+
+           
         }
 
         // =================== Các event trống ===================
@@ -154,6 +213,10 @@ catch (Exception ex)
         private void guna2TextBox10_TextChanged(object sender, EventArgs e) { }
 
         private void guna2TextBox11_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -278,5 +341,7 @@ catch (Exception ex)
         {
 
         }
+
+       
     }
 }

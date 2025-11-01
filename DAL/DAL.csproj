@@ -47,6 +47,7 @@
     <Compile Include="DAL_KhachHang.cs" />
     <Compile Include="DAL_KyHanHopDong.cs" />
     <Compile Include="DAL_PhongBan.cs" />
+    <Compile Include="DAL_SendEmail.cs" />
     <Compile Include="DAL_TaiKhoan.cs" />
     <Compile Include="DAL_ThongSoQuanTrac.cs" />
     <Compile Include="DBConnection.cs" />

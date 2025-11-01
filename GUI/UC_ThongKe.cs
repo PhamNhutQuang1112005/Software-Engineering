@@ -1,11 +1,13 @@
-﻿using BLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using BLL;
+using Guna.UI2.WinForms;
 
 namespace GUI
 {
@@ -19,9 +21,19 @@ namespace GUI
             InitializeComponent();
             this.Load += UC_ThongKe_Load;
         }
+        private readonly Btnbeautifull _theme = new Btnbeautifull()
+        {
+            Text = Color.White,
+            Outline = Color.FromArgb(120, 195, 170),
+            SearchFill = Color.Azure,
+            SearchText = Color.Black,
+            SearchPlaceholder = Color.Black
+        };
 
         private void UC_ThongKe_Load(object sender, EventArgs e)
         {
+            PillStyler.Combo(guna2ComboBox4, _theme);
+            PillStyler.Combo(guna2ComboBox3, _theme);
             // 1) Lấy dữ liệu gốc
             _donHang  = BLL_DonHang.GetAllDonHang();
             _trangThai = BLL_DonHang.GetAllTrangThaiDonHang();
@@ -38,9 +50,112 @@ namespace GUI
 
             // (tuỳ chọn) Nếu có DataGridView chi tiết quá hạn:
             // dgvQuaHan.DataSource = FilterByStatus(_donHang, _trangThai, "Quá hạn");
+            guna2ComboBox3.Items.Clear();
+            guna2ComboBox3.Items.Add("(Tất cả)");
+            guna2ComboBox3.Items.Add("Quý 1");
+            guna2ComboBox3.Items.Add("Quý 2");
+            guna2ComboBox3.Items.Add("Quý 3");
+            guna2ComboBox3.Items.Add("Quý 4");
+
+            guna2ComboBox3.IntegralHeight = false;
+            guna2ComboBox3.MaxDropDownItems = 4;
+            guna2ComboBox3.DropDownHeight = 100;
+
+            // Gán event TRƯỚC khi set SelectedIndex
+            guna2ComboBox3.SelectedIndexChanged += FilterAndRedraw;
+            guna2ComboBox3.SelectedIndex = 0; // đặt ở cuối cùng
+
+            // --- Combo Năm ---
+            guna2ComboBox4.Items.Clear();
+            guna2ComboBox4.Items.Add("(Tất cả)");
+            int currentYear = DateTime.Now.Year;
+            for (int year = 2018; year <= currentYear + 10; year++)
+                guna2ComboBox4.Items.Add(year.ToString());
+
+            guna2ComboBox4.IntegralHeight = false;
+            guna2ComboBox4.MaxDropDownItems = 6;
+            guna2ComboBox4.DropDownHeight = 100;
+
+            // Gán event TRƯỚC khi set SelectedIndex
+            guna2ComboBox4.SelectedIndexChanged += FilterAndRedraw;
+            guna2ComboBox4.SelectedIndex = 0; // đặt ở cuối cùng
+        }
+        private void FilterAndRedraw(object sender, EventArgs e)
+        {
+            try
+            {
+                int? nam = null;
+                string quy = null;
+
+                // Lấy quý
+                if (guna2ComboBox3.Text != "(Tất cả)")
+                    quy = guna2ComboBox3.Text;
+
+                // Lấy năm
+                if (guna2ComboBox4.Text != "(Tất cả)" && int.TryParse(guna2ComboBox4.Text, out int y))
+                    nam = y;
+
+                if (_donHang == null || _donHang.Rows.Count == 0)
+                    return;
+
+                // ✅ Lấy toàn bộ hợp đồng từ BLL (chỉ gọi 1 lần)
+                DataTable hopDongTable = BLL_HopDong.GetAllHopDong();
+
+                var filteredRows = _donHang.AsEnumerable().Where(dh =>
+                {
+                    // Kiểm tra NgayTao
+                    if (dh["NgayTao"] == DBNull.Value) return false;
+                    DateTime ngayTao = Convert.ToDateTime(dh["NgayTao"]);
+
+                    // --- Tìm hợp đồng tương ứng ---
+                    if (dh["HopDongID"] == DBNull.Value) return false;
+                    string hopDongID = dh["HopDongID"].ToString();
+
+                    DataRow hopDongRow = null;
+                    foreach (DataRow r in hopDongTable.Rows)
+                    {
+                        if (r["HopDongID"].ToString() == hopDongID)
+                        {
+                            hopDongRow = r;
+                            break;
+                        }
+                    }
+
+                    if (hopDongRow == null || hopDongRow["NgayBatDau"] == DBNull.Value || hopDongRow["NgayKetThuc"] == DBNull.Value)
+                        return false;
+
+                    DateTime ngayBD = Convert.ToDateTime(hopDongRow["NgayBatDau"]);
+                    DateTime ngayKT = Convert.ToDateTime(hopDongRow["NgayKetThuc"]);
+
+                    // --- Lọc theo năm ---
+                    bool matchNam = !nam.HasValue || (nam.Value >= ngayBD.Year && nam.Value <= ngayKT.Year);
+
+                    // --- Lọc theo quý ---
+                    int quyThang = (ngayTao.Month - 1) / 3 + 1;
+                    bool matchQuy = string.IsNullOrEmpty(quy) ||
+                                    (quy == "Quý 1" && quyThang == 1) ||
+                                    (quy == "Quý 2" && quyThang == 2) ||
+                                    (quy == "Quý 3" && quyThang == 3) ||
+                                    (quy == "Quý 4" && quyThang == 4);
+
+                    return matchNam && matchQuy;
+                });
+
+                // --- Chuyển về DataTable ---
+                DataTable filtered = filteredRows.Any() ? filteredRows.CopyToDataTable() : _donHang.Clone();
+
+                // --- Cập nhật biểu đồ ---
+                var counts = CountByStatus(filtered, _trangThai);
+                DrawCharts(counts);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lọc thống kê: " + ex.Message);
+            }
         }
 
-       private void DrawCharts(Dictionary<string, int> counts)
+
+        private void DrawCharts(Dictionary<string, int> counts)
 {
     int late  = counts.ContainsKey("Quá hạn")    ? counts["Quá hạn"]    : 0;
     int doing = counts.ContainsKey("Đang xử lý") ? counts["Đang xử lý"] : 0;

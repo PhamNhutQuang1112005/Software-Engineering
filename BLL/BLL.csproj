@@ -46,6 +46,7 @@
     <Compile Include="BLL_KhachHang.cs" />
     <Compile Include="BLL_KyHanHopDong.cs" />
     <Compile Include="BLL_PhongBan.cs" />
+    <Compile Include="BLL_SendEmail.cs" />
     <Compile Include="BLL_TaiKhoan.cs" />
     <Compile Include="BLL_ThongSoQuanTrac.cs" />
     <Compile Include="Class1.cs" />

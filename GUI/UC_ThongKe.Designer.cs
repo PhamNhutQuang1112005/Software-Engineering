@@ -49,14 +49,10 @@ namespace GUI
             System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(0D, 8D);
             this.BieuDo1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox4 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.BieuDo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
@@ -164,48 +160,6 @@ namespace GUI
             this.chart2.Size = new System.Drawing.Size(422, 327);
             this.chart2.TabIndex = 14;
             this.chart2.Text = "chart2";
-         
-            // 
-            // guna2ComboBox1
-            // 
-            this.guna2ComboBox1.AutoRoundedCorners = true;
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.BorderColor = System.Drawing.Color.White;
-            this.guna2ComboBox1.BorderThickness = 2;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(339, 46);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(169, 36);
-            this.guna2ComboBox1.TabIndex = 9;
-            
-            // 
-            // guna2ComboBox2
-            // 
-            this.guna2ComboBox2.AutoRoundedCorners = true;
-            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox2.BorderColor = System.Drawing.Color.White;
-            this.guna2ComboBox2.BorderThickness = 2;
-            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox2.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox2.ForeColor = System.Drawing.Color.White;
-            this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(339, 105);
-            this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.Size = new System.Drawing.Size(169, 36);
-            this.guna2ComboBox2.TabIndex = 5;
-            this.guna2ComboBox2.Tag = "sf";
-            this.guna2ComboBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // guna2ComboBox3
             // 
@@ -218,10 +172,10 @@ namespace GUI
             this.guna2ComboBox3.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(779, 105);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(338, 46);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(165, 36);
             this.guna2ComboBox3.TabIndex = 6;
@@ -239,7 +193,7 @@ namespace GUI
             this.guna2ComboBox4.FillColor = System.Drawing.Color.SeaGreen;
             this.guna2ComboBox4.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ComboBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox4.ForeColor = System.Drawing.Color.White;
             this.guna2ComboBox4.ItemHeight = 30;
             this.guna2ComboBox4.Location = new System.Drawing.Point(778, 46);
@@ -248,19 +202,6 @@ namespace GUI
             this.guna2ComboBox4.TabIndex = 7;
             this.guna2ComboBox4.Tag = "sf";
             this.guna2ComboBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(147, 110);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(176, 31);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Ngày Kết Thúc:";
             // 
             // label5
             // 
@@ -268,12 +209,11 @@ namespace GUI
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(626, 51);
+            this.label5.Location = new System.Drawing.Point(189, 51);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 31);
             this.label5.TabIndex = 12;
             this.label5.Text = "Theo Quý:";
-       
             // 
             // label6
             // 
@@ -281,23 +221,11 @@ namespace GUI
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(626, 110);
+            this.label6.Location = new System.Drawing.Point(618, 46);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(130, 31);
             this.label6.TabIndex = 13;
             this.label6.Text = "Theo Năm:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(147, 51);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 31);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Ngày Bắt Đầu:";
             // 
             // UC_ThongKe
             // 
@@ -308,14 +236,10 @@ namespace GUI
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2ComboBox4);
-            this.Controls.Add(this.guna2ComboBox2);
-            this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.BieuDo1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.guna2ComboBox3);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UC_ThongKe";
@@ -332,13 +256,9 @@ namespace GUI
         #endregion
         public System.Windows.Forms.DataVisualization.Charting.Chart BieuDo1;
         public System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
-        public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
         public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
         public Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox4;
-        public Label label4;
         public Label label5;
         public Label label6;
-        public Label label3;
     }
 }
