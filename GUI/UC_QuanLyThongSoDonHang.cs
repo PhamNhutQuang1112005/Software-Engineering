@@ -493,10 +493,30 @@ namespace GUI
             ApplySelectedStyle(card, true);
         }
         private void Card_Click(object sender, EventArgs e, DataRow row)
+{
+    try
+    {
+        string donHangID = Convert.ToString(row["DonHangID"]);
+        if (string.IsNullOrEmpty(donHangID))
         {
-            GUI_FormThemThongSoV2 f = new GUI_FormThemThongSoV2();
-            f.ShowDialog();
+            MessageBox.Show("Không tìm thấy mã đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
         }
+
+        // 🔹 Gọi BLL để kiểm tra / tạo vị trí & thông số nếu chưa có
+        var bll = new BLL_ThongSoQuanTrac();
+        bll.EnsureViTriAndThongSo(donHangID);
+
+        // 🔹 Mở form chi tiết
+        GUI_FormThongSoDonHang_V2 f = new GUI_FormThongSoDonHang_V2(donHangID);
+        f.ShowDialog();
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Lỗi khi mở chi tiết đơn hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
+}
+
 
         private void ClearSelection()
         {
@@ -852,8 +872,7 @@ namespace GUI
 
         private void guna2Panel1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            GUI_FormThemThongSoV2 gUI_FormThemThongSo = new GUI_FormThemThongSoV2();
-            gUI_FormThemThongSo.ShowDialog();
+            
         }
 
         private void guna2Panel1_Paint_1(object sender, PaintEventArgs e)
