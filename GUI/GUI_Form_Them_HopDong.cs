@@ -11,6 +11,18 @@ namespace GUI
     {
         private readonly string hopDongID;
         private const int MoTaMaxLen = 1024; // giới hạn mô tả
+        // Tooltip cảnh báo nhẹ, không chiếm focus
+        private readonly ToolTip _warnTip = new ToolTip
+        {
+            IsBalloon = true,
+            ToolTipIcon = ToolTipIcon.Warning,
+            ToolTipTitle = "Thông báo",
+            UseAnimation = true,
+            UseFading = true,
+            InitialDelay = 0,
+            ReshowDelay = 0,
+            AutoPopDelay = 3000
+        };
 
         public GUI_Form_Them_HopDong()
         {
@@ -21,6 +33,7 @@ namespace GUI
             InitCombos();
             InitFormForAdd();
             InitMoTaLimiter();
+            InitMoTaTopLeft(); // căn chữ top-left cho mô tả
         }
 
         public GUI_Form_Them_HopDong(string id)
@@ -31,14 +44,72 @@ namespace GUI
             WireEvents();
             InitCombos();
             LoadByIdAndFill(id);
-            LockMaHopDong();
             InitMoTaLimiter();
+            InitMoTaTopLeft(); // căn chữ top-left cho mô tả
         }
 
         private void WireEvents()
         {
             themhopdong.Click += btnLuu_Click;
             huy.Click += btnHuy_Click;
+            // end date is derived on save; no UI DateTimePicker for end date anymore
+            loaihopdong.SelectedIndexChanged += (s, e) => { /* derive on save */ };
+            ngaykyhopdong.ValueChanged += NgayKy_ValueChanged;
+            ngaybatdauhopdong.ValueChanged += NgayBatDau_ValueChanged;
+        }
+
+        // warn if start date is before sign date (and auto-fix)
+        private void NgayBatDau_ValueChanged(object sender, EventArgs e)
+        {
+            EnsureStartNotBeforeSign(true);
+        }
+
+        private void NgayKy_ValueChanged(object sender, EventArgs e)
+        {
+            EnsureStartNotBeforeSign(false);
+        }
+
+        private void EnsureStartNotBeforeSign(bool showWarning)
+        {
+            try
+            {
+                var sign = ngaykyhopdong.Value.Date;
+                var start = ngaybatdauhopdong.Value.Date;
+                if (start < sign)
+                {
+                    if (showWarning)
+                    {
+                        // Hiển thị tooltip ngay trên control, không mở cửa sổ mới
+                        _warnTip.Hide(ngaybatdauhopdong);
+                        _warnTip.Show(
+                            "Ngày bắt đầu không được trước Ngày ký.",
+                            ngaybatdauhopdong,
+                            ngaybatdauhopdong.Width / 2,
+                            -40,
+                            2500);
+                    }
+                    ngaybatdauhopdong.Value = sign;
+                }
+            }
+            catch { }
+        }
+
+        // Căn top-left cho ô mô tả
+        private void InitMoTaTopLeft()
+        {
+            if (tomtatnhiemvu == null) return;
+            try
+            {
+                tomtatnhiemvu.Multiline = true;
+                tomtatnhiemvu.TextAlign = HorizontalAlignment.Left; // ngang trái
+                tomtatnhiemvu.AutoSize = false;                     // tránh auto-center dọc
+                tomtatnhiemvu.ScrollBars = ScrollBars.Vertical;     // tiện xem khi dài
+                if (tomtatnhiemvu.Padding.Top < 4)
+                    tomtatnhiemvu.Padding = new Padding(6, 6, 6, 6);
+                if (tomtatnhiemvu.Height < 100)
+                    tomtatnhiemvu.Height = 120;
+            }
+            catch { }
         }
 
         // Chỉ set MaxLength đơn giản, không cắt và không beep
@@ -78,23 +149,12 @@ namespace GUI
 
         private void InitFormForAdd()
         {
-            // Khóa ô mã hợp đồng, hiển thị HopDongID và gợi ý tên hợp đồng
-            LockMaHopDong();
-            var nextId = GenerateNextHopDongId();               // ví dụ: HD-2025-1
+            // Không còn dùng ô IDhopdong trên UI; chỉ gợi ý tên hợp đồng (MaHopDong)
             var suggestedName = GenerateSuggestedMaHopDong();   // ví dụ: HD-yyyyMMdd-HHmmss
-
-            // Mã hợp đồng (ID) - ReadOnly
-            IDhopdong.Text = nextId;
-            IDhopdong.Tag = nextId; // giữ HopDongID để lưu
 
             // Tên hợp đồng (có thể sửa)
             if (tenhopdong != null)
                 tenhopdong.Text = suggestedName;
-        }
-
-        private void LockMaHopDong()
-        {
-            IDhopdong.ReadOnly = true;
         }
 
         // Tạo HopDongID tăng dần: HD-năm-số thứ tự (dựa trên dữ liệu hiện có)
@@ -141,13 +201,10 @@ namespace GUI
                 if (rows.Length == 0) return;
                 var r = rows[0];
 
-                // Hiển thị ID hợp đồng (khóa, không sửa)
-                IDhopdong.Text = r["HopDongID"]?.ToString();
-
                 // Ngày
                 ngaykyhopdong.Value = r["NgayKy"] == DBNull.Value ? DateTime.Today : Convert.ToDateTime(r["NgayKy"]);
                 if (r["NgayBatDau"] != DBNull.Value) ngaybatdauhopdong.Value = Convert.ToDateTime(r["NgayBatDau"]);
-                if (r["NgayKetThuc"] != DBNull.Value) ngayhethanhopdong.Value = Convert.ToDateTime(r["NgayKetThuc"]);
+                // Không còn UI cho Ngày kết thúc -> tính khi lưu
 
                 // Tên hợp đồng (lưu ở cột MaHopDong)
                 if (tenhopdong != null)
@@ -167,35 +224,11 @@ namespace GUI
 
         private bool ValidateInputs(out string message)
         {
-            // Ô mã hợp đồng là ReadOnly và đã sinh, vẫn kiểm tra đề phòng
-            if (string.IsNullOrWhiteSpace(IDhopdong.Text))
-            {
-                message = "Mã hợp đồng chưa sẵn sàng.";
-                IDhopdong.Focus(); return false;
-            }
             if (khachhang.SelectedValue == null)
-            {
-                message = "Vui lòng chọn Khách hàng.";
-                khachhang.Focus(); return false;
-            }
+            { message = "Vui lòng chọn Khách hàng."; khachhang.Focus(); return false; }
             if (loaihopdong.SelectedValue == null)
-            {
-                message = "Vui lòng chọn Loại hợp đồng.";
-                loaihopdong.Focus(); return false;
-            }
-            // Ngày kết thúc >= ngày ký và >= ngày bắt đầu (nếu có)
-            if (ngayhethanhopdong.Value.Date < ngaykyhopdong.Value.Date)
-            {
-                message = "Ngày kết thúc không được trước Ngày ký.";
-                ngayhethanhopdong.Focus(); return false;
-            }
-            if (ngaybatdauhopdong.Value.Date > ngayhethanhopdong.Value.Date)
-            {
-                message = "Ngày bắt đầu không được sau Ngày kết thúc.";
-                ngaybatdauhopdong.Focus(); return false;
-            }
-            message = null;
-            return true;
+            { message = "Vui lòng chọn Loại hợp đồng."; loaihopdong.Focus(); return false; }
+            message = null; return true;
         }
 
         private string CalcTrangThai(DateTime? ngayBatDau, DateTime? ngayKetThuc)
@@ -208,7 +241,70 @@ namespace GUI
             return "đang hiệu lực";
         }
 
-        // ====== Helpers for retry ID build ======
+        // Lấy số tháng từ lựa chọn Kỳ hạn (chỉ hỗ trợ: "X tháng", "X năm (...)" hoặc "Quý (...)" )
+        private int GetMonthsFromSelectedLoaiHopDong()
+        {
+            try
+            {
+                string ten = null;
+                if (loaihopdong?.SelectedItem is DataRowView drv && drv.Row.Table.Columns.Contains("TenKyHan"))
+                {
+                    ten = Convert.ToString(drv.Row["TenKyHan"]);
+                }
+                if (string.IsNullOrWhiteSpace(ten))
+                    ten = Convert.ToString(loaihopdong?.Text);
+
+                return ParseMonthsFromTenKyHan(ten);
+            }
+            catch { return 0; }
+        }
+
+        private static int ExtractFirstNumber(string s)
+        {
+            int num = 0; bool found = false;
+            foreach (var ch in s)
+            {
+                if (char.IsDigit(ch)) { num = num * 10 + (ch - '0'); found = true; }
+                else if (found) break;
+            }
+            return found ? num : 0;
+        }
+
+        private int ParseMonthsFromTenKyHan(string ten)
+        {
+            if (string.IsNullOrWhiteSpace(ten)) return 0;
+            var s = ten.Trim().ToLowerInvariant();
+
+            // Ưu tiên "quý" (3 tháng) nếu xuất hiện (không có số đếm quý theo confirm)
+            if (s.Contains("quý") || s.Contains("quy")) return 3;
+
+            // Sau đó tới "năm": ví dụ "1 năm (12 tháng)"
+            if (s.Contains("năm") || s.Contains("nam"))
+            {
+                int n = ExtractFirstNumber(s);
+                if (n <= 0) n = 1;
+                return n * 12;
+            }
+
+            // Cuối cùng "tháng": ví dụ "6 tháng"
+            if (s.Contains("tháng") || s.Contains("thang"))
+            {
+                int m = ExtractFirstNumber(s);
+                if (m <= 0) m = 1;
+                return m;
+            }
+
+            return 0;
+        }
+
+        private DateTime CalcNgayKetThucFromBase(DateTime baseDate)
+        {
+            int months = GetMonthsFromSelectedLoaiHopDong();
+            if (months <= 0) return baseDate; // không xác định -> bằng ngày mốc
+            return baseDate.AddMonths(months);
+        }
+
+        // Helpers for HopDongID parsing/building (retry unique ID)
         private bool TryParseHopDongId(string id, out int year, out int seq)
         {
             year = DateTime.Now.Year;
@@ -247,7 +343,7 @@ namespace GUI
                     return;
                 }
 
-                string hopDongId = hopDongID ?? (IDhopdong.Tag as string) ?? GenerateNextHopDongId();
+                string hopDongId = hopDongID ?? GenerateNextHopDongId();
 
                 // Tên hợp đồng sẽ lưu xuống cột MaHopDong
                 string maHopDong = (tenhopdong != null && !string.IsNullOrWhiteSpace(tenhopdong.Text))
@@ -259,7 +355,11 @@ namespace GUI
                 DateTime ngayKy = ngaykyhopdong.Value.Date;
                 string kyHanID = (loaihopdong.SelectedValue ?? loaihopdong.Text)?.ToString();
                 DateTime? ngayBatDau = ngaybatdauhopdong.Value.Date;
-                DateTime? ngayKetThuc = ngayhethanhopdong.Value.Date;
+
+                // Tính tự động Ngày kết thúc từ NGÀY BẮT ĐẦU (fallback Ngày ký nếu thiếu)
+                var baseDate = ngayBatDau.HasValue ? ngayBatDau.Value : ngayKy;
+                DateTime? ngayKetThuc = CalcNgayKetThucFromBase(baseDate);
+
                 string trangThai = CalcTrangThai(ngayBatDau, ngayKetThuc);
                 string ghiChu = string.IsNullOrWhiteSpace(desc) ? null : desc;
 
@@ -341,44 +441,16 @@ BLL_HopDong.SuaHopDong(dtoUpd);
             this.Close();
         }
 
-        private void guna2DateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (ngayhethanhopdong.Value.Date < ngaykyhopdong.Value.Date)
-                {
-                    ngayhethanhopdong.Value = ngaykyhopdong.Value.Date;
-                }
-            }
-            catch { }
-        }
-
+        // ĐÃ BỎ UI 'ngayhethanhopdong'
+        private void guna2DateTimePicker2_ValueChanged(object sender, EventArgs e) { }
         private void label9_Click(object sender, EventArgs e) { }
         private void label6_Click(object sender, EventArgs e) { }
-
-        private void loaihopdong_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void khachhang_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IDhopdong_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tenhopdong_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void huy_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void loaihopdong_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void khachhang_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void IDhopdong_TextChanged(object sender, EventArgs e) { }
+        private void tenhopdong_TextChanged(object sender, EventArgs e) { }
+        private void huy_Click(object sender, EventArgs e) { }
+        private void tomtatnhiemvu_TextChanged(object sender, EventArgs e) { }
+        private void GUI_Form_Them_HopDong_Load(object sender, EventArgs e) { }
     }
 }

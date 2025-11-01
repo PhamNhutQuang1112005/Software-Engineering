@@ -309,9 +309,9 @@ namespace GUI
                 BackColor = Color.Transparent
             };
 
-            var lblHeader = L($"{hopDongID} | {ma}", new Font("Segoe UI", 11, FontStyle.Bold));
-            var lblKH = L($"👤 KH: {khId}{(string.IsNullOrEmpty(maKH) ? "" : $" ({maKH})")}" + (string.IsNullOrEmpty(tenCty) ? "" : $" - {tenCty}"), null);
-            var lblKyHan = L($"⏱ Kỳ hạn: {kyHanID}{(string.IsNullOrEmpty(tenKyHan) ? "" : $" - {tenKyHan}")}", null);
+            var lblHeader = L($"{ma}", new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblKH = L($"👤 KH: {(string.IsNullOrEmpty(tenCty) ? "(Chưa có tên)" : tenCty)}", null);
+            var lblKyHan = L($"⏱ Kỳ hạn: {(string.IsNullOrEmpty(tenKyHan) ? "" : $"{tenKyHan}")}", null);
             var lblNgayKy = L($"🗓 Ngày ký: {ngayKy}", null);
             var lblHieuLuc = L($"⏳ Hiệu lực: {ngayBD} → {ngayKT}", null);
             var lblTrangThai = L($"📌 Trạng thái: {trangThai}", null);

@@ -106,10 +106,10 @@
             this.btn_motrangAI.HoverState.FillColor = System.Drawing.Color.White;
             this.btn_motrangAI.Image = global::GUI.Properties.Resources.sun_AI_logo;
             this.btn_motrangAI.ImageSize = new System.Drawing.Size(75, 75);
-            this.btn_motrangAI.Location = new System.Drawing.Point(295, 6);
+            this.btn_motrangAI.Location = new System.Drawing.Point(874, 6);
             this.btn_motrangAI.Name = "btn_motrangAI";
             this.btn_motrangAI.PressedColor = System.Drawing.Color.Transparent;
-            this.btn_motrangAI.Size = new System.Drawing.Size(48, 47);
+            this.btn_motrangAI.Size = new System.Drawing.Size(48, 44);
             this.btn_motrangAI.TabIndex = 8;
             this.btn_motrangAI.Click += new System.EventHandler(this.btn_motrangAI_Click);
             // 

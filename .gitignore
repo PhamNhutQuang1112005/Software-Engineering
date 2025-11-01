@@ -1,9 +1,52 @@
-﻿.vs/
-bin/
-obj/
+﻿# === Visual Studio build artifacts ===
+.vs/
 *.user
 *.suo
+*.userosscache
+*.sln.docstates
+
+# === Build folders ===
+[Bb]in/
+[Oo]bj/
+Debug/
+Release/
+x64/
+x86/
+[Aa]ppPackages/
+[Aa]rtifacts/
+
+# === Cache and temporary files ===
 *.cache
+*.pdb
+*.mdb
 *.db
 *.log
-*.vsidx
+*.tlog
+*.tmp
+*.bak
+*.ide
+
+# === Output binaries ===
+*.dll
+*.exe
+*.lib
+*.so
+
+# === IDE and tools ===
+_ReSharper*/
+*.DotSettings.user
+.idea/
+*.vsconfig
+
+# === Others ===
+*.ncb
+*.sdf
+*.opendb
+*.idb
+*.ipch
+*.aps
+*.dbmdl
+
+# === Ignore generated designer backup ===
+*.Designer.cs~
+*.resx~
