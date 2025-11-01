@@ -42,11 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DTO_DonVi.cs" />
     <Compile Include="DTO_HopDong.cs" />
     <Compile Include="DTO_KyHanHopDong.cs" />
+    <Compile Include="DTO_LoaiChiTieu.cs" />
+    <Compile Include="DTO_LoaiPhanTich.cs" />
     <Compile Include="DTO_NguoiDung.cs" />
     <Compile Include="DTO_PhongBan.cs" />
+    <Compile Include="DTO_ThongSoMoiTruong.cs" />
     <Compile Include="DTO_VaiTro.cs" />
+    <Compile Include="DTO_ViTri.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

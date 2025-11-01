@@ -48,6 +48,8 @@
             this.headerPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.lblTieuDe = new System.Windows.Forms.Label();
             this.btnThemChiTieu = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLuuThayDoi = new Guna.UI2.WinForms.Guna2Button();
             this.filterPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.lblLCT = new System.Windows.Forms.Label();
             this.lblDV = new System.Windows.Forms.Label();
@@ -60,8 +62,6 @@
             this.cardPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.sectionTitle = new System.Windows.Forms.Label();
             this.tabViTri = new System.Windows.Forms.TabControl();
-            this.btnLuuThayDoi = new Guna.UI2.WinForms.Guna2Button();
-            this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
             this.headerPanel.SuspendLayout();
             this.filterPanel.SuspendLayout();
             this.cardPanel.SuspendLayout();
@@ -115,8 +115,41 @@
             this.btnThemChiTieu.Text = "Thêm chỉ tiêu";
             this.btnThemChiTieu.Click += new System.EventHandler(this.btnThemChiTieu_Click);
             // 
+            // btnXoa
+            // 
+            this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnXoa.Animated = true;
+            this.btnXoa.BackColor = System.Drawing.Color.Transparent;
+            this.btnXoa.BorderRadius = 18;
+            this.btnXoa.FillColor = System.Drawing.Color.IndianRed;
+            this.btnXoa.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnXoa.ForeColor = System.Drawing.Color.White;
+            this.btnXoa.Location = new System.Drawing.Point(655, 15);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(120, 38);
+            this.btnXoa.TabIndex = 3;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnLuuThayDoi
+            // 
+            this.btnLuuThayDoi.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnLuuThayDoi.Animated = true;
+            this.btnLuuThayDoi.BackColor = System.Drawing.Color.Transparent;
+            this.btnLuuThayDoi.BorderRadius = 18;
+            this.btnLuuThayDoi.FillColor = System.Drawing.Color.SeaGreen;
+            this.btnLuuThayDoi.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLuuThayDoi.ForeColor = System.Drawing.Color.White;
+            this.btnLuuThayDoi.Location = new System.Drawing.Point(772, 15);
+            this.btnLuuThayDoi.Name = "btnLuuThayDoi";
+            this.btnLuuThayDoi.Size = new System.Drawing.Size(150, 38);
+            this.btnLuuThayDoi.TabIndex = 2;
+            this.btnLuuThayDoi.Text = "Lưu thay đổi";
+            this.btnLuuThayDoi.Click += new System.EventHandler(this.btnLuuThayDoi_Click);
+            // 
             // filterPanel
             // 
+            this.filterPanel.BackColor = System.Drawing.Color.SeaGreen;
             this.filterPanel.Controls.Add(this.lblLCT);
             this.filterPanel.Controls.Add(this.lblDV);
             this.filterPanel.Controls.Add(this.lblLPT);
@@ -126,7 +159,7 @@
             this.filterPanel.Controls.Add(this.cboLoaiPhanTich);
             this.filterPanel.Controls.Add(this.cboNguoiPhuTrach);
             this.filterPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.filterPanel.FillColor = System.Drawing.Color.White;
+            this.filterPanel.FillColor = System.Drawing.Color.SeaGreen;
             this.filterPanel.Location = new System.Drawing.Point(0, 68);
             this.filterPanel.Name = "filterPanel";
             this.filterPanel.Padding = new System.Windows.Forms.Padding(18, 12, 18, 12);
@@ -179,6 +212,7 @@
             // 
             // cboLoaiChiTieu
             // 
+            this.cboLoaiChiTieu.AutoRoundedCorners = true;
             this.cboLoaiChiTieu.BackColor = System.Drawing.Color.Transparent;
             this.cboLoaiChiTieu.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboLoaiChiTieu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -193,6 +227,7 @@
             // 
             // cboDonVi
             // 
+            this.cboDonVi.AutoRoundedCorners = true;
             this.cboDonVi.BackColor = System.Drawing.Color.Transparent;
             this.cboDonVi.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -207,6 +242,7 @@
             // 
             // cboLoaiPhanTich
             // 
+            this.cboLoaiPhanTich.AutoRoundedCorners = true;
             this.cboLoaiPhanTich.BackColor = System.Drawing.Color.Transparent;
             this.cboLoaiPhanTich.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboLoaiPhanTich.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -221,6 +257,7 @@
             // 
             // cboNguoiPhuTrach
             // 
+            this.cboNguoiPhuTrach.AutoRoundedCorners = true;
             this.cboNguoiPhuTrach.BackColor = System.Drawing.Color.Transparent;
             this.cboNguoiPhuTrach.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cboNguoiPhuTrach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -237,7 +274,7 @@
             // 
             this.cardPanel.BorderColor = System.Drawing.Color.SeaGreen;
             this.cardPanel.BorderRadius = 18;
-            this.cardPanel.BorderThickness = 1;
+            this.cardPanel.BorderThickness = 3;
             this.cardPanel.Controls.Add(this.sectionTitle);
             this.cardPanel.Controls.Add(this.tabViTri);
             this.cardPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -272,38 +309,6 @@
             this.tabViTri.Size = new System.Drawing.Size(1076, 487);
             this.tabViTri.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabViTri.TabIndex = 1;
-            // 
-            // btnLuuThayDoi
-            // 
-            this.btnLuuThayDoi.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnLuuThayDoi.Animated = true;
-            this.btnLuuThayDoi.BackColor = System.Drawing.Color.Transparent;
-            this.btnLuuThayDoi.BorderRadius = 18;
-            this.btnLuuThayDoi.FillColor = System.Drawing.Color.SeaGreen;
-            this.btnLuuThayDoi.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLuuThayDoi.ForeColor = System.Drawing.Color.White;
-            this.btnLuuThayDoi.Location = new System.Drawing.Point(772, 15);
-            this.btnLuuThayDoi.Name = "btnLuuThayDoi";
-            this.btnLuuThayDoi.Size = new System.Drawing.Size(150, 38);
-            this.btnLuuThayDoi.TabIndex = 2;
-            this.btnLuuThayDoi.Text = "Lưu thay đổi";
-            this.btnLuuThayDoi.Click += new System.EventHandler(this.btnLuuThayDoi_Click);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnXoa.Animated = true;
-            this.btnXoa.BackColor = System.Drawing.Color.Transparent;
-            this.btnXoa.BorderRadius = 18;
-            this.btnXoa.FillColor = System.Drawing.Color.IndianRed;
-            this.btnXoa.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.btnXoa.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(655, 15);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(120, 38);
-            this.btnXoa.TabIndex = 3;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // GUI_FormThongSoDonHang_V2
             // 

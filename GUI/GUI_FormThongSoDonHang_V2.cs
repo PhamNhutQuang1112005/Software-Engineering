@@ -10,6 +10,7 @@ namespace GUI
 {
     public partial class GUI_FormThongSoDonHang_V2 : Form
     {
+        
         private readonly string _donHangID;
         private readonly BLL_ThongSoQuanTrac _bll = new BLL_ThongSoQuanTrac();
         private readonly BLL_TaiKhoan _bllUser = new BLL_TaiKhoan();
@@ -43,11 +44,13 @@ namespace GUI
 
         private void GUI_FormThongSoDonHang_V2_Load(object sender, EventArgs e)
         {
+            
             lblTieuDe.Text = $"Chi tiết Đơn Hàng: {_donHangID}";
             LoadComboboxData();
             WireComboEvents();
             LoadTabs();
             ApplySeagreenTheme();
+           
         }
 
         // ============== THEME ==============
@@ -234,17 +237,16 @@ namespace GUI
                 ("GiaTri","Giá trị"),
                 ("TenDonVi","Đơn vị"),
                 ("GiaTriQuyChuan","Giới hạn"),
-                ("KetLuan","Trạng thái"),
                 ("GiaTriSo","Giá trị số"),
                 ("TenLoaiPhanTich","Phòng phân tích"),
                 ("TenNguoiPhanTich","Người phụ trách"),
-                ("TenThauPhu","Thầu phụ")
+                ("KetLuan","Trạng thái")
             };
             foreach (var h in headerMap)
                 if (dgv.Columns.Contains(h.name)) dgv.Columns[h.name].HeaderText = h.text;
 
             // Thứ tự cột chính
-            string[] order = { "TenLoaiChiTieu","GiaTri","TenDonVi","GiaTriQuyChuan","KetLuan","GiaTriSo","TenLoaiPhanTich","TenNguoiPhanTich","TenThauPhu" };
+            string[] order = { "TenLoaiChiTieu","GiaTri","TenDonVi","GiaTriQuyChuan","GiaTriSo","TenLoaiPhanTich","TenNguoiPhanTich","KetLuan" };
             int idx = 0;
             foreach (var c in order)
                 if (dgv.Columns.Contains(c)) dgv.Columns[c].DisplayIndex = idx++;
