@@ -145,6 +145,37 @@ namespace GUI
                 Margin = new Padding(5)
             };
 
+            // Tính số ngày còn lại
+            int daysLeft = (dh.NgayHetHan.Date - DateTime.Today).Days;
+            string countdownText = daysLeft > 0
+                ? $"Còn {daysLeft} ngày"
+                : daysLeft == 0
+                    ? "Hết hạn hôm nay"
+                    : $"Quá hạn {Math.Abs(daysLeft)} ngày";
+
+            Color countdownColor = daysLeft < 0
+                ? Color.FromArgb(255, 100, 100)
+                : (daysLeft == 0 ? Color.FromArgb(255, 180, 60) : Color.FromArgb(160, 220, 120));
+
+            // Header hiển thị đếm ngược (Dock Top, chữ căn phải)
+            var header = new Panel
+            {
+                Dock = DockStyle.Top,
+                Height = 24,
+                BackColor = Color.Transparent
+            };
+            var lblCountdown = new Label
+            {
+                Dock = DockStyle.Fill,
+                AutoSize = false,
+                TextAlign = ContentAlignment.MiddleRight,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                ForeColor = countdownColor,
+                Text = countdownText
+            };
+            header.Controls.Add(lblCountdown);
+
+            // Nội dung chi tiết đơn hàng
             var lbl = new Label
             {
                 AutoSize = false,
@@ -154,7 +185,36 @@ namespace GUI
                 Text = $"Mã đơn hàng: {dh.MaDon}\nKhách hàng: {dh.KhachHang}\nLoại đơn: {dh.LoaiDon}\nPhòng: {dh.Phong}\nNgày hết hạn: {dh.NgayHetHan:dd-MM-yyyy}"
             };
 
+            // Thứ tự thêm: Fill trước, rồi Top để Dock hoạt động đúng
             panel.Controls.Add(lbl);
+            panel.Controls.Add(header);
+
+            // Tự động điều chỉnh chiều cao panel theo nội dung + header
+            void AdjustPanelHeight()
+            {
+                int availableWidth = Math.Max(50, panel.ClientSize.Width - panel.Padding.Horizontal);
+                // đo chiều cao văn bản với word-wrap
+                var measured = TextRenderer.MeasureText(
+                    lbl.Text,
+                    lbl.Font,
+                    new Size(availableWidth, int.MaxValue),
+                    TextFormatFlags.WordBreak | TextFormatFlags.TextBoxControl);
+
+                int newHeight = panel.Padding.Vertical + header.Height + measured.Height + 4; // thêm 1 khoảng nhỏ để tránh cắt
+                if (newHeight > panel.Height)
+                {
+                    panel.Height = newHeight;
+                }
+                else
+                {
+                    // luôn đặt chiều cao tối thiểu hợp lý
+                    panel.Height = Math.Max(newHeight, 110);
+                }
+            }
+
+            AdjustPanelHeight();
+            panel.SizeChanged += (s, e) => AdjustPanelHeight();
+
             return panel;
         }
 

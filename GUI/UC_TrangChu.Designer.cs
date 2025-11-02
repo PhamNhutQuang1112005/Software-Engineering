@@ -101,6 +101,7 @@
             this.gradient_box_message.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.gradient_box_message.FillColor3 = System.Drawing.Color.Transparent;
             this.gradient_box_message.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.gradient_box_message.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.gradient_box_message.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gradient_box_message.Location = new System.Drawing.Point(0, 235);
             this.gradient_box_message.Name = "gradient_box_message";
