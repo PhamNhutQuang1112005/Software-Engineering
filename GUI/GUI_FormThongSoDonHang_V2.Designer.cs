@@ -184,9 +184,9 @@
             this.lblDV.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblDV.Location = new System.Drawing.Point(300, 14);
             this.lblDV.Name = "lblDV";
-            this.lblDV.Size = new System.Drawing.Size(56, 21);
+            this.lblDV.Size = new System.Drawing.Size(75, 21);
             this.lblDV.TabIndex = 1;
-            this.lblDV.Text = "Đơn vị";
+            this.lblDV.Text = "Thầu phụ";
             // 
             // lblLPT
             // 

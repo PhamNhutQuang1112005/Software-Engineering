@@ -20,7 +20,9 @@ namespace GUI
         {
             InitializeComponent();
 
+
         }
+        public string SavedDonHangID { get; private set; }
         public GUI_FormThemDonHang(string donHangID = null)
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace GUI
 
         }
 
-        private void guna2Button5_Click(object sender, EventArgs e)
+       private void guna2Button5_Click(object sender, EventArgs e)
 {
     try
     {
@@ -67,16 +69,18 @@ namespace GUI
             // THÊM
             if (string.IsNullOrEmpty(donhangid)) { MessageBox.Show("Vui lòng nhập DonHangID."); return; }
             BLL_DonHang.ThemDonHang(donhangid, maDonHang, hopDongID, trangThaiID, ghiChu, khachhang);
+            SavedDonHangID = donhangid; // <— TRẢ ID RA NGOÀI
             MessageBox.Show("Thêm đơn hàng thành công!");
         }
         else
         {
             // SỬA
             BLL_DonHang.CapNhatDonHang(_donHangID, donhangid, maDonHang, hopDongID, trangThaiID, ghiChu, khachhang);
+            SavedDonHangID = donhangid; // hoặc _donHangID nếu bạn khóa mã
             MessageBox.Show("Cập nhật đơn hàng thành công!");
         }
 
-        this.DialogResult = DialogResult.OK; // để UC reload sau khi đóng
+        this.DialogResult = DialogResult.OK;
         this.Close();
     }
     catch (Exception ex)
@@ -84,6 +88,7 @@ namespace GUI
         MessageBox.Show("Lỗi: " + ex.Message);
     }
 }
+
 
 
         private void guna2TextBox2_TextChanged(object sender, EventArgs e)

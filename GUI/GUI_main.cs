@@ -460,9 +460,14 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
 
         private void btnThongKeDonHang_Click(object sender, EventArgs e)
         {
-            if (ucQuanLyThongSoDonHang == null) ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
-            ShowControl(ucQuanLyThongSoDonHang);
-            SetActiveSidebarButton(sender as Guna2Button);
+            if (ucQuanLyThongSoDonHang == null)
+        ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
+
+    // Luôn reload từ DB mỗi lần bấm
+    ucQuanLyThongSoDonHang.ReloadFromParent(preserveFilters: true);
+
+    ShowControl(ucQuanLyThongSoDonHang);
+    SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnQuanLyUser_Click(object sender, EventArgs e)

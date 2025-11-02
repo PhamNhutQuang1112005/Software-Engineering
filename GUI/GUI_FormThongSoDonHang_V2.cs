@@ -10,7 +10,6 @@ namespace GUI
 {
     public partial class GUI_FormThongSoDonHang_V2 : Form
     {
-        
         private readonly string _donHangID;
         private readonly BLL_ThongSoQuanTrac _bll = new BLL_ThongSoQuanTrac();
         private readonly BLL_TaiKhoan _bllUser = new BLL_TaiKhoan();
@@ -44,13 +43,11 @@ namespace GUI
 
         private void GUI_FormThongSoDonHang_V2_Load(object sender, EventArgs e)
         {
-            
             lblTieuDe.Text = $"Chi tiết Đơn Hàng: {_donHangID}";
             LoadComboboxData();
             WireComboEvents();
             LoadTabs();
             ApplySeagreenTheme();
-           
         }
 
         // ============== THEME ==============
@@ -71,7 +68,7 @@ namespace GUI
             cardPanel.BorderColor = EnvTheme.Primary;
             sectionTitle.ForeColor = EnvTheme.Primary;
 
-            // Combos
+            // Combos (ghi chú: cboDonVi = chọn Thầu phụ)
             var combos = new[] { cboLoaiChiTieu, cboDonVi, cboLoaiPhanTich, cboNguoiPhuTrach };
             foreach (var cb in combos)
             {
@@ -99,26 +96,38 @@ namespace GUI
         // ============== Combobox ==============
         private void LoadComboboxData()
         {
+            // Loại chỉ tiêu
             var dtLCT = _bll.GetAllLoaiChiTieu();
             cboLoaiChiTieu.DataSource = dtLCT;
             cboLoaiChiTieu.DisplayMember = "TenChiTieu";
             cboLoaiChiTieu.ValueMember   = "LoaiChiTieuID";
             cboLoaiChiTieu.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            var dtDV = _bll.GetAllDonVi();
-            cboDonVi.DataSource = dtDV;
-            cboDonVi.DisplayMember = "TenDonVi";
-            cboDonVi.ValueMember   = "DonViID";
-            cboDonVi.DropDownStyle = ComboBoxStyle.DropDownList;
+            // Users + thêm dòng "Không có" cho Thầu phụ
+            var dtUsers = _bllUser.LayTatCaNguoiDung()?.Copy() ?? new DataTable();
+            if (!dtUsers.Columns.Contains("NguoiDungID")) dtUsers.Columns.Add("NguoiDungID", typeof(string));
+            if (!dtUsers.Columns.Contains("HoVaTen")) dtUsers.Columns.Add("HoVaTen", typeof(string));
+            var noneRow = dtUsers.NewRow();
+            noneRow["NguoiDungID"] = DBNull.Value;   // hoặc "" đều được, DAL xử lý null
+            noneRow["HoVaTen"]     = "Không có";
+            dtUsers.Rows.InsertAt(noneRow, 0);
 
+            // cboDonVi = CHỌN THẦU PHỤ (đã đổi chức năng)
+            cboDonVi.DataSource = dtUsers;
+            cboDonVi.DisplayMember = "HoVaTen";
+            cboDonVi.ValueMember   = "NguoiDungID";
+            cboDonVi.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDonVi.SelectedIndex = 0; // mặc định "Không có"
+
+            // Phòng phân tích
             var dtLPT = _bll.GetAllLoaiPhanTich();
             cboLoaiPhanTich.DataSource = dtLPT;
             cboLoaiPhanTich.DisplayMember = "TenLoai";
             cboLoaiPhanTich.ValueMember   = "LoaiPhanTichID";
             cboLoaiPhanTich.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            var dtUsers = _bllUser.LayTatCaNguoiDung();
-            cboNguoiPhuTrach.DataSource = dtUsers;
+            // Người phụ trách
+            cboNguoiPhuTrach.DataSource = dtUsers.Copy();
             cboNguoiPhuTrach.DisplayMember = "HoVaTen";
             cboNguoiPhuTrach.ValueMember   = "NguoiDungID";
             cboNguoiPhuTrach.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -126,8 +135,16 @@ namespace GUI
 
         private void WireComboEvents()
         {
-            cboLoaiChiTieu.SelectedValueChanged   += (s, e) => ApplyCombosToCurrentRow(GetActiveGrid());
-            cboDonVi.SelectedValueChanged         += (s, e) => ApplyCombosToCurrentRow(GetActiveGrid());
+            // Khi đổi Loại chỉ tiêu: tự fill DonVi đo + apply các combo khác
+            cboLoaiChiTieu.SelectedValueChanged += (s, e) =>
+            {
+                var g = GetActiveGrid();
+                AutoFillDonViFromLoaiChiTieu(g);   // <<— điền DonVi theo LCT
+                ApplyCombosToCurrentRow(g);        // ghi các combo còn lại
+            };
+
+            // Các combo còn lại
+            cboDonVi.SelectedValueChanged         += (s, e) => ApplyCombosToCurrentRow(GetActiveGrid());       // Thầu phụ
             cboLoaiPhanTich.SelectedValueChanged  += (s, e) => ApplyCombosToCurrentRow(GetActiveGrid());
             cboNguoiPhuTrach.SelectedValueChanged += (s, e) => ApplyCombosToCurrentRow(GetActiveGrid());
         }
@@ -226,7 +243,7 @@ namespace GUI
         private void ApplyGridPresentation(DataGridView dgv)
         {
             // Ẩn khóa/ID + ẩn TenThongSo
-            string[] hidden = { "TenThongSo","ViTriID","LoaiChiTieuID","DonViID","LoaiPhanTichID","NguoiPhanTichID","ThauPhuID" };
+            string[] hidden = { "TenThongSo","ViTriID","LoaiChiTieuID","DonViID","LoaiPhanTichID","NguoiPhanTichID"};
             foreach (var col in hidden)
                 if (dgv.Columns.Contains(col)) dgv.Columns[col].Visible = false;
 
@@ -240,13 +257,14 @@ namespace GUI
                 ("GiaTriSo","Giá trị số"),
                 ("TenLoaiPhanTich","Phòng phân tích"),
                 ("TenNguoiPhanTich","Người phụ trách"),
+                ("TenThauPhu","Thầu phụ"),
                 ("KetLuan","Trạng thái")
             };
             foreach (var h in headerMap)
                 if (dgv.Columns.Contains(h.name)) dgv.Columns[h.name].HeaderText = h.text;
 
-            // Thứ tự cột chính
-            string[] order = { "TenLoaiChiTieu","GiaTri","TenDonVi","GiaTriQuyChuan","GiaTriSo","TenLoaiPhanTich","TenNguoiPhanTich","KetLuan" };
+            // Thứ tự cột chính (nếu đủ cột)
+            string[] order = { "TenLoaiChiTieu","GiaTri","TenDonVi","GiaTriQuyChuan","GiaTriSo","TenLoaiPhanTich","TenNguoiPhanTich","TenThauPhu","KetLuan" };
             int idx = 0;
             foreach (var c in order)
                 if (dgv.Columns.Contains(c)) dgv.Columns[c].DisplayIndex = idx++;
@@ -356,28 +374,31 @@ namespace GUI
 
             void SafeSet(ComboBox cb, object val)
             {
-                if (cb?.DataSource == null || val == null) return;
+                if (cb?.DataSource == null || val == null) { cb.SelectedIndex = 0; return; } // 0 = "Không có" cho dtUsers
                 _suppressComboEvents = true;
                 try
                 {
                     var s = Convert.ToString(val);
+                    // Khi dataSource là DataTable: kiểm tra tồn tại
                     var dt = (cb.DataSource as DataTable);
                     var valCol = cb.ValueMember;
                     if (dt != null && dt.Columns.Contains(valCol))
                     {
                         bool exists = dt.AsEnumerable().Any(x => Convert.ToString(x[valCol]) == s);
-                        if (!exists) { cb.SelectedIndex = -1; return; }
+                        if (!exists) { cb.SelectedIndex = 0; return; } // "Không có"
                     }
                     cb.SelectedValue = s;
                 }
-                catch { }
+                catch { cb.SelectedIndex = 0; }
                 finally { _suppressComboEvents = false; }
             }
 
             SafeSet(cboLoaiChiTieu,  Get("LoaiChiTieuID"));
-            SafeSet(cboDonVi,        Get("DonViID"));
             SafeSet(cboLoaiPhanTich, Get("LoaiPhanTichID"));
             SafeSet(cboNguoiPhuTrach,Get("NguoiPhanTichID"));
+
+            // Combo "Đơn vị" giờ là THẦU PHỤ
+            SafeSet(cboDonVi,        Get("ThauPhuID"));
         }
 
         // ============== Combos → DÒNG ĐANG CHỌN ==============
@@ -387,22 +408,25 @@ namespace GUI
             if (dgv == null || dgv.CurrentRow == null) return;
             var r = dgv.CurrentRow;
 
-            string lctID = SafeSelectedValue(cboLoaiChiTieu);
-            string dvID  = SafeSelectedValue(cboDonVi);
-            string lptID = SafeSelectedValue(cboLoaiPhanTich);
-            string ndID  = SafeSelectedValue(cboNguoiPhuTrach);
+            string lctID     = SafeSelectedValue(cboLoaiChiTieu);
+            string lptID     = SafeSelectedValue(cboLoaiPhanTich);
+            string ndID      = SafeSelectedValue(cboNguoiPhuTrach);
+            string thauPhuID = SafeSelectedValue(cboDonVi); // cboDonVi = Thầu phụ
 
-            SetCellIfChanged(dgv, r, "LoaiChiTieuID",  lctID);
-            SetCellIfChanged(dgv, r, "DonViID",        dvID);
-            SetCellIfChanged(dgv, r, "LoaiPhanTichID", lptID);
-            SetCellIfChanged(dgv, r, "NguoiPhanTichID",ndID);
+            // Ghi ID
+            SetCellIfChanged(dgv, r, "LoaiChiTieuID",   lctID);
+            SetCellIfChanged(dgv, r, "LoaiPhanTichID",  lptID);
+            SetCellIfChanged(dgv, r, "NguoiPhanTichID", ndID);
+            SetCellIfChanged(dgv, r, "ThauPhuID",       thauPhuID);
 
-            // cập nhật tên hiển thị cho nhìn thấy ngay
-            SetCellIfChanged(dgv, r, "TenLoaiChiTieu" , cboLoaiChiTieu.Text?.Trim());
-            SetCellIfChanged(dgv, r, "TenDonVi"       , cboDonVi.Text?.Trim());
-            SetCellIfChanged(dgv, r, "TenLoaiPhanTich", cboLoaiPhanTich.Text?.Trim());
+            // Ghi tên hiển thị
+            SetCellIfChanged(dgv, r, "TenLoaiChiTieu",   cboLoaiChiTieu.Text?.Trim());
+            SetCellIfChanged(dgv, r, "TenLoaiPhanTich",  cboLoaiPhanTich.Text?.Trim());
             SetCellIfChanged(dgv, r, "TenNguoiPhanTich", cboNguoiPhuTrach.Text?.Trim());
+            if (dgv.Columns.Contains("TenThauPhu"))
+                SetCellIfChanged(dgv, r, "TenThauPhu", cboDonVi.Text?.Trim());
 
+            // DonViID/TenDonVi KHÔNG lấy từ combo — đã tự fill theo Loại chỉ tiêu
             dgv.NotifyCurrentCellDirty(true);
             dgv.EndEdit();
             this.Validate();
@@ -410,7 +434,9 @@ namespace GUI
 
         private static string SafeSelectedValue(ComboBox cb)
         {
-            if (cb == null || cb.SelectedValue == null) return null;
+            if (cb == null) return null;
+            if (cb.SelectedIndex <= 0 && cb.ValueMember == "NguoiDungID") return null; // "Không có" cho dtUsers
+            if (cb.SelectedValue == null) return null;
             return cb.SelectedValue is DataRowView ? null : Convert.ToString(cb.SelectedValue);
         }
 
@@ -465,9 +491,14 @@ namespace GUI
 
             string viTriID        = Convert.ToString(tabViTri.SelectedTab.Tag);
             string loaiChiTieuID  = Convert.ToString(cboLoaiChiTieu.SelectedValue);
-            string donViID        = Convert.ToString(cboDonVi.SelectedValue);
             string loaiPhanTichID = Convert.ToString(cboLoaiPhanTich.SelectedValue);
             string nguoiDungID    = Convert.ToString(cboNguoiPhuTrach.SelectedValue);
+            string thauPhuID      = SafeSelectedValue(cboDonVi); // có thể null = "Không có"
+
+            // DonViID lấy theo Loại chỉ tiêu
+            string donViID = string.IsNullOrWhiteSpace(loaiChiTieuID)
+                ? null
+                : _bll.GetDefaultDonViID_ByLoaiChiTieu(loaiChiTieuID);
 
             if (string.IsNullOrWhiteSpace(viTriID) ||
                 string.IsNullOrWhiteSpace(loaiChiTieuID) ||
@@ -475,13 +506,17 @@ namespace GUI
                 string.IsNullOrWhiteSpace(loaiPhanTichID) ||
                 string.IsNullOrWhiteSpace(nguoiDungID))
             {
-                MessageBox.Show("Chọn đầy đủ: Chỉ tiêu, Đơn vị, Phòng phân tích, Người phụ trách.");
+                MessageBox.Show("Chọn đầy đủ: Chỉ tiêu, Phòng phân tích, Người phụ trách. (Đơn vị sẽ tự theo Chỉ tiêu)");
                 return;
             }
 
             try
             {
-                string newKey = _bll.InsertThongSoMoi_ReturnKey(viTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiDungID);
+                // Truyền thầu phụ vào SP
+                string newKey = _bll.InsertThongSoMoi_ReturnKey(
+                    viTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiDungID, thauPhuID
+                );
+
                 if (!string.IsNullOrEmpty(newKey))
                 {
                     RefreshActiveTab(newKey); // focus dòng mới
@@ -510,7 +545,8 @@ namespace GUI
 
             try
             {
-                ApplyCombosToCurrentRow(dgv);   // ép ghi 4 combo vào dòng hiện tại
+                // ép ghi combo vào dòng hiện tại (không đụng DonVi — đã auto theo LCT)
+                ApplyCombosToCurrentRow(dgv);
 
                 dgv.EndEdit();
                 this.Validate();
@@ -569,6 +605,24 @@ namespace GUI
             {
                 MessageBox.Show("Lỗi xóa: " + ex.Message);
             }
+        }
+
+        // ============== Auto fill ĐƠN VỊ từ Loại chỉ tiêu ==============
+        private void AutoFillDonViFromLoaiChiTieu(DataGridView dgv)
+        {
+            if (dgv == null || dgv.CurrentRow == null) return;
+            var lctID = SafeSelectedValue(cboLoaiChiTieu);
+            if (string.IsNullOrWhiteSpace(lctID)) return;
+
+            var dvID = _bll.GetDefaultDonViID_ByLoaiChiTieu(lctID);
+            SetCellIfChanged(dgv, dgv.CurrentRow, "DonViID", dvID);
+
+            var tenDV = string.IsNullOrEmpty(dvID)
+                ? null
+                : _bll.GetAllDonViDTO()?.FirstOrDefault(d => d.DonViID == dvID)?.TenDonVi;
+
+            if (!string.IsNullOrEmpty(tenDV))
+                SetCellIfChanged(dgv, dgv.CurrentRow, "TenDonVi", tenDV);
         }
     }
 }

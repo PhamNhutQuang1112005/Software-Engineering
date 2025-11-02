@@ -42,7 +42,7 @@ namespace BLL
         public List<DTO_ThongSoMoiTruong> GetThongSoByViTriDTO(string viTriID) => _dal.GetThongSoByViTriDTO_(viTriID);
 
         public string InsertThongSoMoi_ReturnKey(string viTriID, string loaiChiTieuID, string donViID,
-                                                 string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID = null)
+                                                 string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID)
             => _dal.InsertThongSoMoi_ReturnKey(viTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID);
 
         public bool DeleteThongSo(string tenThongSo)
@@ -61,5 +61,7 @@ namespace BLL
             if (dtChanges == null || dtChanges.Rows.Count == 0) return;
             _dal.UpdateThongSo_Batch(dtChanges);
         }
+        public string GetDefaultDonViID_ByLoaiChiTieu(string loaiChiTieuID)
+    => _dal.GetDefaultDonViID_ByLoaiChiTieu(loaiChiTieuID);
     }
 }

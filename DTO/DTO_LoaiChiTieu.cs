@@ -10,5 +10,6 @@ namespace DTO
 {
     public string LoaiChiTieuID { get; set; }
     public string TenChiTieu    { get; set; }
-}
+    public string  DonViID      { get; set; }
+    }
 }

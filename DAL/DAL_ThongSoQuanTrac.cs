@@ -105,7 +105,8 @@ namespace DAL
                 list.Add(new DTO_LoaiChiTieu
                 {
                     LoaiChiTieuID = Convert.ToString(r["LoaiChiTieuID"]),
-                    TenChiTieu    = Convert.ToString(r["TenChiTieu"])
+                    TenChiTieu    = Convert.ToString(r["TenChiTieu"]),
+                    DonViID      = Convert.ToString(r["DonViID"])
                 });
             }
             return list;
@@ -308,6 +309,19 @@ namespace DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        public string GetDefaultDonViID_ByLoaiChiTieu(string loaiChiTieuID)
+{
+    if (string.IsNullOrWhiteSpace(loaiChiTieuID)) return null;
+    using (var cn = NewConn())
+    using (var cmd = new SqlCommand("dbo.sp_GetDonViByLoaiChiTieu", cn))
+    {
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@LoaiChiTieuID", loaiChiTieuID);
+        cn.Open();
+        var obj = cmd.ExecuteScalar();
+        return obj == null || obj == DBNull.Value ? null : obj.ToString();
+    }
+}
 
         // ===== Batch Update with robust numeric handling =====
         public void UpdateThongSo_Batch(DataTable changes)
