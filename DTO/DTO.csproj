@@ -47,6 +47,7 @@
     <Compile Include="DTO_KyHanHopDong.cs" />
     <Compile Include="DTO_LoaiChiTieu.cs" />
     <Compile Include="DTO_LoaiPhanTich.cs" />
+    <Compile Include="DTO_LoaiViTri.cs" />
     <Compile Include="DTO_NguoiDung.cs" />
     <Compile Include="DTO_PhongBan.cs" />
     <Compile Include="DTO_ThongSoMoiTruong.cs" />

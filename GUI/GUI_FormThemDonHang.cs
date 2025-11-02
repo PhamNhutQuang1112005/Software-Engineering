@@ -55,28 +55,43 @@ namespace GUI
     try
     {
         string donhangid   = guna2TextBox2.Text.Trim();
-        string maDonHang   = guna2TextBox1.Text.ToString();
+        string maDonHang   = (guna2TextBox1.Text ?? "").Trim();
         string hopDongID   = guna2ComboBox4.SelectedValue?.ToString();
         string trangThaiID = guna2ComboBox5.SelectedValue?.ToString();
-        string ghiChu      = guna2TextBox4.Text.Trim();
+        string ghiChu      = (guna2TextBox4.Text ?? "").Trim();
         string khachhang   = guna2ComboBox1.SelectedValue?.ToString();
 
-        if (string.IsNullOrEmpty(maDonHang) || string.IsNullOrEmpty(hopDongID) || string.IsNullOrEmpty(trangThaiID))
-        { MessageBox.Show("Vui lòng nhập đủ Mã đơn hàng, Hợp đồng, Trạng thái."); return; }
+        // >>>>> NEW: tự sinh maDonHang nếu bỏ trống
+        if (string.IsNullOrWhiteSpace(maDonHang))
+        {
+            maDonHang = GenerateDefaultMaDonHang();
+            guna2TextBox1.Text = maDonHang; // hiển thị lại cho user
+        }
+
+        // Validate sau khi đã auto-generate
+        if (string.IsNullOrEmpty(hopDongID) || string.IsNullOrEmpty(trangThaiID))
+        {
+            MessageBox.Show("Vui lòng chọn Hợp đồng và Trạng thái.");
+            return;
+        }
 
         if (string.IsNullOrEmpty(_donHangID))
         {
             // THÊM
-            if (string.IsNullOrEmpty(donhangid)) { MessageBox.Show("Vui lòng nhập DonHangID."); return; }
+            if (string.IsNullOrEmpty(donhangid))
+            {
+                MessageBox.Show("Vui lòng nhập DonHangID.");
+                return;
+            }
             BLL_DonHang.ThemDonHang(donhangid, maDonHang, hopDongID, trangThaiID, ghiChu, khachhang);
-            SavedDonHangID = donhangid; // <— TRẢ ID RA NGOÀI
+            SavedDonHangID = donhangid;
             MessageBox.Show("Thêm đơn hàng thành công!");
         }
         else
         {
             // SỬA
             BLL_DonHang.CapNhatDonHang(_donHangID, donhangid, maDonHang, hopDongID, trangThaiID, ghiChu, khachhang);
-            SavedDonHangID = donhangid; // hoặc _donHangID nếu bạn khóa mã
+            SavedDonHangID = donhangid; // hoặc _donHangID theo bạn
             MessageBox.Show("Cập nhật đơn hàng thành công!");
         }
 
@@ -88,6 +103,7 @@ namespace GUI
         MessageBox.Show("Lỗi: " + ex.Message);
     }
 }
+
 
 
 
@@ -163,5 +179,17 @@ namespace GUI
             this.Close();
 
         }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+        private string GenerateDefaultMaDonHang()
+{
+    // Ví dụ: DH-2025-0607-214530  (yyyy-MMdd-HHmmss)
+    // Gọn hơn: DH-2025-214530 (yyyy-HHmmss)
+    // Tuỳ bạn chọn format; mình dùng bản gọn mà vẫn unique:
+    return "DH-" + DateTime.Now.ToString("yyyy-HHmmss");
+}
     }
 }

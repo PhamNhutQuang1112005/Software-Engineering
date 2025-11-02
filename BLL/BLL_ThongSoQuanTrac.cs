@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Data;
 using System.Collections.Generic;
 using DAL;
@@ -7,61 +6,58 @@ using DTO;
 
 namespace BLL
 {
-    /// <summary>
-    /// BLL chỉ đóng vai trò trung gian: nhận yêu cầu từ GUI, chuyển tiếp sang DAL.
-    /// Tuyệt đối KHÔNG truy vấn trực tiếp DB hay viết SQL ở đây.
-    /// </summary>
     public class BLL_ThongSoQuanTrac
     {
         private readonly DAL_ThongSoQuanTrac _dal = new DAL_ThongSoQuanTrac();
 
-        // ===== Lookup (DataTable cho GUI cũ) =====
-        public DataTable GetAllLoaiChiTieu()  => _dal.GetAllLoaiChiTieu();
-        public DataTable GetAllDonVi()        => _dal.GetAllDonVi();
-        public DataTable GetAllLoaiPhanTich() => _dal.GetAllLoaiPhanTich();
-        public DataTable GetAllNguoiDung()    => _dal.GetAllNguoiDung();
+        // ===== Lookup (DataTable) =====
+        public DataTable GetAllLoaiChiTieu()  { return _dal.GetAllLoaiChiTieu(); }
+        public DataTable GetAllDonVi()        { return _dal.GetAllDonVi(); }
+        public DataTable GetAllLoaiPhanTich() { return _dal.GetAllLoaiPhanTich(); }
+        public DataTable GetAllLoaiViTri()    { return _dal.GetAllLoaiViTri(); }
 
-        // ===== Lookup (DTO cho GUI mới nếu cần) =====
-        public List<DTO_LoaiChiTieu>  GetAllLoaiChiTieuDTO()  => _dal.GetAllLoaiChiTieuDTO_();
-        public List<DTO_DonVi>        GetAllDonViDTO()        => _dal.GetAllDonViDTO_();
-        public List<DTO_LoaiPhanTich> GetAllLoaiPhanTichDTO() => _dal.GetAllLoaiPhanTichDTO_();
-        public List<DTO_NguoiDung>    GetAllNguoiDungDTO()    => _dal.GetAllNguoiDungDTO_();
+        // ===== Lookup (DTO) =====
+        public List<DTO_LoaiChiTieu>  GetAllLoaiChiTieuDTO()  { return _dal.GetAllLoaiChiTieuDTO_(); }
+        public List<DTO_DonVi>        GetAllDonViDTO()        { return _dal.GetAllDonViDTO_(); }
+        public List<DTO_LoaiPhanTich> GetAllLoaiPhanTichDTO() { return _dal.GetAllLoaiPhanTichDTO_(); }
+        public List<DTO_LoaiViTri>    GetAllLoaiViTriDTO()    { return _dal.GetAllLoaiViTriDTO_(); }
 
-        // ===== Vị trí & Thông số =====
-        public void EnsureViTriAndThongSo(string donHangID)
+        // ===== Vị trí =====
+        public void      EnsureViTriAndThongSo(string donHangID) { _dal.EnsureViTriAndThongSo(donHangID); }
+        public DataTable GetViTriByDonHang(string donHangID)     { return _dal.GetViTriByDonHang(donHangID); }
+
+        // ===== Loại vị trí theo Vị trí =====
+        public DataTable GetLoaiViTriByViTri(string viTriID)                 { return _dal.GetLoaiViTriByViTri(viTriID); }
+        public string    AddLoaiViTriToViTri(string viTriID, string tenLoai) { return _dal.AddLoaiViTriToViTri(viTriID, tenLoai); }
+        public bool      DeleteLoaiViTriFromViTri(string viTriID, string loaiViTriID)
         {
-            if (string.IsNullOrWhiteSpace(donHangID))
-                throw new ArgumentException("DonHangID rỗng.");
-            _dal.EnsureViTriAndThongSo(donHangID);
+            return _dal.DeleteLoaiViTriFromViTri(viTriID, loaiViTriID);
         }
 
-        public DataTable GetViTriByDonHang(string donHangID) => _dal.GetViTriByDonHang(donHangID);
-        public DataTable GetThongSoByViTri(string viTriID)   => _dal.GetThongSoByViTri(viTriID);
+        // ===== Thông số =====
+        public DataTable GetThongSoByViTri(string viTriID)                          { return _dal.GetThongSoByViTri(viTriID); }
+        public DataTable GetThongSoByViTriLoai(string viTriID, string loaiViTriID)  { return _dal.GetThongSoByViTriLoai(viTriID, loaiViTriID); }
 
-        public List<DTO_ViTri> GetViTriByDonHangDTO(string donHangID) => _dal.GetViTriByDonHangDTO_(donHangID);
-        public List<DTO_ThongSoMoiTruong> GetThongSoByViTriDTO(string viTriID) => _dal.GetThongSoByViTriDTO_(viTriID);
-
-        public string InsertThongSoMoi_ReturnKey(string viTriID, string loaiChiTieuID, string donViID,
-                                                 string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID)
-            => _dal.InsertThongSoMoi_ReturnKey(viTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID);
-
-        public bool DeleteThongSo(string tenThongSo)
+        public string InsertThongSoMoi_ReturnKey(
+            string viTriID, string loaiChiTieuID, string donViID,
+            string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID)
         {
-            if (string.IsNullOrWhiteSpace(tenThongSo))
-                throw new ArgumentException("Thiếu khóa TenThongSo");
-            return _dal.DeleteThongSo(tenThongSo);
+            return _dal.InsertThongSoMoi_ReturnKey(viTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID);
         }
 
-        /// <summary>
-        /// Lưu các thay đổi từ DataTable của lưới.
-        /// BLL chỉ chuyển tiếp CRUD xuống DAL (DAL gọi Stored Procedure).
-        /// </summary>
-        public void UpdateThongSo(DataTable dtChanges)
+        public string InsertThongSoMoi_ReturnKey_WithLoai(
+            string viTriID, string loaiViTriID, string loaiChiTieuID, string donViID,
+            string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID)
         {
-            if (dtChanges == null || dtChanges.Rows.Count == 0) return;
-            _dal.UpdateThongSo_Batch(dtChanges);
+            return _dal.InsertThongSoMoi_ReturnKey_WithLoai(viTriID, loaiViTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID);
         }
+
+        public bool  DeleteThongSo(string tenThongSo) { return _dal.DeleteThongSo(tenThongSo); }
+        public void  UpdateThongSo(DataTable dtChanges) { _dal.UpdateThongSo_Batch(dtChanges); }
+
         public string GetDefaultDonViID_ByLoaiChiTieu(string loaiChiTieuID)
-    => _dal.GetDefaultDonViID_ByLoaiChiTieu(loaiChiTieuID);
+        {
+            return _dal.GetDefaultDonViID_ByLoaiChiTieu(loaiChiTieuID);
+        }
     }
 }

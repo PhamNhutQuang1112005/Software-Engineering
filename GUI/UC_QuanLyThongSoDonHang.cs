@@ -516,7 +516,7 @@ namespace GUI
                 bll.EnsureViTriAndThongSo(donHangID);
 
                 // 🔹 Mở form chi tiết
-                using (var f = new GUI_FormThongSoDonHang_V2(donHangID))
+                using (var f = new GUI_FormDonHangChiTiet(donHangID))
                 {
                     f.ShowDialog();
                 }
