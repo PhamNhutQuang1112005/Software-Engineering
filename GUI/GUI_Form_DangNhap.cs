@@ -187,7 +187,26 @@ namespace GUI
             }
         }
 
-        private void guna2Button9_Click(object sender, EventArgs e) => TAB.SelectedTab = ĐăngNhap;
+        private void guna2Button9_Click(object sender, EventArgs e)
+        {
+            string email = guna2TextBox3.Text.Trim();
+            string mkMoi = guna2TextBox12.Text.Trim();
+            string xacNhan = guna2TextBox1.Text.Trim();
+
+            try
+            {
+                BLL_TaiKhoan bll = new BLL_TaiKhoan();
+                bll.DoiMatKhauBangEmail(email, mkMoi, xacNhan);
+
+                MessageBox.Show("Đổi mật khẩu thành công!");
+ TAB.SelectedTab = ĐăngNhap;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+        }     
 
         // =================== Nút Đăng Nhập thật ===================
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -292,67 +311,67 @@ namespace GUI
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             emailNguoiNhan = guna2TextBox3.Text.Trim();
-            //         string tenDN   = txtdangnhap.Text.Trim();
-            //  string matKhau = txtmatkhau.Text.Trim();
-            //         string sdt = txtSDT.Text.Trim();
+                     string tenDN   = txtdangnhap.Text.Trim();
+              string matKhau = txtmatkhau.Text.Trim();
+                    string sdt = txtSDT.Text.Trim();
 
-            // if (string.IsNullOrEmpty(tenDN) || string.IsNullOrEmpty(matKhau))
-            // {
-            //     MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu!",
-            //                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //  return;
-            // }
+             if (string.IsNullOrEmpty(tenDN) || string.IsNullOrEmpty(matKhau))
+             {
+                 MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu!",
+                               "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              return;
+             }
 
-            //  try
-            //  {
-            // --- Kiểm tra trùng tên đăng nhập ---
-            //    if (UsernameExists(tenDN))
-            //   {
-            //     MessageBox.Show("Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.",
-            //                     "Trùng tên đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //     txtdangnhap.Focus();
-            //    txtdangnhap.SelectAll();
-            //     return;
-            //   }
-            //    if (!string.IsNullOrEmpty(sdt))
-            //    {
-            //    if (sdt.Length != 10)
-            //  {
-            //     MessageBox.Show("Số điện thoại phải gồm đúng 10 chữ số!",
-            //              "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //  txtSDT.Focus();
-            //  return;
-            //}
+              try
+              {
+           //  --- Kiểm tra trùng tên đăng nhập ---
+                if (UsernameExists(tenDN))
+               {
+                MessageBox.Show("Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.",
+                                 "Trùng tên đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 txtdangnhap.Focus();
+                txtdangnhap.SelectAll();
+                 return;
+               }
+                if (!string.IsNullOrEmpty(sdt))
+                {
+                if (sdt.Length != 10)
+              {
+                 MessageBox.Show("Số điện thoại phải gồm đúng 10 chữ số!",
+                          "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+              txtSDT.Focus();
+              return;
+            }
         }
 
         // --- Tạo DTO người dùng mới ---
-        //   var dto = new DTO_NguoiDung
-        //    {
-        //       TenDangNhap = tenDN,
-        //       HoVaTen     = "",      // để trống, chỉnh sau
-        //        DienThoai   = sdt,
-        //         Email       = "",
-        //     VaiTroID    = "VT001",   // Admin
-        //       PhongBanID  = "PB001"    // Phòng ban mặc định
-        //     };
+           var dto = new DTO_NguoiDung
+            {
+              TenDangNhap = tenDN,
+              HoVaTen     = "",      // để trống, chỉnh sau
+               DienThoai   = sdt,
+                 Email       = "",
+            VaiTroID    = "VT001",   // Admin
+               PhongBanID  = "PB001"    // Phòng ban mặc định
+             };
 
-        // --- Gọi tầng nghiệp vụ để thêm ---
-        //     bllTaiKhoan.ThemNguoiDung(dto, matKhau);
+       //  --- Gọi tầng nghiệp vụ để thêm ---
+            bllTaiKhoan.ThemNguoiDung(dto, matKhau);
 
-        ///   MessageBox.Show($"Tạo tài khoản {tenDN} (Admin) thành công!",
-        //     "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+           MessageBox.Show($"Tạo tài khoản {tenDN} (Admin) thành công!",
+             "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        //// Quay về tab đăng nhập
-        // TAB.SelectedTab = ĐăngNhap;
-        //     textDangNhap.Clear();
-        //    txtmatkhau.Clear();
-        //  }
-        //  catch (Exception ex)
-        //  {
-        //      MessageBox.Show("Lỗi khi tạo tài khoản: " + ex.Message,
-        //    "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        // }
-        //  }
+        // Quay về tab đăng nhập
+         TAB.SelectedTab = ĐăngNhap;
+             textDangNhap.Clear();
+            txtmatkhau.Clear();
+          }
+          catch (Exception ex)
+          {
+              MessageBox.Show("Lỗi khi tạo tài khoản: " + ex.Message,
+            "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+         }
+          }
         public bool UsernameExists(string tenDN)
         {
             DataTable all = bllTaiKhoan.LayTatCaNguoiDung();

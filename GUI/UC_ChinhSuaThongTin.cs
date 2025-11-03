@@ -1,10 +1,12 @@
-﻿using BLL;
-using DTO;
-using Guna.UI2.WinForms;
-using System;
+﻿using System;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
+using BLL;
+using DTO;
+using Guna.UI2.WinForms;
 
 namespace GUI
 {
@@ -16,6 +18,7 @@ namespace GUI
         private string nguoiDungID;
         private string vaiTroID;
         private string phongBanID;
+        private string matkhau;
 
         // Lưu giá trị gốc để reset
         private string originalHoTen;
@@ -130,12 +133,19 @@ namespace GUI
                 {
                     NguoiDungID = nguoiDungID,
                     TenDangNhap = tenDangNhap,
-                    HoVaTen     = txtHoTen.Text.Trim(),
-                    DienThoai   = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim(),
-                    Email       = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim(),
-                    VaiTroID    = vaiTroID,
-                    PhongBanID  = phongBanID
+                    HoVaTen = txtHoTen.Text.Trim(),
+                    DienThoai = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim(),
+                    Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim(),
+                    VaiTroID = vaiTroID,
+                    PhongBanID = phongBanID
                 };
+
+                // ✅ Kiểm tra kết quả đổi mật khẩu
+                bool doiMatKhauThanhCong = changepassword();
+                if (!doiMatKhauThanhCong)
+                {
+                    return;
+                }
 
                 string matKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text) ? null : txtMatKhauMoi.Text.Trim();
                 bllNguoiDung.SuaNguoiDung(dto, matKhauMoi);
@@ -143,9 +153,9 @@ namespace GUI
                 MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Cập nhật lại giá trị gốc để lần sau reset đúng dữ liệu mới
+                // Cập nhật lại giá trị gốc
                 originalHoTen = txtHoTen.Text;
-                originalSDT   = txtSDT.Text;
+                originalSDT = txtSDT.Text;
                 originalEmail = txtEmail.Text;
                 OnUserUpdated?.Invoke();
             }
@@ -155,7 +165,7 @@ namespace GUI
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            
+
         }
 
         // ==================== Hủy thay đổi (reset về dữ liệu gốc) ====================
@@ -185,5 +195,65 @@ namespace GUI
     }
 
         }
+        private void txtMatKhauCu_Leave(object sender, EventArgs e)
+        {
+            
+        }
+        private bool changepassword()
+        {
+            BLL_TaiKhoan bll = new BLL_TaiKhoan();
+            DataTable dt = bll.LayTatCaNguoiDung();
+            DataTable dt1 = bllNguoiDung.TimKiemNguoiDung(tenDangNhap);
+
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Không tìm thấy tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                display_name.Text = tenDangNhap;
+                return false; // ❌ Không tìm thấy tài khoản
+            }
+
+            var row = dt.AsEnumerable()
+                .FirstOrDefault(r =>
+                    r.Table.Columns.Contains("TenDangNhap") &&
+                    string.Equals(Convert.ToString(r["TenDangNhap"]), tenDangNhap, StringComparison.OrdinalIgnoreCase))
+                ?? dt.Rows[0];
+
+            matkhau = row["MatKhauHash"]?.ToString();
+            string matkhaucu = HashMatKhau( txtMatKhauCu.Text.Trim());
+
+            // ❌ Sai mật khẩu cũ
+            if (matkhau != matkhaucu)
+            {
+                MessageBox.Show("Mật khẩu cũ không chính xác!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            string matkhaumoi = txtMatKhauMoi.Text.Trim();
+
+            // ❌ Mật khẩu mới trùng cũ
+            if (matkhaumoi == matkhau)
+            {
+                MessageBox.Show("Mật khẩu mới không được trùng với mật khẩu cũ!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // ✅ Nếu mọi thứ hợp lệ
+            return true;
+        }
+        private string HashMatKhau(string matKhau)
+        {
+            if (string.IsNullOrEmpty(matKhau))
+                return null;
+
+            using (SHA256 sha = SHA256.Create())
+            {
+                byte[] bytes = sha.ComputeHash(Encoding.UTF8.GetBytes(matKhau));
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2"));
+                return sb.ToString();
+            }
+        }
+
     }
 }

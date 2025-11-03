@@ -207,6 +207,7 @@ namespace GUI
             this.txtMatKhauCu.SelectedText = "";
             this.txtMatKhauCu.Size = new System.Drawing.Size(230, 30);
             this.txtMatKhauCu.TabIndex = 4;
+            this.txtMatKhauCu.TextChanged += new System.EventHandler(this.txtMatKhauCu_Leave);
             // 
             // txtEmail
             // 
