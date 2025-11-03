@@ -34,6 +34,7 @@
         private void InitializeComponent()
         {
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,12 +42,11 @@
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.themdonhang = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.microphone = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.microphone)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +71,19 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(992, 150);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // microphone
+            // 
+            this.microphone.FillColor = System.Drawing.Color.Transparent;
+            this.microphone.Image = global::GUI.Properties.Resources.mic;
+            this.microphone.ImageRotate = 0F;
+            this.microphone.Location = new System.Drawing.Point(907, 38);
+            this.microphone.Name = "microphone";
+            this.microphone.Size = new System.Drawing.Size(28, 35);
+            this.microphone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.microphone.TabIndex = 49;
+            this.microphone.TabStop = false;
+            this.microphone.UseTransparentBackground = true;
             // 
             // label2
             // 
@@ -166,23 +179,6 @@
             this.themdonhang.TabIndex = 0;
             this.themdonhang.Text = "Thêm";
             // 
-            // guna2TextBox1
-            // 
-            this.guna2TextBox1.BorderRadius = 15;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.Location = new System.Drawing.Point(697, 33);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.PlaceholderText = "Thanh tìm kiếm";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(249, 40);
-            this.guna2TextBox1.TabIndex = 4;
-            // 
             // guna2ComboBox1
             // 
             this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
@@ -229,6 +225,23 @@
             this.guna2ComboBox3.Size = new System.Drawing.Size(213, 36);
             this.guna2ComboBox3.TabIndex = 8;
             // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.BorderRadius = 15;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
+            this.guna2TextBox1.Location = new System.Drawing.Point(697, 33);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.guna2TextBox1.PlaceholderText = "Thanh tìm kiếm";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(249, 40);
+            this.guna2TextBox1.TabIndex = 4;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
@@ -238,19 +251,7 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(992, 586);
             this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // microphone
-            // 
-            this.microphone.FillColor = System.Drawing.Color.Transparent;
-            this.microphone.Image = global::GUI.Properties.Resources.mic;
-            this.microphone.ImageRotate = 0F;
-            this.microphone.Location = new System.Drawing.Point(907, 38);
-            this.microphone.Name = "microphone";
-            this.microphone.Size = new System.Drawing.Size(28, 35);
-            this.microphone.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.microphone.TabIndex = 49;
-            this.microphone.TabStop = false;
-            this.microphone.UseTransparentBackground = true;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // UC_QuanLyDonHang
             // 

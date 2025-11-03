@@ -30,7 +30,7 @@ namespace GUI
     {
         Name = "scrollHost",
         Dock = DockStyle.Fill,
-        AutoScroll = true,
+        AutoScroll = false, // nếu cần cuộn thì đặt true
         BackColor = Color.Transparent,
         RightToLeft = RightToLeft.No
     };
@@ -44,7 +44,8 @@ namespace GUI
         AutoSizeMode = AutoSizeMode.GrowAndShrink,
         Dock = DockStyle.Top,
         BackColor = Color.Transparent,
-        RightToLeft = RightToLeft.No
+        RightToLeft = RightToLeft.No,
+        Padding = new Padding(35, 0, 0, 0) // dịch nhẹ sang phải/trái (hiệu quả thật sự)
     };
     scrollHost.Controls.Add(contentPanel);
 
@@ -65,44 +66,51 @@ namespace GUI
         Name = "lblIntro",
         BackColor = Color.Transparent,
         AutoSize = true,               // tự giãn theo chiều cao
-        Padding = new Padding(2, 0, 2, 4),
-        Font = new Font("Segoe UI", 16f),
+                        
+        Font = new Font("Segoe UI", 13.5f),
         Text = introHtml,
         ForeColor = Color.White,
-        RightToLeft = RightToLeft.No
+        RightToLeft = RightToLeft.No,
+        Location = new Point(contentPanel.Padding.Left, 0) // vị trí ban đầu
     };
 
     contentPanel.Controls.Add(html);
 
-    // Cập nhật bề rộng tối đa của label để bọc dòng đúng và không bị che bởi thanh cuộn
-    void UpdateTextWidth()
+    // Tùy chọn căn giữa nội dung trong container (không phải căn giữa chữ)
+    bool centerInContainer = false; // bật = căn giữa; tắt = dùng padding để dịch nhẹ sang phải
+
+    void UpdateTextWidthAndPosition()
     {
-        if (scrollHost.IsHandleCreated)
+        int scrollBarWidth = (scrollHost.VerticalScroll.Visible ? SystemInformation.VerticalScrollBarWidth : 0);
+        int availableWidth = Math.Max(
+            100,
+            scrollHost.ClientSize.Width
+            - scrollBarWidth
+            - gradient_box_message.Padding.Horizontal
+            - contentPanel.Padding.Horizontal
+        );
+
+        // Giới hạn bề rộng để bọc dòng đúng
+        html.MaximumSize = new Size(availableWidth, 0);
+
+        // Cập nhật kích thước ưa thích để tính vị trí
+        var preferred = html.PreferredSize;
+        int left = contentPanel.Padding.Left;
+
+        if (centerInContainer)
         {
-            // nếu đã có thanh cuộn dọc, trừ thêm chiều rộng thanh cuộn để chữ không bị che
-            int scrollBarWidth = scrollHost.VerticalScroll.Visible ? SystemInformation.VerticalScrollBarWidth : 0;
-            int maxWidth = Math.Max(
-                100,
-                scrollHost.ClientSize.Width
-                - scrollBarWidth
-                - html.Padding.Horizontal
-                - gradient_box_message.Padding.Horizontal
-            );
-            html.MaximumSize = new Size(maxWidth, 0); // 0 = không giới hạn chiều cao
+            // căn giữa control trong vùng khả dụng, không ảnh hưởng text-align: justify
+            left = contentPanel.Padding.Left + Math.Max(0, (availableWidth - preferred.Width) / 2);
         }
-        else
-        {
-            // fallback an toàn khi handle chưa tạo
-            int maxWidth = Math.Max(100, gradient_box_message.ClientSize.Width - gradient_box_message.Padding.Horizontal - html.Padding.Horizontal);
-            html.MaximumSize = new Size(maxWidth, 0);
-        }
+
+        html.Location = new Point(left, 0);
     }
 
     // Gọi lần đầu và gắn các sự kiện để cập nhật động
-    UpdateTextWidth();
-    gradient_box_message.Resize += (s, _e) => { UpdateTextWidth(); gradient_box_message.Invalidate(); };
-    scrollHost.SizeChanged += (s, _e) => UpdateTextWidth();
-    scrollHost.Layout += (s, _e) => UpdateTextWidth(); // chạy lại khi thanh cuộn xuất hiện/ẩn đi
+    UpdateTextWidthAndPosition();
+    gradient_box_message.Resize += (s, _e) => { UpdateTextWidthAndPosition(); gradient_box_message.Invalidate(); };
+    scrollHost.SizeChanged += (s, _e) => UpdateTextWidthAndPosition();
+    scrollHost.Layout += (s, _e) => UpdateTextWidthAndPosition();
 }
 
         private void slogan3_Click(object sender, EventArgs e)

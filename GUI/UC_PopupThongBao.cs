@@ -32,8 +32,8 @@ namespace GUI
 
         private void btnSapHetHan_Click(object sender, EventArgs e)
         {
-            // Nếu muốn luôn dữ liệu mới mỗi lần bấm tab, mở dòng sau
-            // RefreshDataFromDb();
+            // luôn nạp mới để phản ánh trạng thái cập nhật trong DB
+            RefreshDataFromDb();
             btnSapHetHan.FillColor = Color.FromArgb(90, 130, 90);
             btnQuaHan.FillColor = Color.Transparent;
             LoadDonHang(donHangSapHetHan);
@@ -41,33 +41,46 @@ namespace GUI
 
         private void btnQuaHan_Click(object sender, EventArgs e)
         {
-            // RefreshDataFromDb();
+            // luôn nạp mới để phản ánh trạng thái cập nhật trong DB
+            RefreshDataFromDb();
             btnQuaHan.FillColor = Color.FromArgb(90, 130, 90);
             btnSapHetHan.FillColor = Color.Transparent;
             LoadDonHang(donHangQuaHan);
         }
 
-        // Nạp dữ liệu từ BLL và lọc theo Ngày kết thúc hợp đồng
+        // Nạp dữ liệu từ BLL và lọc theo Ngày dự kiến trả kết quả + Trạng thái
         private void RefreshDataFromDb()
         {
             try
             {
-                var dtHD = BLL_HopDong.GetAllHopDong();
-                var dtDH = BLL_DonHang.GetAllDonHang();
+                var dtHD = BLL_HopDong.GetAllHopDong();                 // để lấy TenCongTy
+                var dtDH = BLL_DonHang.GetAllDonHang();                 // chứa NgayDuKienTraKetQua, TrangThaiID
+                var dtTT = BLL_DonHang.GetAllTrangThaiDonHang();        // map TrangThaiID -> TenTrangThai
 
-                // Build index HopDongID -> info (NgayKetThuc, TenCongTy)
-                var hdIndex = new Dictionary<string, HopDongInfo>(StringComparer.OrdinalIgnoreCase);
+                // Build index HopDongID -> TenCongTy
+                var hdIndex = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
                 if (dtHD != null)
                 {
                     foreach (DataRow r in dtHD.Rows)
                     {
                         string id = ToStr(r, "HopDongID");
                         if (string.IsNullOrWhiteSpace(id)) continue;
-
-                        DateTime? nkt = r["NgayKetThuc"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(r["NgayKetThuc"]);
                         string tenCty = dtHD.Columns.Contains("TenCongTy") ? ToStr(r, "TenCongTy") : null;
+                        if (!hdIndex.ContainsKey(id))
+                            hdIndex[id] = tenCty ?? "(N/A)";
+                    }
+                }
 
-                        hdIndex[id] = new HopDongInfo { HopDongID = id, TenCongTy = tenCty, NgayKetThuc = nkt };
+                // Build index TrangThaiID -> TenTrangThai
+                var ttIndex = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                if (dtTT != null)
+                {
+                    foreach (DataRow r in dtTT.Rows)
+                    {
+                        string id = Convert.ToString(r["TrangThaiID"] ?? "");
+                        string name = Convert.ToString(r["TenTrangThai"] ?? "");
+                        if (!string.IsNullOrEmpty(id) && !ttIndex.ContainsKey(id))
+                            ttIndex[id] = name;
                     }
                 }
 
@@ -79,23 +92,43 @@ namespace GUI
                 {
                     foreach (DataRow r in dtDH.Rows)
                     {
+                        // Ngày dự kiến trả kết quả phải có
+                        if (!dtDH.Columns.Contains("NgayDuKienTraKetQua") || r["NgayDuKienTraKetQua"] == DBNull.Value)
+                            continue;
+
+                        DateTime duKien = Convert.ToDateTime(r["NgayDuKienTraKetQua"]).Date;
+                        int days = (duKien - today).Days;
+
+                        // Trạng thái
+                        string ttId = FirstNonEmpty(r, "TrangThaiID") ?? "";
+                        string ttName = ttIndex.TryGetValue(ttId, out var nm) ? nm : "";
+
+                        // Bỏ qua cả 2 tab nếu Hoàn thành
+                        if (string.Equals(ttName, "Hoàn thành", StringComparison.OrdinalIgnoreCase))
+                            continue;
+
                         string hopDongId = FirstNonEmpty(r, "HopDongID");
-                        if (string.IsNullOrWhiteSpace(hopDongId)) continue;
-                        if (!hdIndex.TryGetValue(hopDongId, out var hd) || !hd.NgayKetThuc.HasValue) continue;
+                        // Chỉ hiển thị tên đơn hàng (MaDonHang)
+                        string maDon = FirstNonEmpty(r, "MaDonHang", "DonHangID", "MaDon") ?? "(N/A)";
+                        string khach = "(N/A)";
+                        if (!string.IsNullOrWhiteSpace(hopDongId) && hdIndex.TryGetValue(hopDongId, out var tenCty))
+                            khach = tenCty;
+                        // Ghi chú
+                        string ghiChu = r.Table.Columns.Contains("GhiChu") ? Convert.ToString(r["GhiChu"] ?? "") : null;
 
-                        int days = (hd.NgayKetThuc.Value.Date - today).Days;
+                        var item = new DonHang(maDon, khach, null, null, duKien, hopDongId);
+                        item.GhiChu = ghiChu;
 
-                        string maDon = FirstNonEmpty(r, "DonHangID", "MaDonHang", "MaDon") ?? "(N/A)";
-                        string loaiDon = FirstNonEmpty(r, "TenLoaiDon", "LoaiDon") ?? "(N/A)";
-                        string phong = FirstNonEmpty(r, "TenPhong", "Phong", "PhongBan", "PhongBanID") ?? "(N/A)";
-                        string khach = string.IsNullOrWhiteSpace(hd.TenCongTy) ? "(N/A)" : hd.TenCongTy;
-
-                        var item = new DonHang(maDon, khach, loaiDon, phong, hd.NgayKetThuc.Value, hopDongId);
-
-                        // Sắp hết hạn: 0..3 ngày
-                        if (days >= 0 && days <= 3) sapHet.Add(item);
-                        // Quá hạn: < 0
-                        else if (days < 0) quaHan.Add(item);
+                        // Sắp hết hạn: chỉ khi Đang xử lý và 0..3 ngày
+                        if (string.Equals(ttName, "Đang xử lý", StringComparison.OrdinalIgnoreCase) && days >= 0 && days <= 3)
+                        {
+                            sapHet.Add(item);
+                        }
+                        // Quá hạn: < 0 (trừ Hoàn thành đã loại ở trên)
+                        else if (days < 0)
+                        {
+                            quaHan.Add(item);
+                        }
                     }
                 }
 
@@ -175,14 +208,19 @@ namespace GUI
             };
             header.Controls.Add(lblCountdown);
 
-            // Nội dung chi tiết đơn hàng
+            // Chỉ hiển thị: MaDonHang, Tên công ty, Dự kiến trả KQ, Ghi chú
+            string note = string.IsNullOrWhiteSpace(dh.GhiChu) ? "ko ghi chú" : dh.GhiChu;
             var lbl = new Label
             {
                 AutoSize = false,
                 Dock = DockStyle.Fill,
                 Font = new Font("Segoe UI", 9),
                 ForeColor = Color.White,
-                Text = $"Mã đơn hàng: {dh.MaDon}\nKhách hàng: {dh.KhachHang}\nLoại đơn: {dh.LoaiDon}\nPhòng: {dh.Phong}\nNgày hết hạn: {dh.NgayHetHan:dd-MM-yyyy}"
+                Text =
+                    $"Đơn hàng: {dh.MaDon}\n" +
+                    $"KH: {dh.KhachHang}\n" +
+                    $"Dự kiến trả KQ: {dh.NgayHetHan:dd-MM-yyyy}\n" +
+                    $"Ghi chú: {note}"
             };
 
             // Thứ tự thêm: Fill trước, rồi Top để Dock hoạt động đúng
@@ -241,6 +279,7 @@ namespace GUI
         public string Phong { get; set; }
         public DateTime NgayHetHan { get; set; }
         public string HopDongID { get; set; }
+        public string GhiChu { get; set; }
 
         public DonHang(string ma, string kh, string loai, string phong, DateTime ngay, string hopDongId)
         {

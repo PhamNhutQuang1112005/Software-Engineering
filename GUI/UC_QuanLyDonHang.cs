@@ -358,13 +358,14 @@ namespace GUI
             string ghiChu      = Convert.ToString(row.Table.Columns.Contains("GhiChu") ? row["GhiChu"] : "");
 
             const int fixedWidth = 420;
+            const int fixedHeight = 150; // CHIỀU CAO CỐ ĐỊNH CỦA THẺ (bạn có thể chỉnh)
             var card = new Guna2Panel
             {
                 Width = fixedWidth,
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                MinimumSize = new Size(fixedWidth, 0),
-                MaximumSize = new Size(fixedWidth, int.MaxValue),
+                Height = fixedHeight,
+                AutoSize = false,                           // cố định kích thước
+                MinimumSize = new Size(fixedWidth, fixedHeight),
+                MaximumSize = new Size(fixedWidth, fixedHeight),
 
                 BorderRadius = 18,
                 BorderColor  = ClrOutline,
@@ -383,39 +384,38 @@ namespace GUI
 
             Func<string, Font, Label> L = (text, font) => new Label
             {
-                AutoSize = true,
+                AutoSize = false,
                 MaximumSize = new Size(contentWidth, 0),
                 Dock = DockStyle.Top,
+                Height = 22,                      // mỗi dòng ~1 dòng, cố định
                 Text = text,
                 Font = font ?? new Font("Segoe UI", 12),
                 TextAlign = ContentAlignment.MiddleLeft,
                 ForeColor = ClrText,
-                BackColor = Color.Transparent
+                BackColor = Color.Transparent,
+                AutoEllipsis = true               // cắt gọn nếu dài
             };
 
-            var lblHeader    = L(string.Format("|{0}",maDonHang), new Font("Segoe UI", 11, FontStyle.Bold));
-            var lblKH        = L(string.Format("👤 KH: {0}{1}{2}{3}",
-                                    string.IsNullOrEmpty(khachHangID) ? "" : khachHangID,
-                                    string.IsNullOrEmpty(maKhachHang) ? "" : (" (" + maKhachHang + ")"),
-                                    (string.IsNullOrEmpty(khachHangID) && string.IsNullOrEmpty(maKhachHang)) ? "" : " - ",
-                                    string.IsNullOrEmpty(tenCongTy) ? "(Chưa có tên)" : tenCongTy), null);
-            var lblHD        = L(string.Format("📄 HĐ: {0}{1}{2}",
-                                    string.IsNullOrEmpty(hopDongID) ? "" : hopDongID,
-                                    string.IsNullOrEmpty(maHopDong) ? "" : " - ",
-                                    maHopDong), null);
-            var lblTrangThai = L(string.Format("📌 Trạng thái: {0}{1}{2}",
-                                    string.IsNullOrEmpty(tenTrangThai) ? "" : tenTrangThai,
-                                    (string.IsNullOrEmpty(tenTrangThai) || string.IsNullOrEmpty(trangThaiID)) ? "" : " (",
-                                    string.IsNullOrEmpty(trangThaiID) ? "" : (trangThaiID + (string.IsNullOrEmpty(tenTrangThai) ? "" : ")"))), null);
-            var lblDates     = L(string.Format("🗓 Mẫu: {0} | Dự kiến: {1} | TT: {2}", ngayLayMau, ngayDuKien, ngayTraTT), null);
+            // Header: chỉ MaDonHang (không ID)
+            var lblHeader    = L($"{maDonHang}", new Font("Segoe UI", 11, FontStyle.Bold));
+
+            // KH: chỉ tên công ty, KHÔNG hiển thị KhachHangID/MaKhachHang
+            var lblKH        = L($"👤 KH: { (string.IsNullOrEmpty(tenCongTy) ? "(Chưa có tên)" : tenCongTy) }", null);
+
+            // HĐ: chỉ mã hợp đồng (tên), KHÔNG hiển thị HopDongID
+            var lblHD        = L($"📄 HĐ: { (string.IsNullOrEmpty(maHopDong) ? "" : maHopDong) }", null);
+
+            // Trạng thái: chỉ tên trạng thái, KHÔNG hiển thị TrangThaiID
+            var lblTrangThai = L($"📌 Trạng thái: { (string.IsNullOrEmpty(tenTrangThai) ? "" : tenTrangThai) }", null);
+
+            var lblDates     = L($"🗓 Mẫu: {ngayLayMau} | Dự kiến: {ngayDuKien} | TT: {ngayTraTT}", null);
             var lblKy        = L(string.IsNullOrWhiteSpace(ky) ? "" : ("⏱ Kỳ: " + ky), null);
             var lblGhiChu    = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);
-          
-            lblGhiChu.MaximumSize = new Size(contentWidth, 20);  // Giới hạn chiều cao ~1 dòng
-            lblGhiChu.AutoEllipsis = true;
-            lblGhiChu.TextAlign = ContentAlignment.MiddleLeft;
 
+            // Ghi chú: giới hạn ~1 dòng trong chiều cao cố định
+            lblGhiChu.Height = 20;
 
+            // Thêm theo thứ tự, đảm bảo vừa chiều cao cố định
             card.Controls.Add(lblGhiChu);
             if (!string.IsNullOrEmpty(ky)) card.Controls.Add(lblKy);
             card.Controls.Add(lblDates);
@@ -676,5 +676,8 @@ namespace GUI
         {
 
         }
+
+        // Paint handler stub (Designer is wired to it)
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
     }
 }
