@@ -106,8 +106,8 @@ namespace GUI
             // card gọn, viền SeaGreen nhạt
             Guna2Panel panel = new Guna2Panel
             {
-                Width = 200,
-                Height = 88,
+                Width = 165,
+                Height = 100,
                 BorderColor = Color.FromArgb(190, 230, 220),
                 BorderThickness = 1,
                 BorderRadius = 12,
@@ -124,7 +124,7 @@ namespace GUI
                 Left = 12,
                 Top = 8
             };
-
+            lbl.BackColor = Color.Transparent;
             Guna2Button btn = new Guna2Button
             {
                 Text = "Chọn",
@@ -136,6 +136,7 @@ namespace GUI
             btn.AutoRoundedCorners = true;
             btn.BorderRadius = 15;
             btn.FillColor = Color.SeaGreen;
+            btn.BackColor= Color.Transparent;
             btn.ForeColor = Color.White;
             btn.Font = new Font("Segoe UI", 9f);
 

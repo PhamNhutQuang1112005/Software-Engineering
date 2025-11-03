@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DTO_DonHang.cs" />
     <Compile Include="DTO_DonVi.cs" />
     <Compile Include="DTO_HopDong.cs" />
     <Compile Include="DTO_KyHanHopDong.cs" />

@@ -44,6 +44,14 @@
             this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Ngay_LayMau = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Ngay_Du_kien = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Dia_Chi_text = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.Ngay_Thuc_te = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.SuspendLayout();
             // 
             // guna2ComboBox5
@@ -62,7 +70,7 @@
             "Hoàn thành",
             "Quá hạn"});
             this.guna2ComboBox5.Location = new System.Drawing.Point(176, 196);
-            this.guna2ComboBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2ComboBox5.Margin = new System.Windows.Forms.Padding(2);
             this.guna2ComboBox5.Name = "guna2ComboBox5";
             this.guna2ComboBox5.Size = new System.Drawing.Size(145, 36);
             this.guna2ComboBox5.TabIndex = 49;
@@ -95,8 +103,8 @@
             this.guna2Button6.FillColor = System.Drawing.Color.Green;
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(390, 413);
-            this.guna2Button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Button6.Location = new System.Drawing.Point(619, 413);
+            this.guna2Button6.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(84, 35);
             this.guna2Button6.TabIndex = 47;
@@ -116,8 +124,8 @@
             this.guna2Button5.FillColor = System.Drawing.Color.Green;
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(200, 413);
-            this.guna2Button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Button5.Location = new System.Drawing.Point(224, 413);
+            this.guna2Button5.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(84, 35);
             this.guna2Button5.TabIndex = 46;
@@ -137,7 +145,7 @@
             this.guna2ComboBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox4.ItemHeight = 30;
             this.guna2ComboBox4.Location = new System.Drawing.Point(176, 146);
-            this.guna2ComboBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2ComboBox4.Margin = new System.Windows.Forms.Padding(2);
             this.guna2ComboBox4.Name = "guna2ComboBox4";
             this.guna2ComboBox4.Size = new System.Drawing.Size(145, 36);
             this.guna2ComboBox4.TabIndex = 45;
@@ -162,7 +170,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.Window;
-            this.label8.Location = new System.Drawing.Point(28, 68);
+            this.label8.Location = new System.Drawing.Point(28, 85);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 19);
@@ -171,6 +179,7 @@
             // 
             // guna2TextBox4
             // 
+            this.guna2TextBox4.AutoScroll = true;
             this.guna2TextBox4.BackColor = System.Drawing.Color.Transparent;
             this.guna2TextBox4.BorderRadius = 15;
             this.guna2TextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -188,9 +197,12 @@
             this.guna2TextBox4.Name = "guna2TextBox4";
             this.guna2TextBox4.PlaceholderText = "";
             this.guna2TextBox4.SelectedText = "";
-            this.guna2TextBox4.Size = new System.Drawing.Size(610, 78);
+            this.guna2TextBox4.Size = new System.Drawing.Size(824, 87);
             this.guna2TextBox4.TabIndex = 41;
+            this.guna2TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.guna2TextBox4.TextChanged += new System.EventHandler(this.guna2TextBox4_TextChanged);
+            this.guna2TextBox4.Multiline = true;
+
             // 
             // label7
             // 
@@ -247,9 +259,9 @@
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(216)))), ((int)(((byte)(112)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(245)))), ((int)(((byte)(210)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(-6, 250);
-            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(680, 8);
+            this.guna2GradientPanel1.Size = new System.Drawing.Size(879, 8);
             this.guna2GradientPanel1.TabIndex = 52;
             // 
             // guna2GradientPanel2
@@ -257,9 +269,9 @@
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(216)))), ((int)(((byte)(112)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(245)))), ((int)(((byte)(210)))));
             this.guna2GradientPanel2.Location = new System.Drawing.Point(-6, 119);
-            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2GradientPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
-            this.guna2GradientPanel2.Size = new System.Drawing.Size(680, 8);
+            this.guna2GradientPanel2.Size = new System.Drawing.Size(879, 8);
             this.guna2GradientPanel2.TabIndex = 51;
             // 
             // guna2ComboBox1
@@ -275,7 +287,7 @@
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Location = new System.Drawing.Point(176, 68);
-            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(145, 36);
             this.guna2ComboBox1.TabIndex = 46;
@@ -295,7 +307,7 @@
             this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(486, 68);
+            this.guna2TextBox2.Location = new System.Drawing.Point(530, 5);
             this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PlaceholderText = "";
@@ -312,7 +324,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.Window;
-            this.label6.Location = new System.Drawing.Point(381, 85);
+            this.label6.Location = new System.Drawing.Point(386, 9);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(101, 19);
@@ -320,12 +332,141 @@
             this.label6.Text = "Mã đơn hàng:";
             this.label6.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(352, 28);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(106, 19);
+            this.label1.TabIndex = 53;
+            this.label1.Text = "Ngày lấy mẫu:";
+            // 
+            // Ngay_LayMau
+            // 
+            this.Ngay_LayMau.AutoRoundedCorners = true;
+            this.Ngay_LayMau.Checked = true;
+            this.Ngay_LayMau.FillColor = System.Drawing.Color.White;
+            this.Ngay_LayMau.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Ngay_LayMau.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.Ngay_LayMau.Location = new System.Drawing.Point(550, 12);
+            this.Ngay_LayMau.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.Ngay_LayMau.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.Ngay_LayMau.Name = "Ngay_LayMau";
+            this.Ngay_LayMau.Size = new System.Drawing.Size(306, 39);
+            this.Ngay_LayMau.TabIndex = 54;
+            this.Ngay_LayMau.Value = new System.DateTime(2025, 11, 3, 14, 5, 7, 621);
+            this.Ngay_LayMau.ValueChanged += new System.EventHandler(this.guna2DateTimePicker1_ValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.SystemColors.Window;
+            this.label2.Location = new System.Drawing.Point(352, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(184, 19);
+            this.label2.TabIndex = 55;
+            this.label2.Text = "Ngày trả kết quả dự kiến :";
+            // 
+            // Ngay_Du_kien
+            // 
+            this.Ngay_Du_kien.AutoRoundedCorners = true;
+            this.Ngay_Du_kien.Checked = true;
+            this.Ngay_Du_kien.FillColor = System.Drawing.Color.White;
+            this.Ngay_Du_kien.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Ngay_Du_kien.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.Ngay_Du_kien.Location = new System.Drawing.Point(550, 78);
+            this.Ngay_Du_kien.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.Ngay_Du_kien.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.Ngay_Du_kien.Name = "Ngay_Du_kien";
+            this.Ngay_Du_kien.Size = new System.Drawing.Size(306, 36);
+            this.Ngay_Du_kien.TabIndex = 56;
+            this.Ngay_Du_kien.Value = new System.DateTime(2025, 11, 3, 14, 5, 7, 621);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.SystemColors.Window;
+            this.label3.Location = new System.Drawing.Point(352, 200);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(115, 19);
+            this.label3.TabIndex = 57;
+            this.label3.Text = "Địa chỉ lấy mẫu:";
+            // 
+            // Dia_Chi_text
+            // 
+            this.Dia_Chi_text.BackColor = System.Drawing.Color.Transparent;
+            this.Dia_Chi_text.BorderRadius = 15;
+            this.Dia_Chi_text.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Dia_Chi_text.DefaultText = "";
+            this.Dia_Chi_text.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Dia_Chi_text.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Dia_Chi_text.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Dia_Chi_text.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Dia_Chi_text.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Dia_Chi_text.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Dia_Chi_text.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.Dia_Chi_text.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Dia_Chi_text.Location = new System.Drawing.Point(550, 196);
+            this.Dia_Chi_text.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Dia_Chi_text.Name = "Dia_Chi_text";
+            this.Dia_Chi_text.PlaceholderText = "";
+            this.Dia_Chi_text.SelectedText = "";
+            this.Dia_Chi_text.Size = new System.Drawing.Size(307, 36);
+            this.Dia_Chi_text.TabIndex = 58;
+            this.Dia_Chi_text.TextChanged += new System.EventHandler(this.Dia_Chi_text_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.SystemColors.Window;
+            this.label4.Location = new System.Drawing.Point(352, 150);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(176, 19);
+            this.label4.TabIndex = 59;
+            this.label4.Text = "Ngày trả kết quả thực tế:";
+            // 
+            // Ngay_Thuc_te
+            // 
+            this.Ngay_Thuc_te.AutoRoundedCorners = true;
+            this.Ngay_Thuc_te.Checked = true;
+            this.Ngay_Thuc_te.FillColor = System.Drawing.Color.White;
+            this.Ngay_Thuc_te.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Ngay_Thuc_te.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.Ngay_Thuc_te.Location = new System.Drawing.Point(550, 146);
+            this.Ngay_Thuc_te.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.Ngay_Thuc_te.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.Ngay_Thuc_te.Name = "Ngay_Thuc_te";
+            this.Ngay_Thuc_te.Size = new System.Drawing.Size(306, 36);
+            this.Ngay_Thuc_te.TabIndex = 60;
+            this.Ngay_Thuc_te.Value = new System.DateTime(2025, 11, 3, 14, 5, 7, 621);
+            // 
             // GUI_FormThemDonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(674, 465);
+            this.ClientSize = new System.Drawing.Size(873, 465);
+            this.Controls.Add(this.Ngay_Thuc_te);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Dia_Chi_text);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Ngay_Du_kien);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Ngay_LayMau);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.guna2GradientPanel2);
@@ -339,10 +480,10 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.guna2TextBox4);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GUI_FormThemDonHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -370,5 +511,13 @@
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker Ngay_LayMau;
+        private System.Windows.Forms.Label label2;
+        private Guna.UI2.WinForms.Guna2DateTimePicker Ngay_Du_kien;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2TextBox Dia_Chi_text;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2DateTimePicker Ngay_Thuc_te;
     }
 }

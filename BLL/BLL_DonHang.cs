@@ -1,38 +1,53 @@
 ﻿using System.Data;
 using DAL;
+using DTO;
 
 namespace BLL
 {
     public static class BLL_DonHang
     {
+        // ====== GETTERS ======
         public static DataTable GetAllDonHang()
             => DAL_DonHang.GetAllDonHang();
 
-        public static void ThemDonHang(string DonHangID,string maDonHang, string hopDongID, string trangThaiID, string moTa,string khachhang)
-            => DAL_DonHang.ThemDonHang(DonHangID,maDonHang, hopDongID, trangThaiID, moTa,khachhang);
-
-        public static void XoaDonHang(string donHangID)
-            => DAL_DonHang.XoaDonHang(donHangID);
+        public static DataTable GetDonHangByID(string donHangID)
+            => DAL_DonHang.GetDonHangByID(donHangID);
 
         public static DataTable GetAllTrangThaiDonHang()
             => DAL_DonHang.GetAllTrangThaiDonHang();
 
-
         public static DataTable GetAllHopDong()
             => DAL_DonHang.GetAllHopDong();
+
         public static string SinhMaDonHang()
-        {
-            return DAL_DonHang.GetMaDonHangTuDong();
-        }
-        public static void CapNhatDonHang(string oldDonHangID, string newDonHangID, string maDonHang, string hopDongID, string trangThaiID, string ghiChu, string khachHangID)
-        {
-            DAL_DonHang.CapNhatDonHang(oldDonHangID, newDonHangID, maDonHang, hopDongID, trangThaiID, ghiChu, khachHangID);
-        }
-        public static DataTable GetDonHangByID(string donHangID)
-        {
-            return DAL_DonHang.GetDonHangByID(donHangID);
-        }
+            => DAL_DonHang.GetMaDonHangTuDong();
 
+        // ====== LEGACY API (giữ nguyên để tương thích code cũ) ======
+        public static void ThemDonHang(
+            string DonHangID, string maDonHang, string hopDongID,
+            string trangThaiID, string moTa, string khachhang
+        )
+            => DAL_DonHang.ThemDonHang(DonHangID, maDonHang, hopDongID, trangThaiID, moTa, khachhang);
 
+        public static void CapNhatDonHang(
+            string oldDonHangID, string newDonHangID, string maDonHang, string hopDongID,
+            string trangThaiID, string ghiChu, string khachHangID
+        )
+            => DAL_DonHang.CapNhatDonHang(oldDonHangID, newDonHangID, maDonHang, hopDongID, trangThaiID, ghiChu, khachHangID);
+
+        public static void XoaDonHang(string donHangID)
+            => DAL_DonHang.XoaDonHang(donHangID);
+
+        // ====== NEW API dùng DTO gọn gàng (có địa chỉ & ngày) ======
+        public static void ThemDonHang(DTO_DonHang dh)
+            => DAL_DonHang.ThemDonHang(dh);
+
+        // Update giữ nguyên DonHangID; nếu bạn muốn đổi ID, dùng overload phía dưới
+        public static void CapNhatDonHang(DTO_DonHang dh)
+            => DAL_DonHang.CapNhatDonHang(dh.DonHangID, dh);
+
+        // Overload cho phép đổi ID (old -> new)
+        public static void CapNhatDonHang(string oldDonHangID, DTO_DonHang dh)
+            => DAL_DonHang.CapNhatDonHang(oldDonHangID, dh);
     }
 }

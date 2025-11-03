@@ -77,7 +77,7 @@ namespace GUI
             this.lblDonHang.ForeColor = System.Drawing.Color.White;
             this.lblDonHang.Location = new System.Drawing.Point(20, 8);
             this.lblDonHang.Name = "lblDonHang";
-            this.lblDonHang.Size = new System.Drawing.Size(93, 25);
+            this.lblDonHang.Size = new System.Drawing.Size(111, 30);
             this.lblDonHang.TabIndex = 0;
             this.lblDonHang.Text = "Đơn hàng";
             // 
@@ -89,7 +89,7 @@ namespace GUI
             this.lblDiaChi.ForeColor = System.Drawing.Color.White;
             this.lblDiaChi.Location = new System.Drawing.Point(21, 33);
             this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(67, 19);
+            this.lblDiaChi.Size = new System.Drawing.Size(83, 23);
             this.lblDiaChi.TabIndex = 1;
             this.lblDiaChi.Text = "Địa chỉ: …";
             // 
@@ -106,7 +106,7 @@ namespace GUI
             // splitMain.Panel2
             // 
             this.splitMain.Panel2.Controls.Add(this.panelRight);
-            this.splitMain.Size = new System.Drawing.Size(872, 225);
+            this.splitMain.Size = new System.Drawing.Size(872, 325);
             this.splitMain.SplitterDistance = 580;
             this.splitMain.TabIndex = 0;
             // 
@@ -117,7 +117,7 @@ namespace GUI
             this.panelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLeft.Location = new System.Drawing.Point(0, 0);
             this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(580, 225);
+            this.panelLeft.Size = new System.Drawing.Size(580, 325);
             this.panelLeft.TabIndex = 0;
             // 
             // pnlViTri
@@ -127,7 +127,7 @@ namespace GUI
             this.pnlViTri.Location = new System.Drawing.Point(0, 28);
             this.pnlViTri.Name = "pnlViTri";
             this.pnlViTri.Padding = new System.Windows.Forms.Padding(10);
-            this.pnlViTri.Size = new System.Drawing.Size(580, 197);
+            this.pnlViTri.Size = new System.Drawing.Size(580, 297);
             this.pnlViTri.TabIndex = 0;
             // 
             // lblLeft
@@ -139,7 +139,7 @@ namespace GUI
             this.lblLeft.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.lblLeft.Size = new System.Drawing.Size(580, 28);
             this.lblLeft.TabIndex = 1;
-            this.lblLeft.Text = "Vị trí (3 vị trí cho địa chỉ này)";
+            this.lblLeft.Text = "Vị trí\r\n";
             // 
             // panelRight
             // 
@@ -148,7 +148,7 @@ namespace GUI
             this.panelRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRight.Location = new System.Drawing.Point(0, 0);
             this.panelRight.Name = "panelRight";
-            this.panelRight.Size = new System.Drawing.Size(288, 225);
+            this.panelRight.Size = new System.Drawing.Size(288, 325);
             this.panelRight.TabIndex = 0;
             // 
             // dgvLoaiViTri
@@ -166,9 +166,10 @@ namespace GUI
             this.dgvLoaiViTri.Name = "dgvLoaiViTri";
             this.dgvLoaiViTri.ReadOnly = true;
             this.dgvLoaiViTri.RowHeadersVisible = false;
+            this.dgvLoaiViTri.RowHeadersWidth = 51;
             this.dgvLoaiViTri.RowTemplate.Height = 28;
             this.dgvLoaiViTri.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLoaiViTri.Size = new System.Drawing.Size(288, 179);
+            this.dgvLoaiViTri.Size = new System.Drawing.Size(288, 279);
             this.dgvLoaiViTri.TabIndex = 0;
             this.dgvLoaiViTri.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLoaiViTri_CellDoubleClick);
             // 
@@ -229,7 +230,7 @@ namespace GUI
             // GUI_FormDonHangChiTiet
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(872, 299);
+            this.ClientSize = new System.Drawing.Size(872, 399);
             this.Controls.Add(this.splitMain);
             this.Controls.Add(this.header);
             this.Name = "GUI_FormDonHangChiTiet";
