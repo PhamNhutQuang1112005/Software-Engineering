@@ -1,4 +1,4 @@
-﻿namespace GUI
+﻿﻿namespace GUI
 
 
 {
@@ -847,9 +847,9 @@
             this.label6.Location = new System.Drawing.Point(44, 90);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(116, 23);
+            this.label6.Size = new System.Drawing.Size(100, 23);
             this.label6.TabIndex = 41;
-            this.label6.Text = "Số điện thoại";
+            this.label6.Text = "Email/ SĐT";
             // 
             // guna2Button6
             // 
@@ -1067,4 +1067,3 @@
         private System.Windows.Forms.Label label8;
     }
 }
-
