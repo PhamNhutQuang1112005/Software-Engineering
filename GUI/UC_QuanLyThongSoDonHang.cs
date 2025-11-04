@@ -282,7 +282,7 @@ namespace GUI
             if (!result.Columns.Contains("MaKhachHang"))  result.Columns.Add("MaKhachHang", typeof(string));
             if (!result.Columns.Contains("TenTrangThai")) result.Columns.Add("TenTrangThai", typeof(string));
             if (!result.Columns.Contains("NgayTao"))      result.Columns.Add("NgayTao", typeof(DateTime));
-
+            if (!result.Columns.Contains("DiaChi")) result.Columns.Add("DiaChi", typeof(string));
             // dict HopDong: (MaHopDong, KhachHangID)
             var hdById = new Dictionary<string, Tuple<string, string>>();
             if (dmHD != null)
@@ -419,7 +419,7 @@ namespace GUI
                                 ? Convert.ToDateTime(row["NgayTao"]).ToString("yyyy-MM-dd") : "";
             string ky          = Convert.ToString(row.Table.Columns.Contains("Ky") ? row["Ky"] : "");
             string ghiChu      = Convert.ToString(row.Table.Columns.Contains("GhiChu") ? row["GhiChu"] : "");
-
+            string diaChi      = Convert.ToString(row.Table.Columns.Contains("DiaChi") ? row["DiaChi"] : "");
             int fixedWidth = flowLayoutPanel1.ClientSize.Width - 40;
             var card = new Guna2Panel
             {
@@ -505,6 +505,9 @@ namespace GUI
                 if (sender is Guna2Panel p) SelectCard(p);
 
                 string donHangID = Convert.ToString(row["DonHangID"]);
+                string maDonHang = Convert.ToString(row["MaDonHang"] ?? "");
+                string diaChi    = Convert.ToString(row.Table.Columns.Contains("DiaChi") ? row["DiaChi"] : "");
+
                 if (string.IsNullOrEmpty(donHangID))
                 {
                     MessageBox.Show("Không tìm thấy mã đơn hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -516,7 +519,7 @@ namespace GUI
                 bll.EnsureViTriAndThongSo(donHangID);
 
                 // 🔹 Mở form chi tiết
-                using (var f = new GUI_FormDonHangChiTiet(donHangID))
+                using (var f = new GUI_FormDonHangChiTiet(donHangID,maDonHang,diaChi))
                 {
                     f.ShowDialog();
                 }

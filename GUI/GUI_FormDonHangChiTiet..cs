@@ -1,10 +1,10 @@
 ﻿// GUI/GUI_FormDonHangChiTiet.cs
+using BLL;
+using Guna.UI2.WinForms;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using BLL;
-using Guna.UI2.WinForms;
 
 namespace GUI
 {
@@ -24,15 +24,15 @@ namespace GUI
 
         public GUI_FormDonHangChiTiet(string donHangID, string tenDonHang = null, string diaChi = null) : this()
         {
-            _donHangID  = donHangID;
+            _donHangID = donHangID;
             _tenDonHang = !string.IsNullOrEmpty(tenDonHang) ? tenDonHang : ("Đơn hàng: " + donHangID);
-            _diaChi     = !string.IsNullOrEmpty(diaChi) ? diaChi : "(Chưa rõ địa chỉ)";
+            _diaChi = !string.IsNullOrEmpty(diaChi) ? diaChi : "(Chưa rõ địa chỉ)";
         }
 
         private void GUI_FormDonHangChiTiet_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(_tenDonHang)) lblDonHang.Text = _tenDonHang;
-            if (!string.IsNullOrEmpty(_diaChi))     lblDiaChi.Text  = "Địa chỉ: " + _diaChi;
+            if (!string.IsNullOrEmpty(_tenDonHang)) lblDonHang.Text ="Tên đơn hàng: "+ _tenDonHang;
+            if (!string.IsNullOrEmpty(_diaChi)) lblDiaChi.Text = "Địa chỉ: " + _diaChi;
 
             // ---- Chỉ styling UI (SeaGreen) ----
             ApplyGridTheme();
@@ -51,7 +51,7 @@ namespace GUI
                 foreach (DataRow r in dtViTri.Rows)
                 {
                     string viTriID = Convert.ToString(r["ViTriID"]);
-                    string ten     = dtViTri.Columns.Contains("TenViTri") ? Convert.ToString(r["TenViTri"]) : viTriID;
+                    string ten = dtViTri.Columns.Contains("TenViTri") ? Convert.ToString(r["TenViTri"]) : viTriID;
 
                     Control card = MakeViTriCard(ten, viTriID);
                     pnlViTri.Controls.Add(card);
@@ -75,7 +75,7 @@ namespace GUI
             dgvLoaiViTri.EnableHeadersVisualStyles = false;
             dgvLoaiViTri.ColumnHeadersDefaultCellStyle.BackColor = Color.SeaGreen;
             dgvLoaiViTri.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvLoaiViTri.ColumnHeadersDefaultCellStyle.Font      = new Font("Segoe UI Semibold", 9.5f);
+            dgvLoaiViTri.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.5f);
             dgvLoaiViTri.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(247, 252, 249);
             dgvLoaiViTri.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 230, 220);
             dgvLoaiViTri.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -96,9 +96,9 @@ namespace GUI
                 b.PressedColor = ControlPaint.Dark(fill, 0.05f);
             }
 
-            Pill(btnThemLoai,   Color.SeaGreen);
-            Pill(btnXoaLoai,    Color.FromArgb(200, 60, 60));
-            Pill(btnOpenThongSo,Color.ForestGreen);
+            Pill(btnThemLoai, Color.SeaGreen);
+            Pill(btnXoaLoai, Color.FromArgb(200, 60, 60));
+            Pill(btnOpenThongSo, Color.ForestGreen);
         }
 
         private Control MakeViTriCard(string ten, string viTriID)
@@ -136,7 +136,7 @@ namespace GUI
             btn.AutoRoundedCorners = true;
             btn.BorderRadius = 15;
             btn.FillColor = Color.SeaGreen;
-            btn.BackColor= Color.Transparent;
+            btn.BackColor = Color.Transparent;
             btn.ForeColor = Color.White;
             btn.Font = new Font("Segoe UI", 9f);
 
@@ -159,9 +159,26 @@ namespace GUI
 
             if (dgvLoaiViTri.Columns.Contains("LoaiViTriID"))
                 dgvLoaiViTri.Columns["LoaiViTriID"].Visible = false;
+
             if (dgvLoaiViTri.Columns.Contains("TenLoai"))
-                dgvLoaiViTri.Columns["TenLoai"].HeaderText = "Loại vị trí";
+            {
+                string tenViTri = "Vị trí";
+                try
+                {
+                    var vt = _bll.GetViTriByDonHang(_donHangID);
+                    int i = 1;
+                    foreach (DataRow r in vt.Rows)
+                    {
+                        if (Convert.ToString(r["ViTriID"]) == _selectedViTriID)
+                        { tenViTri = $"Vị trí {i}"; break; }
+                        i++;
+                    }
+                }
+                catch { }
+                dgvLoaiViTri.Columns["TenLoai"].HeaderText = $"{tenViTri} – Loại đo";
+            }
         }
+
 
         // ===== Giữ nguyên các handler dưới đây =====
 
@@ -196,9 +213,52 @@ namespace GUI
                         }
                     }
 
+                    // 1) Thêm vào vị trí đang chọn (giữ nguyên)
                     string loaiViTriID = _bll.AddLoaiViTriToViTri(_selectedViTriID, tenLoai);
                     if (!string.IsNullOrEmpty(loaiViTriID))
                         RefreshLoaiViTriGrid();
+
+                    // 2) ĐỒNG BỘ sang các vị trí còn lại (vị trí 2, 3) thuộc cùng Đơn hàng
+                    try
+                    {
+                        DataTable dtViTriAll = _bll.GetViTriByDonHang(_donHangID);
+                        foreach (DataRow rv in dtViTriAll.Rows)
+                        {
+                            string vtId = Convert.ToString(rv["ViTriID"]);
+                            if (string.Equals(vtId, _selectedViTriID, StringComparison.OrdinalIgnoreCase))
+                                continue; // bỏ qua vị trí đang chọn
+
+                            // Tránh thêm trùng: kiểm tra xem TenLoai đã có ở vị trí này chưa
+                            bool existed = false;
+                            DataTable dtLoaiOfVt = _bll.GetLoaiViTriByViTri(vtId);
+                            if (dtLoaiOfVt != null && dtLoaiOfVt.Columns.Contains("TenLoai"))
+                            {
+                                foreach (DataRow lr in dtLoaiOfVt.Rows)
+                                {
+                                    string ten = Convert.ToString(lr["TenLoai"]);
+                                    if (!string.IsNullOrEmpty(ten) &&
+                                        ten.Equals(tenLoai, StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        existed = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (!existed)
+                            {
+                                // Gọi đúng hàm sẵn có, truyền cùng tên loại để link/tạo giống như vị trí 1
+                                _bll.AddLoaiViTriToViTri(vtId, tenLoai);
+                            }
+                        }
+                        // (Tuỳ chọn) Thông báo nhẹ
+                        MessageBox.Show("Đã đồng bộ loại vị trí đến mọi vị trí của đơn hàng.");
+                    }
+                    catch (Exception exSync)
+                    {
+                        // Không chặn thao tác chính nếu sync lỗi; chỉ báo nhẹ
+                        MessageBox.Show("Đồng bộ sang các vị trí khác gặp lỗi: " + exSync.Message);
+                    }
                 }
             }
             catch (Exception ex)
@@ -207,13 +267,14 @@ namespace GUI
             }
         }
 
+
         private void btnXoaLoai_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_selectedViTriID) || dgvLoaiViTri.CurrentRow == null) return;
 
             DataGridViewRow row = dgvLoaiViTri.CurrentRow;
             string loaiViTriID = row.Cells["LoaiViTriID"] != null ? Convert.ToString(row.Cells["LoaiViTriID"].Value) : null;
-            string tenLoai     = row.Cells["TenLoai"]     != null ? Convert.ToString(row.Cells["TenLoai"].Value)     : null;
+            string tenLoai = row.Cells["TenLoai"] != null ? Convert.ToString(row.Cells["TenLoai"].Value) : null;
             if (string.IsNullOrEmpty(loaiViTriID)) return;
 
             if (MessageBox.Show("Xóa loại vị trí '" + tenLoai + "' khỏi vị trí này?", "Xác nhận",
@@ -237,7 +298,7 @@ namespace GUI
 
             DataGridViewRow row = dgvLoaiViTri.CurrentRow;
             string loaiViTriID = row.Cells["LoaiViTriID"] != null ? Convert.ToString(row.Cells["LoaiViTriID"].Value) : null;
-            string tenLoai     = row.Cells["TenLoai"]     != null ? Convert.ToString(row.Cells["TenLoai"].Value)     : null;
+            string tenLoai = row.Cells["TenLoai"] != null ? Convert.ToString(row.Cells["TenLoai"].Value) : null;
             if (string.IsNullOrEmpty(loaiViTriID)) return;
 
             using (GUI_FormThongSoTheoLoai f = new GUI_FormThongSoTheoLoai(_donHangID, _selectedViTriID, loaiViTriID,

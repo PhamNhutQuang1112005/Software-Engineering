@@ -51,6 +51,7 @@ namespace GUI
                 dataGridView1.Columns["VaiTroID"].Visible = false;
                 dataGridView1.Columns["PhongBanID"].Visible = false;
                 dataGridView1.Columns["NguoiDungID"].Visible = false;
+                dataGridView1.Columns["MatKhauHash"].Visible = false;
 
             }
             catch (Exception ex)
