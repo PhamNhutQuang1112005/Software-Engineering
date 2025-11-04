@@ -11,6 +11,8 @@ namespace GUI
     {
         private string _donHangID;
         public string SavedDonHangID { get; private set; }
+        private readonly UC_ThongKe _ucThongKe;
+
 
         public GUI_FormThemDonHang()
         {
@@ -46,7 +48,7 @@ namespace GUI
             {
                 // ====== TẠO MỚI ======
                 // ID để bạn điền; nếu muốn auto, dùng SinhMaDonHang của bạn
-                guna2TextBox2.Text = BLL_DonHang.SinhMaDonHang();
+                guna2TextBox2.Text = BLL_DonHang.AddMaDonHang();
 
                 // Ngày mặc định
                 Ngay_LayMau.Checked = true;
@@ -174,16 +176,21 @@ namespace GUI
                 if (string.IsNullOrEmpty(_donHangID))
                 {
                     // THÊM: không set Ngày trả thực tế
-                    BLL_DonHang.ThemDonHang(dh);
+                    BLL_DonHang.AddDonHang(dh);
                     SavedDonHangID = donhangid;
                     MessageBox.Show("Thêm đơn hàng thành công!");
+                    GUI_main.RefreshThongKeNow?.Invoke();
+
                 }
                 else
                 {
                     // SỬA
-                    BLL_DonHang.CapNhatDonHang(_donHangID, dh);
+                    BLL_DonHang.UpdateDonHang(_donHangID, dh);
                     SavedDonHangID = donhangid;
                     MessageBox.Show("Cập nhật đơn hàng thành công!");
+                    GUI_main.RefreshThongKeNow?.Invoke();
+
+                    
                 }
 
                 this.DialogResult = DialogResult.OK;

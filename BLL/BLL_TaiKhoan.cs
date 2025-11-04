@@ -12,14 +12,14 @@ namespace BLL
 {
     public class BLL_TaiKhoan
     {   
-        public void NgatKetNoiCSDL()
+        public void Disconnet()
     {
         DBConnection.CloseAllConnections();
     }
         private readonly DAL_TaiKhoan _dal = new DAL_TaiKhoan();
 
         // Đăng nhập (không gọi lại nếu đã có session ở GUI)
-        public DTO_NguoiDung DangNhap(string tenDangNhap, string matKhau)
+        public DTO_NguoiDung Login(string tenDangNhap, string matKhau)
         {
             string matKhauHash = HashMatKhau(matKhau);  // 🔐 Hash lại mật khẩu nhập vào
             return _dal.DangNhap(tenDangNhap, matKhauHash);
@@ -30,23 +30,23 @@ namespace BLL
         public DTO_NguoiDung GetUserHeaderByUsername(string tenDangNhap) => _dal.GetUserHeaderByUsername(tenDangNhap);
 
         // Danh sách / tìm kiếm
-        public DataTable LayTatCaNguoiDung() => _dal.GetAllNguoiDung_DataTable();
-        public DataTable TimKiemNguoiDung(string keyword) => _dal.TimKiemNguoiDung_DataTable(keyword);
+        public DataTable GetAllNguoiDung() => _dal.GetAllNguoiDung_DataTable();
+        public DataTable SeachNguoiDung(string keyword) => _dal.TimKiemNguoiDung_DataTable(keyword);
 
         // CRUD
-        public void ThemNguoiDung(DTO_NguoiDung dto, string matKhau)
+        public void AddNguoiDung(DTO_NguoiDung dto, string matKhau)
         {
             string matKhauHash = HashMatKhau(matKhau);
             _dal.ThemNguoiDung(dto, matKhauHash);
         }
         
-        public void SuaNguoiDung(DTO_NguoiDung dto, string matKhauNullable = null)
+        public void UpdateNguoiDung(DTO_NguoiDung dto, string matKhauNullable = null)
         {
             string matKhauHash = HashMatKhau(matKhauNullable);
             _dal.SuaNguoiDung(dto, matKhauHash);
         }
         
-        public void XoaNguoiDung(string nguoiDungID) => _dal.XoaNguoiDung(nguoiDungID);
+        public void DeleteNguoiDung(string nguoiDungID) => _dal.XoaNguoiDung(nguoiDungID);
 
         // Từ điển
         public List<DTO_VaiTro>    GetAllVaiTro()     => _dal.GetAllVaiTro();
@@ -62,7 +62,7 @@ namespace BLL
                 u["VaiTroID"] != DBNull.Value &&
                 string.Equals(u["VaiTroID"].ToString(), "VT001", StringComparison.OrdinalIgnoreCase));
         }
-        public bool DoiMatKhauBangEmail(string email, string matKhauMoi, string xacNhanMatKhau)
+        public bool ChangePassword_Email(string email, string matKhauMoi, string xacNhanMatKhau)
         {
             // 1️⃣ Lấy tất cả người dùng dưới dạng DataTable
             DataTable dt = _dal.GetAllNguoiDung_DataTable();

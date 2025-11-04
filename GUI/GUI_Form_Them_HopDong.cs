@@ -1,10 +1,10 @@
-﻿using System;
+﻿using BLL;
+using DTO;
+using System;
 using System.Data;
+using System.Data.SqlClient; // for SqlException retry handling
 using System.Linq;
 using System.Windows.Forms;
-using BLL;
-using System.Data.SqlClient; // for SqlException retry handling
-using DTO;
 namespace GUI
 {
     public partial class GUI_Form_Them_HopDong : Form
@@ -129,8 +129,8 @@ namespace GUI
                 if (kh != null)
                 {
                     khachhang.DisplayMember = "TenCongTy";     // hiển thị tên
-                    khachhang.ValueMember   = "KhachHangID";   // chọn theo ID
-                    khachhang.DataSource    = kh;
+                    khachhang.ValueMember = "KhachHangID";   // chọn theo ID
+                    khachhang.DataSource = kh;
 
                 }
 
@@ -380,18 +380,19 @@ namespace GUI
                         string currentId = BuildHopDongId(year, seq);
                         try
                         {
-                            var dtoAdd = new DTO_HopDong {
-    HopDongID   = currentId,
-    MaHopDong   = maHopDong,
-    KhachHangID = khachHangID,
-    NgayKy      = ngayKy,
-    KyHanID     = kyHanID,
-    NgayBatDau  = ngayBatDau,
-    NgayKetThuc = ngayKetThuc,
-    TrangThai   = trangThai,
-    GhiChu      = ghiChu
-};
-BLL_HopDong.ThemHopDong(dtoAdd);
+                            var dtoAdd = new DTO_HopDong
+                            {
+                                HopDongID = currentId,
+                                MaHopDong = maHopDong,
+                                KhachHangID = khachHangID,
+                                NgayKy = ngayKy,
+                                KyHanID = kyHanID,
+                                NgayBatDau = ngayBatDau,
+                                NgayKetThuc = ngayKetThuc,
+                                TrangThai = trangThai,
+                                GhiChu = ghiChu
+                            };
+                            BLL_HopDong.AddHopDong(dtoAdd);
 
                             MessageBox.Show("Thêm hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
@@ -410,18 +411,19 @@ BLL_HopDong.ThemHopDong(dtoAdd);
                 else
                 {
                     // Cập nhật
-                    var dtoUpd = new DTO_HopDong {
-    HopDongID   = hopDongID,
-    MaHopDong   = maHopDong,
-    KhachHangID = khachHangID,
-    NgayKy      = ngayKy,
-    KyHanID     = kyHanID,
-    NgayBatDau  = ngayBatDau,
-    NgayKetThuc = ngayKetThuc,
-    TrangThai   = trangThai,
-    GhiChu      = ghiChu
-};
-BLL_HopDong.SuaHopDong(dtoUpd);
+                    var dtoUpd = new DTO_HopDong
+                    {
+                        HopDongID = hopDongID,
+                        MaHopDong = maHopDong,
+                        KhachHangID = khachHangID,
+                        NgayKy = ngayKy,
+                        KyHanID = kyHanID,
+                        NgayBatDau = ngayBatDau,
+                        NgayKetThuc = ngayKetThuc,
+                        TrangThai = trangThai,
+                        GhiChu = ghiChu
+                    };
+                    BLL_HopDong.UpdateHopDong(dtoUpd);
 
                     MessageBox.Show("Cập nhật hợp đồng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

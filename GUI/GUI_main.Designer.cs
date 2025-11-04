@@ -362,7 +362,7 @@
             this.MaximizeBox = false;
             this.Name = "GUI_main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Green Sol";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GUI_main_FormClosed);
             this.Load += new System.EventHandler(this.GUI_main_Load);
             this.mainPanel.ResumeLayout(false);

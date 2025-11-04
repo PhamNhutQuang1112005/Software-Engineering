@@ -139,7 +139,7 @@ namespace GUI
             btn.BackColor = Color.Transparent;
             btn.ForeColor = Color.White;
             btn.Font = new Font("Segoe UI", 9f);
-
+            //Bấm rồi nó load lại grid loại vị trí
             btn.Click += delegate
             {
                 _selectedViTriID = viTriID;

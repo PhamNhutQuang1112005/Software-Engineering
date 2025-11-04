@@ -79,12 +79,6 @@
     <Compile Include="GUI_FormDonHangChiTiet..Designer.cs">
       <DependentUpon>GUI_FormDonHangChiTiet..cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI_FormThemThongSo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI_FormThemThongSo.Designer.cs">
-      <DependentUpon>GUI_FormThemThongSo.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI_Form_DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,9 +190,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_FormDonHangChiTiet..resx">
       <DependentUpon>GUI_FormDonHangChiTiet..cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI_FormThemThongSo.resx">
-      <DependentUpon>GUI_FormThemThongSo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_Form_DangNhap.resx">
       <DependentUpon>GUI_Form_DangNhap.cs</DependentUpon>

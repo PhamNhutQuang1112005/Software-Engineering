@@ -51,7 +51,7 @@ namespace GUI
 
             try
             {
-                DataTable dt = bllNguoiDung.TimKiemNguoiDung(tenDangNhap);
+                DataTable dt = bllNguoiDung.SeachNguoiDung(tenDangNhap);
                 if (dt == null || dt.Rows.Count == 0)
                 {
                     MessageBox.Show("Không tìm thấy tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -148,7 +148,7 @@ namespace GUI
                 }
 
                 string matKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text) ? null : txtMatKhauMoi.Text.Trim();
-                bllNguoiDung.SuaNguoiDung(dto, matKhauMoi);
+                bllNguoiDung.UpdateNguoiDung(dto, matKhauMoi);
 
                 MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -202,8 +202,8 @@ namespace GUI
         private bool changepassword()
         {
             BLL_TaiKhoan bll = new BLL_TaiKhoan();
-            DataTable dt = bll.LayTatCaNguoiDung();
-            DataTable dt1 = bllNguoiDung.TimKiemNguoiDung(tenDangNhap);
+            DataTable dt = bll.GetAllNguoiDung();
+            DataTable dt1 = bllNguoiDung.SeachNguoiDung(tenDangNhap);
 
             if (dt == null || dt.Rows.Count == 0)
             {

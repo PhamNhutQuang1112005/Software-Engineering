@@ -9,13 +9,13 @@ namespace BLL
         public static DataTable GetAllHopDong()
             => DAL_HopDong.GetAllHopDong();
 
-        public static void ThemHopDong(DTO_HopDong dto)
+        public static void AddHopDong(DTO_HopDong dto)
             => DAL_HopDong.ThemHopDong(dto);
 
-        public static void SuaHopDong(DTO_HopDong dto)
+        public static void UpdateHopDong(DTO_HopDong dto)
             => DAL_HopDong.SuaHopDong(dto);
 
-        public static void XoaHopDong(string hopDongID)
+        public static void DeleteHopDong(string hopDongID)
             => DAL_HopDong.XoaHopDong(hopDongID);
     }
 }

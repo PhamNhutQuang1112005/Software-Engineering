@@ -456,15 +456,14 @@ namespace GUI
                 BackColor = Color.Transparent
             };
 
-            var lblHeader    = L(string.Format("{0} | {1}", donHangID, maDonHang), new Font("Segoe UI", 11, FontStyle.Bold));
-            var lblKH        = L(string.Format("👤 KH: {0}{1}{2}{3}",
-                                    string.IsNullOrEmpty(khachHangID) ? "" : khachHangID,
+            var lblHeader    = L(string.Format("{0}", maDonHang), new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblKH        = L(string.Format("👤 KH: {0}{1}{2}",
                                     string.IsNullOrEmpty(maKhachHang) ? "" : (" (" + maKhachHang + ")"),
                                     (string.IsNullOrEmpty(khachHangID) && string.IsNullOrEmpty(maKhachHang)) ? "" : " - ",
                                     string.IsNullOrEmpty(tenCongTy) ? "(Chưa có tên)" : tenCongTy), null);
-            var lblHD        = L(string.Format("📄 HĐ: {0}{1}{2}",
-                                    string.IsNullOrEmpty(hopDongID) ? "" : hopDongID,
-                                    string.IsNullOrEmpty(maHopDong) ? "" : " - ",
+            var lblHD        = L(string.Format("📄 HĐ: {0}{1}",
+                                    
+                                    string.IsNullOrEmpty(maHopDong) ? "" : "",
                                     maHopDong), null);
             var lblTrangThai = L(string.Format("📌 Trạng thái: {0}{1}{2}",
                                     string.IsNullOrEmpty(tenTrangThai) ? "" : tenTrangThai,

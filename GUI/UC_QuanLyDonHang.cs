@@ -571,7 +571,7 @@ namespace GUI
             {
                 try
                 {
-                    BLL_DonHang.XoaDonHang(_selectedId);
+                    BLL_DonHang.DeleteDonHang(_selectedId);
                     ClearSelection();
                     ReloadAll();
                     MessageBox.Show("Đã xóa đơn hàng!", "Thành công");

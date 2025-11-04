@@ -152,13 +152,13 @@ namespace GUI
                 if (string.IsNullOrEmpty(khachHangID))
                 {
                     // THÊM MỚI: ID tự sinh trong proc
-                    BLL_KhachHang.ThemKhachHang(ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
+                    BLL_KhachHang.AddKhachHang(ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
                     MessageBox.Show("Thêm khách hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
                     // CẬP NHẬT
-                    BLL_KhachHang.SuaKhachHang(khachHangID, ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
+                    BLL_KhachHang.UpdateKhachHang(khachHangID, ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
                     MessageBox.Show("Cập nhật khách hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

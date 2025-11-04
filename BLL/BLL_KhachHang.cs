@@ -8,11 +8,11 @@ namespace BLL
         public static DataTable GetAllKhachHang()
             => DAL_KhachHang.GetAllKhachHang();
 
-        public static void XoaKhachHang(string id)
+        public static void DeleteKhachHang(string id)
             => DAL_KhachHang.XoaKhachHang(id);
 
         // SỬA KHÁCH HÀNG (khớp sp_KhachHang_Update)
-        public static void SuaKhachHang(
+        public static void UpdateKhachHang(
             string id,          // KhachHangID
             string ma,          // MaKhachHang
             string ten,         // TenCongTy
@@ -25,7 +25,7 @@ namespace BLL
             => DAL_KhachHang.SuaKhachHang(id, ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
 
         // THÊM KHÁCH HÀNG (ID tự sinh trong proc)
-        public static void ThemKhachHang(
+        public static void AddKhachHang(
             string ma,          // MaKhachHang
             string ten,         // TenCongTy
             string maSoThue,    // nullable

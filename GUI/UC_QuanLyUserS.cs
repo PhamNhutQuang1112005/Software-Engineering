@@ -36,7 +36,7 @@ namespace GUI
         {
             try
             {
-                DataTable dt = bllNguoiDung.LayTatCaNguoiDung();
+                DataTable dt = bllNguoiDung.GetAllNguoiDung();
                 dataGridView1.DataSource = dt;
                  dataGridView1.AllowUserToAddRows = false;
                 dataGridView1.RowHeadersVisible = false; 
@@ -95,7 +95,7 @@ namespace GUI
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
     {
         BLL_TaiKhoan bll = new BLL_TaiKhoan();
-        bll.XoaNguoiDung(id);
+        bll.DeleteNguoiDung(id);
         HienThiDanhSachNguoiDung();
     }
         }
@@ -103,7 +103,7 @@ namespace GUI
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
             string keyword = txtTimKiem.Text.Trim();
-    DataTable dt = bllNguoiDung.TimKiemNguoiDung(keyword);
+    DataTable dt = bllNguoiDung.SeachNguoiDung(keyword);
     dataGridView1.DataSource = dt;
         }
     }

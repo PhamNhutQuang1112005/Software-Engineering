@@ -74,7 +74,7 @@ namespace GUI
                 try
                 {
                     var userBll = new BLL_TaiKhoan();
-                    var dtUsers = userBll.LayTatCaNguoiDung();
+                    var dtUsers = userBll.GetAllNguoiDung();
 
                     cboNguoiPhuTrach.DataSource    = dtUsers.Copy();
                     cboNguoiPhuTrach.DisplayMember = "HoVaTen";

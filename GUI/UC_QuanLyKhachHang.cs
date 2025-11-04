@@ -312,7 +312,7 @@ namespace GUI
             {
                 try
                 {
-                    BLL_KhachHang.XoaKhachHang(_selectedId);
+                    BLL_KhachHang.DeleteKhachHang(_selectedId);
                     ClearSelection();
                     LoadDanhSachKhachHang(ThanhTimKiem.Text);
                     MessageBox.Show("Đã xóa khách hàng!", "Thành công");

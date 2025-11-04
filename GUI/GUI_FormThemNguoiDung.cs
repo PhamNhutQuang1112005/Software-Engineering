@@ -104,7 +104,7 @@ namespace GUI
 
         public bool UsernameExists(string tenDN, string excludeID = null)
         {
-            DataTable all = bllNguoiDung.LayTatCaNguoiDung();
+            DataTable all = bllNguoiDung.GetAllNguoiDung();
             if (all == null) return false;
 
             return all.AsEnumerable().Any(r =>
@@ -174,12 +174,12 @@ namespace GUI
 
                 if (string.IsNullOrEmpty(nguoiDungID))
                 {
-                    bllNguoiDung.ThemNguoiDung(dto, matKhau);
+                    bllNguoiDung.AddNguoiDung(dto, matKhau);
                     MessageBox.Show("Thêm người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    bllNguoiDung.SuaNguoiDung(dto, matKhau);
+                    bllNguoiDung.UpdateNguoiDung(dto, matKhau);
                     MessageBox.Show("Cập nhật người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 

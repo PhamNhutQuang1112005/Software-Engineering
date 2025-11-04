@@ -199,7 +199,7 @@ namespace GUI
             try
             {
                 BLL_TaiKhoan bll = new BLL_TaiKhoan();
-                bll.DoiMatKhauBangEmail(email, mkMoi, xacNhan);
+                bll.ChangePassword_Email(email, mkMoi, xacNhan);
 
                 MessageBox.Show("Đổi mật khẩu thành công!");
  TAB.SelectedTab = ĐăngNhap;
@@ -225,7 +225,7 @@ namespace GUI
 
             try
             {
-                var user = bllTaiKhoan.DangNhap(username, password); // trả DTO_NguoiDung
+                var user = bllTaiKhoan.Login(username, password); // trả DTO_NguoiDung
 
                 if (user != null)
                 {
@@ -359,7 +359,7 @@ namespace GUI
              };
 
        //  --- Gọi tầng nghiệp vụ để thêm ---
-            bllTaiKhoan.ThemNguoiDung(dto, matKhau);
+            bllTaiKhoan.AddNguoiDung(dto, matKhau);
 
            MessageBox.Show($"Tạo tài khoản {tenDN} (Admin) thành công!",
              "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -377,7 +377,7 @@ namespace GUI
           }
         public bool UsernameExists(string tenDN)
         {
-            DataTable all = bllTaiKhoan.LayTatCaNguoiDung();
+            DataTable all = bllTaiKhoan.GetAllNguoiDung();
             if (all == null) return false;
 
             return all.AsEnumerable().Any(r =>

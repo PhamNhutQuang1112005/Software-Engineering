@@ -431,7 +431,7 @@ namespace GUI
             {
                 try
                 {
-                    BLL_HopDong.XoaHopDong(_selectedId);
+                    BLL_HopDong.DeleteHopDong(_selectedId);
                     ClearSelection();
                     LoadDanhSachHopDong();
                     InitFilterCombos();

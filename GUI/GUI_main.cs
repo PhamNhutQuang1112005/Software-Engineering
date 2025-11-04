@@ -2,18 +2,18 @@
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 namespace GUI
 {
+    
     public partial class GUI_main : Form
     {
         // ============== Biến lớp ==============
         private UserMenuPopup userMenu;
-        private readonly BLL_TaiKhoan a= new BLL_TaiKhoan();
+        private readonly BLL_TaiKhoan a = new BLL_TaiKhoan();
         private bool isDark = true;
         private List<Guna2Button> sidebarButtons = new List<Guna2Button>();
         private UserControl currentUC;
@@ -35,7 +35,8 @@ namespace GUI
         private PictureBox logoCenter;   // logo ở giữa
         //Lớp Đăng nhập
         private readonly string TenDangNhap;
-        
+        public static Action RefreshThongKeNow;
+
         // ============== Constructor ==============
         public GUI_main()
         {
@@ -43,7 +44,7 @@ namespace GUI
             btnQuanLyUsers.Visible = false;  // ẩn mặc định cho chắc
             btnQuanLyUsers.Enabled = false;
             TenDangNhap = string.Empty;
-            
+
 
             // Double buffering toàn form + panel chính
             this.DoubleBuffered = true;
@@ -62,11 +63,11 @@ namespace GUI
             CacheSidebarButtons();
         }
         public GUI_main(string id) : this()
-{
-    // Lưu lại thông tin người đăng nhập
-    TenDangNhap  = id ?? string.Empty;
-    
-}
+        {
+            // Lưu lại thông tin người đăng nhập
+            TenDangNhap = id ?? string.Empty;
+
+        }
         // Chống nhấp nháy cho toàn form
         protected override CreateParams CreateParams
         {
@@ -88,37 +89,37 @@ namespace GUI
             if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
             ShowControl(ucTrangChu);
             popupUser();
-    
+
         }
 
         // ============================ Khởi tạo layout contentPanel ============================
         private void popupUser()
         {
-           userMenu = new UserMenuPopup(
-    editProfileHandler: () =>
-    {
-        if (ucChinhSuaThongTin == null)
-        {
-            ucChinhSuaThongTin = new UC_ChinhSuaThongTin(TenDangNhap);
-            ucChinhSuaThongTin.OnUserUpdated += () =>
-            {
-                ResolveUserHeaderFromUsername(); // reload header sau khi lưu
-            };
-        }
-        ShowControl(ucChinhSuaThongTin);
-        SetActiveSidebarButton(btnQuanLyUser);
-    },
-    logoutHandler: () =>
-    {
-        if (MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận",
-            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-        {
-            this.Hide();
-            var login = new GUI_Form_DangNhap();
-            login.Show();
-        }
-    }
-);
+            userMenu = new UserMenuPopup(
+     editProfileHandler: () =>
+     {
+         if (ucChinhSuaThongTin == null)
+         {
+             ucChinhSuaThongTin = new UC_ChinhSuaThongTin(TenDangNhap);
+             ucChinhSuaThongTin.OnUserUpdated += () =>
+             {
+                 ResolveUserHeaderFromUsername(); // reload header sau khi lưu
+             };
+         }
+         ShowControl(ucChinhSuaThongTin);
+         SetActiveSidebarButton(btnQuanLyUser);
+     },
+     logoutHandler: () =>
+     {
+         if (MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận",
+             MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+         {
+             this.Hide();
+             var login = new GUI_Form_DangNhap();
+             login.Show();
+         }
+     }
+ );
 
 
         }
@@ -157,12 +158,12 @@ namespace GUI
                     Size = new Size(360, 240) // tùy chỉnh
                 };
 
-                
+
 
                 // Ghép lớp: nền -> nội dung -> logo (logo nằm trên contentLayer)
                 contentPanel.Controls.Add(contentLayer);
                 contentPanel.Controls.Add(backgroundLayer);
-        
+
                 contentPanel.PerformLayout();
             }
             finally
@@ -172,33 +173,33 @@ namespace GUI
 
         }
         // ============================ Hiển thị Tên Đăng nhập ============================
-       private void ResolveUserHeaderFromUsername()
-{
-    if (string.IsNullOrWhiteSpace(TenDangNhap)) return;
+        private void ResolveUserHeaderFromUsername()
+        {
+            if (string.IsNullOrWhiteSpace(TenDangNhap)) return;
 
-    var info = bllTaiKhoan.GetUserHeaderByUsername(TenDangNhap);
-    if (info == null)
-    {
-        lblUser.Text = TenDangNhap;
-        isAdmin = false;
-        btnQuanLyUsers.Visible = false;
-        btnQuanLyUsers.Enabled = false;
-       
-        return;
-    }
+            var info = bllTaiKhoan.GetUserHeaderByUsername(TenDangNhap);
+            if (info == null)
+            {
+                lblUser.Text = TenDangNhap;
+                isAdmin = false;
+                btnQuanLyUsers.Visible = false;
+                btnQuanLyUsers.Enabled = false;
 
-    
-lblUser.Text = $"Xin chào {info.HoVaTen}";
+                return;
+            }
 
 
-    // chỉ admin khi VaiTroID == "VT001"
-    isAdmin = string.Equals(info.VaiTroID, "VT001", StringComparison.OrdinalIgnoreCase);
+            lblUser.Text = $"Xin chào {info.HoVaTen}";
 
-    btnQuanLyUsers.Visible = isAdmin;   // ⟵ ẩn hẳn khi không phải admin
-    btnQuanLyUsers.Enabled = isAdmin;
 
-    
-}
+            // chỉ admin khi VaiTroID == "VT001"
+            isAdmin = string.Equals(info.VaiTroID, "VT001", StringComparison.OrdinalIgnoreCase);
+
+            btnQuanLyUsers.Visible = isAdmin;   // ⟵ ẩn hẳn khi không phải admin
+            btnQuanLyUsers.Enabled = isAdmin;
+
+
+        }
 
 
         // ============================ Hiển thị UC ============================
@@ -431,6 +432,7 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
             if (ucDonHang == null) ucDonHang = new UC_QuanLyDonHang();
             ShowControl(ucDonHang);
             SetActiveSidebarButton(sender as Guna2Button);
+
         }
 
         private void btnHopDong_Click(object sender, EventArgs e)
@@ -441,39 +443,40 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
         }
 
         private void btnThongKeTienDo_Click(object sender, EventArgs e)
-{
-    // Xóa UC cũ nếu có
-    if (ucThongKeDonHang != null)
-    {
-        if (ucThongKeDonHang.Parent != null)
-            ucThongKeDonHang.Parent.Controls.Remove(ucThongKeDonHang);
-        ucThongKeDonHang.Dispose();
-        ucThongKeDonHang = null;
-    }
+        {
+            // Xóa UC cũ nếu có
+            if (ucThongKeDonHang != null)
+            {
+                if (ucThongKeDonHang.Parent != null)
+                    ucThongKeDonHang.Parent.Controls.Remove(ucThongKeDonHang);
+                ucThongKeDonHang.Dispose();
+                ucThongKeDonHang = null;
+            }
 
-    // Tạo mới -> UC.Load sẽ chạy lại và tự load dữ liệu
-    ucThongKeDonHang = new UC_ThongKe();
-    ShowControl(ucThongKeDonHang);
-    SetActiveSidebarButton(sender as Guna2Button);
-}
+            // Tạo mới -> UC.Load sẽ chạy lại và tự load dữ liệu
+            ucThongKeDonHang = new UC_ThongKe();
+            GUI_main.RefreshThongKeNow = () => ucThongKeDonHang?.RefreshThongKe();
+            ShowControl(ucThongKeDonHang);
+            SetActiveSidebarButton(sender as Guna2Button);
+        }
 
 
         private void btnThongKeDonHang_Click(object sender, EventArgs e)
         {
             if (ucQuanLyThongSoDonHang == null)
-        ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
+                ucQuanLyThongSoDonHang = new UC_QuanLyThongSoDonHang();
 
-    // Luôn reload từ DB mỗi lần bấm
-    ucQuanLyThongSoDonHang.ReloadFromParent(preserveFilters: true);
+            // Luôn reload từ DB mỗi lần bấm
+            ucQuanLyThongSoDonHang.ReloadFromParent(preserveFilters: true);
 
-    ShowControl(ucQuanLyThongSoDonHang);
-    SetActiveSidebarButton(sender as Guna2Button);
+            ShowControl(ucQuanLyThongSoDonHang);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnQuanLyUser_Click(object sender, EventArgs e)
-{
-    userMenu.Show(sender as Control);
-}
+        {
+            userMenu.Show(sender as Control);
+        }
 
         // ================= Popup thông báo =================
         private void btnThongbao_Click(object sender, EventArgs e)
@@ -523,7 +526,7 @@ lblUser.Text = $"Xin chào {info.HoVaTen}";
 
         private void GUI_main_FormClosed(object sender, FormClosedEventArgs e)
         {
-            a.NgatKetNoiCSDL();
+            a.Disconnet();
         }
     }
 }
