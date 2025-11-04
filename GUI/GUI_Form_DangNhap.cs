@@ -17,7 +17,10 @@ namespace GUI
 
         private string _currentOtp = null;
         string emailNguoiNhan = "";
-
+        public static class Session
+        {
+            public static DTO_NguoiDung CurrentUser { get; set; }
+        }
         public GUI_Form_DangNhap()
         {
             InitializeComponent();
@@ -227,7 +230,7 @@ namespace GUI
                 if (user != null)
                 {
                     // (nếu đã có AppSession, có thể lưu lại)
-                    // AppSession.CurrentUser = user;
+                    Session.CurrentUser = user;
 
                     MessageBox.Show($"Chào mừng {user.HoVaTen} ({user.VaiTroID})!",
                         "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);

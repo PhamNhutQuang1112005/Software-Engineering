@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using BLL;
+using static GUI.GUI_Form_DangNhap;
 
 namespace GUI
 {
@@ -125,7 +126,7 @@ namespace GUI
 
             Hide("ViTriID"); Hide("LoaiViTriID");
             Hide("LoaiChiTieuID"); Hide("DonViID");
-            Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID");
+            Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID"); Hide("GiaTri"); Hide("GiaTriSo"); 
 
             SetHeader("TenThongSo",       "Mã thông số");
             SetHeader("TenLoaiChiTieu",   "Chỉ tiêu");
@@ -133,15 +134,34 @@ namespace GUI
             SetHeader("TenLoaiPhanTich",  "Phòng phân tích");
             SetHeader("TenNguoiPhanTich", "Người phụ trách");
             SetHeader("TenThauPhu",       "Thầu phụ");
-            SetHeader("GiaTri",           "Giá trị");
-            SetHeader("GiaTriSo",         "Giá trị (số)");
-            SetHeader("GiaTriQuyChuan",   "Giới hạn");
+            SetHeader("GiaTriQuyChuan",   "Giá trị chuẩn");
             SetHeader("KetLuan",          "Kết luận");
+            // 🔹 Bước 1: Lấy PhòngBanID hiện tại của user đăng nhập
+            string phongBanIDHienTai = Session.CurrentUser.PhongBanID;
 
+            // 🔹 Bước 2: Lấy ra tên phòng ban thật
+            BLL_TaiKhoan bllTaiKhoan = new BLL_TaiKhoan();
+            var phongBan = bllTaiKhoan.GetPhongBanByID(phongBanIDHienTai);
+            string tenPhongBanNguoiDung = phongBan?.TenPhongBan ?? "";
+
+            // 🔹 Bước 3: Lấy tên phòng ban trong dòng của DataGridView
+            string tenPhongBanTrongBang = dgv.CurrentRow.Cells["TenLoaiPhanTich"].Value.ToString();
+
+            // 🔹 Bước 4: Khóa/mở cột chỉnh sửa theo điều kiện
             foreach (DataGridViewColumn c in dgv.Columns) c.ReadOnly = true;
-            AllowEdit("GiaTri");
-            AllowEdit("GiaTriSo");
-            AllowEdit("GiaTriQuyChuan");
+
+            if (tenPhongBanNguoiDung == tenPhongBanTrongBang)
+            {
+                // ✅ Cùng phòng ban → cho phép sửa
+                AllowEdit("GiaTriQuyChuan");
+            }
+            else
+            {
+                // 🚫 Khác phòng ban → khóa sửa
+                dgv.Columns["GiaTriQuyChuan"].ReadOnly = true;
+            }
+
+            // Luôn cho phép sửa cột Kết luận
             AllowEdit("KetLuan");
         }
 
