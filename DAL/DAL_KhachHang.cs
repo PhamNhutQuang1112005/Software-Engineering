@@ -22,6 +22,20 @@ namespace DAL
                 return dt;
             }
         }
+        public static string GetNewMaKhachHang()
+        {
+            using (SqlConnection conn = DBConnection.GetConnection())
+            using (SqlCommand cmd = new SqlCommand("sp_themMaKhachHang", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                conn.Open();
+                object result = cmd.ExecuteScalar(); // lấy giá trị trả về đầu tiên (MaKhachHangMoi)
+                conn.Close();
+
+                return result != null ? result.ToString() : string.Empty;
+            }
+        }
 
         // ===== Xóa =====
         public static void XoaKhachHang(string khachHangId)

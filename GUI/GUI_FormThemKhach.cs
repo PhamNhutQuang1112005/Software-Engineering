@@ -18,6 +18,7 @@ namespace GUI
             this.khachHangID = null;
             this.rowToEdit = null;
             this.Text = "Thêm khách hàng";
+            txtMaKH.Text = BLL_KhachHang.GetNewMaKhachHang();
         }
 
         // Overload: truyền sẵn DataRow để sửa

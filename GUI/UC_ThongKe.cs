@@ -1,10 +1,11 @@
-﻿using BLL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using BLL;
 
 namespace GUI
 {
@@ -29,6 +30,14 @@ namespace GUI
 
         private void UC_ThongKe_Load(object sender, EventArgs e)
         {
+            BieuDo1.Titles.Clear();
+            Title t = new Title("Biểu đồ cột về tình trạng đơn hàng", Docking.Bottom,
+                                new Font("Segoe UI", 12, FontStyle.Bold), Color.White);
+            BieuDo1.Titles.Add(t);
+            chart2.Titles.Clear();
+            Title t1 = new Title("Biểu đồ tròn về tình trạng đơn hàng", Docking.Bottom,
+                                new Font("Segoe UI", 12, FontStyle.Bold), Color.White);
+            chart2.Titles.Add(t1);
             // Style combobox
             PillStyler.Combo(guna2ComboBox4, _theme); // Năm
             PillStyler.Combo(guna2ComboBox3, _theme); // Quý
@@ -99,23 +108,26 @@ namespace GUI
 
         private void DrawCharts(Dictionary<string, int> counts)
         {
-            int late  = counts.ContainsKey("Quá hạn")    ? counts["Quá hạn"]    : 0;
+
+            int late = counts.ContainsKey("Quá hạn") ? counts["Quá hạn"] : 0;
             int doing = counts.ContainsKey("Đang xử lý") ? counts["Đang xử lý"] : 0;
-            int done  = counts.ContainsKey("Hoàn thành") ? counts["Hoàn thành"] : 0;
+            int done = counts.ContainsKey("Hoàn thành") ? counts["Hoàn thành"] : 0;
 
             // ===== BAR =====
             foreach (Series s in BieuDo1.Series) s.Points.Clear();
 
-            var sLate  = BieuDo1.Series.FindByName("Quá hạn");
+            var sLate = BieuDo1.Series.FindByName("Quá hạn");
             var sDoing = BieuDo1.Series.FindByName("Đang xử lý") ?? BieuDo1.Series.FindByName("Đang xử lí");
-            var sDone  = BieuDo1.Series.FindByName("Hoàn thành");
+            var sDone = BieuDo1.Series.FindByName("Hoàn thành");
 
             if (sDoing != null) sDoing.Name = "Đang xử lý"; // chuẩn hóa
 
             sLate?.Points.AddXY(1, late);
             sDoing?.Points.AddXY(2, doing);
             sDone?.Points.AddXY(3, done);
-
+            if (sLate != null) sLate.Color = Color.FromArgb(255, 128, 255); // tím nhạt
+            if (sDoing != null) sDoing.Color = Color.FromArgb(255, 255, 100); // vàng
+            if (sDone != null) sDone.Color = Color.FromArgb(100, 149, 237); // xanh dương
             if (BieuDo1.ChartAreas.Count > 0)
             {
                 var area = BieuDo1.ChartAreas[0];
@@ -130,9 +142,26 @@ namespace GUI
             if (pie != null)
             {
                 pie.Points.Clear();
-                if (late  > 0) AddPiePoint(pie, "Quá hạn", late);
-                if (doing > 0) AddPiePoint(pie, "Đang xử lý", doing);
-                if (done  > 0) AddPiePoint(pie, "Hoàn thành", done);
+
+                if (late > 0)
+                {
+                    int i = pie.Points.AddXY("Quá hạn", late);
+                    pie.Points[i].Color = Color.FromArgb(255, 128, 255); // tím nhạt
+                }
+
+                if (doing > 0)
+                {
+                    int i = pie.Points.AddXY("Đang xử lý", doing);
+                    pie.Points[i].Color = Color.FromArgb(255, 255, 100); // vàng
+                }
+
+                if (done > 0)
+                {
+                    int i = pie.Points.AddXY("Hoàn thành", done);
+                    pie.Points[i].Color = Color.FromArgb(100, 149, 237); // xanh dương
+                }
+
+
             }
         }
 
@@ -231,5 +260,9 @@ namespace GUI
             try { ApplyFiltersAndRedraw(); }
             catch (Exception ex) { MessageBox.Show("Lỗi khi cập nhật thống kê: " + ex.Message); }
         }
-    }
+        private void BieuDo1_Click(object sender, EventArgs e)
+        { }
+
+
+        }
 }

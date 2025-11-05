@@ -10,6 +10,10 @@ namespace BLL
 
         public static void DeleteKhachHang(string id)
             => DAL_KhachHang.XoaKhachHang(id);
+        public static string GetNewMaKhachHang()
+        {
+            return DAL_KhachHang.GetNewMaKhachHang();
+        }
 
         // SỬA KHÁCH HÀNG (khớp sp_KhachHang_Update)
         public static void UpdateKhachHang(
@@ -36,4 +40,5 @@ namespace BLL
             string ghichu)
             => DAL_KhachHang.ThemKhachHang(ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
     }
+
 }
