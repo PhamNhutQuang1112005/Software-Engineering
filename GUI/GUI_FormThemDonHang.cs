@@ -11,7 +11,7 @@ namespace GUI
     {
         private string _donHangID;
         public string SavedDonHangID { get; private set; }
-        private readonly UC_ThongKe _ucThongKe;
+        
 
 
         public GUI_FormThemDonHang()

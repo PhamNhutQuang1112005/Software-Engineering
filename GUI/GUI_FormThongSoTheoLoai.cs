@@ -107,7 +107,7 @@ namespace GUI
                 _bs.DataSource = fresh;
                 _bs.ResetBindings(false); // báo cho lưới cập nhật ngay lập tức
 
-                StyleGridColumns();       // đặt header/readonly/ẩn cột
+               StyleGridColumns();       // đặt header/readonly/ẩn cột
                 dgv.Refresh();            // ép refresh
                 Application.DoEvents();   // “đẩy” UI (an toàn)
 
@@ -131,7 +131,7 @@ namespace GUI
             SetHeader("TenThongSo",       "Mã thông số");
             SetHeader("TenLoaiChiTieu",   "Chỉ tiêu");
             SetHeader("TenDonVi",         "Đơn vị");
-            SetHeader("TenLoaiPhanTich",  "Phòng phân tích");
+            SetHeader("TenLoai",  "Phòng phân tích");
             SetHeader("TenNguoiPhanTich", "Người phụ trách");
             SetHeader("TenThauPhu",       "Thầu phụ");
             SetHeader("GiaTriQuyChuan",   "Giá trị chuẩn");
@@ -141,11 +141,14 @@ namespace GUI
 
             // 🔹 Bước 2: Lấy ra tên phòng ban thật
             BLL_TaiKhoan bllTaiKhoan = new BLL_TaiKhoan();
+            BLL_ThongSoQuanTrac bLL_ThongSoQuanTrac = new BLL_ThongSoQuanTrac();
             var phongBan = bllTaiKhoan.GetPhongBanByID(phongBanIDHienTai);
+            var LoaiPhanTich = bLL_ThongSoQuanTrac.GetAllLoaiPhanTichDTO()
+                .FirstOrDefault(lp => lp.LoaiPhanTichID == phongBanIDHienTai);
             string tenPhongBanNguoiDung = phongBan?.TenPhongBan ?? "";
 
             // 🔹 Bước 3: Lấy tên phòng ban trong dòng của DataGridView
-            string tenPhongBanTrongBang = dgv.CurrentRow.Cells["TenLoaiPhanTich"].Value.ToString();
+            string tenPhongBanTrongBang = LoaiPhanTich?.TenLoai ?? "";
 
             // 🔹 Bước 4: Khóa/mở cột chỉnh sửa theo điều kiện
             foreach (DataGridViewColumn c in dgv.Columns) c.ReadOnly = true;
