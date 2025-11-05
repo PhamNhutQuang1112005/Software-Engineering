@@ -10,6 +10,7 @@ namespace GUI
     public partial class GUI_FormThemDonHang : Form
     {
         private string _donHangID;
+        private DataTable dtKhachHangGoc;
         public string SavedDonHangID { get; private set; }
         
 
@@ -28,10 +29,14 @@ namespace GUI
         // ====== LOAD FORM ======
         private void GUI_FormThemDonHang_Load(object sender, EventArgs e)
         {
-            // Nguồn dữ liệu combobox (giữ như cũ)
-            guna2ComboBox1.DataSource   = BLL_KhachHang.GetAllKhachHang();
+           
+
+            // Nguồn dữ liệu
+            dtKhachHangGoc = BLL_KhachHang.GetAllKhachHang();
+            guna2ComboBox1.DataSource = dtKhachHangGoc;
             guna2ComboBox1.DisplayMember = "TenCongTy";
-            guna2ComboBox1.ValueMember   = "KhachHangID";
+            guna2ComboBox1.ValueMember = "KhachHangID";
+            
 
             guna2ComboBox4.DataSource    = BLL_DonHang.GetAllHopDong();
             guna2ComboBox4.DisplayMember = "MaHopDong";
@@ -108,6 +113,11 @@ namespace GUI
                 }
             }
         }
+        private void guna2ComboBox1_TextUpdate(object sender, EventArgs e)
+        {
+           
+        }
+
 
         // ====== CỘNG +15 KHI THAY "NGÀY LẤY MẪU" ======
         private void guna2DateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -119,6 +129,12 @@ namespace GUI
         {
             var baseDate = Ngay_LayMau.Checked ? Ngay_LayMau.Value.Date : DateTime.Today;
             Ngay_Du_kien.Value = baseDate.AddDays(15);
+        }
+
+        private void guna2ComboBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // ví dụ: tự động lọc khi gõ
+            // hoặc tạm để trống để hết lỗi
         }
 
         // ====== LƯU ======

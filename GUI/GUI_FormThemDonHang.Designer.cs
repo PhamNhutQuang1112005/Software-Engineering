@@ -41,7 +41,6 @@
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2GradientPanel2 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Ngay_LayMau = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,6 +51,7 @@
             this.Ngay_Thuc_te = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.SuspendLayout();
             // 
             // guna2ComboBox5
@@ -267,25 +267,6 @@
             this.guna2GradientPanel2.Size = new System.Drawing.Size(1172, 10);
             this.guna2GradientPanel2.TabIndex = 51;
             // 
-            // guna2ComboBox1
-            // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.BorderRadius = 15;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.DropDownWidth = 200;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(235, 84);
-            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(192, 36);
-            this.guna2ComboBox1.TabIndex = 46;
-            this.guna2ComboBox1.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged_1);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -306,7 +287,7 @@
             this.Ngay_LayMau.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Ngay_LayMau.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.Ngay_LayMau.Location = new System.Drawing.Point(733, 15);
-            this.Ngay_LayMau.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Ngay_LayMau.Margin = new System.Windows.Forms.Padding(4);
             this.Ngay_LayMau.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.Ngay_LayMau.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.Ngay_LayMau.Name = "Ngay_LayMau";
@@ -335,7 +316,7 @@
             this.Ngay_Du_kien.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Ngay_Du_kien.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.Ngay_Du_kien.Location = new System.Drawing.Point(733, 96);
-            this.Ngay_Du_kien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Ngay_Du_kien.Margin = new System.Windows.Forms.Padding(4);
             this.Ngay_Du_kien.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.Ngay_Du_kien.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.Ngay_Du_kien.Name = "Ngay_Du_kien";
@@ -398,7 +379,7 @@
             this.Ngay_Thuc_te.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Ngay_Thuc_te.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.Ngay_Thuc_te.Location = new System.Drawing.Point(733, 180);
-            this.Ngay_Thuc_te.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Ngay_Thuc_te.Margin = new System.Windows.Forms.Padding(4);
             this.Ngay_Thuc_te.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.Ngay_Thuc_te.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.Ngay_Thuc_te.Name = "Ngay_Thuc_te";
@@ -444,6 +425,27 @@
             this.guna2TextBox2.Visible = false;
             this.guna2TextBox2.WordWrap = false;
             this.guna2TextBox2.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
+            // 
+            // guna2ComboBox1
+            // 
+            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox1.BorderRadius = 15;
+            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.DropDownWidth = 200;
+            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.Location = new System.Drawing.Point(235, 92);
+            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.guna2ComboBox1.Name = "guna2ComboBox1";
+            this.guna2ComboBox1.Size = new System.Drawing.Size(192, 36);
+            this.guna2ComboBox1.TabIndex = 46;
+            this.guna2ComboBox1.TabStop = false;
+            this.guna2ComboBox1.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_TextUpdate);
+            this.guna2ComboBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.guna2ComboBox1_KeyPress);
             // 
             // GUI_FormThemDonHang
             // 
@@ -500,7 +502,6 @@
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel2;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2DateTimePicker Ngay_LayMau;
         private System.Windows.Forms.Label label2;
@@ -511,5 +512,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker Ngay_Thuc_te;
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
     }
 }
