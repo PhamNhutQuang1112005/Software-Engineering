@@ -415,9 +415,15 @@ namespace GUI
 
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
-            if (ucQuanLyUsers == null) ucQuanLyUsers = new UC_QuanLyUserS();
-            ShowControl(ucQuanLyUsers);
-            SetActiveSidebarButton(sender as Guna2Button);
+            if (ucQuanLyUsers != null)
+    {
+        ucQuanLyUsers.Dispose();
+        ucQuanLyUsers = null;
+    }
+
+    ucQuanLyUsers = new UC_QuanLyUserS();    // tạo mới -> tự load lại data trong Load
+    ShowControl(ucQuanLyUsers);
+    SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)

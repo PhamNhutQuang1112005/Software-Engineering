@@ -1,13 +1,12 @@
-﻿using System;
+﻿using BLL;
+using DTO;
+using System;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using BLL;
-using DTO;
-using Guna.UI2.WinForms;
-
 namespace GUI
 {
     public partial class UC_ChinhSuaThongTin : UserControl
@@ -24,7 +23,7 @@ namespace GUI
         private string originalHoTen;
         private string originalSDT;
         private string originalEmail;
-
+        private byte[] _avatarBytes;
         private readonly BLL_TaiKhoan bllNguoiDung = new BLL_TaiKhoan();
 
         // ==================== Khởi tạo ====================
@@ -66,19 +65,26 @@ namespace GUI
                     ?? dt.Rows[0];
 
                 nguoiDungID = row["NguoiDungID"]?.ToString();
-                vaiTroID    = row["VaiTroID"]?.ToString();
-                phongBanID  = row["PhongBanID"]?.ToString();
+                vaiTroID = row["VaiTroID"]?.ToString();
+                phongBanID = row["PhongBanID"]?.ToString();
 
-                txtHoTen.Text  = row["HoVaTen"]?.ToString() ?? "";
-                txtSDT.Text    = row["DienThoai"]?.ToString() ?? "";
-                txtEmail.Text  = row["Email"]?.ToString() ?? "";
+                txtHoTen.Text = row["HoVaTen"]?.ToString() ?? "";
+                txtSDT.Text = row["DienThoai"]?.ToString() ?? "";
+                txtEmail.Text = row["Email"]?.ToString() ?? "";
                 guna2TextBox1.Text = row["TenPhongBan"]?.ToString() ?? row["PhongBanID"]?.ToString() ?? "";
+                txtDiaChi.Text = row.Table.Columns.Contains("DiaChi") ? row["DiaChi"]?.ToString() ?? "" : "";
 
+                if (row.Table.Columns.Contains("HinhDaiDien") && row["HinhDaiDien"] != DBNull.Value)
+                {
+                    var bytes = (byte[])row["HinhDaiDien"];
+                    using (var ms = new System.IO.MemoryStream(bytes))
+                        avatarUser.Image = Image.FromStream(ms);
+                }
                 display_name.Text = string.IsNullOrWhiteSpace(txtHoTen.Text) ? tenDangNhap : txtHoTen.Text;
 
                 // === Lưu giá trị gốc để reset khi cần ===
                 originalHoTen = txtHoTen.Text;
-                originalSDT   = txtSDT.Text;
+                originalSDT = txtSDT.Text;
                 originalEmail = txtEmail.Text;
             }
             catch (Exception ex)
@@ -137,18 +143,19 @@ namespace GUI
                     DienThoai = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim(),
                     Email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim(),
                     VaiTroID = vaiTroID,
-                    PhongBanID = phongBanID
+                    PhongBanID = phongBanID,
+                    DiaChi = string.IsNullOrWhiteSpace(txtDiaChi.Text) ? null : txtDiaChi.Text.Trim(),
+                    HinhDaiDien = _avatarBytes  // null => giữ ảnh cũ
                 };
 
-                // ✅ Kiểm tra kết quả đổi mật khẩu
-                bool doiMatKhauThanhCong = changepassword();
-                if (!doiMatKhauThanhCong)
-                {
-                    return;
-                }
-
+                // Chỉ kiểm tra & đổi mật khẩu nếu user nhập mật khẩu mới:
                 string matKhauMoi = string.IsNullOrWhiteSpace(txtMatKhauMoi.Text) ? null : txtMatKhauMoi.Text.Trim();
+                if (!string.IsNullOrEmpty(matKhauMoi))
+                {
+                    if (!changepassword()) return;  // giữ logic hiện tại của bạn
+                }
                 bllNguoiDung.UpdateNguoiDung(dto, matKhauMoi);
+
 
                 MessageBox.Show("Cập nhật thông tin thành công!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -173,7 +180,7 @@ namespace GUI
         {
             // Reset về dữ liệu ban đầu (không xóa trắng)
             txtHoTen.Text = originalHoTen;
-            txtSDT.Text   = originalSDT;
+            txtSDT.Text = originalSDT;
             txtEmail.Text = originalEmail;
 
             // Xóa mật khẩu đang nhập (cho an toàn)
@@ -184,20 +191,20 @@ namespace GUI
         private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
-    if (char.IsControl(e.KeyChar))
-        return;
+            if (char.IsControl(e.KeyChar))
+                return;
 
-    // Nếu không phải là chữ hoặc khoảng trắng => chặn
-    if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
-    {
-        e.Handled = true; // Ngăn nhập ký tự đó
-        System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
-    }
+            // Nếu không phải là chữ hoặc khoảng trắng => chặn
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn nhập ký tự đó
+                System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
+            }
 
         }
         private void txtMatKhauCu_Leave(object sender, EventArgs e)
         {
-            
+
         }
         private bool changepassword()
         {
@@ -219,7 +226,7 @@ namespace GUI
                 ?? dt.Rows[0];
 
             matkhau = row["MatKhauHash"]?.ToString();
-            string matkhaucu = HashMatKhau( txtMatKhauCu.Text.Trim());
+            string matkhaucu = HashMatKhau(txtMatKhauCu.Text.Trim());
 
             // ❌ Sai mật khẩu cũ
             if (matkhau != matkhaucu)
@@ -255,5 +262,22 @@ namespace GUI
             }
         }
 
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            using (var ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Ảnh|*.png;*.jpg;*.jpeg;*.bmp";
+                if (ofd.ShowDialog(this) == DialogResult.OK)
+                {
+                    var img = Image.FromFile(ofd.FileName);
+                    avatarUser.Image = img;
+                    using (var ms = new System.IO.MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        _avatarBytes = ms.ToArray();
+                    }
+                }
+            }
+        }
     }
 }

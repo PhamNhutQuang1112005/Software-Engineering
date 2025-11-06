@@ -33,7 +33,8 @@ namespace DAL
                         Email       = r["Email"]     as string,
                         DienThoai   = r["DienThoai"] as string,
                         VaiTroID    = r["VaiTroID"]  as string,
-                        PhongBanID  = r["PhongBanID"] as string
+                        PhongBanID  = r["PhongBanID"] as string,
+                      
                     };
                 }
             }
@@ -58,7 +59,10 @@ namespace DAL
                         DienThoai   = r["DienThoai"]   as string,
                         Email       = r["Email"]       as string,
                         VaiTroID    = r["VaiTroID"]    as string,
-                        PhongBanID  = r["PhongBanID"]  as string
+                        PhongBanID  = r["PhongBanID"]  as string,
+                        DiaChi      = r["DiaChi"]      as string,
+                        HinhDaiDien = r["HinhDaiDien"] as byte[]
+
                     };
                 }
             }
@@ -107,7 +111,8 @@ namespace DAL
                 cmd.Parameters.Add("@Email",       SqlDbType.NVarChar, 100).Value = (object)dto.Email     ?? DBNull.Value;
                 cmd.Parameters.Add("@VaiTroID",    SqlDbType.NVarChar, 50 ).Value = dto.VaiTroID;
                 cmd.Parameters.Add("@PhongBanID",  SqlDbType.NVarChar, 50 ).Value = (object)dto.PhongBanID ?? DBNull.Value;
-
+                cmd.Parameters.Add("@DiaChi",      SqlDbType.NVarChar, 500).Value = (object)dto.DiaChi    ?? DBNull.Value;
+                cmd.Parameters.Add("@HinhDaiDien", SqlDbType.VarBinary      ).Value = (object)dto.HinhDaiDien ?? DBNull.Value;
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -126,7 +131,8 @@ namespace DAL
                 cmd.Parameters.Add("@Email",       SqlDbType.NVarChar, 100).Value = (object)dto.Email     ?? DBNull.Value;
                 cmd.Parameters.Add("@VaiTroID",    SqlDbType.NVarChar, 50 ).Value = dto.VaiTroID;
                 cmd.Parameters.Add("@PhongBanID",  SqlDbType.NVarChar, 50 ).Value = (object)dto.PhongBanID ?? DBNull.Value;
-
+                cmd.Parameters.Add("@DiaChi",      SqlDbType.NVarChar, 500).Value = (object)dto.DiaChi    ?? DBNull.Value;
+                cmd.Parameters.Add("@HinhDaiDien", SqlDbType.VarBinary      ).Value = (object)dto.HinhDaiDien ?? DBNull.Value;
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }

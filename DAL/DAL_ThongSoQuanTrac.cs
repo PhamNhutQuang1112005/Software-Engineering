@@ -190,6 +190,23 @@ namespace DAL
                 return dt;
             }
         }
+        // DAL_ThongSoQuanTrac.cs
+public bool UpdateTenVaDiaChiViTri(string viTriID, string tenViTri, string diaChi)
+{
+    using (SqlConnection cn = NewConn())
+    using (SqlCommand cmd = new SqlCommand("dbo.sp_UpdateViTriTenDiaChi", cn))
+    {
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@ViTriID", viTriID);
+        cmd.Parameters.AddWithValue("@TenViTri", string.IsNullOrWhiteSpace(tenViTri) ? (object)DBNull.Value : tenViTri);
+        cmd.Parameters.AddWithValue("@DiaChi",   string.IsNullOrWhiteSpace(diaChi)   ? (object)DBNull.Value : diaChi);
+
+        cn.Open();
+        cmd.ExecuteNonQuery();      // có NOCOUNT ON có thể trả -1/0
+        return true;                // ⇐ coi là OK miễn không có exception
+    }
+}
+
 
         public string AddLoaiViTriToViTri(string viTriID, string tenLoai)
         {

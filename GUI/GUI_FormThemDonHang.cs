@@ -62,9 +62,11 @@ namespace GUI
 
                 // "Ngày trả thực tế" chỉ nhập khi SỬA
                 Ngay_Thuc_te.Enabled = false;
-
+                label4.Visible= false;
                 // Địa chỉ trống
                 Dia_Chi_text.Text = string.Empty;
+                
+                Ngay_Thuc_te.Visible=false;
             }
             else
             {
@@ -98,10 +100,10 @@ namespace GUI
                         Ngay_LayMau.Checked = true;
                         Ngay_LayMau.Value   = DateTime.Today;
                     }
-
+                    Ngay_Thuc_te.MinDate = Ngay_LayMau.Value.AddDays(1);
                     // Tính dự kiến trước
                     UpdateNgayDuKien();
-
+                    Ngay_Thuc_te.MinDate = Ngay_LayMau.Value.AddDays(1);
                     // Nếu DB đã có ngày dự kiến thì hiển thị theo DB
                     if (row.Table.Columns.Contains("NgayDuKienTraKetQua") && row["NgayDuKienTraKetQua"] != DBNull.Value)
                         Ngay_Du_kien.Value = Convert.ToDateTime(row["NgayDuKienTraKetQua"]);
@@ -110,6 +112,7 @@ namespace GUI
                     Ngay_Thuc_te.Enabled = true;
                     if (row.Table.Columns.Contains("NgayTraThucTe") && row["NgayTraThucTe"] != DBNull.Value)
                         Ngay_Thuc_te.Value = Convert.ToDateTime(row["NgayTraThucTe"]);
+
                 }
             }
         }

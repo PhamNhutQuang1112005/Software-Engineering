@@ -48,10 +48,13 @@ namespace GUI
                 dataGridView1.Columns["TenVaiTro"].HeaderText = "Vai trò";
                 dataGridView1.Columns["TenPhongBan"].HeaderText = "Phòng ban";
                 dataGridView1.Columns["IsActive"].HeaderText = "Trạng thái";
+                dataGridView1.Columns["DiaChi"].HeaderText = "Địa chỉ";
                 dataGridView1.Columns["VaiTroID"].Visible = false;
                 dataGridView1.Columns["PhongBanID"].Visible = false;
                 dataGridView1.Columns["NguoiDungID"].Visible = false;
                 dataGridView1.Columns["MatKhauHash"].Visible = false;
+                dataGridView1.Columns["HinhDaiDien"].Visible = false;
+
 
             }
             catch (Exception ex)
@@ -59,13 +62,17 @@ namespace GUI
                 MessageBox.Show("Lỗi khi tải dữ liệu người dùng:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        // Thêm người dùng
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            GUI_FormThemNguoiDung frm = new GUI_FormThemNguoiDung();
-    if (frm.ShowDialog() == DialogResult.OK)
-        HienThiDanhSachNguoiDung();
+            using (var f = new GUI_FormThemNguoiDung())
+    {
+        f.OnUsersChanged = HienThiDanhSachNguoiDung;   // ✅ form con gọi sẽ reload
+        if (f.ShowDialog(this) == DialogResult.OK)
+            HienThiDanhSachNguoiDung();               // an toàn, reload lại
+    }
         }
-
+        // Sửa người dùng
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             if (dataGridView1.CurrentRow == null)

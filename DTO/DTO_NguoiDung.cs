@@ -10,5 +10,7 @@
 
         public string VaiTroID    { get; set; }   // tra tên qua VaiTroDto khi cần
         public string PhongBanID  { get; set; }   // tra tên qua PhongBanDto khi cần
+        public string DiaChi      { get; set; }
+        public byte[] HinhDaiDien { get; set; }
     }
 }

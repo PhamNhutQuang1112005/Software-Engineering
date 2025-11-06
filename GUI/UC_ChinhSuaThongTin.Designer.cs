@@ -19,7 +19,7 @@ namespace GUI
 
         private void InitializeComponent()
         {
-            this.guna2CirclePictureBox2 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_ChinhSuaThongTin));
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -35,24 +35,12 @@ namespace GUI
             this.txtEmail = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSDT = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtHoTen = new Guna.UI2.WinForms.Guna2TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox2)).BeginInit();
+            this.btnChonAnh = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.avatarUser = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDiaChi = new Guna.UI2.WinForms.Guna2TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarUser)).BeginInit();
             this.SuspendLayout();
-            // 
-            // guna2CirclePictureBox2
-            // 
-            this.guna2CirclePictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.guna2CirclePictureBox2.FillColor = System.Drawing.Color.Teal;
-            this.guna2CirclePictureBox2.Image = global::GUI.Properties.Resources.quan_ly_user;
-            this.guna2CirclePictureBox2.ImageRotate = 0F;
-            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(437, 40);
-            this.guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
-            this.guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox2.Size = new System.Drawing.Size(90, 90);
-            this.guna2CirclePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2CirclePictureBox2.TabIndex = 11;
-            this.guna2CirclePictureBox2.TabStop = false;
-            this.guna2CirclePictureBox2.UseTransparentBackground = true;
             // 
             // guna2TextBox1
             // 
@@ -154,7 +142,7 @@ namespace GUI
             this.display_name.BackColor = System.Drawing.Color.Transparent;
             this.display_name.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.display_name.ForeColor = System.Drawing.Color.White;
-            this.display_name.Location = new System.Drawing.Point(370, 180);
+            this.display_name.Location = new System.Drawing.Point(151, 218);
             this.display_name.Name = "display_name";
             this.display_name.Size = new System.Drawing.Size(242, 25);
             this.display_name.TabIndex = 8;
@@ -169,7 +157,7 @@ namespace GUI
             this.decline_change.FillColor = System.Drawing.Color.Transparent;
             this.decline_change.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.decline_change.ForeColor = System.Drawing.Color.White;
-            this.decline_change.Location = new System.Drawing.Point(527, 440);
+            this.decline_change.Location = new System.Drawing.Point(530, 473);
             this.decline_change.Name = "decline_change";
             this.decline_change.Size = new System.Drawing.Size(120, 40);
             this.decline_change.TabIndex = 7;
@@ -184,7 +172,7 @@ namespace GUI
             this.comfirm_change.FillColor = System.Drawing.Color.Transparent;
             this.comfirm_change.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.comfirm_change.ForeColor = System.Drawing.Color.White;
-            this.comfirm_change.Location = new System.Drawing.Point(327, 440);
+            this.comfirm_change.Location = new System.Drawing.Point(329, 473);
             this.comfirm_change.Name = "comfirm_change";
             this.comfirm_change.Size = new System.Drawing.Size(120, 40);
             this.comfirm_change.TabIndex = 6;
@@ -258,9 +246,70 @@ namespace GUI
             this.txtHoTen.TabIndex = 0;
             this.txtHoTen.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHoTen_KeyPress);
             // 
+            // btnChonAnh
+            // 
+            this.btnChonAnh.BackColor = System.Drawing.Color.Transparent;
+            this.btnChonAnh.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnChonAnh.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnChonAnh.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnChonAnh.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnChonAnh.FillColor = System.Drawing.Color.Silver;
+            this.btnChonAnh.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnChonAnh.ForeColor = System.Drawing.Color.White;
+            this.btnChonAnh.Image = ((System.Drawing.Image)(resources.GetObject("btnChonAnh.Image")));
+            this.btnChonAnh.Location = new System.Drawing.Point(293, 151);
+            this.btnChonAnh.Name = "btnChonAnh";
+            this.btnChonAnh.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.btnChonAnh.Size = new System.Drawing.Size(40, 40);
+            this.btnChonAnh.TabIndex = 25;
+            this.btnChonAnh.UseTransparentBackground = true;
+            this.btnChonAnh.Click += new System.EventHandler(this.btnChonAnh_Click);
+            // 
+            // avatarUser
+            // 
+            this.avatarUser.ImageRotate = 0F;
+            this.avatarUser.Location = new System.Drawing.Point(214, 65);
+            this.avatarUser.Name = "avatarUser";
+            this.avatarUser.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.avatarUser.Size = new System.Drawing.Size(119, 116);
+            this.avatarUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.avatarUser.TabIndex = 24;
+            this.avatarUser.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(76, 430);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 28);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Địa Chỉ:";
+            // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.BorderRadius = 10;
+            this.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDiaChi.DefaultText = "";
+            this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDiaChi.ForeColor = System.Drawing.Color.Black;
+            this.txtDiaChi.Location = new System.Drawing.Point(157, 428);
+            this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.txtDiaChi.PlaceholderText = "";
+            this.txtDiaChi.ReadOnly = true;
+            this.txtDiaChi.SelectedText = "";
+            this.txtDiaChi.Size = new System.Drawing.Size(750, 30);
+            this.txtDiaChi.TabIndex = 27;
+            // 
             // UC_ChinhSuaThongTin
             // 
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.txtDiaChi);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnChonAnh);
+            this.Controls.Add(this.avatarUser);
             this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label4);
@@ -276,20 +325,17 @@ namespace GUI
             this.Controls.Add(this.comfirm_change);
             this.Controls.Add(this.decline_change);
             this.Controls.Add(this.display_name);
-            this.Controls.Add(this.guna2CirclePictureBox2);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.Name = "UC_ChinhSuaThongTin";
             this.Size = new System.Drawing.Size(983, 571);
             this.Load += new System.EventHandler(this.UC_ChinhSuaThongTin_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatarUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Label label6;
         private Label label4;
@@ -305,5 +351,9 @@ namespace GUI
         private Guna.UI2.WinForms.Guna2TextBox txtEmail;
         private Guna.UI2.WinForms.Guna2TextBox txtSDT;
         private Guna.UI2.WinForms.Guna2TextBox txtHoTen;
+        private Guna.UI2.WinForms.Guna2CircleButton btnChonAnh;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox avatarUser;
+        private Label label7;
+        private Guna.UI2.WinForms.Guna2TextBox txtDiaChi;
     }
 }

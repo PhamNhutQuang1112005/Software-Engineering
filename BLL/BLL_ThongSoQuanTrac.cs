@@ -11,6 +11,11 @@ namespace BLL
         private readonly DAL_ThongSoQuanTrac _dal = new DAL_ThongSoQuanTrac();
 
         // ===== Lookup (DataTable) =====
+        public bool UpdateTenVaDiaChiViTri(string viTriID, string tenViTri, string diaChi)
+{
+    return _dal.UpdateTenVaDiaChiViTri(viTriID, tenViTri, diaChi);
+}
+
         public DataTable GetAllLoaiChiTieu()  { return _dal.GetAllLoaiChiTieu(); }
         public DataTable GetAllDonVi()        { return _dal.GetAllDonVi(); }
         public DataTable GetAllLoaiPhanTich() { return _dal.GetAllLoaiPhanTich(); }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using BLL;
+using DTO;
+using System;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using BLL;
-using DTO;
-
 namespace GUI
 {
     public partial class GUI_FormThemNguoiDung : Form
@@ -13,7 +14,8 @@ namespace GUI
         private readonly DataRow rowToEdit;
         private readonly string originalUsername;
         private readonly BLL_TaiKhoan bllNguoiDung = new BLL_TaiKhoan();
-
+        private byte[] _avatarBytes;
+        public Action OnUsersChanged { get; set; }
         public GUI_FormThemNguoiDung()
         {
             InitializeComponent();
@@ -33,41 +35,78 @@ namespace GUI
         }
 
         private void GUI_FormThemNguoiDung_Load(object sender, EventArgs e)
+{
+    try
+    {
+        // Lookup
+        cboVaiTro.DataSource = bllNguoiDung.GetAllVaiTro();
+        cboVaiTro.DisplayMember = "TenVaiTro";
+        cboVaiTro.ValueMember   = "VaiTroID";
+
+        cboPhongBan.DataSource = bllNguoiDung.GetAllPhongBan();
+        cboPhongBan.DisplayMember = "TenPhongBan";
+        cboPhongBan.ValueMember   = "PhongBanID";
+
+        // Ảnh hiển thị đẹp hơn
+        picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
+
+        // ===== Lấy dữ liệu người dùng CHỈ bằng hàm có sẵn: GetAllNguoiDung() =====
+        DataRow src = rowToEdit; // ưu tiên row truyền vào từ grid (nếu có)
+
+        // Nếu không có row hoặc row thiếu các cột mới (DiaChi/HinhDaiDien) thì lấy lại từ DB
+        bool needFetchFromDb =
+            (src == null) ||
+            !src.Table.Columns.Contains("DiaChi") ||
+            !src.Table.Columns.Contains("HinhDaiDien");
+
+        if (needFetchFromDb)
         {
-            try
+            DataTable all = bllNguoiDung.GetAllNguoiDung(); // << CHỈ dùng hàm có sẵn
+            if (all != null && all.Rows.Count > 0)
             {
-                cboVaiTro.DataSource = bllNguoiDung.GetAllVaiTro();
-                cboVaiTro.DisplayMember = "TenVaiTro";
-                cboVaiTro.ValueMember = "VaiTroID";
-
-                cboPhongBan.DataSource = bllNguoiDung.GetAllPhongBan();
-                cboPhongBan.DisplayMember = "TenPhongBan";
-                cboPhongBan.ValueMember = "PhongBanID";
-
-                if (rowToEdit != null)
+                // 1) Tìm theo NguoiDungID (nếu có)
+                if (!string.IsNullOrEmpty(nguoiDungID) && all.Columns.Contains("NguoiDungID"))
                 {
-                    txtTenDangNhap.Text = rowToEdit["TenDangNhap"]?.ToString();
-                    txtMatKhau.Text = string.Empty; // không show mật khẩu khi sửa
-                    txtHoTen.Text = rowToEdit["HoVaTen"]?.ToString();
-                    txtSDT.Text   = rowToEdit["DienThoai"]?.ToString();
-                    txtEmail.Text = rowToEdit["Email"]?.ToString();
+                    src = all.AsEnumerable()
+                             .FirstOrDefault(r => Convert.ToString(r["NguoiDungID"]) == nguoiDungID);
+                }
 
-                    if (rowToEdit.Table.Columns.Contains("VaiTroID"))
-                        cboVaiTro.SelectedValue = rowToEdit["VaiTroID"]?.ToString();
-                    if (rowToEdit.Table.Columns.Contains("PhongBanID"))
-                        cboPhongBan.SelectedValue = rowToEdit["PhongBanID"]?.ToString();
+                // 2) Fallback: tìm theo TenDangNhap gốc (nếu đang sửa)
+                if (src == null && !string.IsNullOrEmpty(originalUsername) && all.Columns.Contains("TenDangNhap"))
+                {
+                    src = all.AsEnumerable()
+                             .FirstOrDefault(r => string.Equals(
+                                 Convert.ToString(r["TenDangNhap"]), originalUsername,
+                                 StringComparison.OrdinalIgnoreCase));
+                }
 
-                    if (cboVaiTro.SelectedIndex < 0 && rowToEdit.Table.Columns.Contains("TenVaiTro"))
-                        cboVaiTro.SelectedIndex = cboVaiTro.FindStringExact(rowToEdit["TenVaiTro"]?.ToString() ?? "");
-                    if (cboPhongBan.SelectedIndex < 0 && rowToEdit.Table.Columns.Contains("TenPhongBan"))
-                        cboPhongBan.SelectedIndex = cboPhongBan.FindStringExact(rowToEdit["TenPhongBan"]?.ToString() ?? "");
+                // 3) Fallback cuối: nếu textbox đã có username thì thử theo textbox
+                if (src == null && all.Columns.Contains("TenDangNhap") && !string.IsNullOrWhiteSpace(txtTenDangNhap.Text))
+                {
+                    var ten = txtTenDangNhap.Text.Trim();
+                    src = all.AsEnumerable()
+                             .FirstOrDefault(r => string.Equals(
+                                 Convert.ToString(r["TenDangNhap"]), ten,
+                                 StringComparison.OrdinalIgnoreCase));
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
-            }
         }
+
+        // Bind lên UI nếu tìm được; nếu không thì giữ logic thêm mới (để trống)
+        if (src != null) BindFromRow(src);
+        else
+        {
+            // thêm mới: đảm bảo không hiển thị ảnh cũ
+            picAvatar.Image = null;
+            _avatarBytes = null;
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
+    }
+}
+
 
         private bool ValidateInput(out string msg)
         {
@@ -132,13 +171,13 @@ namespace GUI
 
             try
             {
-                string tenDN   = txtTenDangNhap.Text.Trim();
+                string tenDN = txtTenDangNhap.Text.Trim();
                 string matKhau = (!string.IsNullOrEmpty(nguoiDungID) && string.IsNullOrWhiteSpace(txtMatKhau.Text))
                                  ? null : txtMatKhau.Text.Trim();
-                string hoTen    = txtHoTen.Text.Trim();
-                string sdt      = string.IsNullOrWhiteSpace(txtSDT.Text)   ? null : txtSDT.Text.Trim();
-                string email    = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
-                string vaiTro   = cboVaiTro.SelectedValue?.ToString();
+                string hoTen = txtHoTen.Text.Trim();
+                string sdt = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim();
+                string email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+                string vaiTro = cboVaiTro.SelectedValue?.ToString();
                 string phongBan = cboPhongBan.SelectedValue?.ToString();
 
                 if (string.IsNullOrEmpty(nguoiDungID))
@@ -165,26 +204,29 @@ namespace GUI
                 {
                     NguoiDungID = nguoiDungID,
                     TenDangNhap = tenDN,
-                    HoVaTen     = hoTen,
-                    DienThoai   = sdt,
-                    Email       = email,
-                    VaiTroID    = vaiTro,
-                    PhongBanID  = phongBan
+                    HoVaTen = hoTen,
+                    DienThoai = sdt,
+                    Email = email,
+                    VaiTroID = vaiTro,
+                    PhongBanID = phongBan,
+                    DiaChi = string.IsNullOrWhiteSpace(txtDiaChi.Text) ? null : txtDiaChi.Text.Trim(),
+                    HinhDaiDien = _avatarBytes
                 };
 
                 if (string.IsNullOrEmpty(nguoiDungID))
                 {
-                    bllNguoiDung.AddNguoiDung(dto, matKhau);
-                    MessageBox.Show("Thêm người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bllNguoiDung.AddNguoiDung(dto, matKhau);            // THÊM
+                    MessageBox.Show("Thêm người dùng thành công!");
                 }
                 else
                 {
-                    bllNguoiDung.UpdateNguoiDung(dto, matKhau);
-                    MessageBox.Show("Cập nhật người dùng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bllNguoiDung.UpdateNguoiDung(dto, matKhau);         // SỬA
+                    MessageBox.Show("Cập nhật người dùng thành công!");
                 }
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                OnUsersChanged?.Invoke();             // 🔔 báo màn cha reload ngay
+                this.DialogResult = DialogResult.OK;  // để màn cha biết là thành công
+                this.Close();                         // đóng form
             }
             catch (Exception ex)
             {
@@ -203,18 +245,76 @@ namespace GUI
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar)) e.Handled = true;
         }
 
-       private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
-{
-    // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
-    if (char.IsControl(e.KeyChar))
-        return;
+        private void txtHoTen_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
+            if (char.IsControl(e.KeyChar))
+                return;
 
-    // Nếu không phải là chữ hoặc khoảng trắng => chặn
-    if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            // Nếu không phải là chữ hoặc khoảng trắng => chặn
+            if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn nhập ký tự đó
+                System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
+            }
+        }
+
+        private void btnChonAnh_Click(object sender, EventArgs e)
+        {
+            using (var ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Ảnh|*.png;*.jpg;*.jpeg;*.bmp";
+                if (ofd.ShowDialog(this) == DialogResult.OK)
+                {
+                    var img = Image.FromFile(ofd.FileName);
+                    picAvatar.Image = img;
+
+                    using (var ms = new System.IO.MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // normalize PNG
+                        _avatarBytes = ms.ToArray();
+                    }
+                }
+            }
+        }
+        private void BindFromRow(DataRow r)
+{
+    if (r == null) return;
+
+    txtTenDangNhap.Text = r.Table.Columns.Contains("TenDangNhap") ? r["TenDangNhap"]?.ToString() : "";
+    txtMatKhau.Text     = string.Empty; // không show pass khi sửa
+    txtHoTen.Text       = r.Table.Columns.Contains("HoVaTen")     ? r["HoVaTen"]?.ToString()     : "";
+    txtSDT.Text         = r.Table.Columns.Contains("DienThoai")   ? r["DienThoai"]?.ToString()   : "";
+    txtEmail.Text       = r.Table.Columns.Contains("Email")       ? r["Email"]?.ToString()       : "";
+    txtDiaChi.Text      = r.Table.Columns.Contains("DiaChi")      ? r["DiaChi"]?.ToString()      : "";
+
+    // Avatar
+    if (r.Table.Columns.Contains("HinhDaiDien") && r["HinhDaiDien"] != DBNull.Value)
     {
-        e.Handled = true; // Ngăn nhập ký tự đó
-        System.Media.SystemSounds.Beep.Play(); // Phát tiếng "bíp" nhẹ (tùy chọn)
+        var bytes = (byte[])r["HinhDaiDien"];
+        using (var ms = new MemoryStream(bytes))
+            picAvatar.Image = Image.FromStream(ms);
+        // để _avatarBytes = null => nếu không chọn ảnh mới thì giữ ảnh cũ
+        _avatarBytes = null;
     }
+    else
+    {
+        picAvatar.Image = null;
+        _avatarBytes = null;
+    }
+
+    // Vai trò / Phòng ban theo ID (nếu có)
+    if (r.Table.Columns.Contains("VaiTroID"))
+        cboVaiTro.SelectedValue = r["VaiTroID"]?.ToString();
+    if (r.Table.Columns.Contains("PhongBanID"))
+        cboPhongBan.SelectedValue = r["PhongBanID"]?.ToString();
+
+    // Fallback theo tên hiển thị (khi SelectedValue chưa match)
+    if (cboVaiTro.SelectedIndex < 0 && r.Table.Columns.Contains("TenVaiTro"))
+        cboVaiTro.SelectedIndex = cboVaiTro.FindStringExact(r["TenVaiTro"]?.ToString() ?? "");
+    if (cboPhongBan.SelectedIndex < 0 && r.Table.Columns.Contains("TenPhongBan"))
+        cboPhongBan.SelectedIndex = cboPhongBan.FindStringExact(r["TenPhongBan"]?.ToString() ?? "");
 }
+
     }
 }

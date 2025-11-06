@@ -1,11 +1,11 @@
 ﻿// GUI/GUI_FormDonHangChiTiet.cs
 using BLL;
 using Guna.UI2.WinForms;
+using Microsoft.VisualBasic;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-
 namespace GUI
 {
     public partial class GUI_FormDonHangChiTiet : Form
@@ -31,7 +31,7 @@ namespace GUI
 
         private void GUI_FormDonHangChiTiet_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(_tenDonHang)) lblDonHang.Text ="Tên đơn hàng: "+ _tenDonHang;
+            if (!string.IsNullOrEmpty(_tenDonHang)) lblDonHang.Text = "Tên đơn hàng: " + _tenDonHang;
             if (!string.IsNullOrEmpty(_diaChi)) lblDiaChi.Text = "Địa chỉ: " + _diaChi;
 
             // ---- Chỉ styling UI (SeaGreen) ----
@@ -52,8 +52,8 @@ namespace GUI
                 {
                     string viTriID = Convert.ToString(r["ViTriID"]);
                     string ten = dtViTri.Columns.Contains("TenViTri") ? Convert.ToString(r["TenViTri"]) : viTriID;
-
-                    Control card = MakeViTriCard(ten, viTriID);
+                    string diaChi = dtViTri.Columns.Contains("DiaChi") ? Convert.ToString(r["DiaChi"]) : string.Empty;
+                    Control card = MakeViTriCard(ten, viTriID, diaChi);
                     pnlViTri.Controls.Add(card);
 
                     if (_selectedViTriID == null)
@@ -101,55 +101,131 @@ namespace GUI
             Pill(btnOpenThongSo, Color.ForestGreen);
         }
 
-        private Control MakeViTriCard(string ten, string viTriID)
+        private Control MakeViTriCard(string ten, string viTriID, string diaChi)
+{
+    // Card chính
+    var card = new Guna2Panel
+    {
+        Width = 200,
+        Height = 140,
+        BorderColor = Color.FromArgb(208, 235, 228),
+        BorderThickness = 1,
+        BorderRadius = 14,
+        Padding = new Padding(12, 12, 12, 8),
+        Margin = new Padding(10),
+        FillColor = Color.White
+    };
+    // Bóng đổ nhẹ cho card
+    card.ShadowDecoration.Enabled = true;
+    card.ShadowDecoration.BorderRadius = 14;
+    card.ShadowDecoration.Depth = 4;
+    card.ShadowDecoration.Color = Color.FromArgb(190, 230, 220);
+
+    // Tiêu đề (Tên vị trí)
+    var lblTitle = new Label
+    {
+        Text = ten,
+        AutoSize = false,
+        Width = card.Width - 24,
+        Height = 24,
+        Left = 12,
+        Top = 10,
+        Font = new Font("Segoe UI Semibold", 11f),
+        ForeColor = Color.FromArgb(30, 50, 50)
+    };
+    lblTitle.AutoEllipsis = true;
+    lblTitle.BackColor = Color.Transparent;
+
+    // Địa chỉ (của vị trí)
+    var lblAddr = new Label
+    {
+        Text = string.IsNullOrWhiteSpace(diaChi) ? "Chưa xác định" : diaChi,
+        AutoSize = false,
+        Width = card.Width - 24,
+        Height = 20,
+        Left = 12,
+        Top = lblTitle.Bottom + 2,
+        Font = new Font("Segoe UI", 9f),
+        ForeColor = Color.DimGray,
+        BackColor = Color.Transparent
+    };
+    lblAddr.AutoEllipsis = true;
+
+    // Footer chứa 2 nút (Dock bottom để không bị lệch)
+    var footer = new Guna2Panel
+    {
+        Dock = DockStyle.Bottom,
+        Height = 52,
+        Padding = new Padding(12, 6, 12, 10),
+        FillColor = Color.Transparent
+    };
+
+    var btnChon = new Guna2Button
+    {
+        Text = "Chọn",
+        AutoRoundedCorners = true,
+        BorderRadius = 16,
+        Width = 60,
+        Height = 34,
+        FillColor = Color.SeaGreen,
+        ForeColor = Color.White,
+        Font = new Font("Segoe UI", 9f),
+        BackColor = Color.Transparent
+    };
+    btnChon.Dock = DockStyle.Left;
+
+    var btnSua = new Guna2Button
+    {
+        Text = "Sửa",
+        AutoRoundedCorners = true,
+        BorderRadius = 16,
+        Width = 60,
+        Height = 34,
+        FillColor = Color.FromArgb(90, 130, 255), // xanh nhạt dễ nhìn
+        ForeColor = Color.White,
+        Font = new Font("Segoe UI", 9f),
+        BackColor = Color.Transparent
+    };
+    btnSua.Dock = DockStyle.Right;
+
+    // Hành vi nút
+    btnChon.Click += delegate
+    {
+        _selectedViTriID = viTriID;
+        RefreshLoaiViTriGrid(); // giữ logic sẵn có của bạn :contentReference[oaicite:1]{index=1}
+    };
+
+    btnSua.Click += delegate
+    {
+        string newTen    = Interaction.InputBox("Nhập tên vị trí mới:", "Đổi tên vị trí", ten);
+        string newDiaChi = Interaction.InputBox("Nhập địa chỉ mới:", "Đổi địa chỉ", diaChi);
+
+        if (!string.IsNullOrWhiteSpace(newTen) || !string.IsNullOrWhiteSpace(newDiaChi))
         {
-            // card gọn, viền SeaGreen nhạt
-            Guna2Panel panel = new Guna2Panel
+            // BLL/DAL đã có tuyến Update bạn thêm trước đó
+            bool ok = _bll.UpdateTenVaDiaChiViTri(viTriID, newTen, newDiaChi);
+            if (ok)
             {
-                Width = 165,
-                Height = 100,
-                BorderColor = Color.FromArgb(190, 230, 220),
-                BorderThickness = 1,
-                BorderRadius = 12,
-                Padding = new Padding(12),
-                Margin = new Padding(8),
-                FillColor = Color.White
-            };
-
-            Label lbl = new Label
+                // Lấy lại từ DB để card hiển thị đúng tên/địa chỉ mới
+                ReloadViTriAndGrid(viTriID);
+                MessageBox.Show("Cập nhật xong.");
+            }
+            else
             {
-                Text = ten,
-                AutoSize = true,
-                Font = new Font("Segoe UI Semibold", 12f),
-                Left = 12,
-                Top = 8
-            };
-            lbl.BackColor = Color.Transparent;
-            Guna2Button btn = new Guna2Button
-            {
-                Text = "Chọn",
-                Width = 84,
-                Height = 32,
-                Left = 12,
-                Top = 40
-            };
-            btn.AutoRoundedCorners = true;
-            btn.BorderRadius = 15;
-            btn.FillColor = Color.SeaGreen;
-            btn.BackColor = Color.Transparent;
-            btn.ForeColor = Color.White;
-            btn.Font = new Font("Segoe UI", 9f);
-            //Bấm rồi nó load lại grid loại vị trí
-            btn.Click += delegate
-            {
-                _selectedViTriID = viTriID;
-                RefreshLoaiViTriGrid();
-            };
-
-            panel.Controls.Add(lbl);
-            panel.Controls.Add(btn);
-            return panel;
+                MessageBox.Show("Không cập nhật được.");
+            }
         }
+    };
+
+    // Lắp ráp
+    footer.Controls.Add(btnChon);
+    footer.Controls.Add(btnSua);
+    card.Controls.Add(lblTitle);
+    card.Controls.Add(lblAddr);
+    card.Controls.Add(footer);
+    return card;
+}
+
 
         private void RefreshLoaiViTriGrid()
         {
@@ -378,5 +454,27 @@ namespace GUI
                 }
             }
         }
+        private void ReloadViTriAndGrid(string preferViTriID = null)
+        {
+            DataTable dtViTri = _bll.GetViTriByDonHang(_donHangID);
+            pnlViTri.Controls.Clear();
+            string firstId = null;
+
+            foreach (DataRow r in dtViTri.Rows)
+            {
+                string id = Convert.ToString(r["ViTriID"]);
+                string ten = dtViTri.Columns.Contains("TenViTri") ? Convert.ToString(r["TenViTri"]) : id;
+                string dc = dtViTri.Columns.Contains("DiaChi") ? Convert.ToString(r["DiaChi"]) : string.Empty;
+
+                pnlViTri.Controls.Add(MakeViTriCard(ten, id, dc));
+                if (firstId == null) firstId = id;
+            }
+
+            _selectedViTriID = !string.IsNullOrEmpty(preferViTriID) ? preferViTriID :
+                               string.IsNullOrEmpty(_selectedViTriID) ? firstId : _selectedViTriID;
+
+            RefreshLoaiViTriGrid();
+        }
+
     }
 }
