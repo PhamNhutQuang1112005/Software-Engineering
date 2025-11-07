@@ -14,6 +14,10 @@ namespace GUI
         private List<DonHang> donHangSapHetHan;
         private List<DonHang> donHangQuaHan;
 
+        // Theo dõi tab hiện tại để áp bộ lọc đúng nguồn
+        private enum TabMode { SapHetHan, QuaHan }
+        private TabMode _currentTab = TabMode.SapHetHan;
+
         public UC_PopupThongBao()
         {
             InitializeComponent();
@@ -34,18 +38,20 @@ namespace GUI
         {
             // luôn nạp mới để phản ánh trạng thái cập nhật trong DB
             RefreshDataFromDb();
+            _currentTab = TabMode.SapHetHan;
             btnSapHetHan.FillColor = Color.FromArgb(90, 130, 90);
             btnQuaHan.FillColor = Color.Transparent;
-            LoadDonHang(donHangSapHetHan);
+            ApplySearchFilter();
         }
 
         private void btnQuaHan_Click(object sender, EventArgs e)
         {
             // luôn nạp mới để phản ánh trạng thái cập nhật trong DB
             RefreshDataFromDb();
+            _currentTab = TabMode.QuaHan;
             btnQuaHan.FillColor = Color.FromArgb(90, 130, 90);
             btnSapHetHan.FillColor = Color.Transparent;
-            LoadDonHang(donHangQuaHan);
+            ApplySearchFilter();
         }
 
         // Nạp dữ liệu từ BLL và lọc theo Ngày dự kiến trả kết quả + Trạng thái
@@ -267,6 +273,30 @@ namespace GUI
             public string HopDongID { get; set; }
             public string TenCongTy { get; set; }
             public DateTime? NgayKetThuc { get; set; }
+        }
+
+        // Áp bộ lọc theo MaDon dựa trên nội dung thanh tìm kiếm và tab hiện tại
+        private void ApplySearchFilter()
+        {
+            List<DonHang> source = _currentTab == TabMode.SapHetHan ? donHangSapHetHan : donHangQuaHan;
+            string term = (ThanhTimKiem != null ? (ThanhTimKiem.Text ?? string.Empty) : string.Empty).Trim();
+
+            if (string.IsNullOrEmpty(term))
+            {
+                LoadDonHang(source);
+                return;
+            }
+
+            var filtered = source
+                .Where(d => !string.IsNullOrEmpty(d.MaDon) && d.MaDon.IndexOf(term, StringComparison.OrdinalIgnoreCase) >= 0)
+                .ToList();
+
+            LoadDonHang(filtered);
+        }
+
+        private void ThanhTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            ApplySearchFilter();
         }
     }
 

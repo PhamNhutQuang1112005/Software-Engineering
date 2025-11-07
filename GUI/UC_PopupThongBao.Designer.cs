@@ -20,6 +20,7 @@
             this.btnSapHetHan = new Guna.UI2.WinForms.Guna2Button();
             this.btnQuaHan = new Guna.UI2.WinForms.Guna2Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ThanhTimKiem = new Guna.UI2.WinForms.Guna2TextBox();
             this.SuspendLayout();
             // 
             // btnSapHetHan
@@ -58,19 +59,46 @@
             this.flowLayoutPanel1.TabIndex = 2;
             this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
+            // ThanhTimKiem
+            // 
+            this.ThanhTimKiem.BorderColor = System.Drawing.Color.Black;
+            this.ThanhTimKiem.BorderRadius = 15;
+            this.ThanhTimKiem.BorderThickness = 2;
+            this.ThanhTimKiem.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ThanhTimKiem.DefaultText = "";
+            this.ThanhTimKiem.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.ThanhTimKiem.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.ThanhTimKiem.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.ThanhTimKiem.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.ThanhTimKiem.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ThanhTimKiem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ThanhTimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.ThanhTimKiem.Location = new System.Drawing.Point(50, 322);
+            this.ThanhTimKiem.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ThanhTimKiem.Name = "ThanhTimKiem";
+            this.ThanhTimKiem.PlaceholderForeColor = System.Drawing.Color.Black;
+            this.ThanhTimKiem.PlaceholderText = "Tìm kiếm theo tên đơn hàng...";
+            this.ThanhTimKiem.SelectedText = "";
+            this.ThanhTimKiem.Size = new System.Drawing.Size(327, 36);
+            this.ThanhTimKiem.TabIndex = 46;
+            this.ThanhTimKiem.TextChanged += new System.EventHandler(this.ThanhTimKiem_TextChanged);
+            // 
             // UC_PopupThongBao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.ThanhTimKiem);
             this.Controls.Add(this.btnSapHetHan);
             this.Controls.Add(this.btnQuaHan);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "UC_PopupThongBao";
-            this.Size = new System.Drawing.Size(436, 322);
+            this.Size = new System.Drawing.Size(436, 386);
             this.Load += new System.EventHandler(this.UC_PopupThongBao_Load);
             this.ResumeLayout(false);
 
         }
         #endregion
+
+        private Guna.UI2.WinForms.Guna2TextBox ThanhTimKiem;
     }
 }
