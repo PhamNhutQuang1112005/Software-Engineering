@@ -22,20 +22,6 @@ namespace DAL
                 return dt;
             }
         }
-        public static string GetNewMaKhachHang()
-        {
-            using (SqlConnection conn = DBConnection.GetConnection())
-            using (SqlCommand cmd = new SqlCommand("sp_themMaKhachHang", conn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                conn.Open();
-                object result = cmd.ExecuteScalar(); // lấy giá trị trả về đầu tiên (MaKhachHangMoi)
-                conn.Close();
-
-                return result != null ? result.ToString() : string.Empty;
-            }
-        }
 
         // ===== Xóa =====
         public static void XoaKhachHang(string khachHangId)
@@ -68,16 +54,16 @@ namespace DAL
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@KhachHangID", SqlDbType.NVarChar, 50).Value   = khachHangId;
-                cmd.Parameters.Add("@MaKhachHang", SqlDbType.NVarChar, 50).Value   = maKhachHang;
-                cmd.Parameters.Add("@TenCongTy", SqlDbType.NVarChar, 200).Value    = tenCongTy;
+                cmd.Parameters.Add("@KhachHangID", SqlDbType.NVarChar, 50).Value = khachHangId;
+                cmd.Parameters.Add("@MaKhachHang", SqlDbType.NVarChar, 50).Value = maKhachHang;
+                cmd.Parameters.Add("@TenCongTy", SqlDbType.NVarChar, 200).Value = tenCongTy;
 
-                cmd.Parameters.Add("@MaSoThue", SqlDbType.NVarChar, 50).Value      = ToDb(maSoThue);
+                cmd.Parameters.Add("@MaSoThue", SqlDbType.NVarChar, 50).Value = ToDb(maSoThue);
                 cmd.Parameters.Add("@NguoiDaiDien", SqlDbType.NVarChar, 200).Value = ToDb(nguoiDaiDien);
-                cmd.Parameters.Add("@DienThoai", SqlDbType.NVarChar, 20).Value     = ToDb(dienThoai);
-                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value        = ToDb(email);
-                cmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar, 500).Value       = ToDb(diaChi);
-                cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value            = ToDb(ghiChu);
+                cmd.Parameters.Add("@DienThoai", SqlDbType.NVarChar, 20).Value = ToDb(dienThoai);
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = ToDb(email);
+                cmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar, 500).Value = ToDb(diaChi);
+                cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value = ToDb(ghiChu);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -100,15 +86,15 @@ namespace DAL
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@MaKhachHang", SqlDbType.NVarChar, 50).Value   = maKhachHang;
-                cmd.Parameters.Add("@TenCongTy", SqlDbType.NVarChar, 200).Value    = tenCongTy;
+                cmd.Parameters.Add("@MaKhachHang", SqlDbType.NVarChar, 50).Value = maKhachHang;
+                cmd.Parameters.Add("@TenCongTy", SqlDbType.NVarChar, 200).Value = tenCongTy;
 
-                cmd.Parameters.Add("@MaSoThue", SqlDbType.NVarChar, 50).Value      = ToDb(maSoThue);
+                cmd.Parameters.Add("@MaSoThue", SqlDbType.NVarChar, 50).Value = ToDb(maSoThue);
                 cmd.Parameters.Add("@NguoiDaiDien", SqlDbType.NVarChar, 200).Value = ToDb(nguoiDaiDien);
-                cmd.Parameters.Add("@DienThoai", SqlDbType.NVarChar, 20).Value     = ToDb(dienThoai);
-                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value        = ToDb(email);
-                cmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar, 500).Value       = ToDb(diaChi);
-                cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value            = ToDb(ghiChu);
+                cmd.Parameters.Add("@DienThoai", SqlDbType.NVarChar, 20).Value = ToDb(dienThoai);
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = ToDb(email);
+                cmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar, 500).Value = ToDb(diaChi);
+                cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value = ToDb(ghiChu);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
@@ -131,14 +117,14 @@ namespace DAL
             {
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@MaKhachHang", SqlDbType.NVarChar, 50).Value   = maKhachHang;
-                cmd.Parameters.Add("@TenCongTy", SqlDbType.NVarChar, 200).Value    = tenCongTy;
-                cmd.Parameters.Add("@MaSoThue", SqlDbType.NVarChar, 50).Value      = ToDb(maSoThue);
+                cmd.Parameters.Add("@MaKhachHang", SqlDbType.NVarChar, 50).Value = maKhachHang;
+                cmd.Parameters.Add("@TenCongTy", SqlDbType.NVarChar, 200).Value = tenCongTy;
+                cmd.Parameters.Add("@MaSoThue", SqlDbType.NVarChar, 50).Value = ToDb(maSoThue);
                 cmd.Parameters.Add("@NguoiDaiDien", SqlDbType.NVarChar, 200).Value = ToDb(nguoiDaiDien);
-                cmd.Parameters.Add("@DienThoai", SqlDbType.NVarChar, 20).Value     = ToDb(dienThoai);
-                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value        = ToDb(email);
-                cmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar, 500).Value       = ToDb(diaChi);
-                cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value            = ToDb(ghiChu);
+                cmd.Parameters.Add("@DienThoai", SqlDbType.NVarChar, 20).Value = ToDb(dienThoai);
+                cmd.Parameters.Add("@Email", SqlDbType.NVarChar, 100).Value = ToDb(email);
+                cmd.Parameters.Add("@DiaChi", SqlDbType.NVarChar, 500).Value = ToDb(diaChi);
+                cmd.Parameters.Add("@GhiChu", SqlDbType.NVarChar).Value = ToDb(ghiChu);
 
                 conn.Open();
                 var result = cmd.ExecuteScalar(); // yêu cầu proc có SELECT @NewID

@@ -18,7 +18,7 @@ namespace GUI
             this.khachHangID = null;
             this.rowToEdit = null;
             this.Text = "Thêm khách hàng";
-            txtMaKH.Text = BLL_KhachHang.GetNewMaKhachHang();
+            txtMaKH.Text = GenerateSuggestedMaKhachHang();
         }
 
         // Overload: truyền sẵn DataRow để sửa
@@ -53,14 +53,14 @@ namespace GUI
                 if (rows.Length == 0) return;
 
                 var r = rows[0];
-                txtMaKH.Text         = Convert.ToString(r["MaKhachHang"]);
-                txtTenCongTy.Text    = Convert.ToString(r["TenCongTy"]);
-                txtMaSoThue.Text     = Convert.ToString(r["MaSoThue"]);
+                txtMaKH.Text = Convert.ToString(r["MaKhachHang"]);
+                txtTenCongTy.Text = Convert.ToString(r["TenCongTy"]);
+                txtMaSoThue.Text = Convert.ToString(r["MaSoThue"]);
                 txtNguoiDaiDien.Text = Convert.ToString(r["NguoiDaiDien"]);
-                txtSDT.Text          = Convert.ToString(r["DienThoai"]);
-                txtEmail.Text        = Convert.ToString(r["Email"]);
-                txtDiaChi.Text       = Convert.ToString(r["DiaChi"]);
-                txtGhiChu.Text       = Convert.ToString(r["GhiChu"]);
+                txtSDT.Text = Convert.ToString(r["DienThoai"]);
+                txtEmail.Text = Convert.ToString(r["Email"]);
+                txtDiaChi.Text = Convert.ToString(r["DiaChi"]);
+                txtGhiChu.Text = Convert.ToString(r["GhiChu"]);
             }
             catch
             {
@@ -73,14 +73,14 @@ namespace GUI
             if (rowToEdit != null)
             {
                 // Map dữ liệu lên control khi sửa (chế độ DataRow)
-                txtMaKH.Text          = rowToEdit["MaKhachHang"]?.ToString();
-                txtTenCongTy.Text     = rowToEdit["TenCongTy"]?.ToString();
-                txtMaSoThue.Text      = rowToEdit["MaSoThue"]?.ToString();
-                txtNguoiDaiDien.Text  = rowToEdit["NguoiDaiDien"]?.ToString();
-                txtSDT.Text           = rowToEdit["DienThoai"]?.ToString();
-                txtEmail.Text         = rowToEdit["Email"]?.ToString();
-                txtDiaChi.Text        = rowToEdit["DiaChi"]?.ToString();
-                txtGhiChu.Text        = rowToEdit["GhiChu"]?.ToString();
+                txtMaKH.Text = rowToEdit["MaKhachHang"]?.ToString();
+                txtTenCongTy.Text = rowToEdit["TenCongTy"]?.ToString();
+                txtMaSoThue.Text = rowToEdit["MaSoThue"]?.ToString();
+                txtNguoiDaiDien.Text = rowToEdit["NguoiDaiDien"]?.ToString();
+                txtSDT.Text = rowToEdit["DienThoai"]?.ToString();
+                txtEmail.Text = rowToEdit["Email"]?.ToString();
+                txtDiaChi.Text = rowToEdit["DiaChi"]?.ToString();
+                txtGhiChu.Text = rowToEdit["GhiChu"]?.ToString();
             }
         }
 
@@ -141,14 +141,14 @@ namespace GUI
                 }
 
                 // Chuẩn hóa input
-                string ma           = txtMaKH.Text.Trim();
-                string ten          = txtTenCongTy.Text.Trim();
-                string maSoThue     = string.IsNullOrWhiteSpace(txtMaSoThue.Text) ? null : txtMaSoThue.Text.Trim();
+                string ma = txtMaKH.Text.Trim();
+                string ten = txtTenCongTy.Text.Trim();
+                string maSoThue = string.IsNullOrWhiteSpace(txtMaSoThue.Text) ? null : txtMaSoThue.Text.Trim();
                 string nguoiDaiDien = string.IsNullOrWhiteSpace(txtNguoiDaiDien.Text) ? null : txtNguoiDaiDien.Text.Trim();
-                string sdt          = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim();
-                string email        = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
-                string diachi       = string.IsNullOrWhiteSpace(txtDiaChi.Text) ? null : txtDiaChi.Text.Trim();
-                string ghichu       = string.IsNullOrWhiteSpace(txtGhiChu.Text) ? null : txtGhiChu.Text.Trim();
+                string sdt = string.IsNullOrWhiteSpace(txtSDT.Text) ? null : txtSDT.Text.Trim();
+                string email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+                string diachi = string.IsNullOrWhiteSpace(txtDiaChi.Text) ? null : txtDiaChi.Text.Trim();
+                string ghichu = string.IsNullOrWhiteSpace(txtGhiChu.Text) ? null : txtGhiChu.Text.Trim();
 
                 if (string.IsNullOrEmpty(khachHangID))
                 {
@@ -181,6 +181,10 @@ namespace GUI
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+        private string GenerateSuggestedMaKhachHang()
+        {
+            return "KH-" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
         }
 
         private void txtTenCongTy_TextChanged(object sender, EventArgs e)

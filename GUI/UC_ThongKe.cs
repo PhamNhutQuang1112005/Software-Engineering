@@ -30,12 +30,15 @@ namespace GUI
 
         private void UC_ThongKe_Load(object sender, EventArgs e)
         {
+            BieuDo1.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             BieuDo1.Titles.Clear();
-            Title t = new Title("Biểu đồ cột về tình trạng đơn hàng", Docking.Bottom,
+            Title t = new Title("Biểu đồ cột về tình trạng đơn hàng", Docking.Top,
                                 new Font("Segoe UI", 12, FontStyle.Bold), Color.White);
             BieuDo1.Titles.Add(t);
+            BieuDo1.Legends[0].Docking = Docking.Bottom;
+            BieuDo1.Legends[0].Font = new Font("Segoe UI", 10, FontStyle.Bold);
             chart2.Titles.Clear();
-            Title t1 = new Title("Biểu đồ tròn về tình trạng đơn hàng", Docking.Bottom,
+            Title t1 = new Title("Biểu đồ tròn về tình trạng đơn hàng", Docking.Top,
                                 new Font("Segoe UI", 12, FontStyle.Bold), Color.White);
             chart2.Titles.Add(t1);
             // Style combobox
@@ -142,6 +145,10 @@ namespace GUI
             if (pie != null)
             {
                 pie.Points.Clear();
+                pie.ChartType = SeriesChartType.Pie;
+                pie.LegendText = "#VALX";       // hiển thị tên trong chú thích
+                pie.Label = "#PERCENT{P0}";     // hiển thị phần trăm trong biểu đồ
+                pie["PieLabelStyle"] = "Inside";
 
                 if (late > 0)
                 {
@@ -163,6 +170,16 @@ namespace GUI
 
 
             }
+            chart2.Legends.Clear();
+            chart2.Legends.Add("Legend1");
+            chart2.Legends[0].Docking = Docking.Bottom;
+            chart2.Legends[0].Alignment = StringAlignment.Center;
+            chart2.Legends[0].IsDockedInsideChartArea = false;
+            chart2.Legends[0].ForeColor = Color.White;
+            chart2.Legends[0].Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            chart2.Legends[0].BackColor = Color.Transparent;
+            
+            pie.Legend = "Legend1";
         }
 
         private static void AddPiePoint(Series pie, string label, int value)

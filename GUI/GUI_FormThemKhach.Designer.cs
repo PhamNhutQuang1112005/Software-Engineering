@@ -52,14 +52,12 @@ namespace GUI
             this.txtMaKH.BorderThickness = 2;
             this.txtMaKH.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtMaKH.DefaultText = "";
-            this.txtMaKH.Enabled = false;
             this.txtMaKH.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.txtMaKH.ForeColor = System.Drawing.Color.Black;
             this.txtMaKH.Location = new System.Drawing.Point(172, 22);
             this.txtMaKH.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.txtMaKH.Name = "txtMaKH";
             this.txtMaKH.PlaceholderText = "";
-            this.txtMaKH.ReadOnly = true;
             this.txtMaKH.SelectedText = "";
             this.txtMaKH.Size = new System.Drawing.Size(215, 42);
             this.txtMaKH.TabIndex = 0;
