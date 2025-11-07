@@ -102,7 +102,7 @@ namespace GUI
             // 
             // txtEmail
             // 
-            this.txtEmail.BorderColor = System.Drawing.Color.Yellow;
+            this.txtEmail.BorderColor = System.Drawing.Color.White;
             this.txtEmail.BorderRadius = 10;
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmail.DefaultText = "";

@@ -47,7 +47,7 @@ namespace GUI
             // 
             // txtMaKH
             // 
-            this.txtMaKH.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtMaKH.BorderColor = System.Drawing.Color.White;
             this.txtMaKH.BorderRadius = 10;
             this.txtMaKH.BorderThickness = 2;
             this.txtMaKH.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -64,7 +64,7 @@ namespace GUI
             // 
             // txtTenCongTy
             // 
-            this.txtTenCongTy.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtTenCongTy.BorderColor = System.Drawing.Color.White;
             this.txtTenCongTy.BorderRadius = 10;
             this.txtTenCongTy.BorderThickness = 2;
             this.txtTenCongTy.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -83,7 +83,7 @@ namespace GUI
             // 
             // txtMaSoThue
             // 
-            this.txtMaSoThue.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtMaSoThue.BorderColor = System.Drawing.Color.White;
             this.txtMaSoThue.BorderRadius = 10;
             this.txtMaSoThue.BorderThickness = 2;
             this.txtMaSoThue.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -100,7 +100,7 @@ namespace GUI
             // 
             // txtNguoiDaiDien
             // 
-            this.txtNguoiDaiDien.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtNguoiDaiDien.BorderColor = System.Drawing.Color.White;
             this.txtNguoiDaiDien.BorderRadius = 10;
             this.txtNguoiDaiDien.BorderThickness = 2;
             this.txtNguoiDaiDien.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -118,7 +118,7 @@ namespace GUI
             // 
             // txtSDT
             // 
-            this.txtSDT.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtSDT.BorderColor = System.Drawing.Color.White;
             this.txtSDT.BorderRadius = 10;
             this.txtSDT.BorderThickness = 2;
             this.txtSDT.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -135,7 +135,7 @@ namespace GUI
             // 
             // txtEmail
             // 
-            this.txtEmail.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtEmail.BorderColor = System.Drawing.Color.White;
             this.txtEmail.BorderRadius = 10;
             this.txtEmail.BorderThickness = 2;
             this.txtEmail.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -152,7 +152,7 @@ namespace GUI
             // 
             // txtDiaChi
             // 
-            this.txtDiaChi.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtDiaChi.BorderColor = System.Drawing.Color.White;
             this.txtDiaChi.BorderRadius = 10;
             this.txtDiaChi.BorderThickness = 2;
             this.txtDiaChi.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -166,10 +166,11 @@ namespace GUI
             this.txtDiaChi.SelectedText = "";
             this.txtDiaChi.Size = new System.Drawing.Size(241, 42);
             this.txtDiaChi.TabIndex = 5;
+            this.txtDiaChi.TextChanged += new System.EventHandler(this.txtDiaChi_TextChanged);
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.txtGhiChu.BorderColor = System.Drawing.Color.White;
             this.txtGhiChu.BorderRadius = 10;
             this.txtGhiChu.BorderThickness = 2;
             this.txtGhiChu.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -195,7 +196,7 @@ namespace GUI
             this.btnLuu.FillColor = System.Drawing.Color.Green;
             this.btnLuu.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.btnLuu.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(299, 414);
+            this.btnLuu.Location = new System.Drawing.Point(218, 414);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(120, 40);
             this.btnLuu.TabIndex = 8;
@@ -211,7 +212,7 @@ namespace GUI
             this.btnHuy.FillColor = System.Drawing.Color.Green;
             this.btnHuy.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnHuy.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(439, 414);
+            this.btnHuy.Location = new System.Drawing.Point(520, 414);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(120, 40);
             this.btnHuy.TabIndex = 9;
@@ -278,6 +279,7 @@ namespace GUI
             this.label4.Size = new System.Drawing.Size(70, 23);
             this.label4.TabIndex = 41;
             this.label4.Text = "Địa chỉ:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 

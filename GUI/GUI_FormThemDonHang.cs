@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using DTO;                         // <- dùng DTO_DonHang
@@ -42,9 +43,26 @@ namespace GUI
             guna2ComboBox4.DisplayMember = "MaHopDong";
             guna2ComboBox4.ValueMember   = "HopDongID";
 
-            guna2ComboBox5.DataSource    = BLL_DonHang.GetAllTrangThaiDonHang();
+            // Trạng thái: loại bỏ 'Hủy'
+            var tt = BLL_DonHang.GetAllTrangThaiDonHang();
+            if (tt != null && tt.Columns.Contains("TrangThaiID") && tt.Columns.Contains("TenTrangThai"))
+            {
+                foreach (DataRow r in tt.Rows.Cast<DataRow>().ToList())
+                {
+                    string id = Convert.ToString(r["TrangThaiID"] ?? "");
+                    string ten = Convert.ToString(r["TenTrangThai"] ?? "");
+                    if (id.Equals("TT004", StringComparison.OrdinalIgnoreCase) ||
+                        ten.Equals("Hủy", StringComparison.OrdinalIgnoreCase) ||
+                        ten.Equals("Huy", StringComparison.OrdinalIgnoreCase))
+                    {
+                        r.Delete();
+                    }
+                }
+                tt.AcceptChanges();
+            }
+            guna2ComboBox5.DataSource = tt;
             guna2ComboBox5.DisplayMember = "TenTrangThai";
-            guna2ComboBox5.ValueMember   = "TrangThaiID";
+            guna2ComboBox5.ValueMember = "TrangThaiID";
 
             // "Ngày dự kiến" chỉ hiển thị, không cho sửa tay
             Ngay_Du_kien.Enabled = false;

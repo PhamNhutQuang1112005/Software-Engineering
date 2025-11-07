@@ -124,25 +124,33 @@ namespace GUI
         {
             try
             {
-                // Khách hàng: KhachHangID
+                // Khách hàng
                 var kh = BLL_KhachHang.GetAllKhachHang();
                 if (kh != null)
                 {
-                    khachhang.DisplayMember = "TenCongTy";     // hiển thị tên
-                    khachhang.ValueMember = "KhachHangID";   // chọn theo ID
+                    khachhang.DisplayMember = "TenCongTy";
+                    khachhang.ValueMember = "KhachHangID";
                     khachhang.DataSource = kh;
-
                 }
 
-                // Loại hợp đồng (Kỳ hạn): KyHanID + TenKyHan
+                // Kỳ hạn: chỉ loại bỏ mục 'Quý' khỏi combo (không đổi DB, không đổi logic khác)
                 var ky = BLL_KyHanHopDong.GetAllKyHanHopDong();
                 if (ky != null)
                 {
+                    if (ky.Columns.Contains("TenKyHan"))
+                    {
+                        foreach (DataRow r in ky.Rows.Cast<DataRow>().ToList())
+                        {
+                            var ten = Convert.ToString(r["TenKyHan"] ?? "").Trim();
+                            if (ten.Equals("Quý", StringComparison.OrdinalIgnoreCase) || ten.Equals("Quy", StringComparison.OrdinalIgnoreCase))
+                                r.Delete();
+                        }
+                        ky.AcceptChanges();
+                    }
                     loaihopdong.DisplayMember = "TenKyHan";
                     loaihopdong.ValueMember = "KyHanID";
                     loaihopdong.DataSource = ky;
                 }
-
             }
             catch { }
         }

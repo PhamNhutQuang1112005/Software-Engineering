@@ -2,6 +2,7 @@
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Linq; // để duyệt Application.OpenForms
 using BLL;
 
 namespace GUI
@@ -11,6 +12,7 @@ namespace GUI
         // Nếu null => THÊM, ngược lại => SỬA
         private readonly string khachHangID;
         private readonly DataRow rowToEdit;
+        private readonly BLL_ThongSoQuanTrac _bllViTri = new BLL_ThongSoQuanTrac(); // dùng để update địa chỉ vị trí
 
         public GUI_FormThemKhach()
         {
@@ -161,6 +163,10 @@ namespace GUI
                     // CẬP NHẬT
                     BLL_KhachHang.UpdateKhachHang(khachHangID, ma, ten, maSoThue, nguoiDaiDien, sdt, email, diachi, ghichu);
                     MessageBox.Show("Cập nhật khách hàng thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Đồng bộ địa chỉ mới cho tất cả vị trí thuộc các đơn hàng của khách này (nếu có địa chỉ mới)
+                    if (!string.IsNullOrWhiteSpace(diachi))
+                        SyncDiaChiKhachHangToViTri(khachHangID, diachi);
                 }
 
                 this.DialogResult = DialogResult.OK;
@@ -172,50 +178,93 @@ namespace GUI
             }
         }
 
+        // Đồng bộ địa chỉ khách hàng xuống tất cả ViTri thuộc các đơn hàng của khách hàng đó
+        private void SyncDiaChiKhachHangToViTri(string khId, string newDiaChi)
+        {
+            try
+            {
+                var dtDonHang = BLL_DonHang.GetAllDonHang();
+                if (dtDonHang == null || !dtDonHang.Columns.Contains("IDKhachHang")) return;
+
+                // Chỉ lấy các đơn hàng của khách này
+                string safeId = (khId ?? "").Replace("'", "''");
+                DataRow[] dhRows = dtDonHang.Select("IDKhachHang = '" + safeId + "'");
+                if (dhRows.Length == 0) return;
+
+                foreach (var dhRow in dhRows)
+                {
+                    string donHangID = Convert.ToString(dhRow["DonHangID"]);
+                    if (string.IsNullOrWhiteSpace(donHangID)) continue;
+
+                    DataTable dtViTri = _bllViTri.GetViTriByDonHang(donHangID);
+                    if (dtViTri == null || !dtViTri.Columns.Contains("ViTriID")) continue;
+
+                    foreach (DataRow vt in dtViTri.Rows)
+                    {
+                        string viTriID = Convert.ToString(vt["ViTriID"]);
+                        if (string.IsNullOrWhiteSpace(viTriID)) continue;
+                        string tenViTri = dtViTri.Columns.Contains("TenViTri") ? Convert.ToString(vt["TenViTri"]) : null;
+                        // Cập nhật tên giữ nguyên, chỉ thay DiaChi
+                        _bllViTri.UpdateTenVaDiaChiViTri(viTriID, tenViTri, newDiaChi);
+                    }
+                }
+
+                // Cập nhật UI nếu form chi tiết đơn hàng đang mở
+                foreach (Form f in Application.OpenForms)
+                {
+                    var chiTiet = f as GUI_FormDonHangChiTiet;
+                    if (chiTiet == null) continue;
+                    // Kiểm tra DonHangID form có thuộc khách này không
+                    // Cách: tra lại DonHangID -> IDKhachHang trong dtDonHang
+                    string dhId = chiTiet.DonHangID;
+                    if (string.IsNullOrWhiteSpace(dhId)) continue;
+                    DataRow[] match = dtDonHang.Select("DonHangID = '" + dhId.Replace("'", "''") + "' AND IDKhachHang = '" + safeId + "'");
+                    if (match.Length > 0)
+                    {
+                        chiTiet.OnKhachHangDiaChiUpdated(newDiaChi);
+                    }
+                }
+            }
+            catch
+            {
+                // bỏ qua lỗi đồng bộ để không cản việc lưu KH
+            }
+        }
+
         private void btnHuy_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        private void label1_Click(object sender, EventArgs e) { }
 
-        }
         private string GenerateSuggestedMaKhachHang()
         {
             return "KH-" + DateTime.Now.ToString("yyyyMMdd-HHmmss");
         }
 
-        private void txtTenCongTy_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void txtTenCongTy_TextChanged(object sender, EventArgs e) { }
 
         private void txtNguoiDaiDien_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
             if (char.IsControl(e.KeyChar)) return;
-
-            // Chỉ cho phép chữ cái và khoảng trắng (không cho số)
             if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
-                e.Handled = true; // chặn ký tự
+                e.Handled = true;
             }
         }
 
         private void txtTenCongTy_KeyPress(object sender, KeyPressEventArgs e)
         {
-            // Cho phép phím điều khiển (Backspace, Delete, mũi tên, v.v.)
-            if (char.IsControl(e.KeyChar))
-                return;
-
-            // Nếu không phải là chữ hoặc khoảng trắng => chặn
+            if (char.IsControl(e.KeyChar)) return;
             if (!char.IsLetter(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
             {
-                e.Handled = true; // Ngăn nhập ký tự đó
+                e.Handled = true;
             }
-
         }
+
+        private void txtDiaChi_TextChanged(object sender, EventArgs e) { }
+        private void label4_Click(object sender, EventArgs e) { }
     }
 }

@@ -29,10 +29,27 @@ namespace GUI
             _diaChi = !string.IsNullOrEmpty(diaChi) ? diaChi : "(Chưa rõ địa chỉ)";
         }
 
+        // Expose DonHangID để form khác kiểm tra
+        public string DonHangID { get { return _donHangID; } }
+
+        // Cho phép form khác đẩy địa chỉ mới và reload thẻ vị trí
+        public void OnKhachHangDiaChiUpdated(string newDiaChi)
+        {
+            if (!string.IsNullOrWhiteSpace(newDiaChi))
+            {
+                lblDiaChi.Text = "Địa chỉ: " + newDiaChi;
+            }
+            // reload danh sách vị trí để phản ánh địa chỉ mới trong DB
+            ReloadViTriAndGrid(_selectedViTriID);
+        }
+
         private void GUI_FormDonHangChiTiet_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(_tenDonHang)) lblDonHang.Text = "Tên đơn hàng: " + _tenDonHang;
             if (!string.IsNullOrEmpty(_diaChi)) lblDiaChi.Text = "Địa chỉ: " + _diaChi;
+
+            // Thử lấy địa chỉ khách hàng/ vị trí từ DB để ghi đè nếu có
+            LoadDiaChiKhachHang();
 
             // ---- Chỉ styling UI (SeaGreen) ----
             ApplyGridTheme();
@@ -69,6 +86,70 @@ namespace GUI
             }
         }
 
+        // Tìm địa chỉ ưu tiên theo Khách hàng của đơn hàng; nếu không có, fallback theo địa chỉ của vị trí đầu tiên có địa chỉ
+        private void LoadDiaChiKhachHang()
+        {
+            try
+            {
+                string khId = null;
+
+                // 1) Lấy DonHang -> IDKhachHang hoặc HopDongID
+                var dtDH = BLL_DonHang.GetDonHangByID(_donHangID);
+                if (dtDH != null && dtDH.Rows.Count > 0)
+                {
+                    var row = dtDH.Rows[0];
+                    if (dtDH.Columns.Contains("IDKhachHang"))
+                        khId = Convert.ToString(row["IDKhachHang"]);
+
+                    if (string.IsNullOrWhiteSpace(khId) && dtDH.Columns.Contains("HopDongID"))
+                    {
+                        string hopDongId = Convert.ToString(row["HopDongID"]);
+                        var dtHD = BLL_DonHang.GetAllHopDong();
+                        if (dtHD != null && dtHD.Columns.Contains("HopDongID") && dtHD.Columns.Contains("KhachHangID"))
+                        {
+                            string safe = (hopDongId ?? "").Replace("'", "''");
+                            DataRow[] r = dtHD.Select("HopDongID = '" + safe + "'");
+                            if (r.Length > 0) khId = Convert.ToString(r[0]["KhachHangID"]);
+                        }
+                    }
+                }
+
+                // 2) Với KhachHangID -> lấy DiaChi khách hàng
+                string dc = null;
+                if (!string.IsNullOrWhiteSpace(khId))
+                {
+                    var dtKH = BLL_KhachHang.GetAllKhachHang();
+                    if (dtKH != null && dtKH.Columns.Contains("KhachHangID") && dtKH.Columns.Contains("DiaChi"))
+                    {
+                        string safeKh = khId.Replace("'", "''");
+                        DataRow[] rkh = dtKH.Select("KhachHangID = '" + safeKh + "'");
+                        if (rkh.Length > 0) dc = Convert.ToString(rkh[0]["DiaChi"]);
+                    }
+                }
+
+                // 3) Fallback: lấy từ địa chỉ của vị trí bất kỳ thuộc đơn hàng
+                if (string.IsNullOrWhiteSpace(dc))
+                {
+                    var dtVT = _bll.GetViTriByDonHang(_donHangID);
+                    if (dtVT != null && dtVT.Columns.Contains("DiaChi"))
+                    {
+                        foreach (DataRow vr in dtVT.Rows)
+                        {
+                            var s = Convert.ToString(vr["DiaChi"]);
+                            if (!string.IsNullOrWhiteSpace(s)) { dc = s; break; }
+                        }
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(dc))
+                    lblDiaChi.Text = "Địa chỉ: " + dc;
+            }
+            catch
+            {
+                // ignore lỗi lấy địa chỉ để không chặn UI
+            }
+        }
+
         // ---- UI only: grid theme SeaGreen ----
         private void ApplyGridTheme()
         {
@@ -102,130 +183,127 @@ namespace GUI
         }
 
         private Control MakeViTriCard(string ten, string viTriID, string diaChi)
-{
-    // Card chính
-    var card = new Guna2Panel
-    {
-        Width = 200,
-        Height = 140,
-        BorderColor = Color.FromArgb(208, 235, 228),
-        BorderThickness = 1,
-        BorderRadius = 14,
-        Padding = new Padding(12, 12, 12, 8),
-        Margin = new Padding(10),
-        FillColor = Color.White
-    };
-    // Bóng đổ nhẹ cho card
-    card.ShadowDecoration.Enabled = true;
-    card.ShadowDecoration.BorderRadius = 14;
-    card.ShadowDecoration.Depth = 4;
-    card.ShadowDecoration.Color = Color.FromArgb(190, 230, 220);
-
-    // Tiêu đề (Tên vị trí)
-    var lblTitle = new Label
-    {
-        Text = ten,
-        AutoSize = false,
-        Width = card.Width - 24,
-        Height = 24,
-        Left = 12,
-        Top = 10,
-        Font = new Font("Segoe UI Semibold", 11f),
-        ForeColor = Color.FromArgb(30, 50, 50)
-    };
-    lblTitle.AutoEllipsis = true;
-    lblTitle.BackColor = Color.Transparent;
-
-    // Địa chỉ (của vị trí)
-    var lblAddr = new Label
-    {
-        Text = string.IsNullOrWhiteSpace(diaChi) ? "Chưa xác định" : diaChi,
-        AutoSize = false,
-        Width = card.Width - 24,
-        Height = 20,
-        Left = 12,
-        Top = lblTitle.Bottom + 2,
-        Font = new Font("Segoe UI", 9f),
-        ForeColor = Color.DimGray,
-        BackColor = Color.Transparent
-    };
-    lblAddr.AutoEllipsis = true;
-
-    // Footer chứa 2 nút (Dock bottom để không bị lệch)
-    var footer = new Guna2Panel
-    {
-        Dock = DockStyle.Bottom,
-        Height = 52,
-        Padding = new Padding(12, 6, 12, 10),
-        FillColor = Color.Transparent
-    };
-
-    var btnChon = new Guna2Button
-    {
-        Text = "Chọn",
-        AutoRoundedCorners = true,
-        BorderRadius = 16,
-        Width = 60,
-        Height = 34,
-        FillColor = Color.SeaGreen,
-        ForeColor = Color.White,
-        Font = new Font("Segoe UI", 9f),
-        BackColor = Color.Transparent
-    };
-    btnChon.Dock = DockStyle.Left;
-
-    var btnSua = new Guna2Button
-    {
-        Text = "Sửa",
-        AutoRoundedCorners = true,
-        BorderRadius = 16,
-        Width = 60,
-        Height = 34,
-        FillColor = Color.FromArgb(90, 130, 255), // xanh nhạt dễ nhìn
-        ForeColor = Color.White,
-        Font = new Font("Segoe UI", 9f),
-        BackColor = Color.Transparent
-    };
-    btnSua.Dock = DockStyle.Right;
-
-    // Hành vi nút
-    btnChon.Click += delegate
-    {
-        _selectedViTriID = viTriID;
-        RefreshLoaiViTriGrid(); // giữ logic sẵn có của bạn :contentReference[oaicite:1]{index=1}
-    };
-
-    btnSua.Click += delegate
-    {
-        string newTen    = Interaction.InputBox("Nhập tên vị trí mới:", "Đổi tên vị trí", ten);
-        string newDiaChi = Interaction.InputBox("Nhập địa chỉ mới:", "Đổi địa chỉ", diaChi);
-
-        if (!string.IsNullOrWhiteSpace(newTen) || !string.IsNullOrWhiteSpace(newDiaChi))
         {
-            // BLL/DAL đã có tuyến Update bạn thêm trước đó
-            bool ok = _bll.UpdateTenVaDiaChiViTri(viTriID, newTen, newDiaChi);
-            if (ok)
+            // Card chính
+            var card = new Guna2Panel
             {
-                // Lấy lại từ DB để card hiển thị đúng tên/địa chỉ mới
-                ReloadViTriAndGrid(viTriID);
-                MessageBox.Show("Cập nhật xong.");
-            }
-            else
+                Width = 200,
+                Height = 140,
+                BorderColor = Color.FromArgb(208, 235, 228),
+                BorderThickness = 1,
+                BorderRadius = 14,
+                Padding = new Padding(12, 12, 12, 8),
+                Margin = new Padding(10),
+                FillColor = Color.White
+            };
+            // Bóng đổ nhẹ cho card
+            card.ShadowDecoration.Enabled = true;
+            card.ShadowDecoration.BorderRadius = 14;
+            card.ShadowDecoration.Depth = 4;
+            card.ShadowDecoration.Color = Color.FromArgb(190, 230, 220);
+
+            // Tiêu đề (Tên vị trí)
+            var lblTitle = new Label
             {
-                MessageBox.Show("Không cập nhật được.");
-            }
+                Text = ten,
+                AutoSize = false,
+                Width = card.Width - 24,
+                Height = 24,
+                Left = 12,
+                Top = 10,
+                Font = new Font("Segoe UI Semibold", 11f),
+                ForeColor = Color.FromArgb(30, 50, 50)
+            };
+            lblTitle.AutoEllipsis = true;
+            lblTitle.BackColor = Color.Transparent;
+
+            // Địa chỉ (của vị trí)
+            var lblAddr = new Label
+            {
+                Text = string.IsNullOrWhiteSpace(diaChi) ? "Chưa xác định" : diaChi,
+                AutoSize = false,
+                Width = card.Width - 24,
+                Height = 20,
+                Left = 12,
+                Top = lblTitle.Bottom + 2,
+                Font = new Font("Segoe UI", 9f),
+                ForeColor = Color.DimGray,
+                BackColor = Color.Transparent
+            };
+            lblAddr.AutoEllipsis = true;
+
+            // Footer chứa 2 nút (Dock bottom để không bị lệch)
+            var footer = new Guna2Panel
+            {
+                Dock = DockStyle.Bottom,
+                Height = 52,
+                Padding = new Padding(12, 6, 12, 10),
+                FillColor = Color.Transparent
+            };
+
+            var btnChon = new Guna2Button
+            {
+                Text = "Chọn",
+                AutoRoundedCorners = true,
+                BorderRadius = 16,
+                Width = 60,
+                Height = 34,
+                FillColor = Color.SeaGreen,
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9f),
+                BackColor = Color.Transparent
+            };
+            btnChon.Dock = DockStyle.Left;
+
+            var btnSua = new Guna2Button
+            {
+                Text = "Sửa",
+                AutoRoundedCorners = true,
+                BorderRadius = 16,
+                Width = 60,
+                Height = 34,
+                FillColor = Color.FromArgb(90, 130, 255), // xanh nhạt dễ nhìn
+                ForeColor = Color.White,
+                Font = new Font("Segoe UI", 9f),
+                BackColor = Color.Transparent
+            };
+            btnSua.Dock = DockStyle.Right;
+
+            // Hành vi nút
+            btnChon.Click += delegate
+            {
+                _selectedViTriID = viTriID;
+                RefreshLoaiViTriGrid();
+            };
+
+            btnSua.Click += delegate
+            {
+                string newTen    = Interaction.InputBox("Nhập tên vị trí mới:", "Đổi tên vị trí", ten);
+                string newDiaChi = Interaction.InputBox("Nhập địa chỉ mới:", "Đổi địa chỉ", diaChi);
+
+                if (!string.IsNullOrWhiteSpace(newTen) || !string.IsNullOrWhiteSpace(newDiaChi))
+                {
+                    bool ok = _bll.UpdateTenVaDiaChiViTri(viTriID, newTen, newDiaChi);
+                    if (ok)
+                    {
+                        ReloadViTriAndGrid(viTriID);
+                        MessageBox.Show("Cập nhật xong.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không cập nhật được.");
+                    }
+                }
+            };
+
+            // Lắp ráp
+            footer.Controls.Add(btnChon);
+            footer.Controls.Add(btnSua);
+            card.Controls.Add(lblTitle);
+            card.Controls.Add(lblAddr);
+            card.Controls.Add(footer);
+            return card;
         }
-    };
-
-    // Lắp ráp
-    footer.Controls.Add(btnChon);
-    footer.Controls.Add(btnSua);
-    card.Controls.Add(lblTitle);
-    card.Controls.Add(lblAddr);
-    card.Controls.Add(footer);
-    return card;
-}
-
 
         private void RefreshLoaiViTriGrid()
         {
@@ -255,16 +333,13 @@ namespace GUI
             }
         }
 
-
-        // ===== Giữ nguyên các handler dưới đây =====
-
         private void btnThemLoai_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_selectedViTriID)) return;
 
             try
             {
-                DataTable dtAll = _bll.GetAllLoaiViTri(); // giữ nguyên
+                DataTable dtAll = _bll.GetAllLoaiViTri();
                 using (SelectLoaiViTriDialog dlg = new SelectLoaiViTriDialog(dtAll))
                 {
                     if (dlg.ShowDialog(this) != DialogResult.OK) return;
@@ -289,12 +364,10 @@ namespace GUI
                         }
                     }
 
-                    // 1) Thêm vào vị trí đang chọn (giữ nguyên)
                     string loaiViTriID = _bll.AddLoaiViTriToViTri(_selectedViTriID, tenLoai);
                     if (!string.IsNullOrEmpty(loaiViTriID))
                         RefreshLoaiViTriGrid();
 
-                    // 2) ĐỒNG BỘ sang các vị trí còn lại (vị trí 2, 3) thuộc cùng Đơn hàng
                     try
                     {
                         DataTable dtViTriAll = _bll.GetViTriByDonHang(_donHangID);
@@ -302,9 +375,8 @@ namespace GUI
                         {
                             string vtId = Convert.ToString(rv["ViTriID"]);
                             if (string.Equals(vtId, _selectedViTriID, StringComparison.OrdinalIgnoreCase))
-                                continue; // bỏ qua vị trí đang chọn
+                                continue;
 
-                            // Tránh thêm trùng: kiểm tra xem TenLoai đã có ở vị trí này chưa
                             bool existed = false;
                             DataTable dtLoaiOfVt = _bll.GetLoaiViTriByViTri(vtId);
                             if (dtLoaiOfVt != null && dtLoaiOfVt.Columns.Contains("TenLoai"))
@@ -323,16 +395,13 @@ namespace GUI
 
                             if (!existed)
                             {
-                                // Gọi đúng hàm sẵn có, truyền cùng tên loại để link/tạo giống như vị trí 1
                                 _bll.AddLoaiViTriToViTri(vtId, tenLoai);
                             }
                         }
-                        // (Tuỳ chọn) Thông báo nhẹ
                         MessageBox.Show("Đã đồng bộ loại vị trí đến mọi vị trí của đơn hàng.");
                     }
                     catch (Exception exSync)
                     {
-                        // Không chặn thao tác chính nếu sync lỗi; chỉ báo nhẹ
                         MessageBox.Show("Đồng bộ sang các vị trí khác gặp lỗi: " + exSync.Message);
                     }
                 }
@@ -342,7 +411,6 @@ namespace GUI
                 MessageBox.Show("Lỗi thêm loại vị trí: " + ex.Message);
             }
         }
-
 
         private void btnXoaLoai_Click(object sender, EventArgs e)
         {
@@ -390,7 +458,6 @@ namespace GUI
             btnOpenThongSo_Click(sender, EventArgs.Empty);
         }
 
-        // ========= Dialog: Chọn / Tạo Loại vị trí (giữ nguyên tên lớp & thuộc tính) =========
         private sealed class SelectLoaiViTriDialog : Form
         {
             public enum SelectMode { UseExisting, CreateNew }
@@ -450,7 +517,6 @@ namespace GUI
                     cboExisting.DataSource = _src;
                     cboExisting.DisplayMember = "TenLoai";
                     cboExisting.ValueMember = "LoaiViTriID";
-                    // không cần set SelectedIndex bằng tay
                 }
             }
         }

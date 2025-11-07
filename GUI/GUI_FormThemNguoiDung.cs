@@ -35,77 +35,81 @@ namespace GUI
         }
 
         private void GUI_FormThemNguoiDung_Load(object sender, EventArgs e)
-{
-    try
-    {
-        // Lookup
-        cboVaiTro.DataSource = bllNguoiDung.GetAllVaiTro();
-        cboVaiTro.DisplayMember = "TenVaiTro";
-        cboVaiTro.ValueMember   = "VaiTroID";
-
-        cboPhongBan.DataSource = bllNguoiDung.GetAllPhongBan();
-        cboPhongBan.DisplayMember = "TenPhongBan";
-        cboPhongBan.ValueMember   = "PhongBanID";
-
-        // Ảnh hiển thị đẹp hơn
-        picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
-
-        // ===== Lấy dữ liệu người dùng CHỈ bằng hàm có sẵn: GetAllNguoiDung() =====
-        DataRow src = rowToEdit; // ưu tiên row truyền vào từ grid (nếu có)
-
-        // Nếu không có row hoặc row thiếu các cột mới (DiaChi/HinhDaiDien) thì lấy lại từ DB
-        bool needFetchFromDb =
-            (src == null) ||
-            !src.Table.Columns.Contains("DiaChi") ||
-            !src.Table.Columns.Contains("HinhDaiDien");
-
-        if (needFetchFromDb)
         {
-            DataTable all = bllNguoiDung.GetAllNguoiDung(); // << CHỈ dùng hàm có sẵn
-            if (all != null && all.Rows.Count > 0)
+            try
             {
-                // 1) Tìm theo NguoiDungID (nếu có)
-                if (!string.IsNullOrEmpty(nguoiDungID) && all.Columns.Contains("NguoiDungID"))
+                // Vai trò: loại khỏi combo mục 'Kỹ thuật viên'
+                var roles = bllNguoiDung.GetAllVaiTro();
+                var filtered = roles
+                    .Where(r => !string.Equals(r.TenVaiTro, "Kỹ thuật viên", StringComparison.OrdinalIgnoreCase)
+                             && !string.Equals(r.TenVaiTro, "Ky thuat vien", StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+                cboVaiTro.DataSource = filtered;
+                cboVaiTro.DisplayMember = "TenVaiTro";
+                cboVaiTro.ValueMember = "VaiTroID";
+
+                // Phòng ban giữ nguyên
+                cboPhongBan.DataSource = bllNguoiDung.GetAllPhongBan();
+                cboPhongBan.DisplayMember = "TenPhongBan";
+                cboPhongBan.ValueMember = "PhongBanID";
+
+                picAvatar.SizeMode = PictureBoxSizeMode.Zoom;
+
+                // ===== Lấy dữ liệu người dùng CHỈ bằng hàm có sẵn: GetAllNguoiDung() =====
+                DataRow src = rowToEdit; // ưu tiên row truyền vào
+                // Nếu không có row hoặc row thiếu các cột mới (DiaChi/HinhDaiDien) thì lấy lại từ DB
+                bool needFetchFromDb =
+                    (src == null) ||
+                    !src.Table.Columns.Contains("DiaChi") ||
+                    !src.Table.Columns.Contains("HinhDaiDien");
+
+                if (needFetchFromDb)
                 {
-                    src = all.AsEnumerable()
-                             .FirstOrDefault(r => Convert.ToString(r["NguoiDungID"]) == nguoiDungID);
+                    DataTable all = bllNguoiDung.GetAllNguoiDung(); // << CHỈ dùng hàm có sẵn
+                    if (all != null && all.Rows.Count > 0)
+                    {
+                        // 1) Tìm theo NguoiDungID (nếu có)
+                        if (!string.IsNullOrEmpty(nguoiDungID) && all.Columns.Contains("NguoiDungID"))
+                        {
+                            src = all.AsEnumerable()
+                                     .FirstOrDefault(r => Convert.ToString(r["NguoiDungID"]) == nguoiDungID);
+                        }
+
+                        // 2) Fallback: tìm theo TenDangNhap gốc (nếu đang sửa)
+                        if (src == null && !string.IsNullOrEmpty(originalUsername) && all.Columns.Contains("TenDangNhap"))
+                        {
+                            src = all.AsEnumerable()
+                                     .FirstOrDefault(r => string.Equals(
+                                         Convert.ToString(r["TenDangNhap"]), originalUsername,
+                                         StringComparison.OrdinalIgnoreCase));
+                        }
+
+                        // 3) Fallback cuối: nếu textbox đã có username thì thử theo textbox
+                        if (src == null && all.Columns.Contains("TenDangNhap") && !string.IsNullOrWhiteSpace(txtTenDangNhap.Text))
+                        {
+                            var ten = txtTenDangNhap.Text.Trim();
+                            src = all.AsEnumerable()
+                                     .FirstOrDefault(r => string.Equals(
+                                         Convert.ToString(r["TenDangNhap"]), ten,
+                                         StringComparison.OrdinalIgnoreCase));
+                        }
+                    }
                 }
 
-                // 2) Fallback: tìm theo TenDangNhap gốc (nếu đang sửa)
-                if (src == null && !string.IsNullOrEmpty(originalUsername) && all.Columns.Contains("TenDangNhap"))
+                // Bind lên UI nếu tìm được; nếu không thì giữ logic thêm mới (để trống)
+                if (src != null) BindFromRow(src);
+                else
                 {
-                    src = all.AsEnumerable()
-                             .FirstOrDefault(r => string.Equals(
-                                 Convert.ToString(r["TenDangNhap"]), originalUsername,
-                                 StringComparison.OrdinalIgnoreCase));
-                }
-
-                // 3) Fallback cuối: nếu textbox đã có username thì thử theo textbox
-                if (src == null && all.Columns.Contains("TenDangNhap") && !string.IsNullOrWhiteSpace(txtTenDangNhap.Text))
-                {
-                    var ten = txtTenDangNhap.Text.Trim();
-                    src = all.AsEnumerable()
-                             .FirstOrDefault(r => string.Equals(
-                                 Convert.ToString(r["TenDangNhap"]), ten,
-                                 StringComparison.OrdinalIgnoreCase));
+                    // thêm mới: đảm bảo không hiển thị ảnh cũ
+                    picAvatar.Image = null;
+                    _avatarBytes = null;
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
+            }
         }
-
-        // Bind lên UI nếu tìm được; nếu không thì giữ logic thêm mới (để trống)
-        if (src != null) BindFromRow(src);
-        else
-        {
-            // thêm mới: đảm bảo không hiển thị ảnh cũ
-            picAvatar.Image = null;
-            _avatarBytes = null;
-        }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Lỗi khi tải dữ liệu: " + ex.Message);
-    }
-}
 
 
         private bool ValidateInput(out string msg)
