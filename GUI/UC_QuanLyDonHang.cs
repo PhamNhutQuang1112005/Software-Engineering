@@ -1,10 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using Guna.UI2.WinForms;
+using System.Speech.Synthesis;
 
 namespace GUI
 {
@@ -140,11 +147,11 @@ namespace GUI
         {
             try
             {
-                _dmHopDong   = BLL_HopDong.GetAllHopDong();           // HopDongID, MaHopDong, KhachHangID, ...
+                _dmHopDong = BLL_HopDong.GetAllHopDong();           // HopDongID, MaHopDong, KhachHangID, ...
                 _dmKhachHang = BLL_KhachHang.GetAllKhachHang();       // KhachHangID, TenCongTy, MaKhachHang, ...
                 _dmTrangThai = BLL_DonHang.GetAllTrangThaiDonHang();  // TrangThaiID, TenTrangThai
 
-                _rawDonHang  = BLL_DonHang.GetAllDonHang();
+                _rawDonHang = BLL_DonHang.GetAllDonHang();
                 _viewDonHang = EnrichDonHang(_rawDonHang, _dmHopDong, _dmKhachHang, _dmTrangThai);
 
                 InitFilterCombos();
@@ -159,9 +166,9 @@ namespace GUI
         private static DataTable EnrichDonHang(DataTable donHang, DataTable dmHD, DataTable dmKH, DataTable dmTT)
         {
             var result = donHang.Copy();
-            if (!result.Columns.Contains("MaHopDong"))    result.Columns.Add("MaHopDong", typeof(string));
-            if (!result.Columns.Contains("TenCongTy"))    result.Columns.Add("TenCongTy", typeof(string));
-            if (!result.Columns.Contains("MaKhachHang"))  result.Columns.Add("MaKhachHang", typeof(string));
+            if (!result.Columns.Contains("MaHopDong")) result.Columns.Add("MaHopDong", typeof(string));
+            if (!result.Columns.Contains("TenCongTy")) result.Columns.Add("TenCongTy", typeof(string));
+            if (!result.Columns.Contains("MaKhachHang")) result.Columns.Add("MaKhachHang", typeof(string));
             if (!result.Columns.Contains("TenTrangThai")) result.Columns.Add("TenTrangThai", typeof(string));
 
             // dict HopDong: (MaHopDong, KhachHangID)
@@ -186,7 +193,7 @@ namespace GUI
                 {
                     var key = Convert.ToString(r["KhachHangID"] ?? "");
                     var ten = Convert.ToString(dmKH.Columns.Contains("TenCongTy") ? r["TenCongTy"] : "");
-                    var ma  = Convert.ToString(dmKH.Columns.Contains("MaKhachHang") ? r["MaKhachHang"] : "");
+                    var ma = Convert.ToString(dmKH.Columns.Contains("MaKhachHang") ? r["MaKhachHang"] : "");
                     if (!khById.ContainsKey(key))
                         khById.Add(key, new System.Tuple<string, string>(ten, ma));
                 }
@@ -207,9 +214,9 @@ namespace GUI
 
             foreach (DataRow r in result.Rows)
             {
-                string hopDongID   = Convert.ToString(result.Columns.Contains("HopDongID") ? r["HopDongID"] : "");
+                string hopDongID = Convert.ToString(result.Columns.Contains("HopDongID") ? r["HopDongID"] : "");
                 string trangThaiID = Convert.ToString(result.Columns.Contains("TrangThaiID") ? r["TrangThaiID"] : "");
-                string khID        = "";
+                string khID = "";
 
                 if (result.Columns.Contains("IDKhachHang") && r["IDKhachHang"] != DBNull.Value)
                     khID = Convert.ToString(r["IDKhachHang"]);
@@ -220,12 +227,12 @@ namespace GUI
 
                 if (khById.ContainsKey(khID))
                 {
-                    r["TenCongTy"]   = khById[khID].Item1 ?? "";
+                    r["TenCongTy"] = khById[khID].Item1 ?? "";
                     r["MaKhachHang"] = khById[khID].Item2 ?? "";
                 }
                 else
                 {
-                    r["TenCongTy"]   = "";
+                    r["TenCongTy"] = "";
                     r["MaKhachHang"] = "";
                 }
 
@@ -278,7 +285,7 @@ namespace GUI
                 {
                     var kh = _dmKhachHang != null ? _dmKhachHang.Copy() : new DataTable();
                     if (!kh.Columns.Contains("KhachHangID")) kh.Columns.Add("KhachHangID", typeof(string));
-                    if (!kh.Columns.Contains("TenCongTy"))  kh.Columns.Add("TenCongTy", typeof(string));
+                    if (!kh.Columns.Contains("TenCongTy")) kh.Columns.Add("TenCongTy", typeof(string));
                     var row = kh.NewRow();
                     row["KhachHangID"] = "";
                     row["TenCongTy"] = "(Tất cả)";
@@ -336,26 +343,26 @@ namespace GUI
 
         private Guna2Panel TaoCardDonHang(DataRow row)
         {
-            string donHangID   = Convert.ToString(row["DonHangID"]   ?? "");
-            string maDonHang   = Convert.ToString(row["MaDonHang"]   ?? "");
-            string hopDongID   = Convert.ToString(row["HopDongID"]   ?? "");
-            string maHopDong   = Convert.ToString(row["MaHopDong"]   ?? "");
+            string donHangID = Convert.ToString(row["DonHangID"] ?? "");
+            string maDonHang = Convert.ToString(row["MaDonHang"] ?? "");
+            string hopDongID = Convert.ToString(row["HopDongID"] ?? "");
+            string maHopDong = Convert.ToString(row["MaHopDong"] ?? "");
             string khachHangID = Convert.ToString(row.Table.Columns.Contains("IDKhachHang") ? row["IDKhachHang"] : "");
             if (string.IsNullOrEmpty(khachHangID))
                 khachHangID = Convert.ToString(row.Table.Columns.Contains("KhachHangID") ? row["KhachHangID"] : "");
-            string tenCongTy   = Convert.ToString(row["TenCongTy"]   ?? "");
+            string tenCongTy = Convert.ToString(row["TenCongTy"] ?? "");
             string maKhachHang = Convert.ToString(row["MaKhachHang"] ?? "");
-            string tenTrangThai= Convert.ToString(row["TenTrangThai"]?? "");
+            string tenTrangThai = Convert.ToString(row["TenTrangThai"] ?? "");
             string trangThaiID = Convert.ToString(row.Table.Columns.Contains("TrangThaiID") ? row["TrangThaiID"] : "");
 
-            string ngayLayMau  = (row.Table.Columns.Contains("NgayLayMau") && row["NgayLayMau"] != DBNull.Value)
+            string ngayLayMau = (row.Table.Columns.Contains("NgayLayMau") && row["NgayLayMau"] != DBNull.Value)
                                 ? Convert.ToDateTime(row["NgayLayMau"]).ToString("yyyy-MM-dd") : "";
-            string ngayDuKien  = (row.Table.Columns.Contains("NgayDuKienTraKetQua") && row["NgayDuKienTraKetQua"] != DBNull.Value)
+            string ngayDuKien = (row.Table.Columns.Contains("NgayDuKienTraKetQua") && row["NgayDuKienTraKetQua"] != DBNull.Value)
                                 ? Convert.ToDateTime(row["NgayDuKienTraKetQua"]).ToString("yyyy-MM-dd") : "";
-            string ngayTraTT   = (row.Table.Columns.Contains("NgayTraThucTe") && row["NgayTraThucTe"] != DBNull.Value)
+            string ngayTraTT = (row.Table.Columns.Contains("NgayTraThucTe") && row["NgayTraThucTe"] != DBNull.Value)
                                 ? Convert.ToDateTime(row["NgayTraThucTe"]).ToString("yyyy-MM-dd") : "";
-            string ky          = Convert.ToString(row.Table.Columns.Contains("Ky") ? row["Ky"] : "");
-            string ghiChu      = Convert.ToString(row.Table.Columns.Contains("GhiChu") ? row["GhiChu"] : "");
+            string ky = Convert.ToString(row.Table.Columns.Contains("Ky") ? row["Ky"] : "");
+            string ghiChu = Convert.ToString(row.Table.Columns.Contains("GhiChu") ? row["GhiChu"] : "");
 
             const int fixedWidth = 420;
             const int fixedHeight = 150; // CHIỀU CAO CỐ ĐỊNH CỦA THẺ (bạn có thể chỉnh)
@@ -368,7 +375,7 @@ namespace GUI
                 MaximumSize = new Size(fixedWidth, fixedHeight),
 
                 BorderRadius = 18,
-                BorderColor  = ClrOutline,
+                BorderColor = ClrOutline,
                 BorderThickness = 1,
                 ShadowDecoration = { Enabled = false },
                 FillColor = ClrCardBg,
@@ -397,20 +404,20 @@ namespace GUI
             };
 
             // Header: chỉ MaDonHang (không ID)
-            var lblHeader    = L($"{maDonHang}", new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblHeader = L($"{maDonHang}", new Font("Segoe UI", 11, FontStyle.Bold));
 
             // KH: chỉ tên công ty, KHÔNG hiển thị KhachHangID/MaKhachHang
-            var lblKH        = L($"👤 KH: { (string.IsNullOrEmpty(tenCongTy) ? "(Chưa có tên)" : tenCongTy) }", null);
+            var lblKH = L($"👤 KH: {(string.IsNullOrEmpty(tenCongTy) ? "(Chưa có tên)" : tenCongTy)}", null);
 
             // HĐ: chỉ mã hợp đồng (tên), KHÔNG hiển thị HopDongID
-            var lblHD        = L($"📄 HĐ: { (string.IsNullOrEmpty(maHopDong) ? "" : maHopDong) }", null);
+            var lblHD = L($"📄 HĐ: {(string.IsNullOrEmpty(maHopDong) ? "" : maHopDong)}", null);
 
             // Trạng thái: chỉ tên trạng thái, KHÔNG hiển thị TrangThaiID
-            var lblTrangThai = L($"📌 Trạng thái: { (string.IsNullOrEmpty(tenTrangThai) ? "" : tenTrangThai) }", null);
+            var lblTrangThai = L($"📌 Trạng thái: {(string.IsNullOrEmpty(tenTrangThai) ? "" : tenTrangThai)}", null);
 
-            var lblDates     = L($"🗓 Mẫu: {ngayLayMau} | Dự kiến: {ngayDuKien} | TT: {ngayTraTT}", null);
-            var lblKy        = L(string.IsNullOrWhiteSpace(ky) ? "" : ("⏱ Kỳ: " + ky), null);
-            var lblGhiChu    = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);
+            var lblDates = L($"🗓 Mẫu: {ngayLayMau} | Dự kiến: {ngayDuKien} | TT: {ngayTraTT}", null);
+            var lblKy = L(string.IsNullOrWhiteSpace(ky) ? "" : ("⏱ Kỳ: " + ky), null);
+            var lblGhiChu = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);
 
             // Ghi chú: giới hạn ~1 dòng trong chiều cao cố định
             lblGhiChu.Height = 20;
@@ -586,9 +593,9 @@ namespace GUI
 
         // =============== THEME (Transparent + Pill) ===============
         private static readonly Color ClrOutline = Color.FromArgb(120, 195, 170);
-        private static readonly Color ClrText    = Color.WhiteSmoke;
-        private static readonly Color ClrHint    = Color.FromArgb(220, 220, 220);
-        private static readonly Color ClrCardBg  = Color.FromArgb(40, 255, 255, 255);
+        private static readonly Color ClrText = Color.WhiteSmoke;
+        private static readonly Color ClrHint = Color.FromArgb(220, 220, 220);
+        private static readonly Color ClrCardBg = Color.FromArgb(40, 255, 255, 255);
 
         private void InitTransparentTheme()
         {
@@ -603,15 +610,15 @@ namespace GUI
                 StylePillButton(themdonhang);
                 StylePillButton(guna2Button2);
                 StylePillButton(guna2Button3);
-                StylePillButton(btnXuatPDF); // Xuất kết quả (nếu có)
-
-                if (btnXuatPDF != null) btnXuatPDF.Click += btnXuatPDF_Click; // PHASE 2 hook
+                StylePillButton(guna2Button4); // Xuất kết quả (nếu có)
 
                 StylePillCombo(guna2ComboBox1);
                 StylePillCombo(guna2ComboBox2);
                 StylePillCombo(guna2ComboBox3);
 
                 StyleSearchBox(guna2TextBox1, "Tìm kiếm đơn hàng...");
+
+
             }
             catch { }
         }
@@ -619,26 +626,26 @@ namespace GUI
         private void StylePillButton(Guna2Button btn)
         {
             if (btn == null) return;
-            btn.BackColor   = Color.Transparent;
-            btn.FillColor   = Color.Transparent;
-            btn.ForeColor   = ClrText;
+            btn.BackColor = Color.Transparent;
+            btn.FillColor = Color.Transparent;
+            btn.ForeColor = ClrText;
             btn.BorderColor = ClrOutline;
             btn.BorderThickness = 1;
             btn.AutoRoundedCorners = true;
             btn.BorderRadius = Math.Max(18, btn.Height / 2);
-            btn.HoverState.FillColor   = Color.FromArgb(24, ClrOutline);
+            btn.HoverState.FillColor = Color.FromArgb(24, ClrOutline);
             btn.HoverState.BorderColor = ClrOutline;
-            btn.PressedColor           = Color.FromArgb(40, ClrOutline);
+            btn.PressedColor = Color.FromArgb(40, ClrOutline);
             btn.ShadowDecoration.Enabled = false;
         }
 
         private void StylePillCombo(Guna2ComboBox cb)
         {
             if (cb == null) return;
-            cb.BackColor   = Color.Transparent;
-            cb.FillColor   = Color.FromArgb(0, 0, 0, 0);
+            cb.BackColor = Color.Transparent;
+            cb.FillColor = Color.FromArgb(0, 0, 0, 0);  // trong suốt
             cb.BorderColor = ClrOutline;
-            cb.ForeColor   = ClrText;
+            cb.ForeColor = ClrText;
             cb.AutoRoundedCorners = true;
             cb.BorderRadius = Math.Max(18, cb.Height / 2);
             cb.DrawMode = DrawMode.OwnerDrawFixed;
@@ -654,10 +661,10 @@ namespace GUI
         private void StyleSearchBox(Guna2TextBox txt, string placeholder)
         {
             if (txt == null) return;
-            txt.BackColor   = Color.Transparent;
-            txt.FillColor   = Color.Azure;
+            txt.BackColor = Color.Transparent;
+            txt.FillColor = Color.Azure;
             txt.BorderColor = ClrOutline;
-            txt.ForeColor   = Color.Black;
+            txt.ForeColor = Color.Black;
             txt.PlaceholderText = placeholder;
             txt.PlaceholderForeColor = Color.Black;
             txt.AutoRoundedCorners = true;
@@ -669,62 +676,59 @@ namespace GUI
 
         private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Designer stub
+
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-            // Designer stub
-        }
 
-        private void btnXuatPDF_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(_selectedId))
-            {
-                MessageBox.Show("Vui lòng chọn đơn hàng trước.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            using (var dlg = new GUI_SelectLoaiMauDialog(_selectedId))
-            {
-                if (dlg.ShowDialog(this) != DialogResult.OK) return;
-
-                var bllThongSo = new BLL_ThongSoQuanTrac();
-
-                DataTable dtExport;
-                string tenLoaiHienThi;
-                var list = dlg.SelectedLoaiMauMulti;
-
-                if (list != null && list.Count > 1)
-                {
-                    dtExport = BLL_ExportThongSo.BuildExportThongSoTableMulti(bllThongSo, _selectedId, list);
-                    tenLoaiHienThi = list.Count + " loại mẫu";
-                }
-                else
-                {
-                    var pick = (list != null && list.Count == 1) ? list[0] : (dlg.SelectedLoaiViTriID != null ? (dlg.SelectedLoaiViTriID, dlg.SelectedTenLoai) : default);
-                    dtExport = BLL_ExportThongSo.BuildExportThongSoTable(bllThongSo, _selectedId, pick.Item1);
-                    tenLoaiHienThi = pick.Item2 ?? "";
-                }
-
-                using (var prev = new GUI_FormPreviewExport(_selectedId, tenLoaiHienThi, dtExport))
-                {
-                    prev.OnExport = (table) =>
-                    {
-                        // PDF export stub – Phase 3 sẽ implement thật
-                        return true;
-                    };
-                    prev.ShowDialog(this);
-                }
-            }
         }
 
         // Paint handler stub (Designer is wired to it)
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        private async void microphone_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string pythonExe = @"C:\Users\PC\AppData\Local\Programs\Python\Python313\python.exe";
+                string scriptPath = @"C:\CNPM2\Software-Engineering\GUI\speech_to_text.py";
+                var psi = new ProcessStartInfo
+                {
+                    FileName = pythonExe,
+                    Arguments = $"\"{scriptPath}\"",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
 
+                    // ⚙️ Đây là 2 dòng quan trọng nhất
+                    StandardOutputEncoding = System.Text.Encoding.UTF8,
+                    StandardErrorEncoding = System.Text.Encoding.UTF8
+                };
+
+                using (var process = new Process { StartInfo = psi })
+                {
+                    Console.Beep(800, 300);
+                    process.Start();
+
+
+                    string output = await process.StandardOutput.ReadToEndAsync();
+                    string error = await process.StandardError.ReadToEndAsync();
+
+                    process.WaitForExit();
+                    Console.Beep(800, 200);
+
+                    if (!string.IsNullOrWhiteSpace(error))
+                        MessageBox.Show("Python báo lỗi:\n" + error);
+
+                    guna2TextBox1.Text = output.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Lỗi: " + ex.Message);
+            }
         }
     }
 }

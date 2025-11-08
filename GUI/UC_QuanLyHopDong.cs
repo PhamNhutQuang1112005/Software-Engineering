@@ -1,15 +1,17 @@
-﻿using BLL;
-using Guna.UI2.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BLL;
+using Guna.UI2.WinForms;
 namespace GUI
 {
     public partial class UC_QuanLyHopDong : UserControl
@@ -496,6 +498,50 @@ namespace GUI
         private void loctrangthai_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void microphone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pythonExe = @"C:\Users\PC\AppData\Local\Programs\Python\Python313\python.exe";
+                string scriptPath = @"C:\CNPM2\Software-Engineering\GUI\speech_to_text.py";
+                var psi = new ProcessStartInfo
+                {
+                    FileName = pythonExe,
+                    Arguments = $"\"{scriptPath}\"",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+
+                    // ⚙️ Đây là 2 dòng quan trọng nhất
+                    StandardOutputEncoding = System.Text.Encoding.UTF8,
+                    StandardErrorEncoding = System.Text.Encoding.UTF8
+                };
+
+
+                using (var process = new Process { StartInfo = psi })
+                {
+                    Console.Beep(800, 300);
+                    process.Start();
+
+                    string output = await process.StandardOutput.ReadToEndAsync();
+                    string error = await process.StandardError.ReadToEndAsync();
+
+                    process.WaitForExit();
+                    Console.Beep(800, 200);
+
+                    if (!string.IsNullOrWhiteSpace(error))
+                        MessageBox.Show("Python báo lỗi:\n" + error);
+
+                    ThanhTimKiem.Text = output.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Lỗi: " + ex.Message);
+            }
         }
     }
 }

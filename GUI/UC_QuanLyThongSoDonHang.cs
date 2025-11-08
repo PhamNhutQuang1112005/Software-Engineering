@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Speech.Synthesis;
 using System.Windows.Forms;
 using BLL;
 using Guna.UI2.WinForms;
@@ -33,9 +35,9 @@ namespace GUI
 
         // Màu dùng chung
         private static readonly Color ClrOutline = Color.FromArgb(120, 195, 170);
-        private static readonly Color ClrText    = Color.WhiteSmoke;
-        private static readonly Color ClrHint    = Color.FromArgb(220, 220, 220);
-        private static readonly Color ClrCardBg  = Color.FromArgb(40, 255, 255, 255);
+        private static readonly Color ClrText = Color.WhiteSmoke;
+        private static readonly Color ClrHint = Color.FromArgb(220, 220, 220);
+        private static readonly Color ClrCardBg = Color.FromArgb(40, 255, 255, 255);
 
         public UC_QuanLyThongSoDonHang()
         {
@@ -71,7 +73,7 @@ namespace GUI
             guna2ComboBox1.SelectedIndexChanged += (s, ev) => LocDonHang();
             guna2ComboBox2.SelectedIndexChanged += (s, ev) => LocDonHang();
             guna2ComboBox3.SelectedIndexChanged += (s, ev) => LocDonHang();
-            guna2TextBox1.TextChanged           += (s, ev) => LocDonHang();
+            guna2TextBox1.TextChanged += (s, ev) => LocDonHang();
         }
 
         private void NapComboLoc()
@@ -131,7 +133,7 @@ namespace GUI
                     if (r["NgayTao"] == DBNull.Value) return false;
                     DateTime ngayTao = Convert.ToDateTime(r["NgayTao"]);
 
-                    bool matchNgay  = !ngay.HasValue  || ngayTao.Day   == ngay.Value;
+                    bool matchNgay = !ngay.HasValue || ngayTao.Day == ngay.Value;
                     bool matchThang = !thang.HasValue || ngayTao.Month == thang.Value;
 
                     int quyThang = (ngayTao.Month - 1) / 3 + 1;
@@ -259,11 +261,11 @@ namespace GUI
         {
             try
             {
-                _dmHopDong   = BLL_HopDong.GetAllHopDong();           // HopDongID, MaHopDong, KhachHangID, ...
+                _dmHopDong = BLL_HopDong.GetAllHopDong();           // HopDongID, MaHopDong, KhachHangID, ...
                 _dmKhachHang = BLL_KhachHang.GetAllKhachHang();       // KhachHangID, TenCongTy, MaKhachHang, ...
                 _dmTrangThai = BLL_DonHang.GetAllTrangThaiDonHang();  // TrangThaiID, TenTrangThai
 
-                _rawDonHang  = BLL_DonHang.GetAllDonHang();
+                _rawDonHang = BLL_DonHang.GetAllDonHang();
                 _viewDonHang = EnrichDonHang(_rawDonHang, _dmHopDong, _dmKhachHang, _dmTrangThai);
 
                 RebuildCards(_viewDonHang);
@@ -277,11 +279,11 @@ namespace GUI
         private static DataTable EnrichDonHang(DataTable donHang, DataTable dmHD, DataTable dmKH, DataTable dmTT)
         {
             var result = donHang.Copy();
-            if (!result.Columns.Contains("MaHopDong"))    result.Columns.Add("MaHopDong", typeof(string));
-            if (!result.Columns.Contains("TenCongTy"))    result.Columns.Add("TenCongTy", typeof(string));
-            if (!result.Columns.Contains("MaKhachHang"))  result.Columns.Add("MaKhachHang", typeof(string));
+            if (!result.Columns.Contains("MaHopDong")) result.Columns.Add("MaHopDong", typeof(string));
+            if (!result.Columns.Contains("TenCongTy")) result.Columns.Add("TenCongTy", typeof(string));
+            if (!result.Columns.Contains("MaKhachHang")) result.Columns.Add("MaKhachHang", typeof(string));
             if (!result.Columns.Contains("TenTrangThai")) result.Columns.Add("TenTrangThai", typeof(string));
-            if (!result.Columns.Contains("NgayTao"))      result.Columns.Add("NgayTao", typeof(DateTime));
+            if (!result.Columns.Contains("NgayTao")) result.Columns.Add("NgayTao", typeof(DateTime));
             if (!result.Columns.Contains("DiaChi")) result.Columns.Add("DiaChi", typeof(string));
             // dict HopDong: (MaHopDong, KhachHangID)
             var hdById = new Dictionary<string, Tuple<string, string>>();
@@ -290,8 +292,8 @@ namespace GUI
                 foreach (DataRow r in dmHD.Rows)
                 {
                     var key = Convert.ToString(r["HopDongID"] ?? "");
-                    var ma  = Convert.ToString(dmHD.Columns.Contains("MaHopDong") ? r["MaHopDong"] : "");
-                    var kh  = Convert.ToString(dmHD.Columns.Contains("KhachHangID") ? r["KhachHangID"] : "");
+                    var ma = Convert.ToString(dmHD.Columns.Contains("MaHopDong") ? r["MaHopDong"] : "");
+                    var kh = Convert.ToString(dmHD.Columns.Contains("KhachHangID") ? r["KhachHangID"] : "");
                     if (!hdById.ContainsKey(key))
                         hdById.Add(key, Tuple.Create(ma, kh));
                 }
@@ -305,7 +307,7 @@ namespace GUI
                 {
                     var key = Convert.ToString(r["KhachHangID"] ?? "");
                     var ten = Convert.ToString(dmKH.Columns.Contains("TenCongTy") ? r["TenCongTy"] : "");
-                    var ma  = Convert.ToString(dmKH.Columns.Contains("MaKhachHang") ? r["MaKhachHang"] : "");
+                    var ma = Convert.ToString(dmKH.Columns.Contains("MaKhachHang") ? r["MaKhachHang"] : "");
                     if (!khById.ContainsKey(key))
                         khById.Add(key, Tuple.Create(ten, ma));
                 }
@@ -326,9 +328,9 @@ namespace GUI
 
             foreach (DataRow r in result.Rows)
             {
-                string hopDongID   = Convert.ToString(result.Columns.Contains("HopDongID") ? r["HopDongID"] : "");
+                string hopDongID = Convert.ToString(result.Columns.Contains("HopDongID") ? r["HopDongID"] : "");
                 string trangThaiID = Convert.ToString(result.Columns.Contains("TrangThaiID") ? r["TrangThaiID"] : "");
-                string khID        = "";
+                string khID = "";
 
                 if (result.Columns.Contains("IDKhachHang") && r["IDKhachHang"] != DBNull.Value)
                     khID = Convert.ToString(r["IDKhachHang"]);
@@ -339,12 +341,12 @@ namespace GUI
 
                 if (khById.ContainsKey(khID))
                 {
-                    r["TenCongTy"]   = khById[khID].Item1 ?? "";
+                    r["TenCongTy"] = khById[khID].Item1 ?? "";
                     r["MaKhachHang"] = khById[khID].Item2 ?? "";
                 }
                 else
                 {
-                    r["TenCongTy"]   = "";
+                    r["TenCongTy"] = "";
                     r["MaKhachHang"] = "";
                 }
 
@@ -397,29 +399,29 @@ namespace GUI
 
         private Guna2Panel TaoCardDonHang(DataRow row)
         {
-            string donHangID   = Convert.ToString(row["DonHangID"]   ?? "");
-            string maDonHang   = Convert.ToString(row["MaDonHang"]   ?? "");
-            string hopDongID   = Convert.ToString(row["HopDongID"]   ?? "");
-            string maHopDong   = Convert.ToString(row["MaHopDong"]   ?? "");
+            string donHangID = Convert.ToString(row["DonHangID"] ?? "");
+            string maDonHang = Convert.ToString(row["MaDonHang"] ?? "");
+            string hopDongID = Convert.ToString(row["HopDongID"] ?? "");
+            string maHopDong = Convert.ToString(row["MaHopDong"] ?? "");
             string khachHangID = Convert.ToString(row.Table.Columns.Contains("IDKhachHang") ? row["IDKhachHang"] : "");
             if (string.IsNullOrEmpty(khachHangID))
                 khachHangID = Convert.ToString(row.Table.Columns.Contains("KhachHangID") ? row["KhachHangID"] : "");
-            string tenCongTy   = Convert.ToString(row["TenCongTy"]   ?? "");
+            string tenCongTy = Convert.ToString(row["TenCongTy"] ?? "");
             string maKhachHang = Convert.ToString(row["MaKhachHang"] ?? "");
-            string tenTrangThai= Convert.ToString(row["TenTrangThai"]?? "");
+            string tenTrangThai = Convert.ToString(row["TenTrangThai"] ?? "");
             string trangThaiID = Convert.ToString(row.Table.Columns.Contains("TrangThaiID") ? row["TrangThaiID"] : "");
 
-            string ngayLayMau  = (row.Table.Columns.Contains("NgayLayMau") && row["NgayLayMau"] != DBNull.Value)
+            string ngayLayMau = (row.Table.Columns.Contains("NgayLayMau") && row["NgayLayMau"] != DBNull.Value)
                                 ? Convert.ToDateTime(row["NgayLayMau"]).ToString("yyyy-MM-dd") : "";
-            string ngayDuKien  = (row.Table.Columns.Contains("NgayDuKienTraKetQua") && row["NgayDuKienTraKetQua"] != DBNull.Value)
+            string ngayDuKien = (row.Table.Columns.Contains("NgayDuKienTraKetQua") && row["NgayDuKienTraKetQua"] != DBNull.Value)
                                 ? Convert.ToDateTime(row["NgayDuKienTraKetQua"]).ToString("yyyy-MM-dd") : "";
-            string ngayTraTT   = (row.Table.Columns.Contains("NgayTraThucTe") && row["NgayTraThucTe"] != DBNull.Value)
+            string ngayTraTT = (row.Table.Columns.Contains("NgayTraThucTe") && row["NgayTraThucTe"] != DBNull.Value)
                                 ? Convert.ToDateTime(row["NgayTraThucTe"]).ToString("yyyy-MM-dd") : "";
-            string ngaytao     = (row.Table.Columns.Contains("NgayTao") && row["NgayTao"] != DBNull.Value)
+            string ngaytao = (row.Table.Columns.Contains("NgayTao") && row["NgayTao"] != DBNull.Value)
                                 ? Convert.ToDateTime(row["NgayTao"]).ToString("yyyy-MM-dd") : "";
-            string ky          = Convert.ToString(row.Table.Columns.Contains("Ky") ? row["Ky"] : "");
-            string ghiChu      = Convert.ToString(row.Table.Columns.Contains("GhiChu") ? row["GhiChu"] : "");
-            string diaChi      = Convert.ToString(row.Table.Columns.Contains("DiaChi") ? row["DiaChi"] : "");
+            string ky = Convert.ToString(row.Table.Columns.Contains("Ky") ? row["Ky"] : "");
+            string ghiChu = Convert.ToString(row.Table.Columns.Contains("GhiChu") ? row["GhiChu"] : "");
+            string diaChi = Convert.ToString(row.Table.Columns.Contains("DiaChi") ? row["DiaChi"] : "");
             int fixedWidth = flowLayoutPanel1.ClientSize.Width - 40;
             var card = new Guna2Panel
             {
@@ -430,7 +432,7 @@ namespace GUI
                 MaximumSize = new Size(fixedWidth, int.MaxValue),
 
                 BorderRadius = 18,
-                BorderColor  = ClrOutline,
+                BorderColor = ClrOutline,
                 BorderThickness = 1,
                 ShadowDecoration = { Enabled = false },
                 FillColor = ClrCardBg,
@@ -456,22 +458,22 @@ namespace GUI
                 BackColor = Color.Transparent
             };
 
-            var lblHeader    = L(string.Format("{0}", maDonHang), new Font("Segoe UI", 11, FontStyle.Bold));
-            var lblKH        = L(string.Format("👤 KH: {0}{1}{2}",
+            var lblHeader = L(string.Format("{0}", maDonHang), new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblKH = L(string.Format("👤 KH: {0}{1}{2}",
                                     string.IsNullOrEmpty(maKhachHang) ? "" : (" (" + maKhachHang + ")"),
                                     (string.IsNullOrEmpty(khachHangID) && string.IsNullOrEmpty(maKhachHang)) ? "" : " - ",
                                     string.IsNullOrEmpty(tenCongTy) ? "(Chưa có tên)" : tenCongTy), null);
-            var lblHD        = L(string.Format("📄 HĐ: {0}{1}",
-                                    
+            var lblHD = L(string.Format("📄 HĐ: {0}{1}",
+
                                     string.IsNullOrEmpty(maHopDong) ? "" : "",
                                     maHopDong), null);
             var lblTrangThai = L(string.Format("📌 Trạng thái: {0}{1}{2}",
                                     string.IsNullOrEmpty(tenTrangThai) ? "" : tenTrangThai,
                                     (string.IsNullOrEmpty(tenTrangThai) || string.IsNullOrEmpty(trangThaiID)) ? "" : " (",
                                     string.IsNullOrEmpty(trangThaiID) ? "" : (trangThaiID + (string.IsNullOrEmpty(tenTrangThai) ? "" : ")"))), null);
-            var lblDates     = L($"🗓 Ngày tạo: {ngaytao}", null);
-            var lblKy        = L(string.IsNullOrWhiteSpace(ky) ? "" : ("⏱ Kỳ: " + ky), null);
-            var lblGhiChu    = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);
+            var lblDates = L($"🗓 Ngày tạo: {ngaytao}", null);
+            var lblKy = L(string.IsNullOrWhiteSpace(ky) ? "" : ("⏱ Kỳ: " + ky), null);
+            var lblGhiChu = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);
 
             lblGhiChu.MaximumSize = new Size(contentWidth, 20);  // Giới hạn ~1 dòng
             lblGhiChu.AutoEllipsis = true;
@@ -505,7 +507,7 @@ namespace GUI
 
                 string donHangID = Convert.ToString(row["DonHangID"]);
                 string maDonHang = Convert.ToString(row["MaDonHang"] ?? "");
-                string diaChi    = Convert.ToString(row.Table.Columns.Contains("DiaChi") ? row["DiaChi"] : "");
+                string diaChi = Convert.ToString(row.Table.Columns.Contains("DiaChi") ? row["DiaChi"] : "");
 
                 if (string.IsNullOrEmpty(donHangID))
                 {
@@ -518,7 +520,7 @@ namespace GUI
                 bll.EnsureViTriAndThongSo(donHangID);
 
                 // 🔹 Mở form chi tiết
-                using (var f = new GUI_FormDonHangChiTiet(donHangID,maDonHang,diaChi))
+                using (var f = new GUI_FormDonHangChiTiet(donHangID, maDonHang, diaChi))
                 {
                     f.ShowDialog();
                 }
@@ -585,26 +587,26 @@ namespace GUI
         private void StylePillButton(Guna2Button btn)
         {
             if (btn == null) return;
-            btn.BackColor   = Color.Transparent;
-            btn.FillColor   = Color.Transparent;
-            btn.ForeColor   = ClrText;
+            btn.BackColor = Color.Transparent;
+            btn.FillColor = Color.Transparent;
+            btn.ForeColor = ClrText;
             btn.BorderColor = ClrOutline;
             btn.BorderThickness = 1;
             btn.AutoRoundedCorners = true;
             btn.BorderRadius = Math.Max(18, btn.Height / 2);
-            btn.HoverState.FillColor   = Color.FromArgb(24, ClrOutline);
+            btn.HoverState.FillColor = Color.FromArgb(24, ClrOutline);
             btn.HoverState.BorderColor = ClrOutline;
-            btn.PressedColor           = Color.FromArgb(40, ClrOutline);
+            btn.PressedColor = Color.FromArgb(40, ClrOutline);
             btn.ShadowDecoration.Enabled = false;
         }
 
         private void StylePillCombo(Guna2ComboBox cb)
         {
             if (cb == null) return;
-            cb.BackColor   = Color.Transparent;
-            cb.FillColor   = Color.FromArgb(0, 0, 0, 0);
+            cb.BackColor = Color.Transparent;
+            cb.FillColor = Color.FromArgb(0, 0, 0, 0);
             cb.BorderColor = ClrOutline;
-            cb.ForeColor   = ClrText;
+            cb.ForeColor = ClrText;
             cb.AutoRoundedCorners = true;
             cb.BorderRadius = Math.Max(18, cb.Height / 2);
             cb.DrawMode = DrawMode.OwnerDrawFixed;
@@ -620,10 +622,10 @@ namespace GUI
         private void StyleSearchBox(Guna2TextBox txt, string placeholder)
         {
             if (txt == null) return;
-            txt.BackColor   = Color.Transparent;
-            txt.FillColor   = Color.Azure;
+            txt.BackColor = Color.Transparent;
+            txt.FillColor = Color.Azure;
             txt.BorderColor = ClrOutline;
-            txt.ForeColor   = Color.Black;
+            txt.ForeColor = Color.Black;
             txt.PlaceholderText = placeholder;
             txt.PlaceholderForeColor = Color.Black;
             txt.AutoRoundedCorners = true;
@@ -715,44 +717,87 @@ namespace GUI
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
         // Cho phép Form cha yêu cầu reload data từ DB mỗi lần hiển thị
-public void ReloadFromParent(bool preserveFilters = true)
-{
-    try
-    {
-        // Lưu filter hiện tại (nếu muốn giữ lại)
-        string oldNgay  = guna2ComboBox1?.Text;
-        string oldThang = guna2ComboBox2?.Text;
-        string oldQuy   = guna2ComboBox3?.Text;
-        string oldKw    = guna2TextBox1?.Text;
-
-        // Tải lại toàn bộ danh mục + đơn hàng từ DB
-        ReloadAll();              // đã có sẵn trong control
-        // RebuildCards(_viewDonHang) đã được gọi trong ReloadAll()
-
-        if (preserveFilters)
+        public void ReloadFromParent(bool preserveFilters = true)
         {
-            // Khôi phục filter và áp lại lọc
-            if (!string.IsNullOrEmpty(oldNgay)  && guna2ComboBox1.Items.Contains(oldNgay))
-                guna2ComboBox1.SelectedItem = oldNgay;
+            try
+            {
+                // Lưu filter hiện tại (nếu muốn giữ lại)
+                string oldNgay = guna2ComboBox1?.Text;
+                string oldThang = guna2ComboBox2?.Text;
+                string oldQuy = guna2ComboBox3?.Text;
+                string oldKw = guna2TextBox1?.Text;
 
-            if (!string.IsNullOrEmpty(oldThang) && guna2ComboBox2.Items.Contains(oldThang))
-                guna2ComboBox2.SelectedItem = oldThang;
+                // Tải lại toàn bộ danh mục + đơn hàng từ DB
+                ReloadAll();              // đã có sẵn trong control
+                                          // RebuildCards(_viewDonHang) đã được gọi trong ReloadAll()
 
-            if (!string.IsNullOrEmpty(oldQuy)   && guna2ComboBox3.Items.Contains(oldQuy))
-                guna2ComboBox3.SelectedItem = oldQuy;
+                if (preserveFilters)
+                {
+                    // Khôi phục filter và áp lại lọc
+                    if (!string.IsNullOrEmpty(oldNgay) && guna2ComboBox1.Items.Contains(oldNgay))
+                        guna2ComboBox1.SelectedItem = oldNgay;
 
-            if (guna2TextBox1 != null)
-                guna2TextBox1.Text = oldKw ?? string.Empty;
+                    if (!string.IsNullOrEmpty(oldThang) && guna2ComboBox2.Items.Contains(oldThang))
+                        guna2ComboBox2.SelectedItem = oldThang;
 
-            LocDonHang(); // áp lại bộ lọc sau khi đã có _viewDonHang mới
+                    if (!string.IsNullOrEmpty(oldQuy) && guna2ComboBox3.Items.Contains(oldQuy))
+                        guna2ComboBox3.SelectedItem = oldQuy;
+
+                    if (guna2TextBox1 != null)
+                        guna2TextBox1.Text = oldKw ?? string.Empty;
+
+                    LocDonHang(); // áp lại bộ lọc sau khi đã có _viewDonHang mới
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Không thể reload dữ liệu: " + ex.Message,
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Không thể reload dữ liệu: " + ex.Message,
-            "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    }
-}
 
+        private async void microphone_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pythonExe = @"C:\Users\PC\AppData\Local\Programs\Python\Python313\python.exe";
+                string scriptPath = @"C:\CNPM2\Software-Engineering\GUI\speech_to_text.py";
+                var psi = new ProcessStartInfo
+                {
+                    FileName = pythonExe,
+                    Arguments = $"\"{scriptPath}\"",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+
+                    // ⚙️ Đây là 2 dòng quan trọng nhất
+                    StandardOutputEncoding = System.Text.Encoding.UTF8,
+                    StandardErrorEncoding = System.Text.Encoding.UTF8
+                };
+
+
+                using (var process = new Process { StartInfo = psi })
+                {
+                    Console.Beep(800, 300);
+                    process.Start();
+
+                    string output = await process.StandardOutput.ReadToEndAsync();
+                    string error = await process.StandardError.ReadToEndAsync();
+
+                    process.WaitForExit();
+                    Console.Beep(800, 200);
+
+                    if (!string.IsNullOrWhiteSpace(error))
+                        MessageBox.Show("Python báo lỗi:\n" + error);
+
+                    guna2ComboBox1.Text = output.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Lỗi: " + ex.Message);
+            }
+        }
     }
 }

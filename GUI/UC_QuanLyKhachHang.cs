@@ -4,8 +4,10 @@
 // ========================================================
 using System;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Speech.Synthesis;
 using System.Windows.Forms;
 using BLL;
 using Guna.UI2.WinForms;
@@ -30,8 +32,8 @@ namespace GUI
 
         // Match UC_QuanLyDonHang theme for cards
         private static readonly Color ClrOutline = Color.FromArgb(120, 195, 170);
-        private static readonly Color ClrText    = Color.WhiteSmoke;
-        private static readonly Color ClrCardBg  = Color.FromArgb(40, 255, 255, 255);
+        private static readonly Color ClrText = Color.WhiteSmoke;
+        private static readonly Color ClrCardBg = Color.FromArgb(40, 255, 255, 255);
 
         public UC_QuanLyKhachHang()
         {
@@ -54,10 +56,10 @@ namespace GUI
             flowLayoutPanel1.Layout += (s, ev) => CenterCards();
             flowLayoutPanel1.SizeChanged += (s, ev) => CenterCards();
             this.SizeChanged += (s, ev) => LayoutFlowUnderToolbar();
-            PillStyler.Button(btnSua,_theme);
-            PillStyler.Button(themkhachhang,_theme);
-            PillStyler.Button(btnXoa,_theme);
-            PillStyler.SearchBox(ThanhTimKiem,_theme,"Tìm kiếm khách hàng...");
+            PillStyler.Button(btnSua, _theme);
+            PillStyler.Button(themkhachhang, _theme);
+            PillStyler.Button(btnXoa, _theme);
+            PillStyler.SearchBox(ThanhTimKiem, _theme, "Tìm kiếm khách hàng...");
             LayoutFlowUnderToolbar();
             LoadDanhSachKhachHang();
         }
@@ -88,11 +90,12 @@ namespace GUI
                 {
                     string kw = keyword.Trim();
                     rows = rows.Where(r =>
-                        (Convert.ToString(r["TenCongTy"]  ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (Convert.ToString(r["Email"]      ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (Convert.ToString(r["DienThoai"]  ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (Convert.ToString(r["MaSoThue"]   ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (Convert.ToString(r["MaKhachHang"]?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0)
+                        (Convert.ToString(r["TenCongTy"] ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (Convert.ToString(r["Email"] ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (Convert.ToString(r["DienThoai"] ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (Convert.ToString(r["MaSoThue"] ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (Convert.ToString(r["MaKhachHang"] ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        (Convert.ToString(r["NguoiDaiDien"] ?? "").IndexOf(kw, StringComparison.OrdinalIgnoreCase) >= 0)
                     );
                 }
 
@@ -137,14 +140,14 @@ namespace GUI
         // ====== TẠO CARD ======
         private Guna2Panel TaoCardKhachHang(DataRow row)
         {
-            string id       = Convert.ToString(row["KhachHangID"] ?? "");
-            string maKH     = Convert.ToString(row.Table.Columns.Contains("MaKhachHang") ? row["MaKhachHang"] : "");
-            string ten      = Convert.ToString(row.Table.Columns.Contains("TenCongTy")   ? row["TenCongTy"]   : "");
-            string dd       = Convert.ToString(row.Table.Columns.Contains("NguoiDaiDien")? row["NguoiDaiDien"]: "");
-            string email    = Convert.ToString(row.Table.Columns.Contains("Email")       ? row["Email"]       : "");
-            string sdt      = Convert.ToString(row.Table.Columns.Contains("DienThoai")   ? row["DienThoai"]   : "");
-            string mst      = Convert.ToString(row.Table.Columns.Contains("MaSoThue")    ? row["MaSoThue"]    : "");
-            string diachi   = Convert.ToString(row.Table.Columns.Contains("DiaChi")      ? row["DiaChi"]      : "");
+            string id = Convert.ToString(row["KhachHangID"] ?? "");
+            string maKH = Convert.ToString(row.Table.Columns.Contains("MaKhachHang") ? row["MaKhachHang"] : "");
+            string ten = Convert.ToString(row.Table.Columns.Contains("TenCongTy") ? row["TenCongTy"] : "");
+            string dd = Convert.ToString(row.Table.Columns.Contains("NguoiDaiDien") ? row["NguoiDaiDien"] : "");
+            string email = Convert.ToString(row.Table.Columns.Contains("Email") ? row["Email"] : "");
+            string sdt = Convert.ToString(row.Table.Columns.Contains("DienThoai") ? row["DienThoai"] : "");
+            string mst = Convert.ToString(row.Table.Columns.Contains("MaSoThue") ? row["MaSoThue"] : "");
+            string diachi = Convert.ToString(row.Table.Columns.Contains("DiaChi") ? row["DiaChi"] : "");
 
             const int fixedWidth = 420;
             var card = new Guna2Panel
@@ -156,7 +159,7 @@ namespace GUI
                 MaximumSize = new Size(fixedWidth, int.MaxValue),
 
                 BorderRadius = 18,
-                BorderColor  = ClrOutline,
+                BorderColor = ClrOutline,
                 BorderThickness = 1,
                 ShadowDecoration = { Enabled = false },
                 FillColor = ClrCardBg,
@@ -182,13 +185,13 @@ namespace GUI
             };
 
             // Header: KhachHangID | MaKhachHang
-            var lblHeader  = L(string.Format("{0}{1}{2}", id, string.IsNullOrEmpty(maKH) ? "" : " | ", maKH), new Font("Segoe UI", 11, FontStyle.Bold));
-            var lblTen     = L("🏢 " + (string.IsNullOrWhiteSpace(ten) ? "(Chưa có tên công ty)" : ten), null);
-            var lblDD      = L("👤 Người đại diện: " + (string.IsNullOrWhiteSpace(dd) ? "(Chưa có)" : dd), null);
-            var lblEmail   = L(string.IsNullOrWhiteSpace(email) ? "" : ("✉️ " + email), null);
-            var lblSdt     = L(string.IsNullOrWhiteSpace(sdt)   ? "" : ("📞 " + sdt), null);
-            var lblMst     = L(string.IsNullOrWhiteSpace(mst)   ? "" : ("🧾 MST: " + mst), null);
-            var lblDiaChi  = L(string.IsNullOrWhiteSpace(diachi)? "" : ("🏠 " + diachi), null);
+            var lblHeader = L(string.Format("{0}{1}{2}", id, string.IsNullOrEmpty(maKH) ? "" : " | ", maKH), new Font("Segoe UI", 11, FontStyle.Bold));
+            var lblTen = L("🏢 " + (string.IsNullOrWhiteSpace(ten) ? "(Chưa có tên công ty)" : ten), null);
+            var lblDD = L("👤 Người đại diện: " + (string.IsNullOrWhiteSpace(dd) ? "(Chưa có)" : dd), null);
+            var lblEmail = L(string.IsNullOrWhiteSpace(email) ? "" : ("✉️ " + email), null);
+            var lblSdt = L(string.IsNullOrWhiteSpace(sdt) ? "" : ("📞 " + sdt), null);
+            var lblMst = L(string.IsNullOrWhiteSpace(mst) ? "" : ("🧾 MST: " + mst), null);
+            var lblDiaChi = L(string.IsNullOrWhiteSpace(diachi) ? "" : ("🏠 " + diachi), null);
             // Clamp long address to one line like DonHang's note line
             if (!string.IsNullOrWhiteSpace(diachi))
             {
@@ -199,9 +202,9 @@ namespace GUI
 
             // Add bottom-up so header stays on top; order mirrors DonHang style
             if (!string.IsNullOrWhiteSpace(diachi)) card.Controls.Add(lblDiaChi);
-            if (!string.IsNullOrWhiteSpace(mst))    card.Controls.Add(lblMst);
-            if (!string.IsNullOrWhiteSpace(sdt))    card.Controls.Add(lblSdt);
-            if (!string.IsNullOrWhiteSpace(email))  card.Controls.Add(lblEmail);
+            if (!string.IsNullOrWhiteSpace(mst)) card.Controls.Add(lblMst);
+            if (!string.IsNullOrWhiteSpace(sdt)) card.Controls.Add(lblSdt);
+            if (!string.IsNullOrWhiteSpace(email)) card.Controls.Add(lblEmail);
             card.Controls.Add(lblDD);
             card.Controls.Add(lblTen);
             card.Controls.Add(lblHeader);
@@ -273,7 +276,7 @@ namespace GUI
             int itemFullW = itemW + itemMargin;
 
             int perRow = Math.Max(1, (clientW + sample.Margin.Left) / itemFullW);
-            int usedW  = perRow * itemFullW - sample.Margin.Right;
+            int usedW = perRow * itemFullW - sample.Margin.Right;
             int leftPad = Math.Max(0, (clientW - usedW) / 2);
 
             var p = flowLayoutPanel1.Padding;
@@ -361,6 +364,49 @@ namespace GUI
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private async void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pythonExe = @"C:\Users\PC\AppData\Local\Programs\Python\Python313\python.exe";
+                string scriptPath = @"C:\CNPM2\Software-Engineering\GUI\speech_to_text.py";
+                var psi = new ProcessStartInfo
+                {
+                    FileName = pythonExe,
+                    Arguments = $"\"{scriptPath}\"",
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+
+                    // ⚙️ Đây là 2 dòng quan trọng nhất
+                    StandardOutputEncoding = System.Text.Encoding.UTF8,
+                    StandardErrorEncoding = System.Text.Encoding.UTF8
+                };
+
+
+                using (var process = new Process { StartInfo = psi })
+                {
+                    Console.Beep(800, 300);
+                    process.Start();
+
+                    string output = await process.StandardOutput.ReadToEndAsync();
+                    string error = await process.StandardError.ReadToEndAsync();
+
+                    process.WaitForExit();
+                    Console.Beep(800, 200);
+                    if (!string.IsNullOrWhiteSpace(error))
+                        MessageBox.Show("Python báo lỗi:\n" + error);
+
+                    ThanhTimKiem.Text = output.Trim();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("❌ Lỗi: " + ex.Message);
+            }
         }
     }
 }

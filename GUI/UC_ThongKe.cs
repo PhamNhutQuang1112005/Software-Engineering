@@ -32,13 +32,13 @@ namespace GUI
         {
             BieuDo1.ChartAreas[0].AxisX.LabelStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
             BieuDo1.Titles.Clear();
-            Title t = new Title("Biểu đồ cột về tình trạng đơn hàng", Docking.Top,
+            Title t = new Title("BIỂU ĐỒ CỘT VỀ TÌNH TRẠNG ĐƠN HÀNG", Docking.Top,
                                 new Font("Segoe UI", 12, FontStyle.Bold), Color.White);
             BieuDo1.Titles.Add(t);
             BieuDo1.Legends[0].Docking = Docking.Bottom;
             BieuDo1.Legends[0].Font = new Font("Segoe UI", 10, FontStyle.Bold);
             chart2.Titles.Clear();
-            Title t1 = new Title("Biểu đồ tròn về tình trạng đơn hàng", Docking.Top,
+            Title t1 = new Title("BIỂU ĐỒ TRÒN VỀ TÌNH TRẠNG ĐƠN HÀNG", Docking.Top,
                                 new Font("Segoe UI", 12, FontStyle.Bold), Color.White);
             chart2.Titles.Add(t1);
             // Style combobox
@@ -178,7 +178,7 @@ namespace GUI
             chart2.Legends[0].ForeColor = Color.White;
             chart2.Legends[0].Font = new Font("Segoe UI", 10, FontStyle.Bold);
             chart2.Legends[0].BackColor = Color.Transparent;
-            
+
             pie.Legend = "Legend1";
         }
 
@@ -201,7 +201,7 @@ namespace GUI
                 case "TT002": return "Hoàn thành";
                 case "TT003": return "Quá hạn";
                 case "TT004": return "Hủy";
-                default:      return "Khác";
+                default: return "Khác";
             }
         }
 
@@ -209,7 +209,7 @@ namespace GUI
         private static DataTable SafeFilterNotDeleted(DataTable src)
         {
             if (src == null || src.Rows.Count == 0) return src;
-            if (!src.Columns.Contains("IsDeleted"))  return src;
+            if (!src.Columns.Contains("IsDeleted")) return src;
 
             var rows = src.AsEnumerable().Where(r =>
             {
@@ -281,5 +281,5 @@ namespace GUI
         { }
 
 
-        }
+    }
 }
