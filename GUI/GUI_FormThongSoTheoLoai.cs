@@ -68,11 +68,11 @@ namespace GUI
             {
                 // ===== Chỉ tiêu
                 var dtLCT = _bll.GetAllLoaiChiTieu();
+                
                 cboLoaiChiTieu.DataSource = dtLCT;
-                cboLoaiChiTieu.DisplayMember = (dtLCT != null && dtLCT.Columns.Contains("TenChiTieu")) ? "TenChiTieu" : "TenLoaiChiTieu";
+                cboLoaiChiTieu.DisplayMember = (dtLCT != null && dtLCT.Columns.Contains("TenChiTieu")) ? "TenChiTieu" : "TenChiTieu";
                 cboLoaiChiTieu.ValueMember = "LoaiChiTieuID";
-                cboLoaiChiTieu.MaxDropDownItems = 6;
-                try { cboLoaiChiTieu.StartIndex = -1; } catch { cboLoaiChiTieu.SelectedIndex = -1; }
+                cboLoaiChiTieu.SelectedIndex = -1;
                 
                 // ===== Loại/Phòng phân tích
                 var dtLPT = _bll.GetAllLoaiPhanTich();

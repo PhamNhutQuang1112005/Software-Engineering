@@ -133,7 +133,7 @@
             this.btnXuatPDF.Size = new System.Drawing.Size(188, 40);
             this.btnXuatPDF.TabIndex = 3;
             this.btnXuatPDF.Text = "Xuất kết quả";
-            this.btnXuatPDF.Click += new System.EventHandler(this.guna2Button4_Click);
+            this.btnXuatPDF.Click += new System.EventHandler(this.btnXuatPDF_Click);
             // 
             // guna2Button3
             // 
