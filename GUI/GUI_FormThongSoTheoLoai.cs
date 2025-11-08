@@ -1,9 +1,10 @@
 ﻿// GUI/GUI_FormThongSoTheoLoai.cs
+using BLL;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
-using BLL;
 using static GUI.GUI_Form_DangNhap;
 
 namespace GUI
@@ -16,7 +17,7 @@ namespace GUI
         private readonly string _tenDonHang;
         private readonly string _diaChi;
         private readonly string _tenLoaiViTri;
-
+        
         private readonly BLL_ThongSoQuanTrac _bll = new BLL_ThongSoQuanTrac();
 
         // *** QUAN TRỌNG: BindingSource để làm mới lưới ngay lập tức
@@ -50,49 +51,85 @@ namespace GUI
             LoadCombosOnce();
             ForceRebind(); // nạp dữ liệu lần đầu
         }
-
+    
         // ================== NẠP DANH MỤC (1 lần) ==================
         private void LoadCombosOnce()
+{
+    try
+    {
+        // ===== Chỉ tiêu
+        var dtLCT = _bll.GetAllLoaiChiTieu();
+        cboLoaiChiTieu.DataSource    = dtLCT;
+        cboLoaiChiTieu.DisplayMember = (dtLCT != null && dtLCT.Columns.Contains("TenChiTieu")) ? "TenChiTieu" : "TenLoaiChiTieu";
+        cboLoaiChiTieu.ValueMember   = "LoaiChiTieuID";
+        try { cboLoaiChiTieu.StartIndex = -1; } catch { cboLoaiChiTieu.SelectedIndex = -1; }
+
+        // ===== Loại/Phòng phân tích
+        var dtLPT = _bll.GetAllLoaiPhanTich();
+        cboLoaiPhanTich.DataSource    = dtLPT;
+        cboLoaiPhanTich.DisplayMember = "TenLoai";
+        cboLoaiPhanTich.ValueMember   = "LoaiPhanTichID";
+        try { cboLoaiPhanTich.StartIndex = -1; } catch { cboLoaiPhanTich.SelectedIndex = -1; }
+
+        // ===== Người phụ trách / Thầu phụ (PB003 & PB004, hiển thị HT/TN)
+        var userBll  = new BLL_TaiKhoan();
+        var dtUsers  = userBll.GetAllNguoiDung();
+        var allowed  = new HashSet<string>(new[] { "PB003", "PB004" }, StringComparer.OrdinalIgnoreCase);
+
+        DataTable dtAllowed = (dtUsers != null) ? dtUsers.Clone() : new DataTable();
+        if (dtUsers != null && dtUsers.Columns.Contains("PhongBanID"))
         {
-            try
+            foreach (DataRow r in dtUsers.Rows)
             {
-                // Chỉ tiêu
-                var dtLCT = _bll.GetAllLoaiChiTieu();
-                cboLoaiChiTieu.DataSource    = dtLCT;
-                cboLoaiChiTieu.DisplayMember = (dtLCT != null && dtLCT.Columns.Contains("TenChiTieu")) ? "TenChiTieu" : "TenLoaiChiTieu";
-                cboLoaiChiTieu.ValueMember   = "LoaiChiTieuID";
-                cboLoaiChiTieu.StartIndex    = -1; // Guna2
-
-                // Loại/Phòng phân tích
-                var dtLPT = _bll.GetAllLoaiPhanTich();
-                cboLoaiPhanTich.DataSource    = dtLPT;
-                cboLoaiPhanTich.DisplayMember = "TenLoai";
-                cboLoaiPhanTich.ValueMember   = "LoaiPhanTichID";
-                cboLoaiPhanTich.StartIndex    = -1;
-
-                // Người phụ trách & Thầu phụ (nếu có BLL_TaiKhoan)
-                try
-                {
-                    var userBll = new BLL_TaiKhoan();
-                    var dtUsers = userBll.GetAllNguoiDung();
-
-                    cboNguoiPhuTrach.DataSource    = dtUsers.Copy();
-                    cboNguoiPhuTrach.DisplayMember = "HoVaTen";
-                    cboNguoiPhuTrach.ValueMember   = "NguoiDungID";
-                    cboNguoiPhuTrach.StartIndex    = -1;
-
-                    cboThauPhu.DataSource    = dtUsers;
-                    cboThauPhu.DisplayMember = "HoVaTen";
-                    cboThauPhu.ValueMember   = "NguoiDungID";
-                    cboThauPhu.StartIndex    = -1;
-                }
-                catch { /* nếu chưa có BLL_TaiKhoan thì bỏ trống 2 combo này */ }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi nạp danh mục: " + ex.Message);
+                var pb = Convert.ToString(r["PhongBanID"]).Trim();
+                if (allowed.Contains(pb)) dtAllowed.Rows.Add(r.ItemArray);
             }
         }
+
+        if (!dtAllowed.Columns.Contains("DisplayUser"))
+            dtAllowed.Columns.Add("DisplayUser", typeof(string));
+
+        foreach (DataRow r in dtAllowed.Rows)
+        {
+            var name = Convert.ToString(r["HoVaTen"]).Trim();
+            var pb   = Convert.ToString(r["PhongBanID"]).Trim();
+            string tag = string.Equals(pb, "PB003", StringComparison.OrdinalIgnoreCase) ? "HT"
+                       : string.Equals(pb, "PB004", StringComparison.OrdinalIgnoreCase) ? "TN"
+                       : pb; // fallback
+            r["DisplayUser"] = name + " - " + tag;
+        }
+
+        // Bind Người phụ trách
+        cboNguoiPhuTrach.DataSource    = dtAllowed.Copy();
+        cboNguoiPhuTrach.DisplayMember = "DisplayUser";
+        cboNguoiPhuTrach.ValueMember   = "NguoiDungID";
+        try { cboNguoiPhuTrach.StartIndex = -1; } catch { cboNguoiPhuTrach.SelectedIndex = -1; }
+
+        // Bind Thầu phụ (không trùng Người phụ trách) + auto cập nhật khi đổi
+        Action updateThauPhu = () =>
+        {
+            string nptID = Convert.ToString(cboNguoiPhuTrach.SelectedValue ?? "").Trim();
+            DataTable dtThau = dtAllowed.Clone();
+            foreach (DataRow r in dtAllowed.Rows)
+            {
+                var id = Convert.ToString(r["NguoiDungID"]).Trim();
+                if (!string.Equals(id, nptID, StringComparison.OrdinalIgnoreCase))
+                    dtThau.Rows.Add(r.ItemArray);
+            }
+            cboThauPhu.DataSource    = dtThau;
+            cboThauPhu.DisplayMember = "DisplayUser";
+            cboThauPhu.ValueMember   = "NguoiDungID";
+            try { cboThauPhu.StartIndex = -1; } catch { cboThauPhu.SelectedIndex = -1; }
+        };
+        updateThauPhu();
+        cboNguoiPhuTrach.SelectedIndexChanged += (s, e) => updateThauPhu();
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Lỗi nạp danh mục: " + ex.Message);
+    }
+}
+
 
         // ================== REQUERY + REBIND CỨNG ==================
         private void ForceRebind(string selectTenThongSo = null)
@@ -120,53 +157,99 @@ namespace GUI
             }
         }
 
-        private void StyleGridColumns()
+        private string GetPhongBanIDByNguoiDungID(string nguoiDungID, BLL_TaiKhoan bll)
+{
+    var dt = bll.GetAllNguoiDung();
+    return dt?.AsEnumerable()
+             .FirstOrDefault(r => string.Equals(
+                 Convert.ToString(r["NguoiDungID"])?.Trim(),
+                 nguoiDungID?.Trim(),
+                 StringComparison.OrdinalIgnoreCase))
+            ?["PhongBanID"]?.ToString()?.Trim();
+}
+
+private void StyleGridColumns()
+{
+    if (dgv.Columns.Count == 0) return;
+
+    // Ẩn & header (giữ như bạn đã có)
+    Hide("ViTriID"); Hide("LoaiViTriID");
+    Hide("LoaiChiTieuID"); Hide("DonViID");
+    Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID"); Hide("GiaTriSo");
+    SetHeader("TenThongSo","Mã thông số");
+    SetHeader("TenLoaiChiTieu","Chỉ tiêu");
+    SetHeader("TenDonVi","Đơn vị");
+    SetHeader("TenLoaiPhanTich","Loại Phân Tích");
+    SetHeader("TenNguoiPhanTich","Người phụ trách");
+    SetHeader("TenThauPhu","Thầu phụ");
+    SetHeader("GiaTri","Giá trị ");
+    SetHeader("GiaTriQuyChuan","Giá trị chuẩn");
+    SetHeader("KetLuan","Kết luận");
+
+    // Mặc định: khoá tất cả
+    foreach (DataGridViewColumn c in dgv.Columns) c.ReadOnly = true;
+    // 3 cột này cho phép chỉnh theo từng ô (cell-level), nên cần mở khoá ở CỘT trước
+    dgv.Columns["GiaTri"].ReadOnly = false;
+    dgv.Columns["GiaTriQuyChuan"].ReadOnly = false;
+    dgv.Columns["KetLuan"].ReadOnly = false;
+
+    var bll = new BLL_TaiKhoan();
+
+    // Lấy PB của user hiện tại rồi dùng GetPhongBanByID (đúng yêu cầu)
+    string pbUserID = Session.CurrentUser?.PhongBanID?.Trim();
+    var pbUser = !string.IsNullOrEmpty(pbUserID) ? bll.GetPhongBanByID(pbUserID) : null;
+    string pbUserIdNorm = pbUser?.PhongBanID?.Trim();
+
+    if (string.IsNullOrEmpty(pbUserIdNorm))
+    {
+        MessageBox.Show("Không lấy được PhongBanID của user hiện tại.");
+        return;
+    }
+
+    int allow = 0, deny = 0;
+
+    // Duyệt TỪNG DÒNG: set cell.ReadOnly theo quyền
+    foreach (DataGridViewRow r in dgv.Rows)
+    {
+        // luôn cho sửa Kết luận
+        r.Cells["KetLuan"].ReadOnly = false;
+
+        string nptID = Convert.ToString(r.Cells["NguoiPhanTichID"]?.Value)?.Trim();
+        if (string.IsNullOrEmpty(nptID))
         {
-            if (dgv.Columns.Count == 0) return;
-
-            Hide("ViTriID"); Hide("LoaiViTriID");
-            Hide("LoaiChiTieuID"); Hide("DonViID");
-            Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID"); Hide("GiaTri"); Hide("GiaTriSo"); 
-
-            SetHeader("TenThongSo",       "Mã thông số");
-            SetHeader("TenLoaiChiTieu",   "Chỉ tiêu");
-            SetHeader("TenDonVi",         "Đơn vị");
-            SetHeader("TenLoai",  "Phòng phân tích");
-            SetHeader("TenNguoiPhanTich", "Người phụ trách");
-            SetHeader("TenThauPhu",       "Thầu phụ");
-            SetHeader("GiaTriQuyChuan",   "Giá trị chuẩn");
-            SetHeader("KetLuan",          "Kết luận");
-            // 🔹 Bước 1: Lấy PhòngBanID hiện tại của user đăng nhập
-            string phongBanIDHienTai = Session.CurrentUser.PhongBanID;
-
-            // 🔹 Bước 2: Lấy ra tên phòng ban thật
-            BLL_TaiKhoan bllTaiKhoan = new BLL_TaiKhoan();
-            BLL_ThongSoQuanTrac bLL_ThongSoQuanTrac = new BLL_ThongSoQuanTrac();
-            var phongBan = bllTaiKhoan.GetPhongBanByID(phongBanIDHienTai);
-            var LoaiPhanTich = bLL_ThongSoQuanTrac.GetAllLoaiPhanTichDTO()
-                .FirstOrDefault(lp => lp.LoaiPhanTichID == phongBanIDHienTai);
-            string tenPhongBanNguoiDung = phongBan?.TenPhongBan ?? "";
-
-            // 🔹 Bước 3: Lấy tên phòng ban trong dòng của DataGridView
-            string tenPhongBanTrongBang = LoaiPhanTich?.TenLoai ?? "";
-
-            // 🔹 Bước 4: Khóa/mở cột chỉnh sửa theo điều kiện
-            foreach (DataGridViewColumn c in dgv.Columns) c.ReadOnly = true;
-
-            if (tenPhongBanNguoiDung == tenPhongBanTrongBang)
-            {
-                // ✅ Cùng phòng ban → cho phép sửa
-                AllowEdit("GiaTriQuyChuan");
-            }
-            else
-            {
-                // 🚫 Khác phòng ban → khóa sửa
-                dgv.Columns["GiaTriQuyChuan"].ReadOnly = true;
-            }
-
-            // Luôn cho phép sửa cột Kết luận
-            AllowEdit("KetLuan");
+            // không có người phụ trách -> khoá 2 cột
+            r.Cells["GiaTri"].ReadOnly = true;
+            r.Cells["GiaTriQuyChuan"].ReadOnly = true;
+            deny++;
+            continue;
         }
+
+        // Từ NguoiPhanTichID -> PhongBanID (không dùng GetNguoiDungByID)
+        string pbNptID = GetPhongBanIDByNguoiDungID(nptID, bll);
+        if (string.IsNullOrEmpty(pbNptID))
+        {
+            r.Cells["GiaTri"].ReadOnly = true;
+            r.Cells["GiaTriQuyChuan"].ReadOnly = true;
+            deny++;
+            continue;
+        }
+
+        // Dùng GetPhongBanByID cho NPT (đúng yêu cầu)
+        var pbNpt = bll.GetPhongBanByID(pbNptID);
+        string pbNptIdNorm = pbNpt?.PhongBanID?.Trim();
+
+        bool sameDept = !string.IsNullOrEmpty(pbNptIdNorm) &&
+                        string.Equals(pbUserIdNorm, pbNptIdNorm, StringComparison.OrdinalIgnoreCase);
+
+        // Nếu cùng phòng ban -> mở khoá 2 cột; ngược lại khoá
+        r.Cells["GiaTri"].ReadOnly = !sameDept;
+        r.Cells["GiaTriQuyChuan"].ReadOnly = !sameDept;
+
+        if (sameDept) allow++; else deny++;
+    }
+   
+}
+
 
         // ===================== SỰ KIỆN NÚT =====================
         private void btnThem_Click(object sender, EventArgs e)
