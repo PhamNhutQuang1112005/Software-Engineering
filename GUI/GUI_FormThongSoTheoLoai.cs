@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using static GUI.GUI_Form_DangNhap;
-
+using Guna.UI2.WinForms; // thêm dòng này
 namespace GUI
 {
     public partial class GUI_FormThongSoTheoLoai : Form
@@ -17,7 +17,7 @@ namespace GUI
         private readonly string _tenDonHang;
         private readonly string _diaChi;
         private readonly string _tenLoaiViTri;
-        
+
         private readonly BLL_ThongSoQuanTrac _bll = new BLL_ThongSoQuanTrac();
 
         // *** QUAN TRỌNG: BindingSource để làm mới lưới ngay lập tức
@@ -29,11 +29,11 @@ namespace GUI
             string donHangID, string viTriID, string loaiViTriID,
             string tenDonHang, string diaChi, string tenLoaiViTri) : this()
         {
-            _donHangID   = donHangID;
-            _viTriID     = viTriID;
+            _donHangID = donHangID;
+            _viTriID = viTriID;
             _loaiViTriID = loaiViTriID;
-            _tenDonHang  = tenDonHang;
-            _diaChi      = diaChi;
+            _tenDonHang = tenDonHang;
+            _diaChi = diaChi;
             _tenLoaiViTri = tenLoaiViTri;
         }
 
@@ -43,92 +43,102 @@ namespace GUI
             lblDonHang.Text = string.IsNullOrWhiteSpace(_tenDonHang)
                 ? "Đơn hàng"
                 : _tenDonHang + " – " + _tenLoaiViTri;
-            lblDiaChi.Text  = "Địa chỉ: " + (_diaChi ?? "…");
+            lblDiaChi.Text = "Địa chỉ: " + (_diaChi ?? "…");
 
             // Gắn BindingSource cho lưới NGAY TỪ ĐẦU
             dgv.DataSource = _bs;
 
             LoadCombosOnce();
             ForceRebind(); // nạp dữ liệu lần đầu
+            this.Activated += (s, ev) =>
+{
+    string keep = null;
+    if (dgv.CurrentRow != null && dgv.Columns.Contains("TenThongSo"))
+        keep = Convert.ToString(dgv.CurrentRow.Cells["TenThongSo"].Value);
+
+    ForceRebind(keep); // luôn lấy lại từ DB khi quay lại form
+};
+
         }
-    
+
         // ================== NẠP DANH MỤC (1 lần) ==================
         private void LoadCombosOnce()
-{
-    try
-    {
-        // ===== Chỉ tiêu
-        var dtLCT = _bll.GetAllLoaiChiTieu();
-        cboLoaiChiTieu.DataSource    = dtLCT;
-        cboLoaiChiTieu.DisplayMember = (dtLCT != null && dtLCT.Columns.Contains("TenChiTieu")) ? "TenChiTieu" : "TenLoaiChiTieu";
-        cboLoaiChiTieu.ValueMember   = "LoaiChiTieuID";
-        try { cboLoaiChiTieu.StartIndex = -1; } catch { cboLoaiChiTieu.SelectedIndex = -1; }
-
-        // ===== Loại/Phòng phân tích
-        var dtLPT = _bll.GetAllLoaiPhanTich();
-        cboLoaiPhanTich.DataSource    = dtLPT;
-        cboLoaiPhanTich.DisplayMember = "TenLoai";
-        cboLoaiPhanTich.ValueMember   = "LoaiPhanTichID";
-        try { cboLoaiPhanTich.StartIndex = -1; } catch { cboLoaiPhanTich.SelectedIndex = -1; }
-
-        // ===== Người phụ trách / Thầu phụ (PB003 & PB004, hiển thị HT/TN)
-        var userBll  = new BLL_TaiKhoan();
-        var dtUsers  = userBll.GetAllNguoiDung();
-        var allowed  = new HashSet<string>(new[] { "PB003", "PB004" }, StringComparer.OrdinalIgnoreCase);
-
-        DataTable dtAllowed = (dtUsers != null) ? dtUsers.Clone() : new DataTable();
-        if (dtUsers != null && dtUsers.Columns.Contains("PhongBanID"))
         {
-            foreach (DataRow r in dtUsers.Rows)
+            try
             {
-                var pb = Convert.ToString(r["PhongBanID"]).Trim();
-                if (allowed.Contains(pb)) dtAllowed.Rows.Add(r.ItemArray);
+                // ===== Chỉ tiêu
+                var dtLCT = _bll.GetAllLoaiChiTieu();
+                cboLoaiChiTieu.DataSource = dtLCT;
+                cboLoaiChiTieu.DisplayMember = (dtLCT != null && dtLCT.Columns.Contains("TenChiTieu")) ? "TenChiTieu" : "TenLoaiChiTieu";
+                cboLoaiChiTieu.ValueMember = "LoaiChiTieuID";
+                cboLoaiChiTieu.MaxDropDownItems = 6;
+                try { cboLoaiChiTieu.StartIndex = -1; } catch { cboLoaiChiTieu.SelectedIndex = -1; }
+                
+                // ===== Loại/Phòng phân tích
+                var dtLPT = _bll.GetAllLoaiPhanTich();
+                cboLoaiPhanTich.DataSource = dtLPT;
+                cboLoaiPhanTich.DisplayMember = "TenLoai";
+                cboLoaiPhanTich.ValueMember = "LoaiPhanTichID";
+                try { cboLoaiPhanTich.StartIndex = -1; } catch { cboLoaiPhanTich.SelectedIndex = -1; }
+
+                // ===== Người phụ trách / Thầu phụ (PB003 & PB004, hiển thị HT/TN)
+                var userBll = new BLL_TaiKhoan();
+                var dtUsers = userBll.GetAllNguoiDung();
+                var allowed = new HashSet<string>(new[] { "PB003", "PB004" }, StringComparer.OrdinalIgnoreCase);
+
+                DataTable dtAllowed = (dtUsers != null) ? dtUsers.Clone() : new DataTable();
+                if (dtUsers != null && dtUsers.Columns.Contains("PhongBanID"))
+                {
+                    foreach (DataRow r in dtUsers.Rows)
+                    {
+                        var pb = Convert.ToString(r["PhongBanID"]).Trim();
+                        if (allowed.Contains(pb)) dtAllowed.Rows.Add(r.ItemArray);
+                    }
+                }
+
+                if (!dtAllowed.Columns.Contains("DisplayUser"))
+                    dtAllowed.Columns.Add("DisplayUser", typeof(string));
+
+                foreach (DataRow r in dtAllowed.Rows)
+                {
+                    var name = Convert.ToString(r["HoVaTen"]).Trim();
+                    var pb = Convert.ToString(r["PhongBanID"]).Trim();
+                    string tag = string.Equals(pb, "PB003", StringComparison.OrdinalIgnoreCase) ? "HT"
+                               : string.Equals(pb, "PB004", StringComparison.OrdinalIgnoreCase) ? "TN"
+                               : pb; // fallback
+                    r["DisplayUser"] = name + " - " + tag;
+                }
+
+                // Bind Người phụ trách
+                cboNguoiPhuTrach.DataSource = dtAllowed.Copy();
+                cboNguoiPhuTrach.DisplayMember = "DisplayUser";
+                cboNguoiPhuTrach.ValueMember = "NguoiDungID";
+                try { cboNguoiPhuTrach.StartIndex = -1; } catch { cboNguoiPhuTrach.SelectedIndex = -1; }
+
+                // Bind Thầu phụ (không trùng Người phụ trách) + auto cập nhật khi đổi
+                Action updateThauPhu = () =>
+                {
+                    string nptID = Convert.ToString(cboNguoiPhuTrach.SelectedValue ?? "").Trim();
+                    DataTable dtThau = dtAllowed.Clone();
+                    foreach (DataRow r in dtAllowed.Rows)
+                    {
+                        var id = Convert.ToString(r["NguoiDungID"]).Trim();
+                        if (!string.Equals(id, nptID, StringComparison.OrdinalIgnoreCase))
+                            dtThau.Rows.Add(r.ItemArray);
+                    }
+                    cboThauPhu.DataSource = dtThau;
+                    cboThauPhu.DisplayMember = "DisplayUser";
+                    cboThauPhu.ValueMember = "NguoiDungID";
+                    try { cboThauPhu.StartIndex = -1; } catch { cboThauPhu.SelectedIndex = -1; }
+                };
+                updateThauPhu();
+                cboNguoiPhuTrach.SelectedIndexChanged += (s, e) => updateThauPhu();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi nạp danh mục: " + ex.Message);
             }
         }
-
-        if (!dtAllowed.Columns.Contains("DisplayUser"))
-            dtAllowed.Columns.Add("DisplayUser", typeof(string));
-
-        foreach (DataRow r in dtAllowed.Rows)
-        {
-            var name = Convert.ToString(r["HoVaTen"]).Trim();
-            var pb   = Convert.ToString(r["PhongBanID"]).Trim();
-            string tag = string.Equals(pb, "PB003", StringComparison.OrdinalIgnoreCase) ? "HT"
-                       : string.Equals(pb, "PB004", StringComparison.OrdinalIgnoreCase) ? "TN"
-                       : pb; // fallback
-            r["DisplayUser"] = name + " - " + tag;
-        }
-
-        // Bind Người phụ trách
-        cboNguoiPhuTrach.DataSource    = dtAllowed.Copy();
-        cboNguoiPhuTrach.DisplayMember = "DisplayUser";
-        cboNguoiPhuTrach.ValueMember   = "NguoiDungID";
-        try { cboNguoiPhuTrach.StartIndex = -1; } catch { cboNguoiPhuTrach.SelectedIndex = -1; }
-
-        // Bind Thầu phụ (không trùng Người phụ trách) + auto cập nhật khi đổi
-        Action updateThauPhu = () =>
-        {
-            string nptID = Convert.ToString(cboNguoiPhuTrach.SelectedValue ?? "").Trim();
-            DataTable dtThau = dtAllowed.Clone();
-            foreach (DataRow r in dtAllowed.Rows)
-            {
-                var id = Convert.ToString(r["NguoiDungID"]).Trim();
-                if (!string.Equals(id, nptID, StringComparison.OrdinalIgnoreCase))
-                    dtThau.Rows.Add(r.ItemArray);
-            }
-            cboThauPhu.DataSource    = dtThau;
-            cboThauPhu.DisplayMember = "DisplayUser";
-            cboThauPhu.ValueMember   = "NguoiDungID";
-            try { cboThauPhu.StartIndex = -1; } catch { cboThauPhu.SelectedIndex = -1; }
-        };
-        updateThauPhu();
-        cboNguoiPhuTrach.SelectedIndexChanged += (s, e) => updateThauPhu();
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Lỗi nạp danh mục: " + ex.Message);
-    }
-}
 
 
         // ================== REQUERY + REBIND CỨNG ==================
@@ -144,7 +154,7 @@ namespace GUI
                 _bs.DataSource = fresh;
                 _bs.ResetBindings(false); // báo cho lưới cập nhật ngay lập tức
 
-               StyleGridColumns();       // đặt header/readonly/ẩn cột
+                StyleGridColumns();       // đặt header/readonly/ẩn cột
                 dgv.Refresh();            // ép refresh
                 Application.DoEvents();   // “đẩy” UI (an toàn)
 
@@ -158,97 +168,106 @@ namespace GUI
         }
 
         private string GetPhongBanIDByNguoiDungID(string nguoiDungID, BLL_TaiKhoan bll)
-{
-    var dt = bll.GetAllNguoiDung();
-    return dt?.AsEnumerable()
-             .FirstOrDefault(r => string.Equals(
-                 Convert.ToString(r["NguoiDungID"])?.Trim(),
-                 nguoiDungID?.Trim(),
-                 StringComparison.OrdinalIgnoreCase))
-            ?["PhongBanID"]?.ToString()?.Trim();
-}
-
-private void StyleGridColumns()
-{
-    if (dgv.Columns.Count == 0) return;
-
-    // Ẩn & header (giữ như bạn đã có)
-    Hide("ViTriID"); Hide("LoaiViTriID");
-    Hide("LoaiChiTieuID"); Hide("DonViID");
-    Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID"); Hide("GiaTriSo");
-    SetHeader("TenThongSo","Mã thông số");
-    SetHeader("TenLoaiChiTieu","Chỉ tiêu");
-    SetHeader("TenDonVi","Đơn vị");
-    SetHeader("TenLoaiPhanTich","Loại Phân Tích");
-    SetHeader("TenNguoiPhanTich","Người phụ trách");
-    SetHeader("TenThauPhu","Thầu phụ");
-    SetHeader("GiaTri","Giá trị ");
-    SetHeader("GiaTriQuyChuan","Giá trị chuẩn");
-    SetHeader("KetLuan","Kết luận");
-
-    // Mặc định: khoá tất cả
-    foreach (DataGridViewColumn c in dgv.Columns) c.ReadOnly = true;
-    // 3 cột này cho phép chỉnh theo từng ô (cell-level), nên cần mở khoá ở CỘT trước
-    dgv.Columns["GiaTri"].ReadOnly = false;
-    dgv.Columns["GiaTriQuyChuan"].ReadOnly = false;
-    dgv.Columns["KetLuan"].ReadOnly = false;
-
-    var bll = new BLL_TaiKhoan();
-
-    // Lấy PB của user hiện tại rồi dùng GetPhongBanByID (đúng yêu cầu)
-    string pbUserID = Session.CurrentUser?.PhongBanID?.Trim();
-    var pbUser = !string.IsNullOrEmpty(pbUserID) ? bll.GetPhongBanByID(pbUserID) : null;
-    string pbUserIdNorm = pbUser?.PhongBanID?.Trim();
-
-    if (string.IsNullOrEmpty(pbUserIdNorm))
-    {
-        MessageBox.Show("Không lấy được PhongBanID của user hiện tại.");
-        return;
-    }
-
-    int allow = 0, deny = 0;
-
-    // Duyệt TỪNG DÒNG: set cell.ReadOnly theo quyền
-    foreach (DataGridViewRow r in dgv.Rows)
-    {
-        // luôn cho sửa Kết luận
-        r.Cells["KetLuan"].ReadOnly = false;
-
-        string nptID = Convert.ToString(r.Cells["NguoiPhanTichID"]?.Value)?.Trim();
-        if (string.IsNullOrEmpty(nptID))
         {
-            // không có người phụ trách -> khoá 2 cột
-            r.Cells["GiaTri"].ReadOnly = true;
-            r.Cells["GiaTriQuyChuan"].ReadOnly = true;
-            deny++;
-            continue;
+            var dt = bll.GetAllNguoiDung();
+            return dt?.AsEnumerable()
+                     .FirstOrDefault(r => string.Equals(
+                         Convert.ToString(r["NguoiDungID"])?.Trim(),
+                         nguoiDungID?.Trim(),
+                         StringComparison.OrdinalIgnoreCase))
+                    ?["PhongBanID"]?.ToString()?.Trim();
         }
 
-        // Từ NguoiPhanTichID -> PhongBanID (không dùng GetNguoiDungByID)
-        string pbNptID = GetPhongBanIDByNguoiDungID(nptID, bll);
-        if (string.IsNullOrEmpty(pbNptID))
+        private void StyleGridColumns()
         {
-            r.Cells["GiaTri"].ReadOnly = true;
-            r.Cells["GiaTriQuyChuan"].ReadOnly = true;
-            deny++;
-            continue;
+            if (dgv == null || dgv.Columns.Count == 0) return;
+
+            // Ẩn & header
+            Hide("ViTriID"); Hide("LoaiViTriID");
+            Hide("LoaiChiTieuID"); Hide("DonViID");
+            Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID"); Hide("GiaTriSo");
+            Hide("TenThongSo");
+            SetHeader("TenLoaiChiTieu", "Chỉ tiêu");
+            SetHeader("TenDonVi", "Đơn vị");
+            SetHeader("TenLoaiPhanTich", "Loại Phân Tích");
+            SetHeader("TenNguoiPhanTich", "Người phụ trách");
+            SetHeader("TenThauPhu", "Thầu phụ");
+            SetHeader("GiaTri", "Giá trị ");
+            SetHeader("GiaTriQuyChuan", "Giá trị chuẩn");
+            SetHeader("KetLuan", "Kết luận");
+
+            // Mặc định: khóa tất cả cột
+            foreach (DataGridViewColumn c in dgv.Columns) c.ReadOnly = true;
+
+            // Mở khóa mức CỘT cho 3 cột có thể chỉnh (để còn khóa/mở theo từng ô)
+            if (dgv.Columns.Contains("GiaTri")) dgv.Columns["GiaTri"].ReadOnly = false;
+            if (dgv.Columns.Contains("GiaTriQuyChuan")) dgv.Columns["GiaTriQuyChuan"].ReadOnly = false;
+            if (dgv.Columns.Contains("KetLuan")) dgv.Columns["KetLuan"].ReadOnly = false;
+
+            var bll = new BLL_TaiKhoan();
+
+            // User hiện tại
+            string pbUserID = Session.CurrentUser?.PhongBanID?.Trim();
+            var pbUser = !string.IsNullOrEmpty(pbUserID) ? bll.GetPhongBanByID(pbUserID) : null;
+            string pbUserIdNorm = pbUser?.PhongBanID?.Trim();
+
+
+            string vaiTroId = Session.CurrentUser?.VaiTroID?.Trim();
+
+            if (string.IsNullOrEmpty(pbUserIdNorm))
+            {
+                MessageBox.Show("Không lấy được PhongBanID của user hiện tại.");
+                return;
+            }
+
+            // Điều kiện "siêu sửa" gắn trực tiếp vào phần điều kiện
+            bool isSuperEditor =
+                string.Equals(pbUserIdNorm, "PB006", StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(vaiTroId, "VT001", StringComparison.OrdinalIgnoreCase);
+
+            int allow = 0, deny = 0;
+
+            foreach (DataGridViewRow r in dgv.Rows)
+            {
+                if (r.IsNewRow) continue;
+
+                // luôn cho sửa Kết luận
+                if (dgv.Columns.Contains("KetLuan")) r.Cells["KetLuan"].ReadOnly = false;
+
+                // Lấy NguoiPhanTichID của dòng
+                string nptID = Convert.ToString(r.Cells["NguoiPhanTichID"]?.Value)?.Trim();
+
+                // sameDept mặc định là false, sẽ tính nếu có NPT
+                bool sameDept = false;
+
+                if (!string.IsNullOrEmpty(nptID))
+                {
+                    // Từ NguoiPhanTichID -> PhongBanID (không dùng GetNguoiDungByID)
+                    string pbNptID = GetPhongBanIDByNguoiDungID(nptID, bll);
+                    if (!string.IsNullOrEmpty(pbNptID))
+                    {
+                        // Dùng GetPhongBanByID (đúng yêu cầu)
+                        var pbNpt = bll.GetPhongBanByID(pbNptID);
+                        string pbNptIdNorm = pbNpt?.PhongBanID?.Trim();
+
+                        sameDept = !string.IsNullOrEmpty(pbNptIdNorm) &&
+                                   string.Equals(pbUserIdNorm, pbNptIdNorm, StringComparison.OrdinalIgnoreCase);
+                    }
+                }
+
+                // === Điều kiện cuối cùng nằm "trong phần đk": super || cùng phòng ===
+                bool canEdit = isSuperEditor || sameDept;
+
+                if (dgv.Columns.Contains("GiaTri")) r.Cells["GiaTri"].ReadOnly = !canEdit;
+                if (dgv.Columns.Contains("GiaTriQuyChuan")) r.Cells["GiaTriQuyChuan"].ReadOnly = !canEdit;
+
+                if (canEdit) allow++; else deny++;
+            }
+
+            // (tuỳ bạn) có thể log allow/deny nếu cần
+            //Debug.WriteLine($"Editable rows: {allow}, locked rows: {deny}");
         }
 
-        // Dùng GetPhongBanByID cho NPT (đúng yêu cầu)
-        var pbNpt = bll.GetPhongBanByID(pbNptID);
-        string pbNptIdNorm = pbNpt?.PhongBanID?.Trim();
-
-        bool sameDept = !string.IsNullOrEmpty(pbNptIdNorm) &&
-                        string.Equals(pbUserIdNorm, pbNptIdNorm, StringComparison.OrdinalIgnoreCase);
-
-        // Nếu cùng phòng ban -> mở khoá 2 cột; ngược lại khoá
-        r.Cells["GiaTri"].ReadOnly = !sameDept;
-        r.Cells["GiaTriQuyChuan"].ReadOnly = !sameDept;
-
-        if (sameDept) allow++; else deny++;
-    }
-   
-}
 
 
         // ===================== SỰ KIỆN NÚT =====================
@@ -256,8 +275,8 @@ private void StyleGridColumns()
         {
             var lct = cboLoaiChiTieu.SelectedValue?.ToString();
             var lpt = cboLoaiPhanTich.SelectedValue?.ToString();
-            var nd  = cboNguoiPhuTrach.SelectedValue?.ToString();
-            var tp  = cboThauPhu.SelectedValue?.ToString();
+            var nd = cboNguoiPhuTrach.SelectedValue?.ToString();
+            var tp = cboThauPhu.SelectedValue?.ToString();
 
             if (string.IsNullOrWhiteSpace(lct) || string.IsNullOrWhiteSpace(lpt) || string.IsNullOrWhiteSpace(nd))
             {
@@ -320,51 +339,51 @@ private void StyleGridColumns()
             }
         }
 
-       private void btnXoa_Click(object sender, EventArgs e)
-{
-    if (dgv.CurrentRow == null)
-    {
-        MessageBox.Show("Chưa chọn dòng để xóa.");
-        return;
-    }
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (dgv.CurrentRow == null)
+            {
+                MessageBox.Show("Chưa chọn dòng để xóa.");
+                return;
+            }
 
-    // Ưu tiên ID nếu lưới có, fallback về TenThongSo
-    string key = null;
-    if (dgv.Columns.Contains("ThongSoID"))
-        key = Convert.ToString(dgv.CurrentRow.Cells["ThongSoID"].Value);
-    if (string.IsNullOrWhiteSpace(key) && dgv.Columns.Contains("TenThongSo"))
-        key = Convert.ToString(dgv.CurrentRow.Cells["TenThongSo"].Value);
+            // Ưu tiên ID nếu lưới có, fallback về TenThongSo
+            string key = null;
+            if (dgv.Columns.Contains("ThongSoID"))
+                key = Convert.ToString(dgv.CurrentRow.Cells["ThongSoID"].Value);
+            if (string.IsNullOrWhiteSpace(key) && dgv.Columns.Contains("TenThongSo"))
+                key = Convert.ToString(dgv.CurrentRow.Cells["TenThongSo"].Value);
 
-    if (string.IsNullOrWhiteSpace(key))
-    {
-        MessageBox.Show("Không xác định được khóa của thông số để xóa.");
-        return;
-    }
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                MessageBox.Show("Không xác định được khóa của thông số để xóa.");
+                return;
+            }
 
-    if (MessageBox.Show($"Xóa thông số '{key}' ?", "Xác nhận",
-        MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-        return;
+            if (MessageBox.Show($"Xóa thông số '{key}' ?", "Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
 
-    bool ok = false;
-    try
-    {
-        ok = _bll.DeleteThongSo(key);
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Lỗi xóa: " + ex.Message);
-    }
-    finally
-    {
-        // LUÔN rebind để UI cập nhật ngay, kể cả khi ok=false
-        ForceRebind();
-    }
+            bool ok = false;
+            try
+            {
+                ok = _bll.DeleteThongSo(key);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xóa: " + ex.Message);
+            }
+            finally
+            {
+                // LUÔN rebind để UI cập nhật ngay, kể cả khi ok=false
+                ForceRebind();
+            }
 
-    if (ok)
-        MessageBox.Show("Đã xóa thông số.");
-    else
-        MessageBox.Show("Đã xóa thông số!");
-}
+            if (ok)
+                MessageBox.Show("Đã xóa thông số.");
+            else
+                MessageBox.Show("Đã xóa thông số!");
+        }
 
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
