@@ -62,6 +62,12 @@
     <Compile Include="Common\SmoothFlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GUI_FormPreviewExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_SelectLoaiMauDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUI_FormThongSoTheoLoai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,12 @@
       <DependentUpon>UC_TrangChu.cs</DependentUpon>
     </Compile>
     <Compile Include="UserMenuPopup.cs" />
+    <EmbeddedResource Include="GUI_FormPreviewExport.resx">
+      <DependentUpon>GUI_FormPreviewExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_SelectLoaiMauDialog.resx">
+      <DependentUpon>GUI_SelectLoaiMauDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI_FormThemNguoiDung.resx">
       <DependentUpon>GUI_FormThemNguoiDung.cs</DependentUpon>
     </EmbeddedResource>

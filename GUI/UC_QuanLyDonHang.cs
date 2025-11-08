@@ -603,15 +603,15 @@ namespace GUI
                 StylePillButton(themdonhang);
                 StylePillButton(guna2Button2);
                 StylePillButton(guna2Button3);
-                StylePillButton(guna2Button4); // Xuất kết quả (nếu có)
+                StylePillButton(btnXuatPDF); // Xuất kết quả (nếu có)
+
+                if (btnXuatPDF != null) btnXuatPDF.Click += btnXuatPDF_Click; // PHASE 2 hook
 
                 StylePillCombo(guna2ComboBox1);
                 StylePillCombo(guna2ComboBox2);
                 StylePillCombo(guna2ComboBox3);
 
                 StyleSearchBox(guna2TextBox1, "Tìm kiếm đơn hàng...");
-
-                
             }
             catch { }
         }
@@ -635,8 +635,8 @@ namespace GUI
         private void StylePillCombo(Guna2ComboBox cb)
         {
             if (cb == null) return;
-             cb.BackColor   = Color.Transparent;
-            cb.FillColor   = Color.FromArgb(0, 0, 0, 0);  // trong suốt
+            cb.BackColor   = Color.Transparent;
+            cb.FillColor   = Color.FromArgb(0, 0, 0, 0);
             cb.BorderColor = ClrOutline;
             cb.ForeColor   = ClrText;
             cb.AutoRoundedCorners = true;
@@ -669,15 +669,62 @@ namespace GUI
 
         private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // Designer stub
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
+            // Designer stub
+        }
 
+        private void btnXuatPDF_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(_selectedId))
+            {
+                MessageBox.Show("Vui lòng chọn đơn hàng trước.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            using (var dlg = new GUI_SelectLoaiMauDialog(_selectedId))
+            {
+                if (dlg.ShowDialog(this) != DialogResult.OK) return;
+
+                var bllThongSo = new BLL_ThongSoQuanTrac();
+
+                DataTable dtExport;
+                string tenLoaiHienThi;
+                var list = dlg.SelectedLoaiMauMulti;
+
+                if (list != null && list.Count > 1)
+                {
+                    dtExport = BLL_ExportThongSo.BuildExportThongSoTableMulti(bllThongSo, _selectedId, list);
+                    tenLoaiHienThi = list.Count + " loại mẫu";
+                }
+                else
+                {
+                    var pick = (list != null && list.Count == 1) ? list[0] : (dlg.SelectedLoaiViTriID != null ? (dlg.SelectedLoaiViTriID, dlg.SelectedTenLoai) : default);
+                    dtExport = BLL_ExportThongSo.BuildExportThongSoTable(bllThongSo, _selectedId, pick.Item1);
+                    tenLoaiHienThi = pick.Item2 ?? "";
+                }
+
+                using (var prev = new GUI_FormPreviewExport(_selectedId, tenLoaiHienThi, dtExport))
+                {
+                    prev.OnExport = (table) =>
+                    {
+                        // PDF export stub – Phase 3 sẽ implement thật
+                        return true;
+                    };
+                    prev.ShowDialog(this);
+                }
+            }
         }
 
         // Paint handler stub (Designer is wired to it)
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e) { }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

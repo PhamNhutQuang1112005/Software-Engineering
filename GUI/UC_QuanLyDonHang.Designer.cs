@@ -12,7 +12,7 @@
         private Guna.UI2.WinForms.Guna2Button themdonhang;
         private Guna.UI2.WinForms.Guna2Button guna2Button2; // Xóa
         private Guna.UI2.WinForms.Guna2Button guna2Button3; // Sửa
-        private Guna.UI2.WinForms.Guna2Button guna2Button4; // Xuất kết quả (tùy dùng)
+        private Guna.UI2.WinForms.Guna2Button btnXuatPDF; // Xuất kết quả (tùy dùng)
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1; // Hợp đồng
@@ -38,7 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXuatPDF = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.themdonhang = new Guna.UI2.WinForms.Guna2Button();
@@ -58,7 +58,7 @@
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.label3);
             this.guna2Panel1.Controls.Add(this.label1);
-            this.guna2Panel1.Controls.Add(this.guna2Button4);
+            this.guna2Panel1.Controls.Add(this.btnXuatPDF);
             this.guna2Panel1.Controls.Add(this.guna2Button3);
             this.guna2Panel1.Controls.Add(this.guna2Button2);
             this.guna2Panel1.Controls.Add(this.themdonhang);
@@ -119,20 +119,21 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "Tiến Độ:";
             // 
-            // guna2Button4
+            // btnXuatPDF
             // 
-            this.guna2Button4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button4.BorderColor = System.Drawing.Color.White;
-            this.guna2Button4.BorderRadius = 15;
-            this.guna2Button4.BorderThickness = 2;
-            this.guna2Button4.FillColor = System.Drawing.Color.SeaGreen;
-            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button4.ForeColor = System.Drawing.Color.White;
-            this.guna2Button4.Location = new System.Drawing.Point(477, 33);
-            this.guna2Button4.Name = "guna2Button4";
-            this.guna2Button4.Size = new System.Drawing.Size(188, 40);
-            this.guna2Button4.TabIndex = 3;
-            this.guna2Button4.Text = "Xuất kết quả";
+            this.btnXuatPDF.BackColor = System.Drawing.Color.Transparent;
+            this.btnXuatPDF.BorderColor = System.Drawing.Color.White;
+            this.btnXuatPDF.BorderRadius = 15;
+            this.btnXuatPDF.BorderThickness = 2;
+            this.btnXuatPDF.FillColor = System.Drawing.Color.SeaGreen;
+            this.btnXuatPDF.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatPDF.ForeColor = System.Drawing.Color.White;
+            this.btnXuatPDF.Location = new System.Drawing.Point(477, 33);
+            this.btnXuatPDF.Name = "btnXuatPDF";
+            this.btnXuatPDF.Size = new System.Drawing.Size(188, 40);
+            this.btnXuatPDF.TabIndex = 3;
+            this.btnXuatPDF.Text = "Xuất kết quả";
+            this.btnXuatPDF.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2Button3
             // 

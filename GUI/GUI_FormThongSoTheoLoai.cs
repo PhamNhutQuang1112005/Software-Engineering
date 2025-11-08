@@ -275,6 +275,10 @@ private void StyleGridColumns()
                 }
 
                 var key = _bll.InsertThongSoMoi_ReturnKey_WithLoai(_viTriID, _loaiViTriID, lct, dv, lpt, nd, tp);
+
+                // Phase 1: Đồng bộ thông số (theo LoaiChiTieu) sang các vị trí khác của đơn hàng
+                SyncLoaiChiTieuAcrossOtherPositions(lct, dv, lpt, nd, tp);
+
                 // Rebind NGAY LẬP TỨC sau khi thêm
                 ForceRebind(key);
                 MessageBox.Show("Đã thêm thông số mới.");
@@ -362,7 +366,6 @@ private void StyleGridColumns()
         MessageBox.Show("Đã xóa thông số!");
 }
 
-
         private void dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Optional: popup chi tiết
@@ -402,6 +405,42 @@ private void StyleGridColumns()
         private void cboLoaiChiTieu_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Để trống (Designer có gắn). DonVi sẽ lấy lúc nhấn Thêm để an toàn.
+        }
+
+        // ============== PHASE 1: ĐỒNG BỘ THÔNG SỐ ==============
+        private void SyncLoaiChiTieuAcrossOtherPositions(string loaiChiTieuID, string donViID,
+                                                         string loaiPhanTichID, string nguoiPhuTrachID, string thauPhuID)
+        {
+            try
+            {
+                var dtViTriAll = _bll.GetViTriByDonHang(_donHangID);
+                if (dtViTriAll == null) return;
+
+                foreach (DataRow r in dtViTriAll.Rows)
+                {
+                    string vtId = Convert.ToString(r["ViTriID"]);
+                    if (string.IsNullOrEmpty(vtId) || string.Equals(vtId, _viTriID, StringComparison.OrdinalIgnoreCase))
+                        continue;
+
+                    // Kiểm tra tồn tại LoaiChiTieu ở vị trí khác
+                    var dtThongSo = _bll.GetThongSoByViTriLoai(vtId, _loaiViTriID);
+                    bool exists = false;
+                    if (dtThongSo != null && dtThongSo.Columns.Contains("LoaiChiTieuID"))
+                    {
+                        foreach (DataRow tr in dtThongSo.Rows)
+                        {
+                            if (string.Equals(Convert.ToString(tr["LoaiChiTieuID"]), loaiChiTieuID, StringComparison.OrdinalIgnoreCase))
+                            { exists = true; break; }
+                        }
+                    }
+                    if (exists) continue;
+
+                    // Thêm placeholder
+                    _bll.InsertThongSoMoi_ReturnKey_WithLoai(vtId, _loaiViTriID, loaiChiTieuID, donViID,
+                                                             loaiPhanTichID, nguoiPhuTrachID, thauPhuID);
+                }
+            }
+            catch { /* bỏ qua lỗi đồng bộ để không chặn thao tác thêm */ }
         }
     }
 }
