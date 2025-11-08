@@ -88,9 +88,10 @@ namespace GUI
     if (frm.ShowDialog() == DialogResult.OK)
         HienThiDanhSachNguoiDung();
         }
-
+        //xóa người dùng
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             if (dataGridView1.CurrentRow == null)
     {
         MessageBox.Show("Vui lòng chọn người dùng cần xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -104,8 +105,11 @@ namespace GUI
         BLL_TaiKhoan bll = new BLL_TaiKhoan();
         bll.DeleteNguoiDung(id);
         HienThiDanhSachNguoiDung();
-    }
-        }
+    } }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa người dùng:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } }
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
