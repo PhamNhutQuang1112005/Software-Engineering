@@ -44,8 +44,6 @@ namespace GUI
                 thongsogridview.ReadOnly = true;
                 thongsogridview.AllowUserToAddRows = false;
                 thongsogridview.AllowUserToDeleteRows = false;
-
-                // Đơn giản: cho cột tự giãn đầy để không dư khoảng trắng
                 thongsogridview.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
                 RenameColumn("STT", "STT");
@@ -56,7 +54,6 @@ namespace GUI
                 RenameColumn("ViTri2", "Vị trí 2");
                 RenameColumn("ViTri3", "Vị trí 3");
 
-                // Tinh chỉnh tỷ trọng (FillWeight) để nhìn cân đối (nếu các cột tồn tại)
                 TrySetFill("STT", 40);
                 TrySetFill("ThongSo", 200);
                 TrySetFill("DonVi", 80);
@@ -75,14 +72,21 @@ namespace GUI
                         MessageBox.Show("Chưa cấu hình hàm xuất PDF.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
+                    if (!xuatraPDF.Enabled) return; // guard
+                    xuatraPDF.Enabled = false;
                     try
                     {
-                        bool ok = OnExport(_data);
-                        if (ok) MessageBox.Show("Xuất PDF thành công (stub).", "Thông báo");
+                        var ok = OnExport(_data);
+                        if (ok)
+                            MessageBox.Show("Xuất PDF thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Lỗi xuất: " + ex.Message);
+                    }
+                    finally
+                    {
+                        xuatraPDF.Enabled = true;
                     }
                 };
             }
@@ -105,10 +109,7 @@ namespace GUI
                 thongsogridview.Columns[name].HeaderText = header;
         }
 
-        private void GUI_FormPreviewExport_Load(object sender, EventArgs e)
-        {
-            // Có thể bổ sung format số/thêm tổng ở đây nếu cần.
-        }
+        private void GUI_FormPreviewExport_Load(object sender, EventArgs e) { }
 
         private void InitializeComponent()
         {
@@ -262,3 +263,4 @@ namespace GUI
         }
     }
 }
+        

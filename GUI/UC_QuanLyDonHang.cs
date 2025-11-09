@@ -365,7 +365,7 @@ namespace GUI
             string ghiChu      = Convert.ToString(row.Table.Columns.Contains("GhiChu") ? row["GhiChu"] : "");
 
             const int fixedWidth = 420;
-            const int fixedHeight = 150; // CHIỀU CAO CỐ ĐỊNH CỦA THẺ
+            const int fixedHeight = 160; // CHIỀU CAO CỐ ĐỊNH CỦA THẺ
             var card = new Guna2Panel
             {
                 Width = fixedWidth,
@@ -420,7 +420,7 @@ namespace GUI
             var lblGhiChu    = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);
 
             // Ghi chú: giới hạn ~1 dòng trong chiều cao cố định
-            lblGhiChu.Height = 20;
+            lblGhiChu.Height = 25;
 
             // Thêm theo thứ tự, đảm bảo vừa chiều cao cố định
             card.Controls.Add(lblGhiChu);
@@ -678,16 +678,6 @@ namespace GUI
             txt.Font = new Font("Segoe UI", 9);
         }
 
-        private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Designer stub
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-            // Designer stub
-        }
-
         private void btnXuatPDF_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(_selectedId))
@@ -709,21 +699,37 @@ namespace GUI
                 if (list != null && list.Count > 1)
                 {
                     dtExport = BLL_ExportThongSo.BuildExportThongSoTableMulti(bllThongSo, _selectedId, list);
-                    tenLoaiHienThi = list.Count + " loại mẫu";
+                    tenLoaiHienThi = string.Join(", ", list.Select(x => x.Ten));
                 }
                 else
                 {
                     var pick = (list != null && list.Count == 1) ? list[0] : (dlg.SelectedLoaiViTriID != null ? (dlg.SelectedLoaiViTriID, dlg.SelectedTenLoai) : default);
                     dtExport = BLL_ExportThongSo.BuildExportThongSoTable(bllThongSo, _selectedId, pick.Item1);
-                    tenLoaiHienThi = pick.Item2 ?? "";
+                    tenLoaiHienThi = pick.Item2 ?? string.Empty;
                 }
 
                 using (var prev = new GUI_FormPreviewExport(_selectedId, tenLoaiHienThi, dtExport))
                 {
                     prev.OnExport = (table) =>
                     {
-                        // PDF export stub – Phase 3 sẽ implement thật
-                        return true;
+                        string tenLoaiFull = (list != null && list.Count > 0)
+                            ? string.Join("; ", list.Select(x => x.Ten))
+                            : tenLoaiHienThi;
+
+                        using (var sfd = new SaveFileDialog
+                        {
+                            Title = "Lưu file PDF",
+                            Filter = "PDF Files (*.pdf)|*.pdf",
+                            FileName = $"KetQuaPhanTich_{_selectedId}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf",
+                            OverwritePrompt = true
+                        })
+                        {
+                            if (sfd.ShowDialog(this) != DialogResult.OK) return false;
+                            bool ok = BLL_PDFExporter.ExportKetQuaPhanTich(_selectedId, tenLoaiFull, table, sfd.FileName);
+                            if (ok)
+                                MessageBox.Show("Xuất PDF thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            return ok;
+                        }
                     };
                     prev.ShowDialog(this);
                 }
@@ -776,5 +782,8 @@ namespace GUI
                 MessageBox.Show("❌ Lỗi: " + ex.Message);
             }
         }
+
+        private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e) { /* designer stub */ }
+        private void label3_Click(object sender, EventArgs e) { /* designer stub */ }
     }
 }

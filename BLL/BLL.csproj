@@ -46,11 +46,14 @@
     <Compile Include="BLL_HopDong.cs" />
     <Compile Include="BLL_KhachHang.cs" />
     <Compile Include="BLL_KyHanHopDong.cs" />
+    <Compile Include="BLL_PDFExporter.cs" />
     <Compile Include="BLL_PhongBan.cs" />
     <Compile Include="BLL_SendEmail.cs" />
     <Compile Include="BLL_TaiKhoan.cs" />
+    <Compile Include="BLL_TapKetQua.cs" />
     <Compile Include="BLL_ThongSoQuanTrac.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Font\TimesFontResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +65,11 @@
       <Project>{15247f56-7567-4b4d-bbf7-b07048c739a6}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="PDFsharp-MigraDoc">
+      <Version>6.2.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
