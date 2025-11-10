@@ -1,14 +1,15 @@
-﻿using BLL;
-using Guna.UI2.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using BLL;
+using Guna.UI2.WinForms;
 namespace GUI
 {
-    
+
     public partial class GUI_main : Form
     {
         // ============== Biến lớp ==============
@@ -68,6 +69,31 @@ namespace GUI
             TenDangNhap = id ?? string.Empty;
 
         }
+        private string fileNgayGui = Path.Combine(Application.StartupPath, "ngay_gui_gan_nhat.txt");
+
+        // Đọc ngày gửi gần nhất
+        private DateTime? DocNgayGuiGanNhat()
+        {
+            try
+            {
+                if (!File.Exists(fileNgayGui)) return null;
+                var text = File.ReadAllText(fileNgayGui).Trim();
+                if (DateTime.TryParse(text, out DateTime date))
+                    return date.Date;
+            }
+            catch { }
+            return null;
+        }
+
+        // Ghi ngày gửi gần nhất
+        private void LuuNgayGuiGanNhat(DateTime date)
+        {
+            try
+            {
+                File.WriteAllText(fileNgayGui, date.ToString("yyyy-MM-dd"));
+            }
+            catch { }
+        }
         // Chống nhấp nháy cho toàn form
         protected override CreateParams CreateParams
         {
@@ -89,6 +115,41 @@ namespace GUI
             if (ucTrangChu == null) ucTrangChu = new UC_TrangChu();
             ShowControl(ucTrangChu);
             popupUser();
+            UC_PopupThongBao ucThongBao = new UC_PopupThongBao(); // gọi UC Thông Báo (dù chưa hiển thị)
+
+            // Biến lưu ngày đã gửi
+
+
+            // Hàm gọi tự động gửi mail qua UC_PopupThongBao
+            void GuiMailTuDong()
+            {
+                try
+                {
+                    ucThongBao.RefreshDataFromDb();
+                    var ngayGuiGanNhat = DocNgayGuiGanNhat();
+                    // Gọi hàm gửi mail của UC (đã viết sẵn)
+                    if (ngayGuiGanNhat != DateTime.Today)
+                    {
+                        ucThongBao.KiemTraVaGuiMailTuDong();
+                        LuuNgayGuiGanNhat(DateTime.Today);
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("❌ Lỗi khi gửi mail tự động: " + ex.Message);
+                }
+            }
+
+            // 🕒 Gọi ngay khi mở form
+            GuiMailTuDong();
+
+            // 🕒 Lên lịch tự động mỗi 24 giờ (1 ngày)
+            var timerGuiMail = new System.Windows.Forms.Timer();
+            timerGuiMail.Interval = 24 * 60 * 60 * 1000; // 1 ngày
+            timerGuiMail.Tick += (s, a) => GuiMailTuDong();
+            timerGuiMail.Start();
 
         }
 
@@ -416,14 +477,14 @@ namespace GUI
         private void btnQuanLyUsers_Click(object sender, EventArgs e)
         {
             if (ucQuanLyUsers != null)
-    {
-        ucQuanLyUsers.Dispose();
-        ucQuanLyUsers = null;
-    }
+            {
+                ucQuanLyUsers.Dispose();
+                ucQuanLyUsers = null;
+            }
 
-    ucQuanLyUsers = new UC_QuanLyUserS();    // tạo mới -> tự load lại data trong Load
-    ShowControl(ucQuanLyUsers);
-    SetActiveSidebarButton(sender as Guna2Button);
+            ucQuanLyUsers = new UC_QuanLyUserS();    // tạo mới -> tự load lại data trong Load
+            ShowControl(ucQuanLyUsers);
+            SetActiveSidebarButton(sender as Guna2Button);
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)

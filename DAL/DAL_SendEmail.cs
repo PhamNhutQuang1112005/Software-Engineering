@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -75,5 +77,19 @@ namespace DAL
                 return false;
             }
         }
+        public static DataTable LayEmailTruongPhongKinhDoanh()
+        {
+            using (var conn = DBConnection.GetConnection())
+            using (var cmd = new SqlCommand("sp_LayEmailTruongPhongKinhDoanh", conn))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
     }
 }

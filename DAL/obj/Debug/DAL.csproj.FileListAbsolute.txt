@@ -31,3 +31,6 @@ C:\CNPM2\Software-Engineering\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\bin\Debug\DTO.dll
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\bin\Debug\DTO.pdb
 C:\Users\Tai Khoan Admin\Documents\CNPM2025\Software-Engineering\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\CNPM\Software-Engineering\DAL\bin\Debug\DTO.dll
+C:\CNPM\Software-Engineering\DAL\bin\Debug\DTO.pdb
+C:\CNPM\Software-Engineering\DAL\obj\Debug\DAL.csproj.Up2Date

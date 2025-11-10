@@ -4,8 +4,8 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using Guna.UI2.WinForms;
 using BLL;
+using Guna.UI2.WinForms;
 
 namespace GUI
 {
@@ -13,6 +13,8 @@ namespace GUI
     {
         private List<DonHang> donHangSapHetHan;
         private List<DonHang> donHangQuaHan;
+        private DateTime? ngayGuiGanNhat = null;
+
 
         // Theo dõi tab hiện tại để áp bộ lọc đúng nguồn
         private enum TabMode { SapHetHan, QuaHan }
@@ -32,7 +34,11 @@ namespace GUI
         {
             RefreshDataFromDb();
             btnSapHetHan.PerformClick(); // mặc định tab đầu tiên
+                                         // Khởi tạo timer gửi mail tự động mỗi 24h
+
+
         }
+
 
         private void btnSapHetHan_Click(object sender, EventArgs e)
         {
@@ -55,7 +61,7 @@ namespace GUI
         }
 
         // Nạp dữ liệu từ BLL và lọc theo Ngày dự kiến trả kết quả + Trạng thái
-        private void RefreshDataFromDb()
+        public void RefreshDataFromDb()
         {
             try
             {
@@ -140,6 +146,7 @@ namespace GUI
 
                 donHangSapHetHan = sapHet;
                 donHangQuaHan = quaHan;
+
             }
             catch
             {
@@ -147,6 +154,45 @@ namespace GUI
                 donHangQuaHan = new List<DonHang>();
             }
         }
+        public void KiemTraVaGuiMailTuDong()
+        {
+            try
+            {
+                if (donHangSapHetHan == null || donHangSapHetHan.Count == 0)
+                {
+                    Console.WriteLine("Không có đơn hàng sắp hết hạn hôm nay.");
+                    return;
+                }
+
+                // Chỉ gửi nếu chưa gửi trong ngày
+                if (ngayGuiGanNhat == DateTime.Today)
+                {
+                    Console.WriteLine("📭 Hôm nay đã gửi rồi — không gửi lại.");
+                    return;
+                }
+
+                // Chuyển sang DTO của BLL_SendEmail
+                var listEmail = donHangSapHetHan.Select(d => new BLL.BLL_SendEmail.DonHang
+                {
+                    MaDon = d.MaDon,
+                    KhachHang = d.KhachHang,
+                    NgayHetHan = d.NgayHetHan,
+                    HopDongID = d.HopDongID,
+                    GhiChu = d.GhiChu
+                }).ToList();
+
+                var bllEmail = new BLL_SendEmail();
+                bllEmail.GuiMailDonHangSapHetHan(listEmail);
+
+                ngayGuiGanNhat = DateTime.Today;
+                Console.WriteLine($"✅ Đã gửi mail thông báo {listEmail.Count} đơn hàng sắp hết hạn.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("❌ Lỗi khi gửi mail tự động: " + ex.Message);
+            }
+        }
+
 
         private static string ToStr(DataRow r, string col)
         {
