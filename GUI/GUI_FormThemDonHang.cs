@@ -13,7 +13,8 @@ namespace GUI
         private string _donHangID;
         private DataTable dtKhachHangGoc;
         public string SavedDonHangID { get; private set; }
-        
+        private DataTable dtHopDong;   // nguồn hợp đồng (có HopDongID, MaHopDong, KhachHangID)
+private bool _isSyncingKH = false;
 
 
         public GUI_FormThemDonHang()
@@ -39,9 +40,36 @@ namespace GUI
             guna2ComboBox1.ValueMember = "KhachHangID";
             
 
-            guna2ComboBox4.DataSource    = BLL_DonHang.GetAllHopDong();
-            guna2ComboBox4.DisplayMember = "MaHopDong";
-            guna2ComboBox4.ValueMember   = "HopDongID";
+            // Lấy Hợp đồng (PHẢI có cột KhachHangID trong DataTable)
+var dtHopDong = BLL_HopDong.GetAllHopDong();
+guna2ComboBox4.DataSource    = dtHopDong;
+guna2ComboBox4.DisplayMember = "MaHopDong";
+guna2ComboBox4.ValueMember   = "HopDongID";
+
+// Khi chọn Hợp đồng → tự sync Khách hàng (inline, không tạo hàm mới)
+guna2ComboBox4.SelectedIndexChanged += (s, ev) =>
+{
+    var drv = guna2ComboBox4.SelectedItem as DataRowView;
+    string khIdFromHd = (drv != null && drv.Row.Table.Columns.Contains("KhachHangID"))
+                        ? Convert.ToString(drv["KhachHangID"])
+                        : null;
+
+    if (!string.IsNullOrEmpty(khIdFromHd) &&
+        dtKhachHangGoc != null &&
+        dtKhachHangGoc.AsEnumerable().Any(r =>
+            string.Equals(Convert.ToString(r["KhachHangID"]), khIdFromHd, StringComparison.OrdinalIgnoreCase)))
+    {
+        // Khóa combobox KH để không chọn lệch với Hợp đồng
+        guna2ComboBox1.SelectedValue = khIdFromHd;
+        guna2ComboBox1.Enabled = false;
+    }
+    else
+    {
+        // Không xác định được thì mở khóa cho phép chọn tay (trường hợp ngoại lệ)
+        guna2ComboBox1.Enabled = true;
+    }
+};
+
 
             // Trạng thái: loại bỏ 'Hủy'
             var tt = BLL_DonHang.GetAllTrangThaiDonHang();
@@ -85,6 +113,28 @@ namespace GUI
                 Dia_Chi_text.Text = string.Empty;
                 
                 Ngay_Thuc_te.Visible=false;
+                // Trigger đồng bộ KH theo HĐ một lần
+if (guna2ComboBox4.SelectedIndex >= 0)
+{
+    var drv0 = guna2ComboBox4.SelectedItem as DataRowView;
+    string khId0 = (drv0 != null && drv0.Row.Table.Columns.Contains("KhachHangID"))
+                   ? Convert.ToString(drv0["KhachHangID"])
+                   : null;
+
+    if (!string.IsNullOrEmpty(khId0) &&
+        dtKhachHangGoc != null &&
+        dtKhachHangGoc.AsEnumerable().Any(r =>
+            string.Equals(Convert.ToString(r["KhachHangID"]), khId0, StringComparison.OrdinalIgnoreCase)))
+    {
+        guna2ComboBox1.SelectedValue = khId0;
+        guna2ComboBox1.Enabled = false;
+    }
+    else
+    {
+        guna2ComboBox1.Enabled = true;
+    }
+}
+
             }
             else
             {
@@ -98,6 +148,30 @@ namespace GUI
                     guna2TextBox2.Text          = Convert.ToString(row["DonHangID"]);
                     guna2TextBox1.Text          = Convert.ToString(row["MaDonHang"]);
                     guna2ComboBox4.SelectedValue = Convert.ToString(row["HopDongID"]);
+                    // Đồng bộ KH theo HĐ (inline)
+{
+    var drv1 = guna2ComboBox4.SelectedItem as DataRowView;
+    string khId1 = (drv1 != null && drv1.Row.Table.Columns.Contains("KhachHangID"))
+                   ? Convert.ToString(drv1["KhachHangID"])
+                   : null;
+
+    if (!string.IsNullOrEmpty(khId1) &&
+        dtKhachHangGoc != null &&
+        dtKhachHangGoc.AsEnumerable().Any(r =>
+            string.Equals(Convert.ToString(r["KhachHangID"]), khId1, StringComparison.OrdinalIgnoreCase)))
+    {
+        guna2ComboBox1.SelectedValue = khId1;
+        guna2ComboBox1.Enabled = false;
+    }
+    else
+    {
+        // fallback: nếu HD không có KH thì vẫn cho sửa tay
+        guna2ComboBox1.Enabled = true;
+        if (row.Table.Columns.Contains("IDKhachHang"))
+            guna2ComboBox1.SelectedValue = Convert.ToString(row["IDKhachHang"]);
+    }
+}
+
                     guna2ComboBox5.SelectedValue = Convert.ToString(row["TrangThaiID"]);
                     guna2TextBox4.Text          = Convert.ToString(row["GhiChu"]);
                     if (row.Table.Columns.Contains("IDKhachHang"))
@@ -117,6 +191,7 @@ namespace GUI
                     {
                         Ngay_LayMau.Checked = true;
                         Ngay_LayMau.Value   = DateTime.Today;
+
                     }
                     Ngay_Thuc_te.MinDate = Ngay_LayMau.Value.AddDays(1);
                     // Tính dự kiến trước
@@ -168,7 +243,25 @@ namespace GUI
                 string hopDongID   = guna2ComboBox4.SelectedValue?.ToString();
                 string trangThaiID = guna2ComboBox5.SelectedValue?.ToString();
                 string ghiChu      = (guna2TextBox4.Text ?? "").Trim();
-                string khachhang   = guna2ComboBox1.SelectedValue?.ToString();
+                string khachhang = null;
+
+// Ưu tiên lấy từ Hợp đồng
+var drvHd = guna2ComboBox4.SelectedItem as DataRowView;
+if (drvHd != null && drvHd.Row.Table.Columns.Contains("KhachHangID"))
+{
+    khachhang = Convert.ToString(drvHd["KhachHangID"]);
+}
+
+// Dự phòng: nếu HD không có KH thì dùng combobox KH (khi bạn mở khóa cho phép chọn tay)
+if (string.IsNullOrEmpty(khachhang))
+    khachhang = guna2ComboBox1.SelectedValue?.ToString();
+
+if (string.IsNullOrEmpty(khachhang))
+{
+    MessageBox.Show("Không xác định được Khách hàng từ Hợp đồng. Vui lòng kiểm tra dữ liệu Hợp đồng/Khách hàng.");
+    return;
+}
+
                 string diaChi      = (Dia_Chi_text.Text ?? "").Trim();
 
                 // Auto-gen mã nếu bỏ trống (giữ thói quen cũ)
