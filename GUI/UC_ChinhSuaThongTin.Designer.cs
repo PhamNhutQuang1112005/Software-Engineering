@@ -49,7 +49,7 @@ namespace GUI
             this.guna2TextBox1.DefaultText = "";
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
-            this.guna2TextBox1.Location = new System.Drawing.Point(157, 370);
+            this.guna2TextBox1.Location = new System.Drawing.Point(161, 317);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -63,9 +63,9 @@ namespace GUI
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(76, 378);
+            this.label6.Location = new System.Drawing.Point(80, 325);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(64, 22);
+            this.label6.Size = new System.Drawing.Size(50, 19);
             this.label6.TabIndex = 22;
             this.label6.Text = "Phòng:";
             // 
@@ -73,9 +73,9 @@ namespace GUI
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(539, 378);
+            this.label4.Location = new System.Drawing.Point(543, 325);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 22);
+            this.label4.Size = new System.Drawing.Size(96, 19);
             this.label4.TabIndex = 21;
             this.label4.Text = "Mật khẩu mới:";
             // 
@@ -83,9 +83,9 @@ namespace GUI
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(539, 328);
+            this.label5.Location = new System.Drawing.Point(543, 275);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(111, 22);
+            this.label5.Size = new System.Drawing.Size(88, 19);
             this.label5.TabIndex = 20;
             this.label5.Text = "Mật khẩu cũ:";
             // 
@@ -96,7 +96,7 @@ namespace GUI
             this.txtMatKhauMoi.DefaultText = "";
             this.txtMatKhauMoi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatKhauMoi.ForeColor = System.Drawing.Color.Black;
-            this.txtMatKhauMoi.Location = new System.Drawing.Point(677, 370);
+            this.txtMatKhauMoi.Location = new System.Drawing.Point(681, 317);
             this.txtMatKhauMoi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMatKhauMoi.Name = "txtMatKhauMoi";
             this.txtMatKhauMoi.PasswordChar = '*';
@@ -110,9 +110,9 @@ namespace GUI
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(539, 278);
+            this.label3.Location = new System.Drawing.Point(543, 225);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 22);
+            this.label3.Size = new System.Drawing.Size(45, 19);
             this.label3.TabIndex = 19;
             this.label3.Text = "Email:";
             // 
@@ -120,9 +120,9 @@ namespace GUI
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(76, 328);
+            this.label2.Location = new System.Drawing.Point(80, 275);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 22);
+            this.label2.Size = new System.Drawing.Size(40, 19);
             this.label2.TabIndex = 18;
             this.label2.Text = "SĐT:";
             // 
@@ -130,9 +130,9 @@ namespace GUI
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(76, 278);
+            this.label1.Location = new System.Drawing.Point(80, 225);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 22);
+            this.label1.Size = new System.Drawing.Size(58, 19);
             this.label1.TabIndex = 12;
             this.label1.Text = "Họ Tên:";
             // 
@@ -142,7 +142,7 @@ namespace GUI
             this.display_name.BackColor = System.Drawing.Color.Transparent;
             this.display_name.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.display_name.ForeColor = System.Drawing.Color.White;
-            this.display_name.Location = new System.Drawing.Point(151, 218);
+            this.display_name.Location = new System.Drawing.Point(155, 165);
             this.display_name.Name = "display_name";
             this.display_name.Size = new System.Drawing.Size(242, 25);
             this.display_name.TabIndex = 8;
@@ -157,7 +157,7 @@ namespace GUI
             this.decline_change.FillColor = System.Drawing.Color.Transparent;
             this.decline_change.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.decline_change.ForeColor = System.Drawing.Color.White;
-            this.decline_change.Location = new System.Drawing.Point(530, 473);
+            this.decline_change.Location = new System.Drawing.Point(534, 420);
             this.decline_change.Name = "decline_change";
             this.decline_change.Size = new System.Drawing.Size(120, 40);
             this.decline_change.TabIndex = 7;
@@ -172,7 +172,7 @@ namespace GUI
             this.comfirm_change.FillColor = System.Drawing.Color.Transparent;
             this.comfirm_change.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.comfirm_change.ForeColor = System.Drawing.Color.White;
-            this.comfirm_change.Location = new System.Drawing.Point(329, 473);
+            this.comfirm_change.Location = new System.Drawing.Point(333, 420);
             this.comfirm_change.Name = "comfirm_change";
             this.comfirm_change.Size = new System.Drawing.Size(120, 40);
             this.comfirm_change.TabIndex = 6;
@@ -186,7 +186,7 @@ namespace GUI
             this.txtMatKhauCu.DefaultText = "";
             this.txtMatKhauCu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMatKhauCu.ForeColor = System.Drawing.Color.Black;
-            this.txtMatKhauCu.Location = new System.Drawing.Point(677, 320);
+            this.txtMatKhauCu.Location = new System.Drawing.Point(681, 267);
             this.txtMatKhauCu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtMatKhauCu.Name = "txtMatKhauCu";
             this.txtMatKhauCu.PasswordChar = '*';
@@ -204,7 +204,7 @@ namespace GUI
             this.txtEmail.DefaultText = "";
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmail.ForeColor = System.Drawing.Color.Black;
-            this.txtEmail.Location = new System.Drawing.Point(677, 270);
+            this.txtEmail.Location = new System.Drawing.Point(681, 217);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -220,7 +220,7 @@ namespace GUI
             this.txtSDT.DefaultText = "";
             this.txtSDT.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSDT.ForeColor = System.Drawing.Color.Black;
-            this.txtSDT.Location = new System.Drawing.Point(157, 320);
+            this.txtSDT.Location = new System.Drawing.Point(161, 267);
             this.txtSDT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtSDT.Name = "txtSDT";
             this.txtSDT.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -236,7 +236,7 @@ namespace GUI
             this.txtHoTen.DefaultText = "";
             this.txtHoTen.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtHoTen.ForeColor = System.Drawing.Color.Black;
-            this.txtHoTen.Location = new System.Drawing.Point(157, 270);
+            this.txtHoTen.Location = new System.Drawing.Point(161, 217);
             this.txtHoTen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -257,7 +257,7 @@ namespace GUI
             this.btnChonAnh.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnChonAnh.ForeColor = System.Drawing.Color.White;
             this.btnChonAnh.Image = ((System.Drawing.Image)(resources.GetObject("btnChonAnh.Image")));
-            this.btnChonAnh.Location = new System.Drawing.Point(293, 151);
+            this.btnChonAnh.Location = new System.Drawing.Point(297, 98);
             this.btnChonAnh.Name = "btnChonAnh";
             this.btnChonAnh.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnChonAnh.Size = new System.Drawing.Size(40, 40);
@@ -268,7 +268,7 @@ namespace GUI
             // avatarUser
             // 
             this.avatarUser.ImageRotate = 0F;
-            this.avatarUser.Location = new System.Drawing.Point(214, 65);
+            this.avatarUser.Location = new System.Drawing.Point(218, 3);
             this.avatarUser.Name = "avatarUser";
             this.avatarUser.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.avatarUser.Size = new System.Drawing.Size(119, 116);
@@ -280,9 +280,9 @@ namespace GUI
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(76, 430);
+            this.label7.Location = new System.Drawing.Point(80, 377);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 28);
+            this.label7.Size = new System.Drawing.Size(58, 19);
             this.label7.TabIndex = 26;
             this.label7.Text = "Địa Chỉ:";
             // 
@@ -293,7 +293,7 @@ namespace GUI
             this.txtDiaChi.DefaultText = "";
             this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDiaChi.ForeColor = System.Drawing.Color.Black;
-            this.txtDiaChi.Location = new System.Drawing.Point(157, 428);
+            this.txtDiaChi.Location = new System.Drawing.Point(161, 375);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.PlaceholderForeColor = System.Drawing.Color.Black;
@@ -327,7 +327,7 @@ namespace GUI
             this.Controls.Add(this.display_name);
             this.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.Name = "UC_ChinhSuaThongTin";
-            this.Size = new System.Drawing.Size(983, 571);
+            this.Size = new System.Drawing.Size(983, 491);
             this.Load += new System.EventHandler(this.UC_ChinhSuaThongTin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.avatarUser)).EndInit();
             this.ResumeLayout(false);

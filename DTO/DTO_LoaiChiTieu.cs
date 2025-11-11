@@ -11,5 +11,7 @@ namespace DTO
     public string LoaiChiTieuID { get; set; }
     public string TenChiTieu    { get; set; }
     public string  DonViID      { get; set; }
+    public string PhongBan     { get; set; }
+    public string GiaTriChuan { get; set; }
     }
 }

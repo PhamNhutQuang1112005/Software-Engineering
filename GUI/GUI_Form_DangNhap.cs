@@ -239,9 +239,7 @@ namespace GUI
                     this.Hide();
 
                     var main = new GUI_main(username);
-
-                    // Khi form chính đóng → thoát hẳn ứng dụng
-                    main.FormClosed += (s, args) => Application.Exit();
+                       
 
                     main.Show();
                 }

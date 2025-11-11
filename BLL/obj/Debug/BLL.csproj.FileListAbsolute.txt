@@ -120,3 +120,42 @@ C:\CNPM\Software-Engineering\BLL\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\CNPM\Software-Engineering\BLL\bin\Debug\System.ValueTuple.dll
 C:\CNPM\Software-Engineering\BLL\bin\Debug\DTO.dll
 C:\CNPM\Software-Engineering\BLL\bin\Debug\DTO.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Microsoft.Extensions.Logging.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Microsoft.Extensions.Options.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Microsoft.Extensions.Primitives.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.BarCodes.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.BarCodes.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Charting.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Charting.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Cryptography.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Cryptography.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Quality.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Quality.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Shared.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Shared.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Snippets.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.Snippets.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.System.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.System.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.WPFonts.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.WPFonts.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\PdfSharp.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\MigraDoc.DocumentObjectModel.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\MigraDoc.DocumentObjectModel.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\MigraDoc.Rendering.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\MigraDoc.Rendering.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\MigraDoc.RtfRendering.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\MigraDoc.RtfRendering.pdb
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.Buffers.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.Memory.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.Numerics.Vectors.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.Security.Cryptography.Pkcs.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.ValueTuple.dll

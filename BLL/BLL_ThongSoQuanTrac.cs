@@ -43,19 +43,17 @@ namespace BLL
         public DataTable GetThongSoByViTri(string viTriID)                          { return _dal.GetThongSoByViTri(viTriID); }
         public DataTable GetThongSoByViTriLoai(string viTriID, string loaiViTriID)  { return _dal.GetThongSoByViTriLoai(viTriID, loaiViTriID); }
 
-        public string InsertThongSoMoi_ReturnKey(
-            string viTriID, string loaiChiTieuID, string donViID,
-            string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID)
-        {
-            return _dal.InsertThongSoMoi_ReturnKey(viTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID);
-        }
+        
 
-        public string InsertThongSoMoi_ReturnKey_WithLoai(
-            string viTriID, string loaiViTriID, string loaiChiTieuID, string donViID,
-            string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID)
-        {
-            return _dal.InsertThongSoMoi_ReturnKey_WithLoai(viTriID, loaiViTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID);
-        }
+        // BLL_ThongSoQuanTrac.cs
+public string InsertThongSoMoi_ReturnKey_WithLoai(
+    string viTriID, string loaiViTriID, string loaiChiTieuID, string donViID,
+    string loaiPhanTichID, string nguoiPhanTichID, string thauPhuID, float? giaTriQuyChuan)
+{
+    return _dal.InsertThongSoMoi_ReturnKey_WithLoai(
+        viTriID, loaiViTriID, loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID, giaTriQuyChuan);
+}
+
 
         public bool  DeleteThongSo(string tenThongSo) { return _dal.DeleteThongSo(tenThongSo); }
         public void  UpdateThongSo(DataTable dtChanges) { _dal.UpdateThongSo_Batch(dtChanges); }

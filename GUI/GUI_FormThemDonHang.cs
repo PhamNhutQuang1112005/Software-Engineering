@@ -13,8 +13,7 @@ namespace GUI
         private string _donHangID;
         private DataTable dtKhachHangGoc;
         public string SavedDonHangID { get; private set; }
-        private DataTable dtHopDong;   // nguồn hợp đồng (có HopDongID, MaHopDong, KhachHangID)
-private bool _isSyncingKH = false;
+
 
 
         public GUI_FormThemDonHang()
