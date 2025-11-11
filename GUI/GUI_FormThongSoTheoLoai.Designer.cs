@@ -132,14 +132,14 @@ namespace GUI
             this.cboLoaiChiTieu.ItemHeight = 28;
             this.cboLoaiChiTieu.Location = new System.Drawing.Point(12, 36);
             this.cboLoaiChiTieu.Name = "cboLoaiChiTieu";
-            this.cboLoaiChiTieu.Size = new System.Drawing.Size(230, 34);
+            this.cboLoaiChiTieu.Size = new System.Drawing.Size(218, 34);
             this.cboLoaiChiTieu.TabIndex = 9;
             // 
             // lblChiTieu
             // 
             this.lblChiTieu.AutoSize = true;
             this.lblChiTieu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblChiTieu.Location = new System.Drawing.Point(24, 16);
+            this.lblChiTieu.Location = new System.Drawing.Point(84, 16);
             this.lblChiTieu.Name = "lblChiTieu";
             this.lblChiTieu.Size = new System.Drawing.Size(48, 15);
             this.lblChiTieu.TabIndex = 0;
@@ -149,11 +149,12 @@ namespace GUI
             // 
             this.lblNguoi.AutoSize = true;
             this.lblNguoi.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblNguoi.Location = new System.Drawing.Point(404, 16);
+            this.lblNguoi.Location = new System.Drawing.Point(379, 16);
             this.lblNguoi.Name = "lblNguoi";
             this.lblNguoi.Size = new System.Drawing.Size(94, 15);
             this.lblNguoi.TabIndex = 4;
             this.lblNguoi.Text = "Người phụ trách";
+            this.lblNguoi.Click += new System.EventHandler(this.lblNguoi_Click);
             // 
             // cboNguoiPhuTrach
             // 
@@ -167,16 +168,16 @@ namespace GUI
             this.cboNguoiPhuTrach.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboNguoiPhuTrach.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cboNguoiPhuTrach.ItemHeight = 28;
-            this.cboNguoiPhuTrach.Location = new System.Drawing.Point(339, 36);
+            this.cboNguoiPhuTrach.Location = new System.Drawing.Point(314, 36);
             this.cboNguoiPhuTrach.Name = "cboNguoiPhuTrach";
-            this.cboNguoiPhuTrach.Size = new System.Drawing.Size(200, 34);
+            this.cboNguoiPhuTrach.Size = new System.Drawing.Size(218, 34);
             this.cboNguoiPhuTrach.TabIndex = 5;
             // 
             // lblThauPhu
             // 
             this.lblThauPhu.AutoSize = true;
             this.lblThauPhu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblThauPhu.Location = new System.Drawing.Point(672, 16);
+            this.lblThauPhu.Location = new System.Drawing.Point(702, 16);
             this.lblThauPhu.Name = "lblThauPhu";
             this.lblThauPhu.Size = new System.Drawing.Size(58, 15);
             this.lblThauPhu.TabIndex = 6;
@@ -194,9 +195,9 @@ namespace GUI
             this.cboThauPhu.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboThauPhu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cboThauPhu.ItemHeight = 28;
-            this.cboThauPhu.Location = new System.Drawing.Point(672, 36);
+            this.cboThauPhu.Location = new System.Drawing.Point(616, 36);
             this.cboThauPhu.Name = "cboThauPhu";
-            this.cboThauPhu.Size = new System.Drawing.Size(160, 34);
+            this.cboThauPhu.Size = new System.Drawing.Size(218, 34);
             this.cboThauPhu.TabIndex = 7;
             // 
             // btnThem

@@ -57,10 +57,12 @@ namespace GUI
 
         private void GUI_FormThongSoTheoLoai_Load(object sender, EventArgs e)
         {
+            
+            String a= _bll.GetViTriByDonHang(_donHangID).Rows[0]["DiaChi"].ToString();
             lblDonHang.Text = string.IsNullOrWhiteSpace(_tenDonHang)
                 ? "Đơn hàng"
                 : $"{_tenDonHang} – {_tenLoaiViTri}";
-            lblDiaChi.Text = "Địa chỉ: " + (_diaChi ?? "…");
+            lblDiaChi.Text = "Địa chỉ: " + (a ?? "…");
 
             dgv.DataSource = _bs;
 
@@ -219,7 +221,8 @@ namespace GUI
             Hide("LoaiChiTieuID"); Hide("DonViID");
             Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID");
             Hide("TenThongSo");
-            Hide("LoaiChiTieu");
+           Hide("GiaTriSo");
+            Hide("TenLoaiPhanTich");
             SetHeader("TenLoaiChiTieu", "Chỉ tiêu");
             SetHeader("TenDonVi", "Đơn vị");
             SetHeader("TenNguoiPhanTich", "Người phụ trách");
@@ -313,7 +316,7 @@ namespace GUI
             MessageBox.Show("Không xác định được Đơn vị từ Chỉ tiêu.");
             return;
         }
-
+        const int PRECISION = 3; // đổi tuỳ bạn
         // Lấy Giá trị chuẩn từ DTO LCT đang chọn (FLOAT)
         float? giaTriChuan = null;
         if (cboLoaiChiTieu.SelectedItem is DTO_LoaiChiTieu sel &&
@@ -321,10 +324,10 @@ namespace GUI
         {
             var s = sel.GiaTriChuan.Replace(',', '.'); // chuẩn hoá dấu thập phân
             if (float.TryParse(s, NumberStyles.Float | NumberStyles.AllowThousands,
-                               CultureInfo.InvariantCulture, out var fv))
-            {
-                giaTriChuan = fv;
-            }
+                   CultureInfo.InvariantCulture, out var fv))
+{
+    giaTriChuan = (float)Math.Round(fv, PRECISION, MidpointRounding.AwayFromZero);
+}
         }
 
         // Insert (lưu ý bạn đang cố định LoaiPhanTichID = "LPA002")
@@ -464,6 +467,9 @@ namespace GUI
             finally { _suspend = false; }
         }
 
+        private void lblNguoi_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
