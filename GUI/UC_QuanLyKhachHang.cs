@@ -141,7 +141,7 @@ namespace GUI
         private Guna2Panel TaoCardKhachHang(DataRow row)
         {
             string id = Convert.ToString(row["KhachHangID"] ?? "");
-            string maKH = Convert.ToString(row.Table.Columns.Contains("MaKhachHang") ? row["MaKhachHang"] : "");
+           
             string ten = Convert.ToString(row.Table.Columns.Contains("TenCongTy") ? row["TenCongTy"] : "");
             string dd = Convert.ToString(row.Table.Columns.Contains("NguoiDaiDien") ? row["NguoiDaiDien"] : "");
             string email = Convert.ToString(row.Table.Columns.Contains("Email") ? row["Email"] : "");
@@ -185,7 +185,7 @@ namespace GUI
             };
 
             // Header: KhachHangID | MaKhachHang
-            var lblHeader = L(string.Format("{0}{1}{2}", id, string.IsNullOrEmpty(maKH) ? "" : " | ", maKH), new Font("Segoe UI", 11, FontStyle.Bold));
+        
             var lblTen = L("🏢 " + (string.IsNullOrWhiteSpace(ten) ? "(Chưa có tên công ty)" : ten), null);
             var lblDD = L("👤 Người đại diện: " + (string.IsNullOrWhiteSpace(dd) ? "(Chưa có)" : dd), null);
             var lblEmail = L(string.IsNullOrWhiteSpace(email) ? "" : ("✉️ " + email), null);
@@ -207,7 +207,7 @@ namespace GUI
             if (!string.IsNullOrWhiteSpace(email)) card.Controls.Add(lblEmail);
             card.Controls.Add(lblDD);
             card.Controls.Add(lblTen);
-            card.Controls.Add(lblHeader);
+            
 
             AttachClickRecursive(card, () => SelectCard(card));
             card.DoubleClick += (s, e) => MoFormSua(id);

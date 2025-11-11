@@ -46,7 +46,6 @@ namespace GUI
             btnQuanLyUsers.Enabled = false;
             TenDangNhap = string.Empty;
 
-
             // Double buffering toàn form + panel chính
             this.DoubleBuffered = true;
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
