@@ -6,7 +6,9 @@ using System.IO;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
+using MigraDoc.DocumentObjectModel.Shapes;
 using PdfSharp.Fonts;
+using PdfSharp.Drawing;
 using BLL.Font;
 
 namespace BLL
@@ -14,7 +16,9 @@ namespace BLL
     public static class BLL_PDFExporter
     {
         private const string FontName = "Times New Roman";
-        private const string LogoRelativePath = "icon\\logo bg2.png"; // phải có trong output bin
+        // two separate logos: small (upper-left) and large (center watermark)
+        private const string LogoSmallRelativePath = "icon\\logo bg1.png";
+        private const string LogoLargeRelativePath = "icon\\logo bg2.png";
         private static readonly object RenderLock = new object();
 
         public static bool ExportKetQuaPhanTich(string donHangID,
@@ -67,19 +71,48 @@ namespace BLL
                 var section = doc.AddSection();
                 ConfigureSection(section);
 
-                // Logo
-                AddLogosSimple(doc, section, LogoRelativePath);
+                // Add two logos (small logo reserved for header cell only)
+                AddLogosSimple(doc, section, LogoSmallRelativePath, LogoLargeRelativePath);
 
                 AddHeader(section);
                 AddTitle(section);
                 AddInfoBlock(section, maDonHang, tenKhachHang, diaChiKhachHang, diaDiemQuanTrac,
                              tenLoaiMauList, viTriTenList, ngayLayMau, ngayTraKQ);
+
+                // Add table
                 AddThongSoTable(section, thongSoTable);
                 AddChuThich(section);
                 AddFooterKy(section);
 
                 var renderer = new PdfDocumentRenderer(unicode: true) { Document = doc };
                 renderer.RenderDocument();
+
+                // Draw background image under existing page content using PdfSharp (prepend draws beneath content)
+                var bgPath = ResolveImagePath(LogoLargeRelativePath);
+                if (!string.IsNullOrWhiteSpace(bgPath) && File.Exists(bgPath))
+                {
+                    var pdf = renderer.PdfDocument;
+                    foreach (var page in pdf.Pages)
+                    {
+                        try
+                        {
+                            using (var gfx = XGraphics.FromPdfPage(page, XGraphicsPdfPageOptions.Prepend))
+                            using (var ximg = XImage.FromFile(bgPath))
+                            {
+                                double desiredWidthPt = XUnit.FromCentimeter(12).Point;
+                                double aspect = ximg.PixelHeight / (double)ximg.PixelWidth;
+                                double desiredHeightPt = desiredWidthPt * aspect;
+
+                                double x = (page.Width.Point - desiredWidthPt) / 2.0;
+                                double y = (page.Height.Point - desiredHeightPt) / 2.0; // centered on page
+
+                                gfx.DrawImage(ximg, x, y, desiredWidthPt, desiredHeightPt);
+                            }
+                        }
+                        catch { /* ignore per-page errors */ }
+                    }
+                }
+
                 renderer.PdfDocument.Save(filePath);
             }
 
@@ -87,45 +120,22 @@ namespace BLL
             return true;
         }
 
-        // Thêm logo và log trạng thái để debug
-        private static void AddLogosSimple(Document doc, Section section, string relativePath)
+        // Add two logos: keep only large centered watermark here; small logo will be placed inside header table cell to align side-by-side
+        private static void AddLogosSimple(Document doc, Section section, string smallRelative, string largeRelative)
         {
-            var path = ResolveImagePath(relativePath);
-            doc.Info.Subject = "LogoPath=" + (path ?? "NOT_FOUND"); // metadata debug
+            var smallPath = ResolveImagePath(smallRelative);
+            var largePath = ResolveImagePath(largeRelative);
+            doc.Info.Subject = "LogoSmall=" + (smallPath ?? "NOT_FOUND") + ";LogoLarge=" + (largePath ?? "NOT_FOUND");
 
             var header = section.Headers.Primary;
-            if (path == null)
+
+            // Do not add small/large logo here to avoid layout mismatch; small logo will be placed inside header table cell in AddHeader.
+
+            if (smallPath == null && largePath == null)
             {
-                // hiển thị dòng debug ngay trong PDF để thấy lỗi
-                var debugP = header.AddParagraph("(NO LOGO FOUND: " + relativePath + ")");
+                var debugP = header.AddParagraph("(NO LOGO FOUND: " + smallRelative + " & " + largeRelative + ")");
                 debugP.Format.Font.Size = 8;
                 debugP.Format.Font.Color = Colors.Red;
-                return;
-            }
-
-            try
-            {
-                // Logo nhỏ góc trái
-                var pTop = header.AddParagraph();
-                var imgSmall = pTop.AddImage(path);
-                imgSmall.LockAspectRatio = true;
-                imgSmall.Width = Unit.FromCentimeter(3.5);
-                pTop.Format.Alignment = ParagraphAlignment.Left;
-                pTop.Format.SpaceAfter = 0;
-
-                // Logo lớn ở giữa (PNG nên tự có alpha)
-                var pCenter = header.AddParagraph();
-                var imgLarge = pCenter.AddImage(path);
-                imgLarge.LockAspectRatio = true;
-                imgLarge.Width = Unit.FromCentimeter(12);
-                pCenter.Format.Alignment = ParagraphAlignment.Center;
-                pCenter.Format.SpaceAfter = 0;
-            }
-            catch (Exception ex)
-            {
-                var err = header.AddParagraph("(LOGO ERROR: " + ex.Message + ")");
-                err.Format.Font.Size = 8;
-                err.Format.Font.Color = Colors.Red;
             }
         }
 
@@ -133,14 +143,16 @@ namespace BLL
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(relative)) return null;
                 var baseDir = AppDomain.CurrentDomain.BaseDirectory;
                 var candidates = new[]
                 {
                     relative,
-                    Path.Combine(baseDir, relative ?? string.Empty),
-                    Path.Combine(baseDir, "icon", "logo_bg.png"),
-                    Path.GetFullPath(Path.Combine(baseDir, "..", "..", "GUI", "icon", "logo_bg.png")),
-                    Path.GetFullPath(Path.Combine(baseDir, "..", "icon", "logo_bg.png")),
+                    Path.Combine(baseDir, relative),
+                    Path.Combine(baseDir, "icon", Path.GetFileName(relative)),
+                    Path.Combine(baseDir, "icon", "logo bg.png"),
+                    Path.Combine(baseDir, "icon", "logo bg2.png"),
+                    Path.GetFullPath(Path.Combine(baseDir, "..", "..", "GUI", "icon", Path.GetFileName(relative))),
                 };
                 foreach (var c in candidates)
                 {
@@ -172,18 +184,63 @@ namespace BLL
             section.PageSetup.BottomMargin = Unit.FromCentimeter(2);
         }
 
+        // Header rendered as 2-column table so text doesn't overlap the small logo. Email updated to greensol@gmail.com
         private static void AddHeader(Section section)
         {
-            var p = section.AddParagraph("CÔNG TY CỔ PHẦN KIỂM NGHIỆM MÔI TRƯỜNG GREENSOL VIỆT NAM");
-            p.Format.Font.Size = 12;
-            p.Format.Font.Bold = true;
-            p.Format.Alignment = ParagraphAlignment.Center;
-            p.Format.SpaceAfter = Unit.FromMillimeter(2);
+            double pageWcm = section.PageSetup.PageWidth.Centimeter;
+            double leftCm = section.PageSetup.LeftMargin.Centimeter;
+            double rightCm = section.PageSetup.RightMargin.Centimeter;
+            double printableCm = Math.Max(10.0, pageWcm - leftCm - rightCm);
 
-            var p2 = section.AddParagraph("Địa chỉ: Số 123, Đường Nguyễn Văn Cừ, Phường 4, Quận 5, TP. Hồ Chí Minh\nSĐT: 0901 234 567 | Email: contact@ecotest.vn");
-            p2.Format.Font.Size = 12;
-            p2.Format.Alignment = ParagraphAlignment.Center;
-            p2.Format.SpaceAfter = Unit.FromCentimeter(0.5);
+            double logoColCm = 3.8; // reserve for small logo
+            double extraRightOverflowCm = 6.5; // allow text column to stretch beyond right margin
+            double textColCm = Math.Max(6.0, printableCm - logoColCm + extraRightOverflowCm);
+
+            // Use a fixed visual height matching logo (approx). Keep in sync with logo width ratio; use 3.8cm height.
+            double headerHeightCm = 3.8;
+
+            var tbl = section.AddTable();
+            tbl.Borders.Width = 0;
+            tbl.AddColumn(Unit.FromCentimeter(logoColCm));
+            tbl.AddColumn(Unit.FromCentimeter(textColCm));
+
+            var row = tbl.AddRow();
+            row.Height = Unit.FromCentimeter(headerHeightCm);
+            row.HeightRule = RowHeightRule.Exactly;
+
+            // left cell reserved for logo area (place small logo inside the cell)
+            var leftCell = row.Cells[0];
+            leftCell.VerticalAlignment = VerticalAlignment.Center;
+            var smallPath = ResolveImagePath(LogoSmallRelativePath);
+            if (!string.IsNullOrWhiteSpace(smallPath))
+            {
+                var pImg = leftCell.AddParagraph();
+                var img = pImg.AddImage(smallPath);
+                img.LockAspectRatio = true;
+                img.Width = Unit.FromCentimeter(3.5);
+                pImg.Format.Alignment = ParagraphAlignment.Left;
+                pImg.Format.SpaceBefore = 0;
+                pImg.Format.SpaceAfter = 0;
+            }
+            else
+            {
+                leftCell.AddParagraph(string.Empty);
+            }
+
+            // Right cell: company name and new address, vertically centered and right-aligned
+            var right = row.Cells[1];
+            right.VerticalAlignment = VerticalAlignment.Center;
+
+            var pName = right.AddParagraph("CÔNG TY CỔ PHẦN KIỂM NGHIỆM MÔI TRƯỜNG GREENSOL VIỆT NAM");
+            pName.Format.Font.Size = 12;
+            pName.Format.Font.Bold = true;
+            pName.Format.Alignment = ParagraphAlignment.Right;
+            pName.Format.SpaceBefore = Unit.FromCentimeter(0);
+
+            var pAddr = right.AddParagraph("Địa chỉ: 19 Đ. Nguyễn Hữu Thọ, Tân Hưng, Quận 7, Thành phố Hồ Chí Minh 758307 SĐT:19002024 | Email:greensol@gmail.com");
+            pAddr.Format.Font.Size = 10;
+            pAddr.Format.Alignment = ParagraphAlignment.Right;
+            pAddr.Format.SpaceAfter = Unit.FromCentimeter(0);
         }
 
         private static void AddTitle(Section section)
@@ -220,9 +277,10 @@ namespace BLL
             p.Format.SpaceAfter = Unit.FromCentimeter(0.8);
         }
 
+        // GiaTriChuan moved to the end of columns
         private static void AddThongSoTable(Section section, DataTable table)
         {
-            string[] cols = { "STT", "ThongSo", "DonVi", "GiaTriChuan", "ViTri1", "ViTri2", "ViTri3" };
+            string[] cols = { "STT", "ThongSo", "DonVi", "ViTri1", "ViTri2", "ViTri3", "GiaTriChuan" };
             var present = cols.Where(c => table.Columns.Contains(c)).ToList();
             if (present.Count == 0) return;
 
@@ -276,7 +334,7 @@ namespace BLL
                 for (int i = 0; i < present.Count; i++)
                 {
                     string colName = present[i];
-                    string val = r[colName] == DBNull.Value ? string.Empty : Convert.ToString(r[colName]);
+                    string val = r.Table.Columns.Contains(colName) && r[colName] != DBNull.Value ? Convert.ToString(r[colName]) : string.Empty;
                     var cell = row.Cells[i];
                     cell.AddParagraph(val);
                     cell.Format.Alignment = colName == "STT" ? ParagraphAlignment.Center : ParagraphAlignment.Left;

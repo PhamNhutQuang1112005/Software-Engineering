@@ -123,6 +123,7 @@
       <DependentUpon>GUI_FormThemDonHang.cs</DependentUpon>
     </Compile>
     <Compile Include="SmoothUI.cs" />
+    <Compile Include="TestRunnerNotifications.cs" />
     <Compile Include="UC_solarisAI.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -299,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon\logo bg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="icon\logo bg1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="icon\logo bg2.png">
