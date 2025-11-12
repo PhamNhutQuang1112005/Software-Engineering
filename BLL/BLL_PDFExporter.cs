@@ -60,8 +60,14 @@ namespace BLL
                 string tenKhachHang = khRow != null ? Safe(khRow, "TenCongTy") : string.Empty;
                 string diaChiKhachHang = khRow != null ? Safe(khRow, "DiaChi") : string.Empty;
 
+                // Prefer the lower label field (MaViTri) when present; fallback to DiaChi (not TenViTri as requested)
                 var viTriTenList = dtViTri?.AsEnumerable()
-                    .Select(r => Safe(r, "TenViTri"))
+                    .Select(r =>
+                    {
+                        string ma = dtViTri.Columns.Contains("MaViTri") ? Safe(r, "MaViTri") : string.Empty;
+                        string diachi = dtViTri.Columns.Contains("DiaChi") ? Safe(r, "DiaChi") : string.Empty;
+                        return !string.IsNullOrWhiteSpace(ma) ? ma : diachi;
+                    })
                     .Where(s => !string.IsNullOrWhiteSpace(s))
                     .Take(3)
                     .ToList() ?? new System.Collections.Generic.List<string>();
@@ -79,8 +85,8 @@ namespace BLL
                 AddInfoBlock(section, maDonHang, tenKhachHang, diaChiKhachHang, diaDiemQuanTrac,
                              tenLoaiMauList, viTriTenList, ngayLayMau, ngayTraKQ);
 
-                // Add table
-                AddThongSoTable(section, thongSoTable);
+                // Add table (pass position names so headers show actual values)
+                AddThongSoTable(section, thongSoTable, viTriTenList);
                 AddChuThich(section);
                 AddFooterKy(section);
 
@@ -268,7 +274,12 @@ namespace BLL
             sb.AppendLine($"Địa chỉ: {diaChiKhachHang}");
             sb.AppendLine($"Địa điểm quan trắc: {diaDiemQuanTrac}");
             sb.AppendLine($"Tên mẫu: {tenLoaiMauList}");
-            sb.AppendLine($"Vị trí lấy mẫu: {string.Join("; ", viTriTenList)}");
+
+            // Ensure exactly 3 entries for GTVT1/2/3
+            var positions = viTriTenList ?? new System.Collections.Generic.List<string>();
+            while (positions.Count < 3) positions.Add(string.Empty);
+
+            sb.AppendLine($"Vị trí lấy mẫu: GTVT1: {positions[0]} ; GTVT2: {positions[1]} ; GTVT3: {positions[2]}");
             sb.AppendLine($"Ngày lấy mẫu: {ngayLayMau}");
             sb.Append($"Ngày trả kết quả: {ngayTraKetQua}");
 
@@ -278,7 +289,7 @@ namespace BLL
         }
 
         // GiaTriChuan moved to the end of columns
-        private static void AddThongSoTable(Section section, DataTable table)
+        private static void AddThongSoTable(Section section, DataTable table, System.Collections.Generic.List<string> positions)
         {
             string[] cols = { "STT", "ThongSo", "DonVi", "ViTri1", "ViTri2", "ViTri3", "GiaTriChuan" };
             var present = cols.Where(c => table.Columns.Contains(c)).ToList();
@@ -295,15 +306,72 @@ namespace BLL
                 col.Format.Alignment = ParagraphAlignment.Center;
             }
 
-            var header = t.AddRow();
-            header.HeadingFormat = true;
-            header.Format.Font.Bold = true;
-            header.Format.Alignment = ParagraphAlignment.Center;
-            header.TopPadding = 2;
-            header.BottomPadding = 2;
+            // Build nested header: top row with 'Kết quả phân tích' merged over ViTri1-3, second row with position names
+            int idxVi1 = present.IndexOf("ViTri1");
+            int idxVi2 = present.IndexOf("ViTri2");
+            int idxVi3 = present.IndexOf("ViTri3");
 
-            for (int i = 0; i < present.Count; i++)
-                header.Cells[i].AddParagraph(GetHeaderName(present[i]));
+            var headerTop = t.AddRow();
+            headerTop.HeadingFormat = true;
+            headerTop.Format.Font.Bold = true;
+            headerTop.Format.Alignment = ParagraphAlignment.Center;
+            headerTop.TopPadding = 2;
+            headerTop.BottomPadding = 2;
+
+            if (idxVi1 >= 0 && idxVi2 == idxVi1 + 1 && idxVi3 == idxVi1 + 2)
+            {
+                for (int i = 0; i < present.Count; i++)
+                {
+                    var cell = headerTop.Cells[i];
+                    cell.VerticalAlignment = VerticalAlignment.Center;
+                    if (i == idxVi1)
+                    {
+                        cell.AddParagraph("Kết quả phân tích");
+                        cell.MergeRight = 2;
+                        cell.Format.Alignment = ParagraphAlignment.Center;
+                    }
+                    else if (i > idxVi1 && i <= idxVi1 + 2)
+                    {
+                        // part of merged region; leave empty
+                        cell.AddParagraph(string.Empty);
+                    }
+                    else
+                    {
+                        // For non-ViTri columns merge down so the header spans two rows
+                        cell.AddParagraph(GetHeaderName(present[i]));
+                        cell.MergeDown = 1;
+                        cell.Format.Alignment = ParagraphAlignment.Center;
+                    }
+                }
+
+                var headerSub = t.AddRow();
+                headerSub.HeadingFormat = true;
+                headerSub.Format.Font.Bold = true;
+                headerSub.Format.Alignment = ParagraphAlignment.Center;
+                headerSub.TopPadding = 2;
+                headerSub.BottomPadding = 2;
+
+                // Keep the sub-headers for the ViTri columns as static labels (Vị trí 1/2/3)
+                for (int i = 0; i < present.Count; i++)
+                {
+                    var cell = headerSub.Cells[i];
+                    cell.VerticalAlignment = VerticalAlignment.Center;
+                    if (i == idxVi1) cell.AddParagraph(GetHeaderName("ViTri1"));
+                    else if (i == idxVi2) cell.AddParagraph(GetHeaderName("ViTri2"));
+                    else if (i == idxVi3) cell.AddParagraph(GetHeaderName("ViTri3"));
+                    else cell.AddParagraph(string.Empty);
+                    cell.Format.Alignment = ParagraphAlignment.Center;
+                }
+            }
+            else
+            {
+                // No contiguous ViTri columns; just create single-row headers
+                for (int i = 0; i < present.Count; i++)
+                {
+                    headerTop.Cells[i].AddParagraph(GetHeaderName(present[i]));
+                    headerTop.Cells[i].VerticalAlignment = VerticalAlignment.Center;
+                }
+            }
 
             foreach (DataRow r in table.Rows)
             {
