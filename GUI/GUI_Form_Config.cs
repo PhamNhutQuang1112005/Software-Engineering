@@ -11,8 +11,7 @@ namespace GUI
         {
             InitializeComponent();
         }
-
-        private void frmConfig_Load(object sender, EventArgs e)
+        private void GUI_Form_Config_Load_1(object sender, EventArgs e)
         {
             if (ckW.Checked == true)
             {
@@ -26,7 +25,7 @@ namespace GUI
             }
         }
 
-        private void bSave_Click_1(object sender, EventArgs e)
+        private void bSave_Click(object sender, EventArgs e)
         {
             StreamWriter sw = new StreamWriter("config.txt");
             if (ckW.Checked == true)
@@ -50,7 +49,7 @@ namespace GUI
             this.Close();
         }
 
-        private void ckW_CheckedChanged_1(object sender, EventArgs e)
+        private void ckW_CheckedChanged(object sender, EventArgs e)
         {
             if (ckW.Checked == true)
             {
@@ -64,7 +63,7 @@ namespace GUI
             }
         }
 
-        private void bCancel_Click(object sender, EventArgs e)
+        private void bCancel_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }

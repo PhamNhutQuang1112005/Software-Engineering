@@ -124,6 +124,7 @@ namespace GUI
             this.ckW.TabIndex = 8;
             this.ckW.Text = "Window Authentication";
             this.ckW.UseVisualStyleBackColor = true;
+            this.ckW.CheckedChanged += new System.EventHandler(this.ckW_CheckedChanged);
             // 
             // guna2BorderlessForm1
             // 
@@ -140,6 +141,7 @@ namespace GUI
             this.bSave.TabIndex = 9;
             this.bSave.Text = "Save";
             this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
             // bCancel
             // 
@@ -150,6 +152,7 @@ namespace GUI
             this.bCancel.TabIndex = 10;
             this.bCancel.Text = "Cancel";
             this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click_1);
             // 
             // GUI_Form_Config
             // 
@@ -172,6 +175,7 @@ namespace GUI
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI_Form_Config";
             this.Text = "frmConfig";
+            this.Load += new System.EventHandler(this.GUI_Form_Config_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 
