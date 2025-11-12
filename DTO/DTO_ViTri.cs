@@ -11,5 +11,6 @@ namespace DTO
         public string ViTriID  { get; set; }
         public string TenViTri { get; set; }
         public string DonHangID { get; set; }
+        public string DiaChi    { get; set; }
     }
 }

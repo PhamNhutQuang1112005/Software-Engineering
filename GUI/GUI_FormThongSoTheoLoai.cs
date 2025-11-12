@@ -58,11 +58,21 @@ namespace GUI
         private void GUI_FormThongSoTheoLoai_Load(object sender, EventArgs e)
         {
             
-            String a= _bll.GetViTriByDonHang(_donHangID).Rows[0]["DiaChi"].ToString();
+            
             lblDonHang.Text = string.IsNullOrWhiteSpace(_tenDonHang)
                 ? "Đơn hàng"
                 : $"{_tenDonHang} – {_tenLoaiViTri}";
-            lblDiaChi.Text = "Địa chỉ: " + (a ?? "…");
+            var dt = _bll.GetViTriByDonHang(_donHangID); // DataTable các vị trí của đơn hàng
+string diaChi = null;
+if (dt != null && dt.Columns.Contains("DiaChi"))
+{
+    var row = dt.AsEnumerable()
+                .FirstOrDefault(r => string.Equals(Convert.ToString(r["ViTriID"]), _viTriID,
+                                                   StringComparison.OrdinalIgnoreCase));
+    if (row != null) diaChi = Convert.ToString(row["DiaChi"]);
+}
+lblDiaChi.Text = "Địa chỉ: " + (string.IsNullOrWhiteSpace(diaChi) ? "…" : diaChi);
+
 
             dgv.DataSource = _bs;
 
