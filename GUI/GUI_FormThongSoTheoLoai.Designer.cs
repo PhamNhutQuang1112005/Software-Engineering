@@ -131,7 +131,7 @@ namespace GUI
             this.cboLoaiChiTieu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cboLoaiChiTieu.IntegralHeight = false;
             this.cboLoaiChiTieu.ItemHeight = 28;
-            this.cboLoaiChiTieu.Location = new System.Drawing.Point(12, 36);
+            this.cboLoaiChiTieu.Location = new System.Drawing.Point(329, 36);
             this.cboLoaiChiTieu.Name = "cboLoaiChiTieu";
             this.cboLoaiChiTieu.Size = new System.Drawing.Size(218, 34);
             this.cboLoaiChiTieu.TabIndex = 9;
@@ -140,7 +140,7 @@ namespace GUI
             // 
             this.lblChiTieu.AutoSize = true;
             this.lblChiTieu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblChiTieu.Location = new System.Drawing.Point(84, 16);
+            this.lblChiTieu.Location = new System.Drawing.Point(409, 12);
             this.lblChiTieu.Name = "lblChiTieu";
             this.lblChiTieu.Size = new System.Drawing.Size(59, 20);
             this.lblChiTieu.TabIndex = 0;
@@ -150,7 +150,7 @@ namespace GUI
             // 
             this.lblNguoi.AutoSize = true;
             this.lblNguoi.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblNguoi.Location = new System.Drawing.Point(379, 16);
+            this.lblNguoi.Location = new System.Drawing.Point(69, 12);
             this.lblNguoi.Name = "lblNguoi";
             this.lblNguoi.Size = new System.Drawing.Size(117, 20);
             this.lblNguoi.TabIndex = 4;
@@ -169,7 +169,7 @@ namespace GUI
             this.cboNguoiPhuTrach.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cboNguoiPhuTrach.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cboNguoiPhuTrach.ItemHeight = 28;
-            this.cboNguoiPhuTrach.Location = new System.Drawing.Point(314, 36);
+            this.cboNguoiPhuTrach.Location = new System.Drawing.Point(24, 36);
             this.cboNguoiPhuTrach.Name = "cboNguoiPhuTrach";
             this.cboNguoiPhuTrach.Size = new System.Drawing.Size(218, 34);
             this.cboNguoiPhuTrach.TabIndex = 5;
@@ -178,7 +178,7 @@ namespace GUI
             // 
             this.lblThauPhu.AutoSize = true;
             this.lblThauPhu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblThauPhu.Location = new System.Drawing.Point(702, 16);
+            this.lblThauPhu.Location = new System.Drawing.Point(695, 12);
             this.lblThauPhu.Name = "lblThauPhu";
             this.lblThauPhu.Size = new System.Drawing.Size(70, 20);
             this.lblThauPhu.TabIndex = 6;
