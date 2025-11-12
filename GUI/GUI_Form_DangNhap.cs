@@ -215,47 +215,58 @@ namespace GUI
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             string username = textDangNhap.Text.Trim();
-            string password = textMK.Text.Trim();
+    string password = textMK.Text.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+    if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+    {
+        MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu!", 
+            "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+    }
+
+    try
+    {
+        var user = bllTaiKhoan.Login(username, password); // trả về DTO_NguoiDung
+
+        if (user != null)
+        {
+            // Lưu user vào session
+            Session.CurrentUser = user;
+
+            MessageBox.Show($"Chào mừng {user.HoVaTen} ({user.VaiTroID})!",
+                "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Ẩn form đăng nhập
+            this.Hide();
+
+            var main = new GUI_main(username);
+
+            // Khi form main bị đóng -> thoát toàn bộ ứng dụng
+            main.FormClosed += (s, args) =>
             {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            try
-            {
-                var user = bllTaiKhoan.Login(username, password); // trả DTO_NguoiDung
-
-                if (user != null)
+                try
                 {
-                    // (nếu đã có AppSession, có thể lưu lại)
-                    Session.CurrentUser = user;
-
-                    MessageBox.Show($"Chào mừng {user.HoVaTen} ({user.VaiTroID})!",
-                        "Đăng nhập thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-                    this.Hide();
-
-                    var main = new GUI_main(username);
-                       
-
-                    main.Show();
+                    if (!this.IsDisposed) this.Close(); // đóng form đăng nhập nếu còn tồn tại
                 }
-                else
+                finally
                 {
-                    MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", "Lỗi",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Application.Exit(); // đảm bảo tắt toàn bộ chương trình
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            };
 
-
-
+            main.Show();
+        }
+        else
+        {
+            MessageBox.Show("Tên đăng nhập hoặc mật khẩu không đúng!", 
+                "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+    catch (Exception ex)
+    {
+        MessageBox.Show("Lỗi: " + ex.Message, 
+            "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    }
         }
 
 
@@ -353,7 +364,7 @@ namespace GUI
                DienThoai   = sdt,
                  Email       = "",
             VaiTroID    = "VT001",   // Admin
-               PhongBanID  = "PB001"    // Phòng ban mặc định
+               PhongBanID  = "PB006"    // Phòng ban mặc định
              };
 
        //  --- Gọi tầng nghiệp vụ để thêm ---

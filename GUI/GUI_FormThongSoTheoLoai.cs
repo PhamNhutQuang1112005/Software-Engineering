@@ -154,6 +154,27 @@ namespace GUI
                 };
 
                 // Chỉ tiêu -> lọc Người theo PB của LCT
+                var vt = Session.CurrentUser?.VaiTroID;
+var pb1 = Session.CurrentUser?.PhongBanID;
+
+// Kiểm tra quyền: Admin hoặc phòng ban HT / TN
+bool allowSelect =
+    IsAdmin() ||
+    string.Equals(pb1, "PB003", StringComparison.OrdinalIgnoreCase) || // HT
+    string.Equals(pb1, "PB004", StringComparison.OrdinalIgnoreCase);   // TN
+
+// Chỉ người được phép mới enable combobox
+cboNguoiPhuTrach.Enabled = allowSelect;
+cboThauPhu.Enabled       = allowSelect;
+cboLoaiChiTieu.Enabled   = allowSelect;
+
+// Nếu bị khóa thì set màu nền xám nhẹ để người dùng thấy rõ
+if (!allowSelect)
+{
+    cboNguoiPhuTrach.FillColor = System.Drawing.Color.Gainsboro;
+    cboThauPhu.FillColor       = System.Drawing.Color.Gainsboro;
+    cboLoaiChiTieu.FillColor   = System.Drawing.Color.Gainsboro;
+}
 
             }
             catch (Exception ex)
