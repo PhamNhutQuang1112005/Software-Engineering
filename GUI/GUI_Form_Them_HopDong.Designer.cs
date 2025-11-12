@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_Form_Them_HopDong));
             this.huy = new Guna.UI2.WinForms.Guna2Button();
             this.themhopdong = new Guna.UI2.WinForms.Guna2Button();
             this.tomtatnhiemvu = new Guna.UI2.WinForms.Guna2TextBox();
@@ -311,6 +312,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI_Form_Them_HopDong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm";

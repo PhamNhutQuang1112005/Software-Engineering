@@ -116,6 +116,7 @@ namespace GUI
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_FormPreviewExport));
             this.thongsogridview = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.xuatraPDF = new Guna.UI2.WinForms.Guna2Button();
@@ -152,14 +153,35 @@ namespace GUI
             this.thongsogridview.Location = new System.Drawing.Point(12, 148);
             this.thongsogridview.Name = "thongsogridview";
             this.thongsogridview.RowHeadersVisible = false;
-            this.thongsogridview.RowTemplate.Height = 22;
+            this.thongsogridview.RowHeadersWidth = 51;
             this.thongsogridview.Size = new System.Drawing.Size(697, 348);
             this.thongsogridview.TabIndex = 0;
+            this.thongsogridview.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.thongsogridview.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.thongsogridview.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.thongsogridview.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.thongsogridview.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.thongsogridview.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.thongsogridview.ThemeStyle.GridColor = System.Drawing.Color.Gainsboro;
+            this.thongsogridview.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.thongsogridview.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.thongsogridview.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongsogridview.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.thongsogridview.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.thongsogridview.ThemeStyle.HeaderStyle.Height = 4;
+            this.thongsogridview.ThemeStyle.ReadOnly = false;
+            this.thongsogridview.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.thongsogridview.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.thongsogridview.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thongsogridview.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.thongsogridview.ThemeStyle.RowsStyle.Height = 22;
+            this.thongsogridview.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.thongsogridview.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // guna2GradientPanel1
             // 
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(198, 216, 112);
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(239, 245, 210);
+            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(216)))), ((int)(((byte)(112)))));
+            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(245)))), ((int)(((byte)(210)))));
             this.guna2GradientPanel1.Location = new System.Drawing.Point(-72, 110);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(798, 8);
@@ -189,7 +211,7 @@ namespace GUI
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(367, 35);
+            this.label2.Size = new System.Drawing.Size(373, 35);
             this.label2.TabIndex = 52;
             this.label2.Text = "Xem trước dữ liệu sẽ xuất PDF";
             // 
@@ -213,7 +235,7 @@ namespace GUI
             this.madonhang.ForeColor = System.Drawing.Color.White;
             this.madonhang.Location = new System.Drawing.Point(128, 57);
             this.madonhang.Name = "madonhang";
-            this.madonhang.Size = new System.Drawing.Size(22, 28);
+            this.madonhang.Size = new System.Drawing.Size(20, 28);
             this.madonhang.TabIndex = 55;
             this.madonhang.Text = "-";
             // 
@@ -225,7 +247,7 @@ namespace GUI
             this.loaimau.ForeColor = System.Drawing.Color.White;
             this.loaimau.Location = new System.Drawing.Point(516, 57);
             this.loaimau.Name = "loaimau";
-            this.loaimau.Size = new System.Drawing.Size(22, 28);
+            this.loaimau.Size = new System.Drawing.Size(20, 28);
             this.loaimau.TabIndex = 57;
             this.loaimau.Text = "-";
             // 
@@ -253,13 +275,15 @@ namespace GUI
             this.Controls.Add(this.label2);
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.thongsogridview);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI_FormPreviewExport";
-            this.StartPosition = FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Preview Export";
             this.Load += new System.EventHandler(this.GUI_FormPreviewExport_Load);
             ((System.ComponentModel.ISupportInitialize)(this.thongsogridview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
     }
 }

@@ -26,6 +26,7 @@ namespace GUI
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_FormThemKhach));
             this.txtMaKH = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtTenCongTy = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtMaSoThue = new Guna.UI2.WinForms.Guna2TextBox();
@@ -328,6 +329,7 @@ namespace GUI
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnHuy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GUI_FormThemKhach";

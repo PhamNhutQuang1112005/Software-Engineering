@@ -36,9 +36,10 @@ namespace GUI
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_FormThongSoTheoLoai));
             this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.lblDonHang = new System.Windows.Forms.Label();
             this.lblDiaChi = new System.Windows.Forms.Label();
@@ -81,7 +82,7 @@ namespace GUI
             this.lblDonHang.ForeColor = System.Drawing.Color.White;
             this.lblDonHang.Location = new System.Drawing.Point(18, 10);
             this.lblDonHang.Name = "lblDonHang";
-            this.lblDonHang.Size = new System.Drawing.Size(102, 28);
+            this.lblDonHang.Size = new System.Drawing.Size(128, 35);
             this.lblDonHang.TabIndex = 0;
             this.lblDonHang.Text = "Đơn hàng";
             // 
@@ -93,7 +94,7 @@ namespace GUI
             this.lblDiaChi.ForeColor = System.Drawing.Color.White;
             this.lblDiaChi.Location = new System.Drawing.Point(20, 44);
             this.lblDiaChi.Name = "lblDiaChi";
-            this.lblDiaChi.Size = new System.Drawing.Size(67, 19);
+            this.lblDiaChi.Size = new System.Drawing.Size(87, 25);
             this.lblDiaChi.TabIndex = 1;
             this.lblDiaChi.Text = "Địa chỉ: …";
             // 
@@ -141,7 +142,7 @@ namespace GUI
             this.lblChiTieu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblChiTieu.Location = new System.Drawing.Point(84, 16);
             this.lblChiTieu.Name = "lblChiTieu";
-            this.lblChiTieu.Size = new System.Drawing.Size(48, 15);
+            this.lblChiTieu.Size = new System.Drawing.Size(59, 20);
             this.lblChiTieu.TabIndex = 0;
             this.lblChiTieu.Text = "Chỉ tiêu";
             // 
@@ -151,7 +152,7 @@ namespace GUI
             this.lblNguoi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblNguoi.Location = new System.Drawing.Point(379, 16);
             this.lblNguoi.Name = "lblNguoi";
-            this.lblNguoi.Size = new System.Drawing.Size(94, 15);
+            this.lblNguoi.Size = new System.Drawing.Size(117, 20);
             this.lblNguoi.TabIndex = 4;
             this.lblNguoi.Text = "Người phụ trách";
             this.lblNguoi.Click += new System.EventHandler(this.lblNguoi_Click);
@@ -179,7 +180,7 @@ namespace GUI
             this.lblThauPhu.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.lblThauPhu.Location = new System.Drawing.Point(702, 16);
             this.lblThauPhu.Name = "lblThauPhu";
-            this.lblThauPhu.Size = new System.Drawing.Size(58, 15);
+            this.lblThauPhu.Size = new System.Drawing.Size(70, 20);
             this.lblThauPhu.TabIndex = 6;
             this.lblThauPhu.Text = "Thầu phụ";
             // 
@@ -218,25 +219,25 @@ namespace GUI
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(249)))));
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(252)))), ((int)(((byte)(249)))));
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.ColumnHeadersHeight = 36;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(230)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgv.Location = new System.Drawing.Point(0, 174);
@@ -318,6 +319,7 @@ namespace GUI
             this.Controls.Add(this.bottomBar);
             this.Controls.Add(this.cardFilter);
             this.Controls.Add(this.header);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI_FormThongSoTheoLoai";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Thông số theo loại vị trí";

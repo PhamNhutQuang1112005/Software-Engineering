@@ -30,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_Form_DangNhap));
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.XacNhanMK = new System.Windows.Forms.TabPage();
             this.guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
@@ -986,11 +987,12 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.TAB);
             this.Controls.Add(this.guna2CirclePictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "GUI_Form_DangNhap";
-            this.Text = "Form1";
+            this.Text = "Green Sol";
             this.Load += new System.EventHandler(this.GUI_Form_DangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.XacNhanMK.ResumeLayout(false);

@@ -238,6 +238,7 @@ namespace GUI
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.btnHuy);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI_FormThemNguoiDung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Người dùng";

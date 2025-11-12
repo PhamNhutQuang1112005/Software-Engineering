@@ -138,6 +138,7 @@ namespace GUI
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_SelectLoaiMauDialog));
             this.hienthiloaimau = new GUI.Common.SmoothFlowLayoutPanel();
             this.xacnhan = new Guna.UI2.WinForms.Guna2Button();
             this.huythaotac = new Guna.UI2.WinForms.Guna2Button();
@@ -200,6 +201,7 @@ namespace GUI
             this.Controls.Add(this.huythaotac);
             this.Controls.Add(this.xacnhan);
             this.Controls.Add(this.hienthiloaimau);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI_SelectLoaiMauDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Chọn loại mẫu";

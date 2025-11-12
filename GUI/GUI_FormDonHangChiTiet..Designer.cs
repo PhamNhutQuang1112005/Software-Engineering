@@ -32,6 +32,7 @@ namespace GUI
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_FormDonHangChiTiet));
             this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.lblDonHang = new System.Windows.Forms.Label();
             this.lblDiaChi = new System.Windows.Forms.Label();
@@ -236,6 +237,7 @@ namespace GUI
             this.ClientSize = new System.Drawing.Size(1089, 399);
             this.Controls.Add(this.splitMain);
             this.Controls.Add(this.header);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GUI_FormDonHangChiTiet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đơn hàng – chi tiết";
