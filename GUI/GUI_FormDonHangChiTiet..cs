@@ -280,12 +280,12 @@ namespace GUI
 
             btnSua.Click += delegate
             {
-                string newTen = Interaction.InputBox("Nhập tên vị trí mới:", "Đổi tên vị trí", ten);
+                
                 string newDiaChi = Interaction.InputBox("Nhập địa chỉ mới:", "Đổi địa chỉ", diaChi);
 
-                if (!string.IsNullOrWhiteSpace(newTen) || !string.IsNullOrWhiteSpace(newDiaChi))
+                if (!string.IsNullOrWhiteSpace(ten) || !string.IsNullOrWhiteSpace(newDiaChi))
                 {
-                    bool ok = _bll.UpdateTenVaDiaChiViTri(viTriID, newTen, newDiaChi);
+                    bool ok = _bll.UpdateTenVaDiaChiViTri(viTriID, ten, newDiaChi);
                     if (ok)
                     {
                         ReloadViTriAndGrid(viTriID);
