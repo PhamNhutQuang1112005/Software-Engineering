@@ -395,5 +395,30 @@ public string InsertThongSoMoi_ReturnKey_WithLoai(
                 }
             }
         }
+        // ===== Insert Loại Chỉ Tiêu =====
+public bool InsertLoaiChiTieu(DTO_LoaiChiTieu dto)
+{
+    using (SqlConnection cn = NewConn())
+    using (SqlCommand cmd = new SqlCommand("dbo.sp_InsertLoaiChiTieu", cn))
+    {
+        cmd.CommandType = CommandType.StoredProcedure;
+
+        cmd.Parameters.AddWithValue("@LoaiChiTieuID", dto.LoaiChiTieuID);
+        cmd.Parameters.AddWithValue("@TenChiTieu", dto.TenChiTieu);
+        cmd.Parameters.AddWithValue("@DonViID", dto.DonViID);
+        cmd.Parameters.AddWithValue("@PhongBan", dto.PhongBan);
+
+        if (string.IsNullOrWhiteSpace(dto.GiaTriChuan))
+            cmd.Parameters.AddWithValue("@GiaTriChuan", DBNull.Value);
+        else
+            cmd.Parameters.AddWithValue("@GiaTriChuan", dto.GiaTriChuan);
+
+        cn.Open();
+        cmd.ExecuteNonQuery();   // nếu lỗi sẽ throw exception
+        return true;             // đến được đây nghĩa là thành công
+    }
+}
+
+
     }
 }

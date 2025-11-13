@@ -46,6 +46,7 @@ namespace GUI
             this.btnThemLoai = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoaLoai = new Guna.UI2.WinForms.Guna2Button();
             this.btnOpenThongSo = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThemChiTieu = new Guna.UI2.WinForms.Guna2Button();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -59,6 +60,7 @@ namespace GUI
             // 
             // header
             // 
+            this.header.Controls.Add(this.btnThemChiTieu);
             this.header.Controls.Add(this.lblDonHang);
             this.header.Controls.Add(this.lblDiaChi);
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
@@ -231,6 +233,20 @@ namespace GUI
             this.btnOpenThongSo.Text = "Thông số…";
             this.btnOpenThongSo.Click += new System.EventHandler(this.btnOpenThongSo_Click);
             // 
+            // btnThemChiTieu
+            // 
+            this.btnThemChiTieu.AutoRoundedCorners = true;
+            this.btnThemChiTieu.BorderRadius = 15;
+            this.btnThemChiTieu.FillColor = System.Drawing.Color.SeaGreen;
+            this.btnThemChiTieu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnThemChiTieu.ForeColor = System.Drawing.Color.White;
+            this.btnThemChiTieu.Location = new System.Drawing.Point(810, 24);
+            this.btnThemChiTieu.Name = "btnThemChiTieu";
+            this.btnThemChiTieu.Size = new System.Drawing.Size(240, 32);
+            this.btnThemChiTieu.TabIndex = 3;
+            this.btnThemChiTieu.Text = "Thêm chỉ tiêu";
+            this.btnThemChiTieu.Click += new System.EventHandler(this.btnThemChiTieu_Click);
+            // 
             // GUI_FormDonHangChiTiet
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -255,5 +271,7 @@ namespace GUI
             this.ResumeLayout(false);
 
         }
+
+        private Guna2Button btnThemChiTieu;
     }
 }

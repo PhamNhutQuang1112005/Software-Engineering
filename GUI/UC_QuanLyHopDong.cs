@@ -504,8 +504,8 @@ namespace GUI
         {
             try
             {
-                string pythonExe = @"C:\Users\PC\AppData\Local\Programs\Python\Python313\python.exe";
-                string scriptPath = @"C:\CNPM2\Software-Engineering\GUI\speech_to_text.py";
+                string pythonExe = @"C:/Users/ADMIN/AppData/Local/Programs/Python/Python312/python.exe";
+                string scriptPath = @"d:/HỌC KỲ 5/CÔNG NGHỆ PHẦN MỀM/CUOIKY/UI_V1/Software-Engineering/GUI/speech_to_text.py";
                 var psi = new ProcessStartInfo
                 {
                     FileName = pythonExe,

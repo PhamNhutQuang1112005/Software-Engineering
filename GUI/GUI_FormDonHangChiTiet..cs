@@ -6,6 +6,7 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using static GUI.GUI_Form_DangNhap;
 namespace GUI
 {
     public partial class GUI_FormDonHangChiTiet : Form
@@ -54,7 +55,8 @@ namespace GUI
             // ---- Chỉ styling UI (SeaGreen) ----
             ApplyGridTheme();
             StyleToolbarButtons();
-
+            btnThemChiTieu.Enabled = IsKeHoach();
+            btnThemChiTieu.Visible = IsKeHoach();
             try
             {
                 // tạo đủ 3 vị trí nếu chưa có (giữ nguyên tên hàm)
@@ -278,7 +280,7 @@ namespace GUI
 
             btnSua.Click += delegate
             {
-                string newTen    = Interaction.InputBox("Nhập tên vị trí mới:", "Đổi tên vị trí", ten);
+                string newTen = Interaction.InputBox("Nhập tên vị trí mới:", "Đổi tên vị trí", ten);
                 string newDiaChi = Interaction.InputBox("Nhập địa chỉ mới:", "Đổi địa chỉ", diaChi);
 
                 if (!string.IsNullOrWhiteSpace(newTen) || !string.IsNullOrWhiteSpace(newDiaChi))
@@ -541,6 +543,32 @@ namespace GUI
 
             RefreshLoaiViTriGrid();
         }
-
+        private bool IsKeHoach()
+        {
+            var u = Session.CurrentUser;
+            return u != null &&
+                   string.Equals(u.PhongBanID, "PB002", StringComparison.OrdinalIgnoreCase)||string.Equals(u.PhongBanID, "PB006", StringComparison.OrdinalIgnoreCase);
+        }
+        private void btnThemChiTieu_Click(object sender, EventArgs e)
+        {
+            using (var f = new GUI_FormThemLoaiChiTieu())
+    {
+        if (f.ShowDialog(this) == DialogResult.OK && f.Saved)
+        {
+            // Ở form này không có combobox Loại chỉ tiêu,
+            // nên chỉ cần báo đã thêm xong là đủ.
+            if (f.NewLoaiChiTieu != null)
+            {
+                MessageBox.Show("Đã thêm chỉ tiêu mới: " + f.NewLoaiChiTieu.TenChiTieu,
+                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Đã thêm chỉ tiêu mới.",
+                    "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+    }
+        }
     }
 }

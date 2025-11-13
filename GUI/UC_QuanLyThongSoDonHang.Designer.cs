@@ -80,7 +80,7 @@ namespace GUI
             this.microphone.TabIndex = 48;
             this.microphone.TabStop = false;
             this.microphone.UseTransparentBackground = true;
-            
+            this.microphone.Click += new System.EventHandler(this.microphone_Click);
             // 
             // guna2ComboBox2
             // 

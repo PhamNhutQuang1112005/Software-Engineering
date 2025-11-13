@@ -176,6 +176,7 @@ namespace GUI
             this.microphone.TabIndex = 49;
             this.microphone.TabStop = false;
             this.microphone.UseTransparentBackground = true;
+            this.microphone.Click += new System.EventHandler(this.microphone_Click);
             // 
             // flowLayoutPanel1
             // 

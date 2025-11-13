@@ -173,6 +173,7 @@ namespace GUI
             this.guna2PictureBox1.TabIndex = 56;
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
+            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
             // 
             // UC_QuanLyKhachHang
             // 

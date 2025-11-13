@@ -242,6 +242,7 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(249, 40);
             this.guna2TextBox1.TabIndex = 4;
+            this.guna2TextBox1.Click += new System.EventHandler(this.microphone_Click);
             // 
             // flowLayoutPanel1
             // 

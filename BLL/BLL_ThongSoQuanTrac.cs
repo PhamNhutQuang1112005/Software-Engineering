@@ -62,5 +62,10 @@ public string InsertThongSoMoi_ReturnKey_WithLoai(
         {
             return _dal.GetDefaultDonViID_ByLoaiChiTieu(loaiChiTieuID);
         }
+        public bool InsertLoaiChiTieu(DTO_LoaiChiTieu item)
+    {
+        // cần tạo hàm tương ứng trong DAL_ThongSoQuanTrac
+        return _dal.InsertLoaiChiTieu(item);
+    }
     }
 }

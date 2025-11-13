@@ -63,6 +63,12 @@
     <Compile Include="GUI_FormPreviewExport.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI_FormThemLoaiChiTieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI_FormThemLoaiChiTieu.Designer.cs">
+      <DependentUpon>GUI_FormThemLoaiChiTieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI_SelectLoaiMauDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     <Compile Include="UserMenuPopup.cs" />
     <EmbeddedResource Include="GUI_FormPreviewExport.resx">
       <DependentUpon>GUI_FormPreviewExport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI_FormThemLoaiChiTieu.resx">
+      <DependentUpon>GUI_FormThemLoaiChiTieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI_SelectLoaiMauDialog.resx">
       <DependentUpon>GUI_SelectLoaiMauDialog.cs</DependentUpon>
