@@ -11,6 +11,7 @@ using static GUI.GUI_Form_DangNhap;
 
 namespace GUI
 {
+   
     public partial class GUI_FormThongSoTheoLoai : Form
     {
         // ==== Input context ====
@@ -20,6 +21,7 @@ namespace GUI
         private readonly string _tenDonHang;
         private readonly string _diaChi;
         private readonly string _tenLoaiViTri;
+        
         private bool IsAdmin()
         {
             var vt = Session.CurrentUser?.VaiTroID;
@@ -27,6 +29,7 @@ namespace GUI
             return string.Equals(vt, "VT001", StringComparison.OrdinalIgnoreCase)
                 && string.Equals(pb, "PB006", StringComparison.OrdinalIgnoreCase);
         }
+        
 
 
         // ==== Services ====
@@ -72,7 +75,7 @@ namespace GUI
                 if (row != null) diaChi = Convert.ToString(row["DiaChi"]);
             }
             lblDiaChi.Text = "Địa chỉ: " + (string.IsNullOrWhiteSpace(diaChi) ? "…" : diaChi);
-
+            
 
             dgv.DataSource = _bs;
 
@@ -86,8 +89,16 @@ namespace GUI
                     keep = Convert.ToString(dgv.CurrentRow.Cells["TenThongSo"].Value);
                 ForceRebind(keep);
             };
+            cboLoaiChiTieu.Enabled= IsKeHoach();
+            cboNguoiPhuTrach.Enabled= IsKeHoach();
+            cboThauPhu.Enabled= IsKeHoach();
         }
-
+         public bool IsKeHoach()
+        {
+            var u = Session.CurrentUser;
+            return u != null &&
+                   string.Equals(u.PhongBanID, "PB002", StringComparison.OrdinalIgnoreCase)||string.Equals(u.PhongBanID, "PB006", StringComparison.OrdinalIgnoreCase);
+        }
         // ================== Load danh mục ==================
         private void LoadCombos()
         {

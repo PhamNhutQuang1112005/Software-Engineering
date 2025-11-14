@@ -547,7 +547,7 @@ namespace GUI
 
             RefreshLoaiViTriGrid();
         }
-        private bool IsKeHoach()
+        public bool IsKeHoach()
         {
             var u = Session.CurrentUser;
             return u != null &&
