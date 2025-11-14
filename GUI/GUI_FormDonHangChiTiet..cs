@@ -57,6 +57,9 @@ namespace GUI
             StyleToolbarButtons();
             btnThemChiTieu.Enabled = IsKeHoach();
             btnThemChiTieu.Visible = IsKeHoach();
+            btnThemLoai.Enabled = IsKeHoach();
+            btnXoaLoai.Enabled = IsKeHoach();
+          
             try
             {
                 // tạo đủ 3 vị trí nếu chưa có (giữ nguyên tên hàm)
@@ -268,9 +271,10 @@ namespace GUI
                 ForeColor = Color.White,
                 Font = new Font("Segoe UI", 9f),
                 BackColor = Color.Transparent
+                
             };
             btnSua.Dock = DockStyle.Right;
-
+            btnSua .Enabled = IsKeHoach();
             // Hành vi nút
             btnChon.Click += delegate
             {

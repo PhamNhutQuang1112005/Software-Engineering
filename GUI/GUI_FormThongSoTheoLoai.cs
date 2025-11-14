@@ -57,21 +57,21 @@ namespace GUI
 
         private void GUI_FormThongSoTheoLoai_Load(object sender, EventArgs e)
         {
-            
-            
+
+
             lblDonHang.Text = string.IsNullOrWhiteSpace(_tenDonHang)
                 ? "Đơn hàng"
                 : $"{_tenDonHang} – {_tenLoaiViTri}";
             var dt = _bll.GetViTriByDonHang(_donHangID); // DataTable các vị trí của đơn hàng
-string diaChi = null;
-if (dt != null && dt.Columns.Contains("DiaChi"))
-{
-    var row = dt.AsEnumerable()
-                .FirstOrDefault(r => string.Equals(Convert.ToString(r["ViTriID"]), _viTriID,
-                                                   StringComparison.OrdinalIgnoreCase));
-    if (row != null) diaChi = Convert.ToString(row["DiaChi"]);
-}
-lblDiaChi.Text = "Địa chỉ: " + (string.IsNullOrWhiteSpace(diaChi) ? "…" : diaChi);
+            string diaChi = null;
+            if (dt != null && dt.Columns.Contains("DiaChi"))
+            {
+                var row = dt.AsEnumerable()
+                            .FirstOrDefault(r => string.Equals(Convert.ToString(r["ViTriID"]), _viTriID,
+                                                               StringComparison.OrdinalIgnoreCase));
+                if (row != null) diaChi = Convert.ToString(row["DiaChi"]);
+            }
+            lblDiaChi.Text = "Địa chỉ: " + (string.IsNullOrWhiteSpace(diaChi) ? "…" : diaChi);
 
 
             dgv.DataSource = _bs;
@@ -165,26 +165,26 @@ lblDiaChi.Text = "Địa chỉ: " + (string.IsNullOrWhiteSpace(diaChi) ? "…" :
 
                 // Chỉ tiêu -> lọc Người theo PB của LCT
                 var vt = Session.CurrentUser?.VaiTroID;
-var pb1 = Session.CurrentUser?.PhongBanID;
+                var pb1 = Session.CurrentUser?.PhongBanID;
 
-// Kiểm tra quyền: Admin hoặc phòng ban HT / TN
-bool allowSelect =
-    IsAdmin() ||
-    string.Equals(pb1, "PB003", StringComparison.OrdinalIgnoreCase) || // HT
-    string.Equals(pb1, "PB004", StringComparison.OrdinalIgnoreCase);   // TN
+                // Kiểm tra quyền: Admin hoặc phòng ban HT / TN
+                bool allowSelect =
+                    IsAdmin() ||
+                    string.Equals(pb1, "PB003", StringComparison.OrdinalIgnoreCase) || // HT
+                    string.Equals(pb1, "PB004", StringComparison.OrdinalIgnoreCase);   // TN
 
-// Chỉ người được phép mới enable combobox
-cboNguoiPhuTrach.Enabled = allowSelect;
-cboThauPhu.Enabled       = allowSelect;
-cboLoaiChiTieu.Enabled   = allowSelect;
+                // Chỉ người được phép mới enable combobox
+                cboNguoiPhuTrach.Enabled = allowSelect;
+                cboThauPhu.Enabled = allowSelect;
+                cboLoaiChiTieu.Enabled = allowSelect;
 
-// Nếu bị khóa thì set màu nền xám nhẹ để người dùng thấy rõ
-if (!allowSelect)
-{
-    cboNguoiPhuTrach.FillColor = System.Drawing.Color.Gainsboro;
-    cboThauPhu.FillColor       = System.Drawing.Color.Gainsboro;
-    cboLoaiChiTieu.FillColor   = System.Drawing.Color.Gainsboro;
-}
+                // Nếu bị khóa thì set màu nền xám nhẹ để người dùng thấy rõ
+                if (!allowSelect)
+                {
+                    cboNguoiPhuTrach.FillColor = System.Drawing.Color.Gainsboro;
+                    cboThauPhu.FillColor = System.Drawing.Color.Gainsboro;
+                    cboLoaiChiTieu.FillColor = System.Drawing.Color.Gainsboro;
+                }
 
             }
             catch (Exception ex)
@@ -252,7 +252,7 @@ if (!allowSelect)
             Hide("LoaiChiTieuID"); Hide("DonViID");
             Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID");
             Hide("TenThongSo"); Hide("TenLoaiPhanTich");
-           Hide("GiaTriSo");
+            Hide("GiaTriSo");
             SetHeader("TenLoaiChiTieu", "Chỉ tiêu");
             SetHeader("TenDonVi", "Đơn vị");
             SetHeader("TenNguoiPhanTich", "Người phụ trách");
@@ -326,53 +326,53 @@ if (!allowSelect)
 
         // ============== NÚT ==============
         private void btnThem_Click(object sender, EventArgs e)
-{
-    var lct = cboLoaiChiTieu.SelectedValue?.ToString();
-    var nd  = cboNguoiPhuTrach.SelectedValue?.ToString();
-    var tp  = cboThauPhu.SelectedValue?.ToString();
-
-    if (string.IsNullOrWhiteSpace(lct) || string.IsNullOrWhiteSpace(nd))
-    {
-        MessageBox.Show("Chọn đủ Người phụ trách và Chỉ tiêu.");
-        return;
-    }
-
-    try
-    {
-        // Đơn vị mặc định theo LCT
-        var dv = _bll.GetDefaultDonViID_ByLoaiChiTieu(lct);
-        if (string.IsNullOrWhiteSpace(dv))
         {
-            MessageBox.Show("Không xác định được Đơn vị từ Chỉ tiêu.");
-            return;
-        }
-        const int PRECISION = 3; // đổi tuỳ bạn
-        // Lấy Giá trị chuẩn từ DTO LCT đang chọn (FLOAT)
-        float? giaTriChuan = null;
-        if (cboLoaiChiTieu.SelectedItem is DTO_LoaiChiTieu sel &&
-            !string.IsNullOrWhiteSpace(sel.GiaTriChuan))
-        {
-            var s = sel.GiaTriChuan.Replace(',', '.'); // chuẩn hoá dấu thập phân
-            if (float.TryParse(s, NumberStyles.Float | NumberStyles.AllowThousands,
-                   CultureInfo.InvariantCulture, out var fv))
-{
-    giaTriChuan = (float)Math.Round(fv, PRECISION, MidpointRounding.AwayFromZero);
-}
-        }
+            var lct = cboLoaiChiTieu.SelectedValue?.ToString();
+            var nd = cboNguoiPhuTrach.SelectedValue?.ToString();
+            var tp = cboThauPhu.SelectedValue?.ToString();
 
-        // Use BLL method that inserts for source ViTri and clones metadata across DonHang atomically
-        var key = _bll.InsertThongSoAndCloneAcrossDonHang(
-            _donHangID, _viTriID, _loaiViTriID, lct, dv, "LPA002", nd, tp, giaTriChuan);
+            if (string.IsNullOrWhiteSpace(lct) || string.IsNullOrWhiteSpace(nd))
+            {
+                MessageBox.Show("Chọn đủ Người phụ trách và Chỉ tiêu.");
+                return;
+            }
 
-        // Rebind và giữ dòng mới
-        ForceRebind(key);
-        // synchronization succeeded (silent)
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("Lỗi thêm thông số: " + ex.Message);
-    }
-}
+            try
+            {
+                // Đơn vị mặc định theo LCT
+                var dv = _bll.GetDefaultDonViID_ByLoaiChiTieu(lct);
+                if (string.IsNullOrWhiteSpace(dv))
+                {
+                    MessageBox.Show("Không xác định được Đơn vị từ Chỉ tiêu.");
+                    return;
+                }
+                const int PRECISION = 3; // đổi tuỳ bạn
+                                         // Lấy Giá trị chuẩn từ DTO LCT đang chọn (FLOAT)
+                float? giaTriChuan = null;
+                if (cboLoaiChiTieu.SelectedItem is DTO_LoaiChiTieu sel &&
+                    !string.IsNullOrWhiteSpace(sel.GiaTriChuan))
+                {
+                    var s = sel.GiaTriChuan.Replace(',', '.'); // chuẩn hoá dấu thập phân
+                    if (float.TryParse(s, NumberStyles.Float | NumberStyles.AllowThousands,
+                           CultureInfo.InvariantCulture, out var fv))
+                    {
+                        giaTriChuan = (float)Math.Round(fv, PRECISION, MidpointRounding.AwayFromZero);
+                    }
+                }
+
+                // Use BLL method that inserts for source ViTri and clones metadata across DonHang atomically
+                var key = _bll.InsertThongSoAndCloneAcrossDonHang(
+                    _donHangID, _viTriID, _loaiViTriID, lct, dv, "LPA002", nd, tp, giaTriChuan);
+
+                // Rebind và giữ dòng mới
+                ForceRebind(key);
+                // synchronization succeeded (silent)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi thêm thông số: " + ex.Message);
+            }
+        }
 
 
         private void btnLuu_Click(object sender, EventArgs e)

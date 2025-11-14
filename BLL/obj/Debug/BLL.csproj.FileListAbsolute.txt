@@ -161,3 +161,5 @@ D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\System.ValueTuple.dll
 C:\CNPM\Software-Engineering\BLL\bin\Debug\Newtonsoft.Json.dll
 C:\CNPM\Software-Engineering\BLL\bin\Debug\Newtonsoft.Json.xml
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Newtonsoft.Json.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\BLL\bin\Debug\Newtonsoft.Json.xml

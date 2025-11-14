@@ -2,6 +2,8 @@
 // UC_QuanLyKhachHang.cs  (.NET Framework 4.7.2)
 // CRUD + xem danh sách, chọn/xóa/sửa, tìm kiếm theo tên/MST/MãKH/Email/SĐT.
 // ========================================================
+using BLL;
+using Guna.UI2.WinForms;
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -9,8 +11,7 @@ using System.Drawing;
 using System.Linq;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
-using BLL;
-using Guna.UI2.WinForms;
+using static GUI.GUI_Form_DangNhap;
 
 namespace GUI
 {
@@ -62,6 +63,9 @@ namespace GUI
             PillStyler.SearchBox(ThanhTimKiem, _theme, "Tìm kiếm khách hàng...");
             LayoutFlowUnderToolbar();
             LoadDanhSachKhachHang();
+            btnSua.Enabled=IsKinhHoach();
+            btnXoa.Enabled=IsKinhHoach();
+            themkhachhang.Enabled=IsKinhHoach();
         }
 
         private void LayoutFlowUnderToolbar()
@@ -407,6 +411,12 @@ namespace GUI
             {
                 MessageBox.Show("❌ Lỗi: " + ex.Message);
             }
+        }
+        private bool IsKinhHoach()
+        {
+            var u = Session.CurrentUser;
+            return u != null &&
+                   string.Equals(u.PhongBanID, "PB001", StringComparison.OrdinalIgnoreCase)||string.Equals(u.PhongBanID, "PB006", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

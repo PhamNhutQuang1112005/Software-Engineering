@@ -301,139 +301,161 @@ namespace DAL
 
         // Transactional insert + clone across DonHang
         public string InsertThongSoAndCloneAcrossDonHang(
-            string donHangID,
-            string sourceViTriID,
-            string loaiViTriID,
-            string loaiChiTieuID,
-            string donViID,
-            string loaiPhanTichID,
-            string nguoiPhanTichID,
-            string thauPhuID,
-            float? giaTriQuyChuan)
+    string donHangID,
+    string sourceViTriID,
+    string loaiViTriID,
+    string loaiChiTieuID,
+    string donViID,
+    string loaiPhanTichID,
+    string nguoiPhanTichID,
+    string thauPhuID,
+    float? giaTriQuyChuan)
+{
+    if (string.IsNullOrWhiteSpace(donHangID)) throw new ArgumentNullException(nameof(donHangID));
+    if (string.IsNullOrWhiteSpace(sourceViTriID)) throw new ArgumentNullException(nameof(sourceViTriID));
+
+    using (SqlConnection cn = NewConn())
+    {
+        cn.Open();
+        using (SqlTransaction tx = cn.BeginTransaction())
         {
-            if (string.IsNullOrWhiteSpace(donHangID)) throw new ArgumentNullException(nameof(donHangID));
-            if (string.IsNullOrWhiteSpace(sourceViTriID)) throw new ArgumentNullException(nameof(sourceViTriID));
-
-            using (SqlConnection cn = NewConn())
+            try
             {
-                cn.Open();
-                using (SqlTransaction tx = cn.BeginTransaction())
+                // 1) Lấy tất cả ViTriID của đơn hàng bằng SP có sẵn: [dbo].[sp_GetViTriByDonHang]
+                var viTriList = new List<string>();
+                using (SqlCommand cmd = new SqlCommand("[dbo].[sp_GetViTriByDonHang]", cn, tx))
                 {
-                    try
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@DonHangID", donHangID);
+
+                    using (var rdr = cmd.ExecuteReader())
                     {
-                        // 1) get all ViTriIDs for the DonHang (use direct query within transaction)
-                        var viTriList = new List<string>();
-                        using (SqlCommand cmd = new SqlCommand("SELECT ViTriID FROM dbo.ViTriLayMau WHERE DonHangID = @DonHangID", cn, tx))
+                        while (rdr.Read())
                         {
-                            cmd.Parameters.AddWithValue("@DonHangID", donHangID);
-                            using (var rdr = cmd.ExecuteReader())
-                            {
-                                while (rdr.Read())
-                                {
-                                    viTriList.Add(rdr.GetString(0));
-                                }
-                            }
+                            viTriList.Add(rdr.GetString(0));
                         }
-
-                        if (viTriList.Count == 0)
-                        {
-                            tx.Commit();
-                            return null;
-                        }
-
-                        // Helper local function to insert via SP within this transaction
-                        Func<string, string> insertOne = (vtId) =>
-                        {
-                            string key = "TS_" + Guid.NewGuid().ToString("N").Substring(0, 8);
-                            using (SqlCommand cmd = new SqlCommand("dbo.sp_InsertThongSoMoi_WithLoai", cn, tx))
-                            {
-                                cmd.CommandType = CommandType.StoredProcedure;
-                                cmd.Parameters.AddWithValue("@ViTriID", vtId);
-                                cmd.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
-                                cmd.Parameters.AddWithValue("@TenThongSo", key);
-                                cmd.Parameters.AddWithValue("@LoaiChiTieuID", loaiChiTieuID ?? (object)DBNull.Value);
-                                cmd.Parameters.AddWithValue("@DonViID", donViID ?? (object)DBNull.Value);
-                                cmd.Parameters.AddWithValue("@LoaiPhanTichID", loaiPhanTichID ?? (object)DBNull.Value);
-                                cmd.Parameters.AddWithValue("@NguoiPhanTichID", nguoiPhanTichID ?? (object)DBNull.Value);
-                                cmd.Parameters.AddWithValue("@ThauPhuID", string.IsNullOrWhiteSpace(thauPhuID) ? (object)DBNull.Value : (object)thauPhuID);
-
-                                var p = cmd.Parameters.Add("@GiaTriQuyChuan", SqlDbType.Float);
-                                p.Value = giaTriQuyChuan.HasValue ? (object)giaTriQuyChuan.Value : (object)DBNull.Value;
-
-                                // do not rely on ExecuteNonQuery() return value when SP uses SET NOCOUNT ON
-                                cmd.ExecuteNonQuery();
-                                return key;
-                            }
-                        };
-
-                        string sourceKey = null;
-
-                        // 2) For each viTri in list, check mapping and existence
-                        foreach (var vt in viTriList)
-                        {
-                            // check mapping ViTri_LoaiViTri
-                            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(1) FROM dbo.ViTri_LoaiViTri WHERE ViTriID = @ViTriID AND LoaiViTriID = @LoaiViTriID", cn, tx))
-                            {
-                                cmd.Parameters.AddWithValue("@ViTriID", vt);
-                                cmd.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
-                                var cnt = Convert.ToInt32(cmd.ExecuteScalar() ?? 0);
-                                if (cnt == 0) continue; // this viTri does not have the LoaiViTri mapping
-                            }
-
-                            // check existence of same LoaiChiTieu for this viTri
-                            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(1) FROM dbo.ThongSoMoiTruong WHERE ViTriID = @ViTriID AND LoaiChiTieuID = @LoaiChiTieuID", cn, tx))
-                            {
-                                cmd.Parameters.AddWithValue("@ViTriID", vt);
-                                cmd.Parameters.AddWithValue("@LoaiChiTieuID", loaiChiTieuID ?? (object)DBNull.Value);
-                                var cnt = Convert.ToInt32(cmd.ExecuteScalar() ?? 0);
-                                if (cnt > 0) continue; // already exists
-                            }
-
-                            // insert
-                            var key = insertOne(vt);
-
-                            // remember source key for sourceViTriID
-                            if (string.Equals(vt, sourceViTriID, StringComparison.OrdinalIgnoreCase))
-                                sourceKey = key;
-                        }
-
-                        // If source key is still null (e.g. sourceViTriID was not in viTriList because mapping missing), try inserting for source specifically
-                        if (sourceKey == null)
-                        {
-                            // ensure source ViTri has mapping
-                            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(1) FROM dbo.ViTri_LoaiViTri WHERE ViTriID = @ViTriID AND LoaiViTriID = @LoaiViTriID", cn, tx))
-                            {
-                                cmd.Parameters.AddWithValue("@ViTriID", sourceViTriID);
-                                cmd.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
-                                var cnt = Convert.ToInt32(cmd.ExecuteScalar() ?? 0);
-                                if (cnt > 0)
-                                {
-                                    // check existence
-                                    using (SqlCommand cmd2 = new SqlCommand("SELECT COUNT(1) FROM dbo.ThongSoMoiTruong WHERE ViTriID = @ViTriID AND LoaiChiTieuID = @LoaiChiTieuID", cn, tx))
-                                    {
-                                        cmd2.Parameters.AddWithValue("@ViTriID", sourceViTriID);
-                                        cmd2.Parameters.AddWithValue("@LoaiChiTieuID", loaiChiTieuID ?? (object)DBNull.Value);
-                                        var cnt2 = Convert.ToInt32(cmd2.ExecuteScalar() ?? 0);
-                                        if (cnt2 == 0)
-                                        {
-                                            sourceKey = insertOne(sourceViTriID);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        tx.Commit();
-                        return sourceKey;
-                    }
-                    catch
-                    {
-                        try { tx.Rollback(); } catch { }
-                        throw;
                     }
                 }
+
+                if (viTriList.Count == 0)
+                {
+                    tx.Commit();
+                    return null;
+                }
+
+                // Helper: insert 1 thông số cho 1 vị trí
+                Func<string, string> insertOne = (vtId) =>
+                {
+                    string key = "TS_" + Guid.NewGuid().ToString("N").Substring(0, 8);
+                    using (SqlCommand cmd = new SqlCommand("[dbo].[sp_InsertThongSoMoi_WithLoai]", cn, tx))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ViTriID", vtId);
+                        cmd.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
+                        cmd.Parameters.AddWithValue("@TenThongSo", key);
+                        cmd.Parameters.AddWithValue("@LoaiChiTieuID", (object)loaiChiTieuID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@DonViID", (object)donViID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@LoaiPhanTichID", (object)loaiPhanTichID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@NguoiPhanTichID", (object)nguoiPhanTichID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ThauPhuID",
+                            string.IsNullOrWhiteSpace(thauPhuID) ? (object)DBNull.Value : thauPhuID);
+
+                        var p = cmd.Parameters.Add("@GiaTriQuyChuan", SqlDbType.Float);
+                        p.Value = giaTriQuyChuan.HasValue
+                            ? (object)giaTriQuyChuan.Value
+                            : (object)DBNull.Value;
+
+                        cmd.ExecuteNonQuery();
+                        return key;
+                    }
+                };
+
+                string sourceKey = null;
+
+                // 2) Với mỗi vị trí trong đơn hàng
+                foreach (var vt in viTriList)
+                {
+                    // 2.1) Check mapping ViTri_LoaiViTri bằng SP mới: dbo.sp_ViTri_LoaiViTri_Exists
+                    int hasMapping;
+                    using (SqlCommand cmd = new SqlCommand("dbo.sp_ViTri_LoaiViTri_Exists", cn, tx))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ViTriID", vt);
+                        cmd.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
+
+                        hasMapping = Convert.ToInt32(cmd.ExecuteScalar() ?? 0);
+                    }
+                    if (hasMapping == 0)
+                        continue; // vị trí này không gắn loại vị trí đó => bỏ qua
+
+                    // 2.2) Check đã có thông số này cho (ViTriID + LoaiViTriID + LoaiChiTieuID) chưa
+                    int existed;
+                    using (SqlCommand cmd = new SqlCommand("dbo.sp_ThongSo_Exists_ByViTriLoaiChiTieu", cn, tx))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ViTriID", vt);
+                        cmd.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
+                        cmd.Parameters.AddWithValue("@LoaiChiTieuID", (object)loaiChiTieuID ?? DBNull.Value);
+
+                        existed = Convert.ToInt32(cmd.ExecuteScalar() ?? 0);
+                    }
+                    if (existed > 0)
+                        continue; // đã có rồi cho đúng loại vị trí này
+
+                    // 2.3) Insert
+                    var key = insertOne(vt);
+
+                    if (string.Equals(vt, sourceViTriID, StringComparison.OrdinalIgnoreCase))
+                        sourceKey = key;
+                }
+
+                // 3) Nếu vì lý do gì sourceKey vẫn null => xử lý riêng sourceViTriID
+                if (sourceKey == null)
+                {
+                    // 3.1) Check mapping cho source
+                    int hasMapping;
+                    using (SqlCommand cmd = new SqlCommand("dbo.sp_ViTri_LoaiViTri_Exists", cn, tx))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ViTriID", sourceViTriID);
+                        cmd.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
+
+                        hasMapping = Convert.ToInt32(cmd.ExecuteScalar() ?? 0);
+                    }
+
+                    if (hasMapping > 0)
+                    {
+                        // 3.2) Check đã có thông số cho source chưa
+                        int existed;
+                        using (SqlCommand cmd2 = new SqlCommand("dbo.sp_ThongSo_Exists_ByViTriLoaiChiTieu", cn, tx))
+                        {
+                            cmd2.CommandType = CommandType.StoredProcedure;
+                            cmd2.Parameters.AddWithValue("@ViTriID", sourceViTriID);
+                            cmd2.Parameters.AddWithValue("@LoaiViTriID", loaiViTriID);
+                            cmd2.Parameters.AddWithValue("@LoaiChiTieuID", (object)loaiChiTieuID ?? DBNull.Value);
+
+                            existed = Convert.ToInt32(cmd2.ExecuteScalar() ?? 0);
+                        }
+
+                        if (existed == 0)
+                        {
+                            sourceKey = insertOne(sourceViTriID);
+                        }
+                    }
+                }
+
+                tx.Commit();
+                return sourceKey;
+            }
+            catch
+            {
+                try { tx.Rollback(); } catch { }
+                throw;
             }
         }
+    }
+}
+
 
         // DAL_ThongSoQuanTrac.cs
         public string InsertThongSoMoi_ReturnKey_WithLoai(

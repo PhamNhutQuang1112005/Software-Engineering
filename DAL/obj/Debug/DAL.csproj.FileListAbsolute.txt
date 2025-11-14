@@ -36,3 +36,5 @@ C:\CNPM\Software-Engineering\DAL\bin\Debug\DTO.pdb
 C:\CNPM\Software-Engineering\DAL\obj\Debug\DAL.csproj.Up2Date
 C:\CNPM\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.dll
 C:\CNPM\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.dll
+D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.xml
