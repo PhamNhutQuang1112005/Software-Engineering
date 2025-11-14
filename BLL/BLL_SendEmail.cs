@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using DAL;
 using DTO;
@@ -112,6 +114,45 @@ namespace BLL
                 Console.WriteLine("Lỗi gửi mail đơn hàng sắp hết hạn: " + ex.Message);
             }
         }
+        private string GetEmailTruongPhongKetQua()
+        {
+            var dt = DAL_SendEmail.LayEmailTruongPhongKetQua();
+            if (dt == null || dt.Rows.Count == 0)
+                return null;
+
+            return dt.Rows[0]["Email"].ToString();
+        }
+
+        // Hàm gửi PDF về gmail trưởng phòng
+        public bool SendKetQuaPDF(string pdfPath)
+        {
+            try
+            {
+                string toEmail = GetEmailTruongPhongKetQua();
+                if (string.IsNullOrEmpty(toEmail))
+                    throw new Exception("Không lấy được email trưởng phòng kết quả.");
+
+                string subject = "BÁO CÁO KẾT QUẢ PHÂN TÍCH";
+                string body =
+                    "Kính gửi Trưởng phòng Kết quả,\n\n" +
+                    "Hệ thống gửi đến Anh/Chị file kết quả phân tích mới nhất.\n\n" +
+                    "Trân trọng.";
+
+                var dal = new DAL_SendEmail();
+                bool ok = dal.SendEmailWithAttachment(toEmail, subject, body, pdfPath);
+
+                if (!ok)
+                    throw new Exception("DAL_SendEmail trả về false — gửi mail thất bại.");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // ném lỗi ra GUI để GUI hiển thị
+                throw new Exception("SendKetQuaPDF ERROR: " + ex.Message);
+            }
+        }
+
         public class DonHang
         {
             public string MaDon { get; set; }

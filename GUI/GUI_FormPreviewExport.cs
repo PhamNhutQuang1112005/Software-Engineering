@@ -77,8 +77,7 @@ namespace GUI
                     try
                     {
                         var ok = OnExport(_data);
-                        if (ok)
-                            MessageBox.Show("Xuất PDF thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     catch (Exception ex)
                     {

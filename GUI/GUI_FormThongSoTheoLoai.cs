@@ -251,7 +251,7 @@ if (!allowSelect)
             Hide("ViTriID"); Hide("LoaiViTriID");
             Hide("LoaiChiTieuID"); Hide("DonViID");
             Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID");
-            Hide("TenThongSo");
+            Hide("TenThongSo"); Hide("TenLoaiPhanTich");
            Hide("GiaTriSo");
             SetHeader("TenLoaiChiTieu", "Chỉ tiêu");
             SetHeader("TenDonVi", "Đơn vị");
@@ -389,11 +389,51 @@ if (!allowSelect)
 
             try
             {
+                // =========================================
+                // 1) AUTO UPDATE KẾT LUẬN TRƯỚC KHI LƯU
+                // =========================================
+                foreach (DataRow row in changes.Rows)
+                {
+                    if (row.RowState == DataRowState.Deleted) continue;
+
+                    // Lấy 2 cột liên quan
+                    float giaTri = 0;
+                    float quyChuan = 0;
+
+                    float.TryParse(Convert.ToString(row["GiaTri"]), out giaTri);
+                    float.TryParse(Convert.ToString(row["GiaTriQuyChuan"]), out quyChuan);
+
+                    string ketLuan;
+
+                    // --- Logic kết luận ---
+                    if (giaTri < 0)
+                    {
+                        ketLuan = "Không đạt";
+                    }
+                    else if (quyChuan > 0 && giaTri >= 2 * quyChuan)
+                    {
+                        ketLuan = "Không đạt";
+                    }
+                    else
+                    {
+                        ketLuan = "Đạt";
+                    }
+
+                    row["KetLuan"] = ketLuan;
+                }
+
+                // =========================================
+                // 2) LƯU VÀO DB
+                // =========================================
                 _bll.UpdateThongSo(changes);
 
+                // =========================================
+                // 3) REBIND & GIỮ DÒNG CŨ
+                // =========================================
                 string keep = null;
                 if (dgv.CurrentRow != null && dgv.Columns.Contains("TenThongSo"))
                     keep = Convert.ToString(dgv.CurrentRow.Cells["TenThongSo"].Value);
+
                 ForceRebind(keep);
 
                 MessageBox.Show("Đã lưu thay đổi.");
@@ -403,6 +443,7 @@ if (!allowSelect)
                 MessageBox.Show("Lỗi lưu: " + ex.Message);
             }
         }
+
 
         private void btnXoa_Click(object sender, EventArgs e)
         {

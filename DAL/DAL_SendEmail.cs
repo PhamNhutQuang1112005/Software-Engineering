@@ -90,6 +90,50 @@ namespace DAL
                 return dt;
             }
         }
+        public static DataTable LayEmailTruongPhongKetQua()
+        {
+            using (var conn = DBConnection.GetConnection())
+            using (var cmd = new SqlCommand("sp_LayEmailTruongPhongKetQua", conn))
+            using (var da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                var dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+        public bool SendEmailWithAttachment(string toEmail, string subject, string body, string filePath)
+        {
+            try
+            {
+                using (var mail = new MailMessage())
+                {
+                    mail.From = new MailAddress(fromEmail, "Hệ thống thông báo");
+                    mail.To.Add(toEmail);
+                    mail.Subject = subject;
+                    mail.Body = body;
+
+                    // file đính kèm
+                    mail.Attachments.Add(new Attachment(filePath));
+
+                    using (var smtp = NewSmtpClient())
+                    {
+                        smtp.Send(mail);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi gửi mail: " + ex.Message);
+                return false;
+            }
+        }
+
+
+
 
     }
 }

@@ -34,6 +34,7 @@ namespace GUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GUI_FormDonHangChiTiet));
             this.header = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.btnThemChiTieu = new Guna.UI2.WinForms.Guna2Button();
             this.lblDonHang = new System.Windows.Forms.Label();
             this.lblDiaChi = new System.Windows.Forms.Label();
             this.splitMain = new System.Windows.Forms.SplitContainer();
@@ -46,7 +47,6 @@ namespace GUI
             this.btnThemLoai = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoaLoai = new Guna.UI2.WinForms.Guna2Button();
             this.btnOpenThongSo = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThemChiTieu = new Guna.UI2.WinForms.Guna2Button();
             this.header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
@@ -71,6 +71,21 @@ namespace GUI
             this.header.Padding = new System.Windows.Forms.Padding(16, 10, 16, 10);
             this.header.Size = new System.Drawing.Size(1062, 74);
             this.header.TabIndex = 1;
+            // 
+            // btnThemChiTieu
+            // 
+            this.btnThemChiTieu.AutoRoundedCorners = true;
+            this.btnThemChiTieu.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnThemChiTieu.BorderRadius = 15;
+            this.btnThemChiTieu.FillColor = System.Drawing.Color.SeaGreen;
+            this.btnThemChiTieu.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnThemChiTieu.ForeColor = System.Drawing.Color.White;
+            this.btnThemChiTieu.Location = new System.Drawing.Point(835, 24);
+            this.btnThemChiTieu.Name = "btnThemChiTieu";
+            this.btnThemChiTieu.Size = new System.Drawing.Size(189, 32);
+            this.btnThemChiTieu.TabIndex = 3;
+            this.btnThemChiTieu.Text = "Thêm chỉ tiêu";
+            this.btnThemChiTieu.Click += new System.EventHandler(this.btnThemChiTieu_Click);
             // 
             // lblDonHang
             // 
@@ -232,20 +247,6 @@ namespace GUI
             this.btnOpenThongSo.TabIndex = 2;
             this.btnOpenThongSo.Text = "Thông số…";
             this.btnOpenThongSo.Click += new System.EventHandler(this.btnOpenThongSo_Click);
-            // 
-            // btnThemChiTieu
-            // 
-            this.btnThemChiTieu.AutoRoundedCorners = true;
-            this.btnThemChiTieu.BorderRadius = 15;
-            this.btnThemChiTieu.FillColor = System.Drawing.Color.SeaGreen;
-            this.btnThemChiTieu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnThemChiTieu.ForeColor = System.Drawing.Color.White;
-            this.btnThemChiTieu.Location = new System.Drawing.Point(810, 24);
-            this.btnThemChiTieu.Name = "btnThemChiTieu";
-            this.btnThemChiTieu.Size = new System.Drawing.Size(240, 32);
-            this.btnThemChiTieu.TabIndex = 3;
-            this.btnThemChiTieu.Text = "Thêm chỉ tiêu";
-            this.btnThemChiTieu.Click += new System.EventHandler(this.btnThemChiTieu_Click);
             // 
             // GUI_FormDonHangChiTiet
             // 

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Forms;
 using BLL;
 using Guna.UI2.WinForms;
+using static BLL.BLL_SendEmail;
 
 namespace GUI
 {
@@ -725,15 +726,35 @@ namespace GUI
                         })
                         {
                             if (sfd.ShowDialog(this) != DialogResult.OK) return false;
+
+                            // 1) Xuất PDF trước
                             bool ok = BLL_PDFExporter.ExportKetQuaPhanTich(_selectedId, tenLoaiFull, table, sfd.FileName);
-                            if (ok)
-                                MessageBox.Show("Xuất PDF thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            return ok;
+
+                            if (!ok)
+                            {
+                                MessageBox.Show("Xuất PDF thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return false;
+                            }
+
+                            MessageBox.Show("Xuất PDF thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            // 2) Gửi email
+                            var bllMail = new BLL_SendEmail();
+                            bool done = bllMail.SendKetQuaPDF(sfd.FileName);
+
+                            if (done)
+                                MessageBox.Show("Đã gửi kết quả cho Trưởng phòng!", "Thông báo");
+                            else
+                                MessageBox.Show("Không gửi được email!", "Lỗi");
+
+                            return true;
+
                         }
                     };
                     prev.ShowDialog(this);
                 }
             }
+            
         }
 
         // Paint handler stub (Designer is wired to it)
