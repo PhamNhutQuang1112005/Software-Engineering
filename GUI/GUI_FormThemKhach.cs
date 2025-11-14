@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Linq; // để duyệt Application.OpenForms
 using BLL;
-
+using GUI;
 namespace GUI
 {
     public partial class GUI_FormThemKhach : Form
@@ -13,7 +13,7 @@ namespace GUI
         private readonly string khachHangID;
         private readonly DataRow rowToEdit;
         private readonly BLL_ThongSoQuanTrac _bllViTri = new BLL_ThongSoQuanTrac(); // dùng để update địa chỉ vị trí
-
+        UC_QuanLyKhachHang n = new UC_QuanLyKhachHang();
         public GUI_FormThemKhach()
         {
             InitializeComponent();
@@ -84,6 +84,9 @@ namespace GUI
                 txtDiaChi.Text = rowToEdit["DiaChi"]?.ToString();
                 txtGhiChu.Text = rowToEdit["GhiChu"]?.ToString();
             }
+           
+            btnLuu.Enabled = n.IsKinhHoach();
+
         }
 
         private bool ValidateInputs(out string message)

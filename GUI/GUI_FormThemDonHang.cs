@@ -13,7 +13,7 @@ namespace GUI
         private string _donHangID;
         private DataTable dtKhachHangGoc;
         public string SavedDonHangID { get; private set; }
-
+        UC_QuanLyKhachHang c= new UC_QuanLyKhachHang();
 
 
         public GUI_FormThemDonHang()
@@ -31,7 +31,7 @@ namespace GUI
         private void GUI_FormThemDonHang_Load(object sender, EventArgs e)
         {
            
-
+            guna2Button5.Enabled= c.IsKinhHoach();
             // Nguồn dữ liệu
             dtKhachHangGoc = BLL_KhachHang.GetAllKhachHang();
             guna2ComboBox1.DataSource = dtKhachHangGoc;

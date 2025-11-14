@@ -16,6 +16,7 @@ namespace GUI
 {
     public partial class UC_QuanLyHopDong : UserControl
     {
+        UC_QuanLyKhachHang c =new UC_QuanLyKhachHang();
         private readonly Btnbeautifull _theme = new Btnbeautifull()
         {
             Text = Color.White,
@@ -71,6 +72,9 @@ namespace GUI
                 if (ThanhTimKiem != null) PillStyler.SearchBox(ThanhTimKiem, _theme, ThanhTimKiem.PlaceholderText);
             }
             catch { }
+            themhopdong.Enabled=c.IsKinhHoach();
+            xoahopdong.Enabled=c.IsKinhHoach();
+            suahopdong.Enabled=c.IsKinhHoach();
         }
 
         private void EnsureFlow()

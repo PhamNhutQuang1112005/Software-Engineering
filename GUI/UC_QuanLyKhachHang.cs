@@ -412,11 +412,17 @@ namespace GUI
                 MessageBox.Show("❌ Lỗi: " + ex.Message);
             }
         }
-        private bool IsKinhHoach()
+       public bool IsKinhHoach()
         {
             var u = Session.CurrentUser;
             return u != null &&
                    string.Equals(u.PhongBanID, "PB001", StringComparison.OrdinalIgnoreCase)||string.Equals(u.PhongBanID, "PB006", StringComparison.OrdinalIgnoreCase);
+        }
+        public bool IsKetQua()
+        {
+            var u = Session.CurrentUser;
+            return u != null &&
+                   string.Equals(u.PhongBanID, "PB005", StringComparison.OrdinalIgnoreCase)||string.Equals(u.PhongBanID, "PB006", StringComparison.OrdinalIgnoreCase);
         }
     }
 }

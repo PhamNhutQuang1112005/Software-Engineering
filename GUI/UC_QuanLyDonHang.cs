@@ -14,7 +14,7 @@ namespace GUI
     {
         private string _selectedId = null;
         private Guna2Panel _selectedCard = null;
-
+        UC_QuanLyKhachHang c= new UC_QuanLyKhachHang();
         // Cache
         private DataTable _rawDonHang;   // từ BLL_DonHang.GetAllDonHang()
         private DataTable _viewDonHang;  // đã enrich để hiển thị & lọc
@@ -71,6 +71,10 @@ namespace GUI
             EnsureFlow();
             LayoutFlowUnderToolbar();
             ReloadAll();
+            btnXuatPDF.Enabled= c.IsKetQua();
+            themdonhang.Enabled= c.IsKinhHoach();
+            guna2Button2.Enabled= c.IsKinhHoach();
+            guna2Button3.Enabled= c.IsKinhHoach();
         }
 
         // =============== Layout helpers ===============
