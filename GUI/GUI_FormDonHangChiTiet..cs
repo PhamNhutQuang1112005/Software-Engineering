@@ -400,7 +400,7 @@ namespace GUI
                                 _bll.AddLoaiViTriToViTri(vtId, tenLoai);
                             }
                         }
-                        MessageBox.Show("Đã đồng bộ loại vị trí đến mọi vị trí của đơn hàng.");
+                        // synchronization completed silently (removed debug popup)
                     }
                     catch (Exception exSync)
                     {

@@ -253,7 +253,6 @@ if (!allowSelect)
             Hide("LoaiPhanTichID"); Hide("NguoiPhanTichID"); Hide("ThauPhuID");
             Hide("TenThongSo");
            Hide("GiaTriSo");
-            Hide("TenLoaiPhanTich");
             SetHeader("TenLoaiChiTieu", "Chỉ tiêu");
             SetHeader("TenDonVi", "Đơn vị");
             SetHeader("TenNguoiPhanTich", "Người phụ trách");
@@ -361,27 +360,13 @@ if (!allowSelect)
 }
         }
 
-        // Insert (lưu ý bạn đang cố định LoaiPhanTichID = "LPA002")
-        var key = _bll.InsertThongSoMoi_ReturnKey_WithLoai(_viTriID, _loaiViTriID, lct, dv, "LPA002", nd, tp,giaTriChuan);
-
-        // Cập nhật ngay Giá trị chuẩn cho thông số vừa thêm (nếu có)
-        if (!string.IsNullOrEmpty(key) && giaTriChuan.HasValue)
-        {
-            var dtUpd = new DataTable();
-            dtUpd.Columns.Add("TenThongSo",     typeof(string));
-            dtUpd.Columns.Add("GiaTriQuyChuan", typeof(float));  // float
-
-            var r = dtUpd.NewRow();
-            r["TenThongSo"]     = key;               // khoá theo TenThongSo như logic hiện tại
-            r["GiaTriQuyChuan"] = giaTriChuan.Value; // float value
-            dtUpd.Rows.Add(r);
-
-            _bll.UpdateThongSo(dtUpd);
-        }
+        // Use BLL method that inserts for source ViTri and clones metadata across DonHang atomically
+        var key = _bll.InsertThongSoAndCloneAcrossDonHang(
+            _donHangID, _viTriID, _loaiViTriID, lct, dv, "LPA002", nd, tp, giaTriChuan);
 
         // Rebind và giữ dòng mới
         ForceRebind(key);
-        MessageBox.Show("Đã thêm thông số.");
+        // synchronization succeeded (silent)
     }
     catch (Exception ex)
     {

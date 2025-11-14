@@ -43,6 +43,22 @@ namespace BLL
         public DataTable GetThongSoByViTri(string viTriID)                          { return _dal.GetThongSoByViTri(viTriID); }
         public DataTable GetThongSoByViTriLoai(string viTriID, string loaiViTriID)  { return _dal.GetThongSoByViTriLoai(viTriID, loaiViTriID); }
 
+        // New wrapper: insert one ThongSo for source ViTri and clone metadata to other ViTri of the DonHang
+        public string InsertThongSoAndCloneAcrossDonHang(
+            string donHangID,
+            string sourceViTriID,
+            string loaiViTriID,
+            string loaiChiTieuID,
+            string donViID,
+            string loaiPhanTichID,
+            string nguoiPhanTichID,
+            string thauPhuID,
+            float? giaTriQuyChuan)
+        {
+            return _dal.InsertThongSoAndCloneAcrossDonHang(donHangID, sourceViTriID, loaiViTriID,
+                loaiChiTieuID, donViID, loaiPhanTichID, nguoiPhanTichID, thauPhuID, giaTriQuyChuan);
+        }
+
         
 
         // BLL_ThongSoQuanTrac.cs
