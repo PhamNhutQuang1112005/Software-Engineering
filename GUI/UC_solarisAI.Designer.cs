@@ -54,7 +54,7 @@ namespace GUI
             this.ohoithoai.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.ohoithoai.FillColor = System.Drawing.Color.WhiteSmoke;
             this.ohoithoai.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ohoithoai.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.ohoithoai.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ohoithoai.ForeColor = System.Drawing.Color.Black;
             this.ohoithoai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.ohoithoai.Location = new System.Drawing.Point(179, 373);
@@ -69,11 +69,11 @@ namespace GUI
             // AI_respond
             // 
             this.AI_respond.BackColor = System.Drawing.Color.Transparent;
-            this.AI_respond.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.AI_respond.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AI_respond.ForeColor = System.Drawing.Color.White;
             this.AI_respond.Location = new System.Drawing.Point(195, 84);
             this.AI_respond.Name = "AI_respond";
-            this.AI_respond.Size = new System.Drawing.Size(408, 25);
+            this.AI_respond.Size = new System.Drawing.Size(592, 37);
             this.AI_respond.TabIndex = 41;
             this.AI_respond.Text = "Xin chào! Tôi là Solaris, tôi có thể giúp gì cho bạn?";
             // 
@@ -87,17 +87,17 @@ namespace GUI
             this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(236, 137);
+            this.guna2TextBox1.Location = new System.Drawing.Point(179, 137);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox1.Multiline = true;
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(502, 201);
+            this.guna2TextBox1.Size = new System.Drawing.Size(605, 201);
             this.guna2TextBox1.TabIndex = 47;
             // 
             // guna2Button1
@@ -109,7 +109,7 @@ namespace GUI
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Black;
+            this.guna2Button1.FillColor = System.Drawing.Color.White;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
@@ -129,7 +129,7 @@ namespace GUI
             this.Controls.Add(this.ohoithoai);
             this.Controls.Add(this.anhsolarisAI);
             this.Name = "UC_solarisAI";
-            this.Size = new System.Drawing.Size(817, 460);
+            this.Size = new System.Drawing.Size(822, 460);
             ((System.ComponentModel.ISupportInitialize)(this.anhsolarisAI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
