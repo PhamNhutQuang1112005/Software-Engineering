@@ -64,6 +64,30 @@ namespace DAL
                 return dt;
             }
         }
+        public DataTable GetAllThongSoMoiTruong()
+        {
+            using (SqlConnection cn = NewConn())
+            using (SqlCommand cmd = new SqlCommand("dbo.sp_GetAllThongSoMoiTruong", cn))
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                DataTable dt = new DataTable();
+                cn.Open(); da.Fill(dt);
+                return dt;
+            }
+        }
+        public DataTable GetAllViTriLayMau()
+        {
+            using (SqlConnection cn = NewConn())
+            using (SqlCommand cmd = new SqlCommand("GetAllViTriLayMau", cn))
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                DataTable dt = new DataTable();
+                cn.Open(); da.Fill(dt);
+                return dt;
+            }
+        }
 
         public DataTable GetAllLoaiPhanTich()
         {
@@ -100,9 +124,9 @@ namespace DAL
             {
                 DTO_LoaiChiTieu x = new DTO_LoaiChiTieu();
                 x.LoaiChiTieuID = Convert.ToString(r["LoaiChiTieuID"]);
-                x.TenChiTieu    = Convert.ToString(r["TenChiTieu"]);
-                x.PhongBan     = Convert.ToString(r["PhongBan"]);
-                x.GiaTriChuan  = Convert.ToString(r["GiaTriChuan"]);
+                x.TenChiTieu = Convert.ToString(r["TenChiTieu"]);
+                x.PhongBan = Convert.ToString(r["PhongBan"]);
+                x.GiaTriChuan = Convert.ToString(r["GiaTriChuan"]);
                 if (dt.Columns.Contains("DonViID"))
                     x.DonViID = Convert.ToString(r["DonViID"]);
                 list.Add(x);
@@ -117,7 +141,7 @@ namespace DAL
             foreach (DataRow r in dt.Rows)
             {
                 DTO_DonVi x = new DTO_DonVi();
-                x.DonViID  = Convert.ToString(r["DonViID"]);
+                x.DonViID = Convert.ToString(r["DonViID"]);
                 x.TenDonVi = Convert.ToString(r["TenDonVi"]);
                 list.Add(x);
             }
@@ -132,7 +156,7 @@ namespace DAL
             {
                 DTO_LoaiPhanTich x = new DTO_LoaiPhanTich();
                 x.LoaiPhanTichID = Convert.ToString(r["LoaiPhanTichID"]);
-                x.TenLoai        = Convert.ToString(r["TenLoai"]);
+                x.TenLoai = Convert.ToString(r["TenLoai"]);
                 list.Add(x);
             }
             return list;
@@ -146,7 +170,7 @@ namespace DAL
             {
                 DTO_LoaiViTri x = new DTO_LoaiViTri();
                 x.LoaiViTriID = Convert.ToString(r["LoaiViTriID"]);
-                x.TenLoai     = Convert.ToString(r["TenLoai"]);
+                x.TenLoai = Convert.ToString(r["TenLoai"]);
                 list.Add(x);
             }
             return list;
@@ -202,7 +226,7 @@ namespace DAL
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ViTriID", viTriID);
                 cmd.Parameters.AddWithValue("@TenViTri", string.IsNullOrWhiteSpace(tenViTri) ? (object)DBNull.Value : tenViTri);
-                cmd.Parameters.AddWithValue("@DiaChi",   string.IsNullOrWhiteSpace(diaChi)   ? (object)DBNull.Value : diaChi);
+                cmd.Parameters.AddWithValue("@DiaChi", string.IsNullOrWhiteSpace(diaChi) ? (object)DBNull.Value : diaChi);
 
                 cn.Open();
                 cmd.ExecuteNonQuery();      // có NOCOUNT ON có thể trả -1/0
@@ -488,43 +512,43 @@ namespace DAL
                     string ten = Convert.ToString(r["TenThongSo"]);
 
                     bool hasLct = changes.Columns.Contains("LoaiChiTieuID");
-                    bool hasDv  = changes.Columns.Contains("DonViID");
+                    bool hasDv = changes.Columns.Contains("DonViID");
                     bool hasLpt = changes.Columns.Contains("LoaiPhanTichID");
-                    bool hasNd  = changes.Columns.Contains("NguoiPhanTichID");
-                    bool hasGT  = changes.Columns.Contains("GiaTri");
+                    bool hasNd = changes.Columns.Contains("NguoiPhanTichID");
+                    bool hasGT = changes.Columns.Contains("GiaTri");
                     bool hasGTS = changes.Columns.Contains("GiaTriSo");
                     bool hasGTQ = changes.Columns.Contains("GiaTriQuyChuan");
-                    bool hasKL  = changes.Columns.Contains("KetLuan");
-                    bool hasTP  = changes.Columns.Contains("ThauPhuID");
-                    bool hasLV  = changes.Columns.Contains("LoaiViTriID");
+                    bool hasKL = changes.Columns.Contains("KetLuan");
+                    bool hasTP = changes.Columns.Contains("ThauPhuID");
+                    bool hasLV = changes.Columns.Contains("LoaiViTriID");
 
                     using (SqlCommand cmd = new SqlCommand("dbo.sp_ThongSo_UpdateFull", cn))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
 
                         cmd.Parameters.AddWithValue("@TenThongSo", ten);
-                        cmd.Parameters.AddWithValue("@UpdLoaiChiTieuID",  hasLct ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@UpdDonViID",        hasDv  ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdLoaiChiTieuID", hasLct ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdDonViID", hasDv ? 1 : 0);
                         cmd.Parameters.AddWithValue("@UpdLoaiPhanTichID", hasLpt ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@UpdNguoiPhanTichID",hasNd  ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@UpdGiaTri",         hasGT  ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@UpdGiaTriSo",       hasGTS ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdNguoiPhanTichID", hasNd ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdGiaTri", hasGT ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdGiaTriSo", hasGTS ? 1 : 0);
                         cmd.Parameters.AddWithValue("@UpdGiaTriQuyChuan", hasGTQ ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@UpdKetLuan",        hasKL  ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@UpdThauPhuID",      hasTP  ? 1 : 0);
-                        cmd.Parameters.AddWithValue("@UpdLoaiViTriID",    hasLV  ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdKetLuan", hasKL ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdThauPhuID", hasTP ? 1 : 0);
+                        cmd.Parameters.AddWithValue("@UpdLoaiViTriID", hasLV ? 1 : 0);
 
-                        if (hasLct) cmd.Parameters.AddWithValue("@LoaiChiTieuID",  r["LoaiChiTieuID"]  ?? (object)DBNull.Value);
-                        if (hasDv)  cmd.Parameters.AddWithValue("@DonViID",        r["DonViID"]        ?? (object)DBNull.Value);
+                        if (hasLct) cmd.Parameters.AddWithValue("@LoaiChiTieuID", r["LoaiChiTieuID"] ?? (object)DBNull.Value);
+                        if (hasDv) cmd.Parameters.AddWithValue("@DonViID", r["DonViID"] ?? (object)DBNull.Value);
                         if (hasLpt) cmd.Parameters.AddWithValue("@LoaiPhanTichID", r["LoaiPhanTichID"] ?? (object)DBNull.Value);
-                        if (hasNd)  cmd.Parameters.AddWithValue("@NguoiPhanTichID",r["NguoiPhanTichID"]?? (object)DBNull.Value);
-                        if (hasTP)  cmd.Parameters.AddWithValue("@ThauPhuID",      r["ThauPhuID"]      ?? (object)DBNull.Value);
-                        if (hasLV)  cmd.Parameters.AddWithValue("@LoaiViTriID",    r["LoaiViTriID"]    ?? (object)DBNull.Value);
+                        if (hasNd) cmd.Parameters.AddWithValue("@NguoiPhanTichID", r["NguoiPhanTichID"] ?? (object)DBNull.Value);
+                        if (hasTP) cmd.Parameters.AddWithValue("@ThauPhuID", r["ThauPhuID"] ?? (object)DBNull.Value);
+                        if (hasLV) cmd.Parameters.AddWithValue("@LoaiViTriID", r["LoaiViTriID"] ?? (object)DBNull.Value);
 
-                        if (hasGT)  cmd.Parameters.AddWithValue("@GiaTri", r["GiaTri"] ?? (object)DBNull.Value);
+                        if (hasGT) cmd.Parameters.AddWithValue("@GiaTri", r["GiaTri"] ?? (object)DBNull.Value);
                         if (hasGTS) AddDecimal(cmd, "@GiaTriSo", r["GiaTriSo"], 18, 4);
                         if (hasGTQ) AddDecimal(cmd, "@GiaTriQuyChuan", r["GiaTriQuyChuan"], 18, 4);
-                        if (hasKL)  cmd.Parameters.AddWithValue("@KetLuan", r["KetLuan"] ?? (object)DBNull.Value);
+                        if (hasKL) cmd.Parameters.AddWithValue("@KetLuan", r["KetLuan"] ?? (object)DBNull.Value);
 
                         cmd.ExecuteNonQuery();
                     }
