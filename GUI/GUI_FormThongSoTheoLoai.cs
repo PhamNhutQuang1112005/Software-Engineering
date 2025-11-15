@@ -11,7 +11,7 @@ using static GUI.GUI_Form_DangNhap;
 
 namespace GUI
 {
-   
+
     public partial class GUI_FormThongSoTheoLoai : Form
     {
         // ==== Input context ====
@@ -21,7 +21,7 @@ namespace GUI
         private readonly string _tenDonHang;
         private readonly string _diaChi;
         private readonly string _tenLoaiViTri;
-        
+
         private bool IsAdmin()
         {
             var vt = Session.CurrentUser?.VaiTroID;
@@ -29,7 +29,7 @@ namespace GUI
             return string.Equals(vt, "VT001", StringComparison.OrdinalIgnoreCase)
                 && string.Equals(pb, "PB006", StringComparison.OrdinalIgnoreCase);
         }
-        
+
 
 
         // ==== Services ====
@@ -75,7 +75,7 @@ namespace GUI
                 if (row != null) diaChi = Convert.ToString(row["DiaChi"]);
             }
             lblDiaChi.Text = "Địa chỉ: " + (string.IsNullOrWhiteSpace(diaChi) ? "…" : diaChi);
-            
+
 
             dgv.DataSource = _bs;
 
@@ -89,15 +89,16 @@ namespace GUI
                     keep = Convert.ToString(dgv.CurrentRow.Cells["TenThongSo"].Value);
                 ForceRebind(keep);
             };
-            cboLoaiChiTieu.Enabled= IsKeHoach();
             cboNguoiPhuTrach.Enabled= IsKeHoach();
+            cboLoaiChiTieu.Enabled= IsKeHoach();
             cboThauPhu.Enabled= IsKeHoach();
+
         }
-         public bool IsKeHoach()
+        public bool IsKeHoach()
         {
             var u = Session.CurrentUser;
             return u != null &&
-                   string.Equals(u.PhongBanID, "PB002", StringComparison.OrdinalIgnoreCase)||string.Equals(u.PhongBanID, "PB006", StringComparison.OrdinalIgnoreCase);
+                   string.Equals(u.PhongBanID, "PB002", StringComparison.OrdinalIgnoreCase) || string.Equals(u.PhongBanID, "PB006", StringComparison.OrdinalIgnoreCase);
         }
         // ================== Load danh mục ==================
         private void LoadCombos()
@@ -128,12 +129,34 @@ namespace GUI
                     }).ToList();
 
                 // lọc theo session / admin
+                // lọc theo session / admin / kế hoạch
                 string myPB = Session.CurrentUser?.PhongBanID?.ToString();
-                _usersPB = IsAdmin()
-                    ? _usersAll.ToList()
-                    : (string.IsNullOrWhiteSpace(myPB)
-                        ? _usersAll.ToList()
-                        : _usersAll.Where(u => string.Equals(u.PhongBanID, myPB, StringComparison.OrdinalIgnoreCase)).ToList());
+
+                if (IsAdmin())
+                {
+                    // Admin thấy tất cả
+                    _usersPB = _usersAll.ToList();
+                }
+                else if (IsKeHoach())
+                {
+                    // Kế hoạch: được phép gán thông số cho cả Hiện trường (PB003) và Thí nghiệm (PB004)
+                    _usersPB = _usersAll
+                        .Where(u =>
+                            string.Equals(u.PhongBanID, "PB003", StringComparison.OrdinalIgnoreCase) || // Hiện trường
+                            string.Equals(u.PhongBanID, "PB004", StringComparison.OrdinalIgnoreCase))   // Thí nghiệm
+                        .ToList();
+                }
+                else if (!string.IsNullOrWhiteSpace(myPB))
+                {
+                    // Các phòng khác: chỉ thấy user trong phòng mình
+                    _usersPB = _usersAll
+                        .Where(u => string.Equals(u.PhongBanID, myPB, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
+                else
+                {
+                    _usersPB = _usersAll.ToList();
+                }
 
                 // build view (có guard tránh null)
                 var src = _usersPB ?? new List<DTO_NguoiDung>();
@@ -181,6 +204,7 @@ namespace GUI
                 // Kiểm tra quyền: Admin hoặc phòng ban HT / TN
                 bool allowSelect =
                     IsAdmin() ||
+                    IsKeHoach() ||
                     string.Equals(pb1, "PB003", StringComparison.OrdinalIgnoreCase) || // HT
                     string.Equals(pb1, "PB004", StringComparison.OrdinalIgnoreCase);   // TN
 
