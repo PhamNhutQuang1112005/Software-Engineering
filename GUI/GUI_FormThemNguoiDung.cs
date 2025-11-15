@@ -320,5 +320,44 @@ namespace GUI
         cboPhongBan.SelectedIndex = cboPhongBan.FindStringExact(r["TenPhongBan"]?.ToString() ?? "");
 }
 
+        private void cboPhongBan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenDangNhap_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMatKhau_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtHoTen_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSDT_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cboVaiTro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDiaChi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -60,84 +60,94 @@ namespace GUI
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(21, 16);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(215, 25);
+            this.lblTitle.Size = new System.Drawing.Size(164, 25);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Thêm Loại chỉ tiêu (LCT)";
+            this.lblTitle.Text = "Thêm loại chỉ tiêu\r\n";
             // 
             // lblTenChiTieu
             // 
             this.lblTenChiTieu.AutoSize = true;
+            this.lblTenChiTieu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTenChiTieu.ForeColor = System.Drawing.Color.White;
             this.lblTenChiTieu.Location = new System.Drawing.Point(23, 55);
             this.lblTenChiTieu.Name = "lblTenChiTieu";
-            this.lblTenChiTieu.Size = new System.Drawing.Size(75, 16);
+            this.lblTenChiTieu.Size = new System.Drawing.Size(96, 20);
             this.lblTenChiTieu.TabIndex = 1;
             this.lblTenChiTieu.Text = "Tên chỉ tiêu";
             // 
             // lblDonVi
             // 
             this.lblDonVi.AutoSize = true;
+            this.lblDonVi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDonVi.ForeColor = System.Drawing.Color.White;
             this.lblDonVi.Location = new System.Drawing.Point(23, 91);
             this.lblDonVi.Name = "lblDonVi";
-            this.lblDonVi.Size = new System.Drawing.Size(44, 16);
+            this.lblDonVi.Size = new System.Drawing.Size(56, 20);
             this.lblDonVi.TabIndex = 2;
             this.lblDonVi.Text = "Đơn vị";
             // 
             // lblPhongBan
             // 
             this.lblPhongBan.AutoSize = true;
+            this.lblPhongBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhongBan.ForeColor = System.Drawing.Color.White;
             this.lblPhongBan.Location = new System.Drawing.Point(23, 126);
             this.lblPhongBan.Name = "lblPhongBan";
-            this.lblPhongBan.Size = new System.Drawing.Size(72, 16);
+            this.lblPhongBan.Size = new System.Drawing.Size(88, 20);
             this.lblPhongBan.TabIndex = 3;
             this.lblPhongBan.Text = "Phòng ban";
             // 
             // lblGiaTriChuan
             // 
             this.lblGiaTriChuan.AutoSize = true;
+            this.lblGiaTriChuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGiaTriChuan.ForeColor = System.Drawing.Color.White;
             this.lblGiaTriChuan.Location = new System.Drawing.Point(23, 161);
             this.lblGiaTriChuan.Name = "lblGiaTriChuan";
-            this.lblGiaTriChuan.Size = new System.Drawing.Size(80, 16);
+            this.lblGiaTriChuan.Size = new System.Drawing.Size(105, 20);
             this.lblGiaTriChuan.TabIndex = 4;
             this.lblGiaTriChuan.Text = "Giá trị chuẩn";
             // 
             // txtTenChiTieu
             // 
-            this.txtTenChiTieu.Location = new System.Drawing.Point(137, 52);
+            this.txtTenChiTieu.Location = new System.Drawing.Point(167, 52);
+            this.txtTenChiTieu.Multiline = true;
             this.txtTenChiTieu.Name = "txtTenChiTieu";
-            this.txtTenChiTieu.Size = new System.Drawing.Size(308, 22);
+            this.txtTenChiTieu.Size = new System.Drawing.Size(278, 22);
             this.txtTenChiTieu.TabIndex = 5;
             // 
             // cboDonVi
             // 
             this.cboDonVi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDonVi.FormattingEnabled = true;
-            this.cboDonVi.Location = new System.Drawing.Point(137, 87);
+            this.cboDonVi.Location = new System.Drawing.Point(167, 86);
             this.cboDonVi.Name = "cboDonVi";
-            this.cboDonVi.Size = new System.Drawing.Size(308, 24);
+            this.cboDonVi.Size = new System.Drawing.Size(278, 24);
             this.cboDonVi.TabIndex = 6;
             // 
             // cboPhongBan
             // 
             this.cboPhongBan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPhongBan.FormattingEnabled = true;
-            this.cboPhongBan.Location = new System.Drawing.Point(137, 123);
+            this.cboPhongBan.Location = new System.Drawing.Point(167, 122);
             this.cboPhongBan.Name = "cboPhongBan";
-            this.cboPhongBan.Size = new System.Drawing.Size(308, 24);
+            this.cboPhongBan.Size = new System.Drawing.Size(278, 24);
             this.cboPhongBan.TabIndex = 7;
             // 
             // txtGiaTriChuan
             // 
-            this.txtGiaTriChuan.Location = new System.Drawing.Point(137, 158);
+            this.txtGiaTriChuan.Location = new System.Drawing.Point(167, 158);
             this.txtGiaTriChuan.Name = "txtGiaTriChuan";
-            this.txtGiaTriChuan.Size = new System.Drawing.Size(308, 22);
+            this.txtGiaTriChuan.Size = new System.Drawing.Size(278, 22);
             this.txtGiaTriChuan.TabIndex = 8;
             // 
             // btnLuu
             // 
             this.btnLuu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLuu.Location = new System.Drawing.Point(256, 203);
+            this.btnLuu.Location = new System.Drawing.Point(244, 196);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(91, 30);
             this.btnLuu.TabIndex = 9;
@@ -148,7 +158,7 @@ namespace GUI
             // btnHuy
             // 
             this.btnHuy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHuy.Location = new System.Drawing.Point(354, 203);
+            this.btnHuy.Location = new System.Drawing.Point(342, 196);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(91, 30);
             this.btnHuy.TabIndex = 10;
@@ -161,7 +171,7 @@ namespace GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(473, 251);
+            this.ClientSize = new System.Drawing.Size(461, 244);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.txtGiaTriChuan);

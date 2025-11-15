@@ -92,6 +92,7 @@ namespace GUI
             cboNguoiPhuTrach.Enabled= IsKeHoach();
             cboLoaiChiTieu.Enabled= IsKeHoach();
             cboThauPhu.Enabled= IsKeHoach();
+            btnXoa.Enabled= IsKeHoach();
 
         }
         public bool IsKeHoach()

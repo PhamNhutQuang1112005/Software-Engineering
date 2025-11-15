@@ -77,9 +77,10 @@ namespace GUI
             this.btnThemChiTieu.AutoRoundedCorners = true;
             this.btnThemChiTieu.BackColor = System.Drawing.Color.SeaGreen;
             this.btnThemChiTieu.BorderRadius = 15;
-            this.btnThemChiTieu.FillColor = System.Drawing.Color.SeaGreen;
+            this.btnThemChiTieu.BorderThickness = 1;
+            this.btnThemChiTieu.FillColor = System.Drawing.Color.White;
             this.btnThemChiTieu.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnThemChiTieu.ForeColor = System.Drawing.Color.White;
+            this.btnThemChiTieu.ForeColor = System.Drawing.Color.Black;
             this.btnThemChiTieu.Location = new System.Drawing.Point(835, 24);
             this.btnThemChiTieu.Name = "btnThemChiTieu";
             this.btnThemChiTieu.Size = new System.Drawing.Size(189, 32);
@@ -213,7 +214,7 @@ namespace GUI
             this.btnThemLoai.FillColor = System.Drawing.Color.SeaGreen;
             this.btnThemLoai.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnThemLoai.ForeColor = System.Drawing.Color.White;
-            this.btnThemLoai.Location = new System.Drawing.Point(8, 7);
+            this.btnThemLoai.Location = new System.Drawing.Point(42, 7);
             this.btnThemLoai.Name = "btnThemLoai";
             this.btnThemLoai.Size = new System.Drawing.Size(84, 32);
             this.btnThemLoai.TabIndex = 0;
@@ -227,7 +228,7 @@ namespace GUI
             this.btnXoaLoai.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.btnXoaLoai.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnXoaLoai.ForeColor = System.Drawing.Color.White;
-            this.btnXoaLoai.Location = new System.Drawing.Point(98, 7);
+            this.btnXoaLoai.Location = new System.Drawing.Point(132, 7);
             this.btnXoaLoai.Name = "btnXoaLoai";
             this.btnXoaLoai.Size = new System.Drawing.Size(60, 32);
             this.btnXoaLoai.TabIndex = 1;
@@ -241,7 +242,7 @@ namespace GUI
             this.btnOpenThongSo.FillColor = System.Drawing.Color.ForestGreen;
             this.btnOpenThongSo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnOpenThongSo.ForeColor = System.Drawing.Color.White;
-            this.btnOpenThongSo.Location = new System.Drawing.Point(164, 7);
+            this.btnOpenThongSo.Location = new System.Drawing.Point(198, 7);
             this.btnOpenThongSo.Name = "btnOpenThongSo";
             this.btnOpenThongSo.Size = new System.Drawing.Size(112, 32);
             this.btnOpenThongSo.TabIndex = 2;
