@@ -427,18 +427,38 @@ namespace GUI
             string tenLoai = row.Cells["TenLoai"] != null ? Convert.ToString(row.Cells["TenLoai"].Value) : null;
             if (string.IsNullOrEmpty(loaiViTriID)) return;
 
-            if (MessageBox.Show("Xóa loại vị trí '" + tenLoai + "' khỏi vị trí này?", "Xác nhận",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show($"Xóa loại vị trí '{tenLoai}' khỏi TẤT CẢ vị trí của đơn hàng này?", "Xác nhận",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
+                return;
+
+            try
             {
-                try
+                var dtViTriAll = _bll.GetViTriByDonHang(_donHangID);
+                int total = 0, removed = 0;
+                if (dtViTriAll != null)
                 {
-                    if (_bll.DeleteLoaiViTriFromViTri(_selectedViTriID, loaiViTriID))
-                        RefreshLoaiViTriGrid();
+                    foreach (DataRow vr in dtViTriAll.Rows)
+                    {
+                        string vtId = Convert.ToString(vr["ViTriID"]);
+                        if (string.IsNullOrWhiteSpace(vtId)) continue;
+                        total++;
+                        try
+                        {
+                            if (_bll.DeleteLoaiViTriFromViTri(vtId, loaiViTriID)) removed++;
+                        }
+                        catch
+                        {
+                            // ignore per-row failure and continue
+                        }
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Lỗi xóa loại vị trí: " + ex.Message);
-                }
+
+                RefreshLoaiViTriGrid();
+                MessageBox.Show($"Đã xóa loại '{tenLoai}' khỏi {removed} / {total} vị trí.", "Hoàn tất", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi xóa loại vị trí: " + ex.Message);
             }
         }
 

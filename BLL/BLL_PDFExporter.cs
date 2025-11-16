@@ -122,7 +122,16 @@ namespace BLL
                 renderer.PdfDocument.Save(filePath);
             }
 
-            BLL_TapKetQua.LogPdfExport(donHangID, filePath);
+            try
+            {
+                // Try to write export record to DB — do not fail the export if logging fails
+                BLL_TapKetQua.LogPdfExport(donHangID, filePath);
+            }
+            catch (Exception /*ex*/)
+            {
+           
+            }
+
             return true;
         }
 

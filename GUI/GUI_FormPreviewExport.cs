@@ -73,6 +73,14 @@ namespace GUI
                         return;
                     }
                     if (!xuatraPDF.Enabled) return; // guard
+
+                    // Validate data before exporting
+                    if (!ValidateExportData(_data, out var err))
+                    {
+                        MessageBox.Show(err, "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     xuatraPDF.Enabled = false;
                     try
                     {
@@ -89,6 +97,53 @@ namespace GUI
                     }
                 };
             }
+        }
+
+        // Validate that ViTri1/ViTri2/ViTri3 exist and each data row has values for them
+        private bool ValidateExportData(DataTable dt, out string message)
+        {
+            message = null;
+            if (dt == null || dt.Rows.Count == 0)
+            {
+                message = "Dữ liệu xuất trống.";
+                return false;
+            }
+
+            var required = new[] { "ViTri1", "ViTri2", "ViTri3" };
+            foreach (var c in required)
+            {
+                if (!dt.Columns.Contains(c))
+                {
+                    message = $"Dữ liệu xuất thiếu cột bắt buộc: {c}.";
+                    return false;
+                }
+            }
+
+            int rowNo = 0;
+            var problems = new System.Text.StringBuilder();
+            foreach (DataRow r in dt.Rows)
+            {
+                // Skip section/header rows where STT == DBNull.Value
+                if (dt.Columns.Contains("STT") && r["STT"] == DBNull.Value) continue;
+
+                rowNo++;
+                string v1 = r["ViTri1"] == DBNull.Value ? string.Empty : Convert.ToString(r["ViTri1"]).Trim();
+                string v2 = r["ViTri2"] == DBNull.Value ? string.Empty : Convert.ToString(r["ViTri2"]).Trim();
+                string v3 = r["ViTri3"] == DBNull.Value ? string.Empty : Convert.ToString(r["ViTri3"]).Trim();
+
+                if (string.IsNullOrWhiteSpace(v1) || string.IsNullOrWhiteSpace(v2) || string.IsNullOrWhiteSpace(v3))
+                {
+                    problems.AppendLine($"Dòng {rowNo}: thiếu giá trị vị trí (V1='{v1}', V2='{v2}', V3='{v3}').");
+                }
+            }
+
+            if (problems.Length > 0)
+            {
+                message = "Dữ liệu chưa đầy đủ cho các cột vị trí:\n" + problems.ToString();
+                return false;
+            }
+
+            return true;
         }
 
         private void TrySetFill(string col, float weight)
@@ -139,7 +194,8 @@ namespace GUI
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.thongsogridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.thongsogridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.thongsogridview.ColumnHeadersHeight = 4;
+            this.thongsogridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -166,7 +222,7 @@ namespace GUI
             this.thongsogridview.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.thongsogridview.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.thongsogridview.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.thongsogridview.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.thongsogridview.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.thongsogridview.ThemeStyle.HeaderStyle.Height = 4;
             this.thongsogridview.ThemeStyle.ReadOnly = false;
             this.thongsogridview.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
@@ -176,6 +232,7 @@ namespace GUI
             this.thongsogridview.ThemeStyle.RowsStyle.Height = 22;
             this.thongsogridview.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.thongsogridview.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.thongsogridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.thongsogridview_CellContentClick);
             // 
             // guna2GradientPanel1
             // 
@@ -284,6 +341,10 @@ namespace GUI
             this.PerformLayout();
 
         }
+
+        private void thongsogridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
-        
