@@ -78,6 +78,7 @@ namespace GUI
 
 
             dgv.DataSource = _bs;
+            dgv.DataError += Dgv_DataError;
 
             LoadCombos();
             ForceRebind();
@@ -301,7 +302,13 @@ namespace GUI
             foreach (DataGridViewColumn c in dgv.Columns) c.ReadOnly = true;
 
             // Mở khoá mức cột cho các cột có thể chỉnh
-            if (dgv.Columns.Contains("GiaTri")) dgv.Columns["GiaTri"].ReadOnly = false;
+           if (dgv.Columns.Contains("GiaTri"))
+{
+    // cho DataGridView hiểu đây là cột số
+    dgv.Columns["GiaTri"].ValueType = typeof(float); // hoặc typeof(double)
+    dgv.Columns["GiaTri"].DefaultCellStyle.Format = "N3"; // hiển thị 3 chữ số thập phân
+}
+
             if (dgv.Columns.Contains("GiaTriQuyChuan")) dgv.Columns["GiaTriQuyChuan"].ReadOnly = true;
             if (dgv.Columns.Contains("KetLuan")) dgv.Columns["KetLuan"].ReadOnly = false;
 
@@ -564,5 +571,66 @@ namespace GUI
         {
 
         }
+        // Ngăn dialog lỗi mặc định và hiện message thân thiện
+private void Dgv_DataError(object sender, DataGridViewDataErrorEventArgs e)
+{
+    var dgv = sender as DataGridView;
+    string colName = (dgv != null && e.ColumnIndex >= 0 && e.ColumnIndex < dgv.Columns.Count)
+                     ? dgv.Columns[e.ColumnIndex].Name
+                     : null;
+
+    if (string.Equals(colName, "GiaTri", StringComparison.OrdinalIgnoreCase))
+    {
+        MessageBox.Show("Giá trị nhập vào cột 'Giá trị' phải là số (không được nhập chữ).", "Lỗi dữ liệu",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+    else
+    {
+        MessageBox.Show("Lỗi dữ liệu: " + (e.Exception?.Message ?? "Không xác định"), "Lỗi",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+
+    // Chặn việc ném ngoại lệ mặc định (ngăn dialog hệ thống lớn)
+    e.ThrowException = false;
+}
+
+// Validate khi user rời ô; nếu không phải số sẽ cancel và báo lỗi
+private void Dgv_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+{
+    var dgv = sender as DataGridView;
+    if (dgv == null) return;
+    if (dgv.Columns[e.ColumnIndex].Name != "GiaTri") return;
+
+    string formatted = Convert.ToString(e.FormattedValue)?.Trim();
+
+    // cho phép rỗng (bỏ qua) — nếu bạn muốn bắt buộc phải có số thì đổi thành lỗi
+    if (string.IsNullOrEmpty(formatted))
+    {
+        dgv.Rows[e.RowIndex].ErrorText = "";
+        return;
+    }
+
+    var s = formatted.Replace(',', '.'); // chuẩn hoá dấu thập phân
+
+    if (!float.TryParse(s,
+                        NumberStyles.Float | NumberStyles.AllowThousands,
+                        CultureInfo.InvariantCulture,
+                        out var val))
+    {
+        e.Cancel = true; // giữ ở ô hiện tại
+        dgv.Rows[e.RowIndex].ErrorText = "Giá trị phải là số (ví dụ: 12.345).";
+        MessageBox.Show("Giá trị không hợp lệ. Vui lòng nhập số cho cột 'Giá trị'.", "Lỗi nhập liệu",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+    else
+    {
+        // hợp lệ: xoá lỗi và chuẩn hoá giá trị (ví dụ làm tròn 3 chữ số)
+        dgv.Rows[e.RowIndex].ErrorText = "";
+        const int PRECISION = 3;
+        // Gán lại giá trị đã chuẩn (sẽ convert về float vì ta set ValueType ở bước 3)
+        dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = (float)Math.Round(val, PRECISION, MidpointRounding.AwayFromZero);
+    }
+}
+
     }
 }
