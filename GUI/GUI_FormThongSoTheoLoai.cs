@@ -453,7 +453,7 @@ namespace GUI
                     {
                         ketLuan = "Không đạt";
                     }
-                    else if (quyChuan > 0 && giaTri >= 2 * quyChuan)
+                    else if (giaTri >quyChuan)
                     {
                         ketLuan = "Không đạt";
                     }

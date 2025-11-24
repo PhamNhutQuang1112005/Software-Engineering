@@ -12,7 +12,7 @@ namespace DAL
         private static readonly HttpClient _httpClient = new HttpClient();
 
         // Chọn model FLASH
-        private readonly string _model = "gemini-2.0-flash";
+        private readonly string _model = "gemini-2.5-flash";
 
         public DAL_Gemini(string apiKey)
         {

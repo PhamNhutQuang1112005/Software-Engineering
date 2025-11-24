@@ -38,3 +38,13 @@ C:\CNPM\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.dll
 C:\CNPM\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.xml
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.dll
 D:\HỌC KỲ 5\CÔNG NGHỆ PHẦN MỀM\CUOIKY\UI_V1\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\CNMP3\Software-Engineering\DAL\bin\Debug\DAL.dll
+C:\CNMP3\Software-Engineering\DAL\bin\Debug\DAL.pdb
+C:\CNMP3\Software-Engineering\DAL\bin\Debug\DTO.dll
+C:\CNMP3\Software-Engineering\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\CNMP3\Software-Engineering\DAL\bin\Debug\DTO.pdb
+C:\CNMP3\Software-Engineering\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\CNMP3\Software-Engineering\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\CNMP3\Software-Engineering\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\CNMP3\Software-Engineering\DAL\obj\Debug\DAL.dll
+C:\CNMP3\Software-Engineering\DAL\obj\Debug\DAL.pdb

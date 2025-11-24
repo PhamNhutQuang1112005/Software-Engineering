@@ -13,11 +13,57 @@ namespace GUI
     public partial class UC_solarisAI : UserControl
     {
         // 🔑 Hardcode API key Gemini
-        private readonly string apiKey = "AIzaSyAW10v34zcJ6mT41eKw0Pmtx1yI2Go3KQ8";
+        private readonly string apiKey = "AIzaSyAXL_PTbfODypC5N6z0HJTzt3VqlXazBEg";
+
+        private void AddHistoryBubble(string text, bool isUser)
+        {
+            // Panel chứa cả dòng tin nhắn
+            Panel row = new Panel();
+            row.Width = flowLayoutPanel1.ClientSize.Width - 10;
+            row.AutoSize = true;
+            row.Margin = new Padding(0, 5, 0, 5);
+
+            // Bong bóng chat
+            Label bubble = new Label();
+            bubble.AutoSize = true;
+
+            bubble.Padding = new Padding(10);
+            bubble.Font = new Font("Segoe UI", 12);
+            bubble.Text = text;
+            bubble.BorderStyle = BorderStyle.FixedSingle;
+
+            // User bên trái
+            if (isUser)
+            {
+                bubble.MaximumSize = new Size(250, 0);
+                bubble.BackColor = Color.FromArgb(173, 216, 230);
+                row.Controls.Add(bubble);
+
+                bubble.Location = new Point(10, 0);  // TRÁI
+            }
+            else // AI bên phải
+            {
+                bubble.MaximumSize = new Size(500, 0);
+                bubble.BackColor = Color.LightGray;
+                row.Controls.Add(bubble);
+
+                bubble.Location = new Point(
+                    row.Width - bubble.PreferredWidth - 10,   // PHẢI
+                    0
+                );
+            }
+
+            flowLayoutPanel1.Controls.Add(row);
+            flowLayoutPanel1.ScrollControlIntoView(row);
+        }
+
+
 
         public UC_solarisAI()
         {
             InitializeComponent();
+
+
         }
 
         // TextBox nhập prompt
@@ -68,11 +114,7 @@ namespace GUI
     .ToDictionary(g => g.Key, g => g.Count());
                 DataTable dtKH = BLL_KhachHang.GetAllKhachHang();
 
-                if (dt == null || dt.Rows.Count == 0)
-                {
-                    guna2TextBox1.Text = "Không có dữ liệu chỉ tiêu trong cơ sở dữ liệu.";
-                    return;
-                }
+
 
                 // 👉 Tạo mô tả cho Gemini
                 StringBuilder sb = new StringBuilder();
@@ -224,7 +266,10 @@ Yêu cầu:
                 string result = await gemini.TaoNoiDungAsync(fullPrompt);
 
                 // 👉 Hiển thị kết quả
-                guna2TextBox1.Text = result;
+
+                // Lưu vào lịch sử Messenger-style
+                AddHistoryBubble("Bạn: " + prompt, true);
+                AddHistoryBubble("AI: " + result, false);
             }
             catch (Exception ex)
             {
@@ -238,11 +283,12 @@ Yêu cầu:
                 ohoithoai.Text = "";
             }
         }
+
         private string DuDoanTaiKy(int soDon)
         {
-            if (soDon >= 10)
+            if (soDon >= 5)
                 return "Có khả năng tái ký cao";
-            else if (soDon >= 5)
+            else if (soDon >= 4)
                 return "Có khả năng tái ký";
             else if (soDon >= 2)
                 return "Có khả năng tái ký nhưng thấp";
@@ -251,6 +297,11 @@ Yêu cầu:
         }
 
         private void ohoithoai_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UC_solarisAI_Load(object sender, EventArgs e)
         {
 
         }
