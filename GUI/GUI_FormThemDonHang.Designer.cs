@@ -70,7 +70,7 @@
             "Đang xử lý",
             "Hoàn thành",
             "Quá hạn"});
-            this.guna2ComboBox5.Location = new System.Drawing.Point(235, 241);
+            this.guna2ComboBox5.Location = new System.Drawing.Point(235, 250);
             this.guna2ComboBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ComboBox5.Name = "guna2ComboBox5";
             this.guna2ComboBox5.Size = new System.Drawing.Size(192, 36);
@@ -83,7 +83,7 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.SystemColors.Window;
-            this.label10.Location = new System.Drawing.Point(37, 246);
+            this.label10.Location = new System.Drawing.Point(37, 255);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(157, 23);
             this.label10.TabIndex = 48;
@@ -103,7 +103,7 @@
             this.guna2Button6.FillColor = System.Drawing.Color.Green;
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button6.ForeColor = System.Drawing.Color.White;
-            this.guna2Button6.Location = new System.Drawing.Point(733, 508);
+            this.guna2Button6.Location = new System.Drawing.Point(733, 596);
             this.guna2Button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(112, 43);
@@ -124,7 +124,7 @@
             this.guna2Button5.FillColor = System.Drawing.Color.Green;
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button5.ForeColor = System.Drawing.Color.White;
-            this.guna2Button5.Location = new System.Drawing.Point(315, 508);
+            this.guna2Button5.Location = new System.Drawing.Point(315, 596);
             this.guna2Button5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(112, 43);
@@ -147,7 +147,7 @@
             this.guna2ComboBox4.Location = new System.Drawing.Point(235, 82);
             this.guna2ComboBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ComboBox4.Name = "guna2ComboBox4";
-            this.guna2ComboBox4.Size = new System.Drawing.Size(192, 36);
+            this.guna2ComboBox4.Size = new System.Drawing.Size(263, 36);
             this.guna2ComboBox4.TabIndex = 45;
             this.guna2ComboBox4.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox4_SelectedIndexChanged);
             // 
@@ -169,7 +169,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.SystemColors.Window;
-            this.label8.Location = new System.Drawing.Point(37, 185);
+            this.label8.Location = new System.Drawing.Point(37, 191);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 23);
             this.label8.TabIndex = 42;
@@ -189,7 +189,7 @@
             this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.Location = new System.Drawing.Point(43, 380);
+            this.guna2TextBox4.Location = new System.Drawing.Point(43, 468);
             this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2TextBox4.MaxLength = 1024;
             this.guna2TextBox4.Multiline = true;
@@ -206,7 +206,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.Window;
-            this.label7.Location = new System.Drawing.Point(37, 341);
+            this.label7.Location = new System.Drawing.Point(37, 429);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(144, 23);
             this.label7.TabIndex = 40;
@@ -245,14 +245,14 @@
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(192, 48);
+            this.guna2TextBox1.Size = new System.Drawing.Size(263, 48);
             this.guna2TextBox1.TabIndex = 50;
             // 
             // guna2GradientPanel1
             // 
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(216)))), ((int)(((byte)(112)))));
             this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(245)))), ((int)(((byte)(210)))));
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(-8, 308);
+            this.guna2GradientPanel1.Location = new System.Drawing.Point(-8, 386);
             this.guna2GradientPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2GradientPanel1.Name = "guna2GradientPanel1";
             this.guna2GradientPanel1.Size = new System.Drawing.Size(1172, 10);
@@ -274,7 +274,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(469, 34);
+            this.label1.Location = new System.Drawing.Point(504, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 23);
             this.label1.TabIndex = 53;
@@ -303,7 +303,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.SystemColors.Window;
-            this.label2.Location = new System.Drawing.Point(469, 105);
+            this.label2.Location = new System.Drawing.Point(504, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(222, 23);
             this.label2.TabIndex = 55;
@@ -316,7 +316,7 @@
             this.Ngay_Du_kien.FillColor = System.Drawing.Color.White;
             this.Ngay_Du_kien.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Ngay_Du_kien.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.Ngay_Du_kien.Location = new System.Drawing.Point(733, 96);
+            this.Ngay_Du_kien.Location = new System.Drawing.Point(733, 82);
             this.Ngay_Du_kien.Margin = new System.Windows.Forms.Padding(4);
             this.Ngay_Du_kien.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.Ngay_Du_kien.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -331,7 +331,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.SystemColors.Window;
-            this.label3.Location = new System.Drawing.Point(469, 246);
+            this.label3.Location = new System.Drawing.Point(37, 325);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(138, 23);
             this.label3.TabIndex = 57;
@@ -351,12 +351,12 @@
             this.Dia_Chi_text.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Dia_Chi_text.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.Dia_Chi_text.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.Dia_Chi_text.Location = new System.Drawing.Point(733, 241);
+            this.Dia_Chi_text.Location = new System.Drawing.Point(235, 316);
             this.Dia_Chi_text.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Dia_Chi_text.Name = "Dia_Chi_text";
             this.Dia_Chi_text.PlaceholderText = "";
             this.Dia_Chi_text.SelectedText = "";
-            this.Dia_Chi_text.Size = new System.Drawing.Size(386, 44);
+            this.Dia_Chi_text.Size = new System.Drawing.Size(884, 44);
             this.Dia_Chi_text.TabIndex = 58;
             this.Dia_Chi_text.TextChanged += new System.EventHandler(this.Dia_Chi_text_TextChanged);
             // 
@@ -366,7 +366,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.Window;
-            this.label4.Location = new System.Drawing.Point(469, 185);
+            this.label4.Location = new System.Drawing.Point(478, 255);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(213, 23);
             this.label4.TabIndex = 59;
@@ -379,7 +379,7 @@
             this.Ngay_Thuc_te.FillColor = System.Drawing.Color.White;
             this.Ngay_Thuc_te.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Ngay_Thuc_te.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.Ngay_Thuc_te.Location = new System.Drawing.Point(733, 180);
+            this.Ngay_Thuc_te.Location = new System.Drawing.Point(734, 250);
             this.Ngay_Thuc_te.Margin = new System.Windows.Forms.Padding(4);
             this.Ngay_Thuc_te.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.Ngay_Thuc_te.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -439,10 +439,10 @@
             this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(235, 180);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(235, 184);
             this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(192, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(884, 36);
             this.guna2ComboBox1.TabIndex = 46;
             this.guna2ComboBox1.TabStop = false;
             this.guna2ComboBox1.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_TextUpdate);
@@ -453,7 +453,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(1164, 572);
+            this.ClientSize = new System.Drawing.Size(1164, 653);
             this.Controls.Add(this.Ngay_Thuc_te);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Dia_Chi_text);
@@ -482,7 +482,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GUI_FormThemDonHang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Thêm đơn hàng";
             this.Load += new System.EventHandler(this.GUI_FormThemDonHang_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

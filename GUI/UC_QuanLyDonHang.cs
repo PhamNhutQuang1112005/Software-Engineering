@@ -419,7 +419,24 @@ namespace GUI
 
             // Trạng thái: chỉ tên trạng thái, KHÔNG hiển thị TrangThaiID
             var lblTrangThai = L($"📌 Trạng thái: { (string.IsNullOrEmpty(tenTrangThai) ? "" : tenTrangThai) }", null);
-
+            switch (tenTrangThai.Trim())
+{
+    case "Hoàn thành":
+        lblTrangThai.ForeColor = Color.ForestGreen;
+       lblTrangThai.Font = new Font(lblTrangThai.Font, FontStyle.Bold);
+                    break;
+    case "Đang xử lý":
+        lblTrangThai.ForeColor = Color.DarkOrange;
+                    lblTrangThai.Font = new Font(lblTrangThai.Font, FontStyle.Bold);
+        break;
+    case "Quá hạn":
+        lblTrangThai.ForeColor = Color.Crimson;
+                    lblTrangThai.Font = new Font(lblTrangThai.Font, FontStyle.Bold);
+        break;
+    default:
+        lblTrangThai.ForeColor = ClrText;
+        break;
+}
             var lblDates     = L($"🗓 Mẫu: {ngayLayMau} | Dự kiến: {ngayDuKien} | TT: {ngayTraTT}", null);
             var lblKy        = L(string.IsNullOrWhiteSpace(ky) ? "" : ("⏱ Kỳ: " + ky), null);
             var lblGhiChu    = L("📝 " + (string.IsNullOrWhiteSpace(ghiChu) ? "(Không có ghi chú)" : ghiChu), null);

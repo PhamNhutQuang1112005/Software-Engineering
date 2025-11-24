@@ -151,9 +151,9 @@
             this.lblVersion.ForeColor = System.Drawing.Color.White;
             this.lblVersion.Location = new System.Drawing.Point(6, 16);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(86, 23);
+            this.lblVersion.Size = new System.Drawing.Size(60, 23);
             this.lblVersion.TabIndex = 0;
-            this.lblVersion.Text = "ver 1.1.0.2";
+            this.lblVersion.Text = "ver 2.0";
             // 
             // lblUser
             // 
@@ -162,9 +162,9 @@
             this.lblUser.ForeColor = System.Drawing.Color.White;
             this.lblUser.Location = new System.Drawing.Point(150, 16);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(139, 23);
+            this.lblUser.Size = new System.Drawing.Size(141, 23);
             this.lblUser.TabIndex = 1;
-            this.lblUser.Text = "xin chào, <user>";
+            this.lblUser.Text = "Xin chào, <user>";
             this.lblUser.TextChanged += new System.EventHandler(this.lblUser_TextChanged);
             // 
             // sidebar
