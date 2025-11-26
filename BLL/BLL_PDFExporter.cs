@@ -414,7 +414,7 @@ namespace BLL
                     string val = r.Table.Columns.Contains(colName) && r[colName] != DBNull.Value ? Convert.ToString(r[colName]) : string.Empty;
                     var cell = row.Cells[i];
                     cell.AddParagraph(val);
-                    cell.Format.Alignment = colName == "STT" ? ParagraphAlignment.Center : ParagraphAlignment.Left;
+                    cell.Format.Alignment = (colName == "STT" || colName.StartsWith("ViTri") || colName == "GiaTriChuan") ? ParagraphAlignment.Center : ParagraphAlignment.Left;
                 }
             }
 
