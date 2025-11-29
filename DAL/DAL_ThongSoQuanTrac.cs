@@ -490,19 +490,19 @@ namespace DAL
 
 
         public bool DeleteThongSo(string tenThongSo)
-        {
-            using (SqlConnection cn = NewConn())
-            using (SqlCommand cmd = new SqlCommand("dbo.sp_DeleteThongSoMoiTruong", cn))
-            {
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@TenThongSo", tenThongSo);
-                cn.Open();
-                int ok = cmd.ExecuteNonQuery();
-                // Stored procedures may use SET NOCOUNT ON (ExecuteNonQuery returns -1),
-                // so treat non-exceptional execution as success.
-                return ok >= 0;
-            }
-        }
+{
+    using (SqlConnection cn = NewConn())
+    using (SqlCommand cmd = new SqlCommand("dbo.sp_DeleteThongSoMoiTruong", cn))
+    {
+        cmd.CommandType = CommandType.StoredProcedure;
+        cmd.Parameters.AddWithValue("@TenThongSo", tenThongSo);
+        cn.Open();
+        int ok = cmd.ExecuteNonQuery();
+        
+        // Sửa điều kiện: Chấp nhận > 0 (xóa được dòng) HOẶC == -1 (SET NOCOUNT ON)
+        return ok > 0 || ok == -1;
+    }
+}
 
         public string GetDefaultDonViID_ByLoaiChiTieu(string loaiChiTieuID)
         {

@@ -13,7 +13,7 @@ namespace GUI
     public partial class UC_solarisAI : UserControl
     {
         // 🔑 Hardcode API key Gemini
-        private readonly string apiKey = "AIzaSyAXL_PTbfODypC5N6z0HJTzt3VqlXazBEg";
+        private readonly string apiKey = "AIzaSyDKSsf8kBDh-aAwW1fp9Y69qIdVTArJKCY";
 
         private void AddHistoryBubble(string text, bool isUser)
         {
